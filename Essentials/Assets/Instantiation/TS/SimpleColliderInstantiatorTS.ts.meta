@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/ade8040f-b333-44f0-bce7-9254b95a3e67>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2c9a6d9f-5c17-4951-b6ea-ccbac4b9fc96
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2c9a6d9f-5c17-4951-b6ea-ccbac4b9fc96
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3b721940-ee2f-432c-b5d8-66989633d2c2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3b721940-ee2f-432c-b5d8-66989633d2c2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6e4d9219-cf9d-41c4-b07d-70ccb0b8f5df
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    instantiateInside: false
+    numberOfInstances: false
+    prefab: false
+    prefabScale: false
+    randomScaleVariation: false
+    targetObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      targetObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      numberOfInstances: !<float> 10.000000
+      instantiateInside: true
+      prefabScale: !<float> 1.000000
+      randomScaleVariation: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input SceneObject targetObject {"hint":"Target object with shape"}'
+    - '// @input float numberOfInstances = 10 {"hint":"Number of instances to spawn"}'
+    - '// @input bool instantiateInside = true {"hint":"Toggle for inside or on surface instantiation"}'
+    - '// @input float prefabScale = 1 {"hint":"Scale factor for instantiated prefabs"}'
+    - '// @input float randomScaleVariation {"hint":"Random scale variation (0 = uniform size, 1 = fully random between 0 and prefabScale*2)"}'

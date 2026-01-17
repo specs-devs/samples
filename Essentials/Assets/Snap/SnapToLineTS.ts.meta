@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/ac06f2d3-e18a-402a-9af3-9ae5a2286c40>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d1c0b805-798f-4159-8372-ffad223ce7ed
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d1c0b805-798f-4159-8372-ffad223ce7ed
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 89ccc889-5fd3-42e1-bbdf-d1a19aaabdf4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/89ccc889-5fd3-42e1-bbdf-d1a19aaabdf4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6d64a3a9-18a2-43ee-a12c-672fd8e2035b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    distanceObject: false
+    lineEnd: false
+    lineStart: false
+    snapDistance: false
+    snappingObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - lineStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snappingObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snapDistance: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject lineStart {"hint":"The start point of the line"}'
+    - '// @input SceneObject lineEnd {"hint":"The end point of the line"}'
+    - '// @input SceneObject snappingObject {"hint":"The object that will snap to the line"}'
+    - '// @input SceneObject distanceObject {"hint":"The object used to measure distance to the line for snap detection"}'
+    - '// @input float snapDistance = 1 {"hint":"How close the object needs to be to snap to the line"}'

@@ -1,0 +1,125 @@
+- !<AssetImportMetadata/66677247-6285-4024-afc7-d10319d0f650>
+  ImportedAssetIds:
+    Meshes/Cylinder: !<reference> c8deb236-162e-4dc7-a21b-6523404fcd8f
+    Scene: !<reference> 037b6525-f836-4bea-8bd4-8b1d84b60f05
+    _3DSceneImportRoot_0|: !<reference> ce0c516c-3f20-4ed8-a7b8-fe268dfa08f1
+    _3DSceneImportRoot_0|_Scenes_0|: !<reference> a4d8d78a-6afb-4aba-b123-b8ad25deb9bb
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|: !<reference> a00afb55-37f9-467a-a226-a0f275a76aa3
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|_Cylinder_0|: !<reference> 24bcd32e-4185-4219-ad35-561caf0ed1d6
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|_Cylinder_0|_RenderMeshVisual_0|: !<reference> d59401cb-3f75-4d05-b76f-ed0005dca8d9
+  ImporterName: GltfImporter
+  PrimaryAsset: !<reference> 037b6525-f836-4bea-8bd4-8b1d84b60f05
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 2ede55dd-7e05-454f-9e46-d7908f3378d1
+  DependentFiles:
+    []
+  ImporterSettings: !<GltfImporterSettings>
+    UseLegacyImporter: true
+    WithMaterials: true
+    NamingConvention: ByCategory
+    PersistentIdGenerationAlgorithm: Legacy
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangents: true
+    ImportMorphTargetAnimation: true
+    ConvertMetersToCentimeters: true
+    RegenerateTangents: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: None
+        CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<SceneObject/24bcd32e-4185-4219-52ca-a9e350f12e29>
+  PrefabRemaps:
+    []
+  Name: Cylinder
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d59401cb-3f75-4d05-4890-12fffa235726
+- !<ObjectPrefabAssetData/2ede55dd-7e05-454f-9e46-d7908f3378d1>
+  Prototype: !<ObjectOwner/54f0d24a-deda-4ada-97ea-0bac89d170d2>
+    PackagePath: ""
+    objects:
+      - !<own> ce0c516c-3f20-4ed8-5847-01d97205f70e
+- !<SceneObject/a00afb55-37f9-467a-5dd9-5f0d8a58955c>
+  PrefabRemaps:
+    []
+  Name: Scene
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 24bcd32e-4185-4219-52ca-a9e350f12e29
+  Components:
+    []
+- !<SceneObject/a4d8d78a-6afb-4aba-4edc-4752da214644>
+  PrefabRemaps:
+    []
+  Name: Scenes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a00afb55-37f9-467a-5dd9-5f0d8a58955c
+  Components:
+    []
+- !<SceneObject/ce0c516c-3f20-4ed8-5847-01d97205f70e>
+  PrefabRemaps:
+    []
+  Name: Cylinder
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 100.000000, z: 100.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a4d8d78a-6afb-4aba-4edc-4752da214644
+  Components:
+    []
+- !<RenderMeshVisual/d59401cb-3f75-4d05-4890-12fffa235726>
+  PrefabRemaps:
+    []
+  Name: Cylinder
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Mesh: !<reference> c8deb236-162e-4dc7-a21b-6523404fcd8f
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

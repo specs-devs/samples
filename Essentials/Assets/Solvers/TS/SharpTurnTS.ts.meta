@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/af34308f-7124-4fd2-9d0f-16497b8b2738>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> dcf06e15-77bf-4e38-a049-7e0f09c50013
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> dcf06e15-77bf-4e38-a049-7e0f09c50013
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2ae27b28-f653-4856-bf19-bd2df362be61
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2ae27b28-f653-4856-bf19-bd2df362be61>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8830efdc-59dc-484c-ae37-ac6b213d49e4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debug: false
+    frameCount: false
+    minVertexDistance: false
+    step: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - step: !<float> 10.000000
+      frameCount: !<float> 30.000000
+      minVertexDistance: 0.001000
+      debug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float step = 10 {"hint":"Number of frames to skip between position checks"}'
+    - '// @input float frameCount = 30 {"hint":"Number of frames to store for tracking movement"}'
+    - '// @input float minVertexDistance = 0.001 {"hint":"Minimum distance between vertices to record a new position"}'
+    - '// @input bool debug {"hint":"Enable debug logging"}'

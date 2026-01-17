@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/7c2da7d8-b250-4f86-9676-9b165c497696>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7e5193c1-99e9-447a-b0eb-0844989a52df
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7e5193c1-99e9-447a-b0eb-0844989a52df
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 41d831ea-94ef-40bd-ac76-5cf2008d02d5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/41d831ea-94ef-40bd-ac76-5cf2008d02d5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8231d790-4e16-49f6-bd7b-2893aeefb4d4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arcAngleSpan: false
+    arcLength: false
+    center: false
+    numberOfPrefabs: false
+    prefab: false
+    radius: false
+    startAngle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - center: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      radius: !<float> 5.000000
+      numberOfPrefabs: !<float> 0.000000
+      arcLength: !<float> 2.000000
+      startAngle: !<float> 0.000000
+      arcAngleSpan: !<float> 360.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject center {"hint":"Center of the circle"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float radius = 5 {"hint":"Radius of the circle"}'
+    - '// @input float numberOfPrefabs = 10 {"hint":"Number of prefabs to instantiate around the circle"}'
+    - '// @input float arcLength = 2 {"hint":"Fixed arc length between instantiated prefabs (used only when numberOfPrefabs is 0)"}'
+    - '// @input float startAngle {"hint":"Start angle of the arc in degrees (0-360)"}'
+    - '// @input float arcAngleSpan = 360 {"hint":"Angular span of the arc in degrees (0-360, where 360 is a full circle)"}'

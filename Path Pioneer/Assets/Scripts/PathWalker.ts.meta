@@ -1,0 +1,74 @@
+- !<AssetImportMetadata/15208579-be8d-4e3a-9ae6-33b34c5d17c1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7e7316df-ffb6-43cb-93e1-0b2770d13834
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7e7316df-ffb6-43cb-93e1-0b2770d13834
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 00488b5d-3b5e-4b8a-b899-8fb48e00802e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/00488b5d-3b5e-4b8a-b899-8fb48e00802e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e2ae937b-6760-44bb-9348-635c1157eae0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arrowSpawner: false
+    averagePaceText: false
+    cam: false
+    lapCountText: false
+    pathRmv: false
+    playerPaceCalulator: false
+    progressBarController: false
+    timerScript: false
+    uiScript: false
+    walkPathScreenHUD: false
+    warningController: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cam: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      walkPathScreenHUD: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      averagePaceText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      lapCountText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timerScript: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      uiScript: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      progressBarController: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      arrowSpawner: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      playerPaceCalulator: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      warningController: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      pathRmv: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject cam
+    - // @input SceneObject walkPathScreenHUD
+    - // @input Component.Text averagePaceText
+    - // @input Component.Text lapCountText
+    - // @input AssignableType timerScript
+    - // @input AssignableType_1 uiScript
+    - // @input AssignableType_2 progressBarController
+    - // @input AssignableType_3 arrowSpawner
+    - // @input AssignableType_4 playerPaceCalulator
+    - // @input AssignableType_5 warningController
+    - // @input Component.RenderMeshVisual pathRmv

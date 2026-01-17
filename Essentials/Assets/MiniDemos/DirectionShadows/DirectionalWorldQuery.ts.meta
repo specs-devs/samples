@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/6b089579-7b0d-4d8e-8d9f-4689e7afe2e6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 49f6ffb8-6526-4004-b3d1-a4a163211f6c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 49f6ffb8-6526-4004-b3d1-a4a163211f6c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1b665424-7b3e-43bb-9148-dfdc85594ca0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1b665424-7b3e-43bb-9148-dfdc85594ca0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ac12b02f-0700-416f-996c-ba3ddcf6cd49
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugEnabled: false
+    directionEnd: false
+    directionStart: false
+    filterEnabled: false
+    objectHitPoint: false
+    rayLength: false
+    rayStart: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - directionStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      directionEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      objectHitPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayLength: !<float> 100.000000
+      debugEnabled: true
+      filterEnabled: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject directionStart
+    - // @input SceneObject directionEnd
+    - // @input SceneObject rayStart
+    - // @input SceneObject objectHitPoint
+    - // @input float rayLength = 100
+    - // @input bool debugEnabled = true
+    - // @input bool filterEnabled = true

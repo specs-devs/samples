@@ -1,0 +1,48 @@
+- !<AssetImportMetadata/27f71bd0-6c89-4cb5-bda7-49af4b1402b8>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> b4ab33a2-e542-486b-969b-3c989b03d01d
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> b4ab33a2-e542-486b-969b-3c989b03d01d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> b0a3290e-7b24-436d-bea6-7c32af6e9f66
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/b0a3290e-7b24-436d-bea6-7c32af6e9f66>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0eda1001-4396-4fbf-a54a-e4dded4016b7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    endPoint: false
+    fixedDistance: false
+    prefab: false
+    startPoint: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      startPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      fixedDistance: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}

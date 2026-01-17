@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/9dfa390b-365c-4e1d-87a6-4cfcc21dda81>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6f032603-673a-4996-b394-8a04f9e189c9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6f032603-673a-4996-b394-8a04f9e189c9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b0f23c43-86b5-4943-9b25-10716a39a81a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b0f23c43-86b5-4943-9b25-10716a39a81a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a9de4763-f6f2-4fdf-8dd2-1c21f5969721
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    destroyDelay: false
+    manipulateObject: false
+    manipulationComponent: false
+    physicsBody: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - manipulateObject: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      manipulationComponent: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      physicsBody: !<reference.BodyComponent> 00000000-0000-0000-0000-000000000000
+      destroyDelay: !<float> 5.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType manipulateObject {"hint":"The Interactable for select and release"}'
+    - '// @input AssignableType_1 manipulationComponent {"hint":"The InteractableManipulation component for manipulation events"}'
+    - '// @input Component.BodyComponent physicsBody {"hint":"The InteractableManipulation component for manipulation events"}'
+    - '// @input float destroyDelay = 5 {"hint":"The delay time in seconds before the instantiated object is destroyed"}'

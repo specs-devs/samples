@@ -1,0 +1,90 @@
+- !<AssetImportMetadata/b99bbd57-928d-45e2-928d-ce271968a23d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 007809d2-1d3c-4429-a19e-0d6a54479f9c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 007809d2-1d3c-4429-a19e-0d6a54479f9c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> eab7e7cc-ec09-484f-8e10-7c3d0411c91c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/eab7e7cc-ec09-484f-8e10-7c3d0411c91c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6849f46d-8186-41cc-8f04-a784ca599275
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camCol: false
+    countdownCollider: false
+    countdownSo: false
+    countdownSoArray: false
+    finishLineTurnArrow: false
+    finishVisual: false
+    hintFinishVisual: false
+    hintStartVisual: false
+    hintVisualsParent: false
+    lapCounter3Dtext: false
+    pathCollisionEvents: false
+    pathWalker: false
+    realVisualsParent: false
+    startLineTurnArrow: false
+    startVisual: false
+    visualSo: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - visualSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      finishVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      countdownSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      countdownSoArray: !<reference.SceneObject[]>
+        []
+      countdownCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      camCol: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      lapCounter3Dtext: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      realVisualsParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintVisualsParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startLineTurnArrow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      finishLineTurnArrow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintStartVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintFinishVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pathCollisionEvents: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pathWalker: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject visualSo
+    - // @input SceneObject startVisual
+    - // @input SceneObject finishVisual
+    - // @input SceneObject countdownSo
+    - "// @input SceneObject[] countdownSoArray"
+    - // @input Component.ColliderComponent countdownCollider
+    - // @input Component.ColliderComponent camCol
+    - // @input Component.Text3D lapCounter3Dtext
+    - // @input SceneObject realVisualsParent
+    - // @input SceneObject hintVisualsParent
+    - // @input SceneObject startLineTurnArrow
+    - // @input SceneObject finishLineTurnArrow
+    - // @input SceneObject hintStartVisual
+    - // @input SceneObject hintFinishVisual
+    - // @input AssignableType pathCollisionEvents
+    - // @input AssignableType_1 pathWalker

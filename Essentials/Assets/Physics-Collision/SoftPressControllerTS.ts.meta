@@ -1,0 +1,83 @@
+- !<AssetImportMetadata/20b77c61-90dc-42f4-8957-59ebe5d8c3a9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0f0c858d-dfec-4e04-bbae-340c43b33821
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0f0c858d-dfec-4e04-bbae-340c43b33821
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 829f7ef4-1f54-4ba6-9272-ca672307f847
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/829f7ef4-1f54-4ba6-9272-ca672307f847>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fe4f2851-2e14-4c8f-9dcd-bf6c89c55342
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bottomVertex0: false
+    bottomVertex1: false
+    bottomVertex2: false
+    bottomVertex3: false
+    closestPointMarker: false
+    colliderObject: false
+    interactorObject: false
+    next: false
+    pressThreshold: false
+    resetDuration: false
+    topVertex0: false
+    topVertex1: false
+    topVertex2: false
+    topVertex3: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - colliderObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      interactorObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      closestPointMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pressThreshold: 0.700000
+      resetDuration: !<float> 1.000000
+      next: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject colliderObject {"hint":"The collider that will detect the soft press interaction"}'
+    - '// @input SceneObject interactorObject {"hint":"The interactor object (e.g., finger tip)"}'
+    - '// @input SceneObject closestPointMarker {"hint":"Optional: A SceneObject to visually mark the closest point on the line (for debugging)"}'
+    - '// @input SceneObject topVertex0 {"hint":"Top vertex 0 of the collider cube"}'
+    - '// @input SceneObject topVertex1 {"hint":"Top vertex 1 of the collider cube"}'
+    - '// @input SceneObject topVertex2 {"hint":"Top vertex 2 of the collider cube"}'
+    - '// @input SceneObject topVertex3 {"hint":"Top vertex 3 of the collider cube"}'
+    - '// @input SceneObject bottomVertex0 {"hint":"Bottom vertex 0 of the collider cube"}'
+    - '// @input SceneObject bottomVertex1 {"hint":"Bottom vertex 1 of the collider cube"}'
+    - '// @input SceneObject bottomVertex2 {"hint":"Bottom vertex 2 of the collider cube"}'
+    - '// @input SceneObject bottomVertex3 {"hint":"Bottom vertex 3 of the collider cube"}'
+    - '// @input float pressThreshold = 0.7 {"hint":"The threshold for triggering the press event (0 to 1)"}'
+    - '// @input float resetDuration = 1 {"hint":"Time (in seconds) for the press value to smoothly reset to 0 after exit"}'
+    - '// @input bool next {"hint":"Does the presentation switcher bring you to the previous slide?"}'

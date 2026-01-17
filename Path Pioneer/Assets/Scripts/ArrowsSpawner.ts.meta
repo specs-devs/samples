@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/f0a684c9-56f1-488d-ab6e-32e4cc336434>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b28037ef-ba73-4afe-b57c-949c4fc629b4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b28037ef-ba73-4afe-b57c-949c4fc629b4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> dc49a9d8-ecb1-4274-ad40-a943d9df1c4a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/dc49a9d8-ecb1-4274-ad40-a943d9df1c4a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 958cb6c1-5c11-4ee1-b5ac-a8c11537e7d2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arrowMaterial: false
+    mainCamera: false
+    maxArrows: false
+    minimalDistanceBetweenArrows: false
+    pfbSideArrow: false
+    revealDistance: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      maxArrows: !<float> 0.000000
+      revealDistance: !<float> 1000.000000
+      minimalDistanceBetweenArrows: !<float> 100.000000
+      pfbSideArrow: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      arrowMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera mainCamera
+    - // @input float maxArrows
+    - // @input float revealDistance = 1000
+    - // @input float minimalDistanceBetweenArrows = 100
+    - // @input Asset.ObjectPrefab pfbSideArrow
+    - // @input Asset.Material arrowMaterial

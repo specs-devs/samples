@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/29c34434-4095-4008-b2fb-6ff887d55c5f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 23b8201f-6b52-4718-b1dd-dc0d7b3821cb
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 23b8201f-6b52-4718-b1dd-dc0d7b3821cb
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b6139cbf-d06c-44e9-be10-1e5290b5c5e0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b6139cbf-d06c-44e9-be10-1e5290b5c5e0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c45ebe85-6c1a-424d-ba12-338bf8d67fbe
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    gridCenter: false
+    gridHeight: false
+    gridWidth: false
+    prefab: false
+    spacingX: false
+    spacingY: false
+    zPosition: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      gridCenter: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      gridWidth: !<float> 5.000000
+      gridHeight: !<float> 5.000000
+      spacingX: 1.500000
+      spacingY: 1.500000
+      zPosition: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"The prefab to instantiate"}'
+    - '// @input SceneObject gridCenter {"hint":"The center of the grid"}'
+    - '// @input float gridWidth = 5 {"hint":"Number of elements along the X axis"}'
+    - '// @input float gridHeight = 5 {"hint":"Number of elements along the Z axis"}'
+    - '// @input float spacingX = 1.5 {"hint":"Spacing between elements in the X direction"}'
+    - '// @input float spacingY = 1.5 {"hint":"Spacing between elements in the Z direction"}'
+    - '// @input float zPosition {"hint":"Fixed Y position for all elements on the XZ plane"}'

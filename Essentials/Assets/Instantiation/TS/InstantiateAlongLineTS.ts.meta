@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/8ffd4695-c347-47ae-afee-515c200ac04d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c2c6a908-1825-4ee5-b341-287eaaadc8fb
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c2c6a908-1825-4ee5-b341-287eaaadc8fb
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d7db59ee-f614-4086-abb8-bcca1d380c27
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d7db59ee-f614-4086-abb8-bcca1d380c27>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f1d6e89e-c0db-425c-9a65-242f12397cce
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    endPoint: false
+    numberOfObjects: false
+    prefab: false
+    startPoint: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      startPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      numberOfObjects: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"The prefab to instantiate"}'
+    - '// @input SceneObject startPoint {"hint":"The start point of the line"}'
+    - '// @input SceneObject endPoint {"hint":"The end point of the line"}'
+    - '// @input float numberOfObjects = 10 {"hint":"Number of objects to instantiate along the line"}'

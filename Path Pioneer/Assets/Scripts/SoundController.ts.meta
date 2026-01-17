@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/9baf4689-ee4b-495e-8e14-6594e828716b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8f460c1c-dd1b-4985-a8da-069a7bf0d300
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8f460c1c-dd1b-4985-a8da-069a7bf0d300
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8a4f4b31-c623-4a60-9891-91be4f711a70
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8a4f4b31-c623-4a60-9891-91be4f711a70>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fb04d3cc-631c-4f5c-a24c-d3e9b35be8a3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    auds: false
+    soundEvents: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - soundEvents:
+        []
+      auds: !<reference.AudioComponent[]>
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - /*
+    - "@typedef SoundEvent"
+    - "@property {string} key"
+    - "@property {Asset.AudioTrackAsset} clip"
+    - "@property {float} vol"
+    - "@property {bool} loop"
+    - "*/"
+    - "// @input SoundEvent[] soundEvents"
+    - "// @input Component.AudioComponent[] auds"

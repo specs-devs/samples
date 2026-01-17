@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/a15b594d-174d-4024-8328-7707040c9fe7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8f352e76-c6d2-4a7c-89e0-af5726bcab00
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8f352e76-c6d2-4a7c-89e0-af5726bcab00
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0c253133-eb79-4c7b-b3e7-a314d0b8d6a0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0c253133-eb79-4c7b-b3e7-a314d0b8d6a0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 15597c75-cd89-43cd-a1aa-f0c696db0d47
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    destroyOnReachTarget: false
+    maxLifetime: false
+    moveSpeed: false
+    prefab: false
+    rotationSpeedX: false
+    rotationSpeedY: false
+    rotationSpeedZ: false
+    spawnInterval: false
+    spawnPosition: false
+    targetPosition: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      spawnPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      spawnInterval: !<float> 2.000000
+      moveSpeed: !<float> 2.000000
+      rotationSpeedX: !<float> 0.000000
+      rotationSpeedY: !<float> 90.000000
+      rotationSpeedZ: !<float> 0.000000
+      maxLifetime: !<float> 10.000000
+      destroyOnReachTarget: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input SceneObject spawnPosition {"hint":"Spawn position - where prefabs appear from"}'
+    - '// @input SceneObject targetPosition {"hint":"Target position - defines movement direction"}'
+    - '// @input float spawnInterval = 2 {"hint":"Time between spawning prefabs in seconds"}'
+    - '// @input float moveSpeed = 2 {"hint":"Speed at which prefabs move"}'
+    - '// @input float rotationSpeedX {"hint":"Rotation speed on X axis in degrees per second"}'
+    - '// @input float rotationSpeedY = 90 {"hint":"Rotation speed on Y axis in degrees per second"}'
+    - '// @input float rotationSpeedZ {"hint":"Rotation speed on Z axis in degrees per second"}'
+    - '// @input float maxLifetime = 10 {"hint":"Maximum lifetime of prefabs in seconds before auto-destruction"}'
+    - '// @input bool destroyOnReachTarget {"hint":"Destroy prefabs when they reach target position"}'

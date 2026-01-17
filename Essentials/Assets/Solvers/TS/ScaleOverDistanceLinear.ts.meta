@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/a70958e5-1d6d-4fc4-a1f2-f262f68748a4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> be69c5c4-ddaf-4e67-ab65-9f4dfba3de2b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> be69c5c4-ddaf-4e67-ab65-9f4dfba3de2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 14ba9026-5ae8-4430-b98b-551232a3ab0c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/14ba9026-5ae8-4430-b98b-551232a3ab0c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 179cd017-fb1d-48c5-ba72-9e6ab9184be7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    maxDistance: false
+    maxScale: false
+    minDistance: false
+    minScale: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      minDistance: !<float> 1.000000
+      maxDistance: !<float> 10.000000
+      minScale: 0.500000
+      maxScale: !<float> 2.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject target {"hint":"Override default target mainCamera"}'
+    - '// @input float minDistance = 1 {"hint":"Minimum distance to map the scaling"}'
+    - '// @input float maxDistance = 10 {"hint":"Maximum distance to map the scaling"}'
+    - '// @input float minScale = 0.5 {"hint":"Minimum scale value"}'
+    - '// @input float maxScale = 2 {"hint":"Maximum scale value"}'

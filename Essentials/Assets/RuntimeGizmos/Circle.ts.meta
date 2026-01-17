@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/75fd028e-26f0-4654-8c85-16894eb8be82>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 97f3da05-53a8-40d0-99af-5f3ee128c53f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 97f3da05-53a8-40d0-99af-5f3ee128c53f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f3856263-160c-4af7-866e-01b41b181e14
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f3856263-160c-4af7-866e-01b41b181e14>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: dd95e7a6-33c5-4804-9814-0d49403a9fd0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _color: false
+    centerObject: false
+    followRotation: false
+    lineMaterial: false
+    lineStyle: false
+    lineWidth: false
+    radius: false
+    segments: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - centerObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      radius: !<float> 1.000000
+      followRotation: true
+      lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      _color: !<Vec3> {x: 1.000000, y: 1.000000, z: 0.000000}
+      lineWidth: 0.500000
+      lineStyle: !<float> 0.000000
+      segments: !<float> 32.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject centerObject {"hint":"The center point of the circle"}'
+    - '// @input float radius = 1 {"hint":"The radius of the circle"}'
+    - "// @input bool followRotation = true {\"hint\":\"Whether the circle should follow the center object's rotation\"}"
+    - // @input Asset.Material lineMaterial
+    - '// @input vec3 _color = "{1, 1, 0}" {"widget":"color"}'
+    - // @input float lineWidth = 0.5
+    - '// @input float lineStyle {"widget":"combobox", "values":[{"label":"Full", "value":0}, {"label":"Split", "value":1}, {"label":"FadedEnd", "value":2}]}'
+    - '// @input float segments = 32 {"hint":"Number of segments used to approximate the circle (higher = smoother)"}'

@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/17252cbe-3860-47fb-a399-f6361ba48236>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d909b5a2-1c6a-44e1-ac44-49bef8508e2a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d909b5a2-1c6a-44e1-ac44-49bef8508e2a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    AssetLibraryId: 3kQqaLSKYvA1iY30Jz9FZW
+  AssetDataMap:
+    TypeScriptAsset: !<own> 78cd0c3c-7a8d-413f-922b-9ba93be0f5e1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/78cd0c3c-7a8d-413f-922b-9ba93be0f5e1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: |-
+    Allows do detect surface using WorldQueryModule
+    
+    API: 
+    startGroundCalibration(callback: (pos: vec3, rot: quat) => void)
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e5722f0e-50c4-492d-a1fd-b5e7322b2e1a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animation: false
+    camObj: false
+    visualObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      visualObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      animation: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject camObj
+    - // @input SceneObject visualObj
+    - // @input AssignableType animation

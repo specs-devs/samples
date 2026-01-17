@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/8b3ead74-fa01-4919-a8c7-bf9b25f9b3e9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b0bfb226-4961-4210-b44c-2736436b48e0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b0bfb226-4961-4210-b44c-2736436b48e0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b89ad500-1bf5-40d2-9a6a-04e6872b7525
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b89ad500-1bf5-40d2-9a6a-04e6872b7525>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9e77fca2-0c9d-4502-bc7a-89daa373bf9d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _color: false
+    continuousLine: false
+    lineMaterial: false
+    lineStyle: false
+    lineWidth: false
+    points: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - points: !<reference.SceneObject[]>
+        []
+      lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      _color: !<Vec3> {x: 1.000000, y: 1.000000, z: 0.000000}
+      lineWidth: 0.500000
+      lineStyle: !<float> 0.000000
+      continuousLine: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input SceneObject[] points"
+    - // @input Asset.Material lineMaterial
+    - '// @input vec3 _color = "{1, 1, 0}" {"widget":"color"}'
+    - // @input float lineWidth = 0.5
+    - '// @input float lineStyle {"widget":"combobox", "values":[{"label":"Full", "value":0}, {"label":"Split", "value":1}, {"label":"FadedEnd", "value":2}]}'
+    - // @input bool continuousLine = true

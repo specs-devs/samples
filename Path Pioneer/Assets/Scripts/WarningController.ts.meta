@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/ba5ec858-15a9-4898-b729-93a3f104f386>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b40671f5-277a-4f4a-a8dd-fc0adf6a5eb8
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b40671f5-277a-4f4a-a8dd-fc0adf6a5eb8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ba41442f-8017-4c7d-a32f-23b96c13028b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ba41442f-8017-4c7d-a32f-23b96c13028b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 21533916-7c60-42fd-b0b2-acccef08c8ac
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    mainCamera: false
+    mainCameraCapture: false
+    orthoCamera: false
+    orthoCameraCapture: false
+    warningVisual: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      mainCameraCapture: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      orthoCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      orthoCameraCapture: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      warningVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera mainCamera
+    - // @input Component.Camera mainCameraCapture
+    - // @input Component.Camera orthoCamera
+    - // @input Component.Camera orthoCameraCapture
+    - // @input SceneObject warningVisual

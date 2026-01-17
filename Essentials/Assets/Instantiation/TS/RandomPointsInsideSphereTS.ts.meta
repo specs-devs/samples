@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/06ebb21a-270d-405b-95f4-0f1fc98be6b7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 50f7682d-008b-4062-ba82-808e04d28566
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 50f7682d-008b-4062-ba82-808e04d28566
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7083edfd-2a71-4052-a0b2-10f451ece81d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7083edfd-2a71-4052-a0b2-10f451ece81d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 47e5948f-74b6-435a-a43b-8e4b80486a5d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    numberOfPoints: false
+    prefab: false
+    radius: false
+    sphere: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sphere: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPoints: !<float> 10.000000
+      radius: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject sphere {"hint":"Reference to the sphere (center point)"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float numberOfPoints = 10 {"hint":"Number of random points to generate"}'
+    - '// @input float radius = 1 {"hint":"Radius of the sphere"}'

@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/d8b2f7b5-db92-4df0-a342-681764c4cb7f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b69e19ca-5a74-4540-884b-9b52addd4b50
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b69e19ca-5a74-4540-884b-9b52addd4b50
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 474b993b-d4a0-4dbb-b52e-1664ebb2091c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/474b993b-d4a0-4dbb-b52e-1664ebb2091c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f2909a08-aed9-4f3d-be9c-3b898e8822b6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    mapComponent: false
+    maxFollowDistance: false
+    minFollowDistance: false
+    rotationTime: false
+    translationXTime: false
+    translationYTime: false
+    translationZTime: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mapComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      translationXTime: !<float> 1.000000
+      translationYTime: 0.350000
+      translationZTime: 0.350000
+      rotationTime: 0.550000
+      minFollowDistance: !<float> 25.000000
+      maxFollowDistance: !<float> 250.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType mapComponent
+    - // @input float translationXTime = 1
+    - // @input float translationYTime = 0.35
+    - // @input float translationZTime = 0.35
+    - // @input float rotationTime = 0.55
+    - // @input float minFollowDistance = 50
+    - // @input float maxFollowDistance = 160

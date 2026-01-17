@@ -1,0 +1,70 @@
+- !<Material/a591589a-358e-4f1a-b1e9-117e345cf1f0>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 720614aa-3635-4ba7-b46e-932ce4f4babd
+- !<PassInfo/720614aa-3635-4ba7-b46e-932ce4f4babd>
+  CachedProperties:
+    - overrideTimeElapsed:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeEnabled:
+        typeIdx: 0
+        value: 0
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: true
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - NODE_35_DROPLIST_ITEM 0
+    - animated
+  BlendMode: Disabled
+  Properties:
+    Port_AO_N018:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N018:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Input0_N024:
+      typeIdx: 1
+      value: 11.000000
+    Port_Input1_N023:
+      typeIdx: 1
+      value: 0.500000
+    Port_Metallic_N018:
+      typeIdx: 1
+      value: 0.000000
+    Port_Opacity_N018:
+      typeIdx: 1
+      value: 1.000000
+    Port_SpecularAO_N018:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    animatedSpeed:
+      typeIdx: 1
+      value: 3.260000
+    animationOffset:
+      typeIdx: 1
+      value: 3.120000
+    backColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 0.286275, z: 0.635294, w: 1.000000}
+    frontColor:
+      typeIdx: 5
+      value: {x: 0.917647, y: 0.211765, z: 0.105882, w: 1.000000}
+    slicedHeight:
+      typeIdx: 1
+      value: 5.000000
+    wobbleStrength:
+      typeIdx: 1
+      value: 2.540000
+  Pass: !<reference> af4791b2-cf20-4ff9-bd2a-b4a0158dc4e5

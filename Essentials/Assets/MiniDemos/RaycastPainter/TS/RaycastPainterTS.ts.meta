@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/b76694fb-b900-4b4b-9be8-e727b04f1fd6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ce21c20f-9db6-417e-994f-3b16e8ea7557
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ce21c20f-9db6-417e-994f-3b16e8ea7557
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> cec32e9d-7253-4e09-89d5-6a41a728042a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/cec32e9d-7253-4e09-89d5-6a41a728042a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2ce64ae8-0f55-4e8a-8145-f7f8e06af1c0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    lineColor: false
+    lineThickness: false
+    paintablePattern: false
+    playerCamera: false
+    raycastDistance: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - playerCamera: !<reference.Component> 00000000-0000-0000-0000-000000000000
+      raycastDistance: !<float> 100.000000
+      paintablePattern: Paintable
+      lineThickness: 0.020000
+      lineColor: !<Vec4> {x: 1.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Component playerCamera {"hint":"Camera from which the ray will be shot"}'
+    - '// @input float raycastDistance = 100 {"hint":"Max distance for the raycast"}'
+    - '// @input string paintablePattern = "Paintable" {"hint":"Name pattern to identify paintable objects"}'
+    - '// @input float lineThickness = 0.02 {"hint":"Line thickness"}'
+    - '// @input vec4 lineColor = {1,0,0,1} {"hint":"Line color"}'

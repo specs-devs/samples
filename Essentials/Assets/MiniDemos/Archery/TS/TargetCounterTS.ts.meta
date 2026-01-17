@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/49736876-7784-4727-acc5-5cca2142ba6d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3848b072-bb9b-4621-935d-1fab1d67d25a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3848b072-bb9b-4621-935d-1fab1d67d25a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9a5da121-f6dd-4fbd-a4c7-c5315923e598
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9a5da121-f6dd-4fbd-a4c7-c5315923e598>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 83864baa-5e20-41a3-8311-1c3e29e258f2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arrowTag: false
+    counterText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - counterText: !<reference.Component> 00000000-0000-0000-0000-000000000000
+      arrowTag: Arrow
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Component counterText {"hint":"Text component to display the counter"}'
+    - '// @input string arrowTag = "Arrow" {"hint":"Tag to identify arrows/projectiles"}'

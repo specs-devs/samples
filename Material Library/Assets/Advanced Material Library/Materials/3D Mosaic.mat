@@ -1,0 +1,105 @@
+- !<Material/84694f0c-b1a4-47d2-8214-883e083482af>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 079f81e4-6d48-4cbf-af17-f061e4db3538
+- !<PassInfo/079f81e4-6d48-4cbf-af17-f061e4db3538>
+  CachedProperties:
+    - colorsTexBorderColor:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - colorsTexDims:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - colorsTexTransform:
+        typeIdx: 7
+        value:
+          0: {x: 1.000000, y: 0.000000, z: 0.000000}
+          1: {x: 0.000000, y: 1.000000, z: 0.000000}
+          2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - colorsTexUvMinMax:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - overrideTimeDelta:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeElapsed:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeEnabled:
+        typeIdx: 0
+        value: 0
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - normalizeScale
+  BlendMode: Disabled
+  Properties:
+    Port_AO_N000:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N000:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Input1_N022:
+      typeIdx: 1
+      value: 0.950000
+    Port_Input1_N034:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Port_Input1_N036:
+      typeIdx: 1
+      value: 0.001000
+    Port_Input1_N083:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input2_N034:
+      typeIdx: 1
+      value: 0.050000
+    Port_Metallic_N000:
+      typeIdx: 1
+      value: 0.220000
+    Port_Opacity_N000:
+      typeIdx: 1
+      value: 1.000000
+    Port_Roughness_N000:
+      typeIdx: 1
+      value: 0.470000
+    Port_Scale_N028:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_SpecularAO_N000:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Value2_N027:
+      typeIdx: 1
+      value: 0.500000
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    blockSize:
+      typeIdx: 1
+      value: 0.700000
+    colorsTex:
+      typeIdx: 9
+      value:
+        id: 1fc49bf5-ba53-415f-88e5-222d2803fb4c
+        sampler:
+          filteringMode: Nearest
+          wrapModeU: ClampToEdge
+          wrapModeV: ClampToEdge
+          wrapModeW: ClampToEdge
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+          mipmaps: false
+        type: Texture2D
+    shuffle:
+      typeIdx: 1
+      value: 0.000000
+  Pass: !<reference> 2fcaa532-0955-460a-9926-9c327ef5a31a

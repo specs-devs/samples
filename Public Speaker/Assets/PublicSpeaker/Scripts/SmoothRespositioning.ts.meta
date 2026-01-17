@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/f1efad20-0f25-4f85-a500-33681c4168c2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 34c99d75-91fd-4b47-9a72-3c1d6cfd1fcd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 34c99d75-91fd-4b47-9a72-3c1d6cfd1fcd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 84444fb2-5d14-46fc-bd91-153aa23a2a36
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/84444fb2-5d14-46fc-bd91-153aa23a2a36>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0c074d24-63ca-4d91-a0ee-7323e47c014d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cooldownTime: false
+    frontDistance: false
+    maxAngleDegrees: false
+    maxDistance: false
+    repositionSpeed: false
+    xOffset: false
+    yOffset: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - maxDistance: !<float> 100.000000
+      maxAngleDegrees: !<float> 45.000000
+      repositionSpeed: !<float> 200.000000
+      frontDistance: !<float> 80.000000
+      xOffset: !<float> 0.000000
+      yOffset: !<float> 0.000000
+      cooldownTime: !<float> 2.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input float maxDistance = 100
+    - // @input float maxAngleDegrees = 45
+    - // @input float repositionSpeed = 200
+    - // @input float frontDistance = 80
+    - // @input float xOffset
+    - // @input float yOffset
+    - // @input float cooldownTime = 2

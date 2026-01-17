@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/77c6f61e-1822-43a5-8107-310689c3a9c9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 80b8c752-b8e7-4031-be76-e1ca03ea0f63
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 80b8c752-b8e7-4031-be76-e1ca03ea0f63
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1a248f19-b7ac-428b-870a-d3baffd6ad8d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1a248f19-b7ac-428b-870a-d3baffd6ad8d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 716894b2-2add-4d5c-9832-fabaf4764450
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    createButton: false
+    destinationReference: false
+    destroyDelay: false
+    lerpSpeed: false
+    prefabToInstantiate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabToInstantiate: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      destinationReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      createButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      destroyDelay: !<float> 5.000000
+      lerpSpeed: 0.100000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefabToInstantiate {"hint":"The prefab object we will instantiate when clicking the create button"}'
+    - '// @input SceneObject destinationReference {"hint":"The position reference the object will move to on left-hand pinch"}'
+    - '// @input AssignableType createButton {"hint":"The button that will create the prefab object"}'
+    - '// @input float destroyDelay = 5 {"hint":"The delay time in seconds before the instantiated object is destroyed"}'
+    - '// @input float lerpSpeed = 0.1 {"hint":"Speed at which the object moves to the destination on pinch"}'

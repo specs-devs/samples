@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/03bddbf7-5e50-4cbf-9d21-106b6e2b360e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fcd9766a-dfb7-4724-aa0a-dc21b1d6ce92
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fcd9766a-dfb7-4724-aa0a-dc21b1d6ce92
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a7caa5a2-8435-4f63-a91b-3f1afd6753ba
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a7caa5a2-8435-4f63-a91b-3f1afd6753ba>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2d2d628e-952a-4a5b-9ed0-79971d975358
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    saberObject: false
+    targetIdentifier: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - saberObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetIdentifier: SnapSaberCube
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject saberObject {"hint":"The saber object with the collider component"}'
+    - '// @input string targetIdentifier = "SnapSaberCube" {"hint":"Tag or name prefix to identify target objects"}'

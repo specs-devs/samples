@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/79b28b20-9ea8-4bd6-bf7b-6b96ed1f2516>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 70c44467-7497-4615-846a-cba78b41f96a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 70c44467-7497-4615-846a-cba78b41f96a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> be7564c8-6788-43f0-a3da-e6a7ea34ccc5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/be7564c8-6788-43f0-a3da-e6a7ea34ccc5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d37212aa-1914-4aab-b195-1242338270c6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    reference: false
+    referenceMaterial: false
+    thresholdDot: false
+    thresholdDotInDegrees: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - reference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      referenceMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      thresholdDot: 0.950000
+      thresholdDotInDegrees: !<float> 30.000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject reference {"hint":"Reference object to check angle against"}'
+    - '// @input Asset.Material referenceMaterial {"hint":"Reference object to check angle against"}'
+    - '// @input float thresholdDot = 0.95 {"hint":"Threshold dot product value for changing color (0-1)"}'
+    - '// @input float thresholdDotInDegrees = 30 {"hint":"Threshold angle in degrees for recentering"}'
+    - '// @input Component.Camera camera {"hint":"Camera used for direction checking"}'

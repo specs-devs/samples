@@ -1,0 +1,121 @@
+- !<AssetImportMetadata/27553412-ebe2-422d-b588-fe3220b05c7b>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 2cc72f79-7686-4ce1-ae78-25fcc4a8507c
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 2cc72f79-7686-4ce1-ae78-25fcc4a8507c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> af68e5cd-57f2-4b63-ac48-c5843541430f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/216669e4-98a7-498e-6620-cb2e6eb4a2c4>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  ScriptAsset: !<reference> 45765c93-3afb-4aca-acc3-d0281a6675e6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      remoteServiceModule: !<reference.RemoteServiceModule> bf2a5796-ee15-4221-a339-e7753ae575a9
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/59caeb71-7a48-45d5-4547-4c16f344cce9>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 216669e4-98a7-498e-6620-cb2e6eb4a2c4
+- !<ScriptComponent/65b2038f-b470-4822-43b5-3ad4fd443bd4>
+  PrefabRemaps:
+    []
+  Name: MapController
+  Enabled: true
+  ScriptAsset: !<reference> c0319e64-ed32-4c6d-b994-03e1943725fd
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mapModule: !<reference.MapModule> 2427351e-9d8e-4484-a3b6-385b308cd033
+      mapTilePrefab: !<reference.ObjectPrefab> 38e3e231-b4d1-4dd9-ad27-06418512aa95
+      lineMaterial: !<reference.Material> 5583a91d-e827-4271-bb12-f7203e8af2a6
+      mapRenderPrefab: !<reference.ObjectPrefab> 21d8b3a2-d22d-4441-a55b-aaf33fbfa659
+      placesProvider: !<MappingBased.AssignableType> 216669e4-98a7-498e-6620-cb2e6eb4a2c4
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/af68e5cd-57f2-4b63-ac48-c5843541430f>
+  Prototype: !<ObjectOwner/0b5fa1b9-6234-4832-8d3b-b9138c5a7138>
+    PackagePath: ""
+    objects:
+      - !<own> ed0e1029-b30d-48ee-5c62-9a317a42c946
+- !<ScreenTransform/dc0118fd-2a52-48ea-70f3-b261cb4bf4cb>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: -1.000000
+    right: 1.000000
+    top: 1.000000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000
+- !<SceneObject/ed0e1029-b30d-48ee-5c62-9a317a42c946>
+  PrefabRemaps:
+    []
+  Name: Map Controller
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 59caeb71-7a48-45d5-4547-4c16f344cce9
+  Components:
+    - !<own> dc0118fd-2a52-48ea-70f3-b261cb4bf4cb
+    - !<own> 65b2038f-b470-4822-43b5-3ad4fd443bd4

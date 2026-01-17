@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/5e64970c-79e3-456c-98d6-21c191446d8c>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> f74eb34b-36b1-4bb3-a66b-b4ef56ef60b0
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> f74eb34b-36b1-4bb3-a66b-b4ef56ef60b0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 221b531f-61c3-4700-93d1-bdbc91035e65
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/221b531f-61c3-4700-93d1-bdbc91035e65>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a386b63f-9a89-4029-bd2b-a7ef595dceb3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    gridCenter: false
+    gridDepth: false
+    gridHeight: false
+    gridWidth: false
+    prefab: false
+    spacingX: false
+    spacingY: false
+    spacingZ: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      gridCenter: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      gridWidth: !<float> 5.000000
+      gridHeight: !<float> 5.000000
+      gridDepth: !<float> 5.000000
+      spacingX: 1.500000
+      spacingY: 1.500000
+      spacingZ: 1.500000
+  ScriptTypes:
+    -
+      {}

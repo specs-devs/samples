@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/4282d6b3-193c-4005-a0de-0412dbd62c95>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 06afeee2-f108-41b0-a56f-b705e3d13ec0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 06afeee2-f108-41b0-a56f-b705e3d13ec0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7b1ac8bd-3f22-4175-953c-37346e24c465
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7b1ac8bd-3f22-4175-953c-37346e24c465>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4f230b06-8d68-43b1-98e0-57645a8dcebf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    backplateSo: false
+    camObj: false
+    duringPathCreationUI: false
+    endSessionUI: false
+    goToStartUI: false
+    goToStartUiDistance: false
+    homeUI: false
+    pfbLoopUi: false
+    tutorialAnimationPlayer: false
+    tutorialText: false
+    tutorialUI: false
+    warningTutorialUI: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      homeUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      duringPathCreationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      goToStartUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      goToStartUiDistance: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      endSessionUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pfbLoopUi: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      backplateSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      warningTutorialUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tutorialUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tutorialAnimationPlayer: !<reference.AnimationPlayer> 00000000-0000-0000-0000-000000000000
+      tutorialText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject camObj
+    - // @input SceneObject homeUI
+    - // @input SceneObject duringPathCreationUI
+    - // @input SceneObject goToStartUI
+    - // @input Component.Text goToStartUiDistance
+    - // @input SceneObject endSessionUI
+    - // @input Asset.ObjectPrefab pfbLoopUi
+    - // @input SceneObject backplateSo
+    - // @input SceneObject warningTutorialUI
+    - // @input SceneObject tutorialUI
+    - // @input Component.AnimationPlayer tutorialAnimationPlayer
+    - // @input Component.Text tutorialText

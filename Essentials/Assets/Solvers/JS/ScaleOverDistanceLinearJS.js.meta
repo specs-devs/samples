@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/6624c9f8-4ee6-41f1-b237-64f06fc29960>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> c1f147fc-6ea4-44e8-93a4-2c0db89011d3
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> c1f147fc-6ea4-44e8-93a4-2c0db89011d3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 8f12f2c1-2757-4f3c-8744-33eda271dd93
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/8f12f2c1-2757-4f3c-8744-33eda271dd93>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: bea58c7c-9fda-4347-8aec-acbfe21e53e9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    maxDistance: false
+    maxScale: false
+    minDistance: false
+    minScale: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      minDistance: !<float> 1.000000
+      maxDistance: !<float> 10.000000
+      minScale: 0.500000
+      maxScale: !<float> 2.000000
+  ScriptTypes:
+    -
+      {}

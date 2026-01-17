@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/8c3a0f6a-79f5-4810-a01a-f774d308dc7a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 056fc07e-829d-48cc-972f-92a405594666
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 056fc07e-829d-48cc-972f-92a405594666
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 056c594c-29e9-45d0-ad11-3238964a9d08
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/056c594c-29e9-45d0-ad11-3238964a9d08>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f0694e5f-786c-4431-9da6-c017f2d2c211
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    centerReference: false
+    deActivateDistanceMultiplier: false
+    distanceForActivation: false
+    listenerObjects: false
+    sphereInViewForActivationRadius: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      centerReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      listenerObjects: !<reference.ScriptComponent[]>
+        []
+      sphereInViewForActivationRadius: !<float> 600.000000
+      distanceForActivation: !<float> 1000.000000
+      deActivateDistanceMultiplier: 1.500000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera camera
+    - '// @input SceneObject centerReference {"hint":"Optional SceneObject to use as center, will use the center of this SceneObject otherwise"}'
+    - "// @input Component.ScriptComponent[] listenerObjects"
+    - '// @ui {"widget":"separator"}'
+    - // @input float sphereInViewForActivationRadius = 600
+    - // @input float distanceForActivation = 1000
+    - // @input float deActivateDistanceMultiplier = 1.5

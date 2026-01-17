@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/fd25c48e-206d-426b-b8ff-ed0b2442f4d9>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 879b4f32-2db2-42cc-9922-6abc79dc1622
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 879b4f32-2db2-42cc-9922-6abc79dc1622
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 4ca6d3c2-82d2-431f-ad94-dd92e4cd3f0c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/4ca6d3c2-82d2-431f-ad94-dd92e4cd3f0c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f066b550-3c18-4a97-9598-255849e8196c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    createButton: false
+    destinationReference: false
+    destroyDelay: false
+    lerpSpeed: false
+    prefabToInstantiate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabToInstantiate: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      destinationReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      createButton: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      destroyDelay: !<float> 5.000000
+      lerpSpeed: 0.100000
+  ScriptTypes:
+    -
+      {}

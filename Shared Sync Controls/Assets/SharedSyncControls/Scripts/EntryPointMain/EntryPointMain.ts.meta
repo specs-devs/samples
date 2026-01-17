@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/1b62b893-acd0-42ac-b80d-54d05d849ed8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> cd3ee856-665f-41bf-b71a-48aacbb2ef7f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> cd3ee856-665f-41bf-b71a-48aacbb2ef7f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c2465131-3814-4d46-9dff-18691877afc3
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c2465131-3814-4d46-9dff-18691877afc3>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 70ff6c0d-9ad7-4221-b6d0-cb0dc27493af
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    colorControlInput: false
+    valueControlInput: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - colorControlInput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      valueControlInput: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType colorControlInput
+    - // @input AssignableType_1 valueControlInput

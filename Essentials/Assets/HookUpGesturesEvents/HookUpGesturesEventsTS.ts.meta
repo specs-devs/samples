@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/e590b87c-f339-43e3-943f-a56526ac8403>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 933f981e-6fdb-4e82-ab44-15118aa86541
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 933f981e-6fdb-4e82-ab44-15118aa86541
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0579ea0e-7a4a-437b-9c63-2b66a3d041e8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0579ea0e-7a4a-437b-9c63-2b66a3d041e8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9b39b220-b795-47ef-b5c8-06ca4ab6f10a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    destinationReference: false
+    destroyDelay: false
+    lerpSpeed: false
+    prefabToInstantiate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabToInstantiate: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      destinationReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      destroyDelay: !<float> 5.000000
+      lerpSpeed: 0.100000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefabToInstantiate {"hint":"The prefab object we will instantiate when clicking the create button"}'
+    - '// @input SceneObject destinationReference {"hint":"The position reference the object will move to on left-hand pinch"}'
+    - '// @input float destroyDelay = 5 {"hint":"The delay time in seconds before the instantiated object is destroyed"}'
+    - '// @input float lerpSpeed = 0.1 {"hint":"Speed at which the object moves to the destination on pinch"}'

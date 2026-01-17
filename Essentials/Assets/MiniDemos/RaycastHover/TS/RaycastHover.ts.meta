@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/3be901fa-56d2-4ee2-b496-9c9de838d3c1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ff733232-767f-4fc3-bf4b-06ac8703136c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ff733232-767f-4fc3-bf4b-06ac8703136c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3fa88649-f6ad-4177-976b-3955d749909c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3fa88649-f6ad-4177-976b-3955d749909c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 77b5ccd8-486d-43eb-a901-5531c932b89f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationDuration: false
+    expandedScale: false
+    normalScale: false
+    rayEnd: false
+    rayStart: false
+    targetCollider: false
+    targetPanel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetCollider: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      animationDuration: !<float> 300.000000
+      normalScale: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
+      expandedScale: !<Vec3> {x: 1.200000, y: 1.200000, z: 1.200000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject rayStart
+    - // @input SceneObject rayEnd
+    - // @input SceneObject targetPanel
+    - // @input SceneObject targetCollider
+    - // @input float animationDuration = 500
+    - "// @input vec3 normalScale = {1,1,1}"
+    - "// @input vec3 expandedScale = {1.2,1.2,1.2}"

@@ -1,0 +1,97 @@
+- !<Material/35394428-a1a2-41fc-9c55-e0056caac849>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 2c254693-3c66-4704-a30d-31b0d7b45aea
+- !<PassInfo/2c254693-3c66-4704-a30d-31b0d7b45aea>
+  CachedProperties:
+    - overrideTimeDelta:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeElapsed:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeEnabled:
+        typeIdx: 0
+        value: 0
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: true
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - animate
+    - normalizeScale
+  BlendMode: Disabled
+  Properties:
+    Port_AO_N083:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N083:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Import_N072:
+      typeIdx: 1
+      value: 0.000000
+    Port_Input1_N046:
+      typeIdx: 1
+      value: 0.200000
+    Port_Metallic_N083:
+      typeIdx: 1
+      value: 0.270000
+    Port_Opacity_N083:
+      typeIdx: 1
+      value: 1.000000
+    Port_Roughness_N083:
+      typeIdx: 1
+      value: 0.840000
+    Port_SpecularAO_N083:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_TimeA_N034:
+      typeIdx: 1
+      value: 0.000000
+    Port_TimeB_N034:
+      typeIdx: 1
+      value: 0.000000
+    Port_TimeBias_N034:
+      typeIdx: 1
+      value: 1.000000
+    Port_TimeTransition_N034:
+      typeIdx: 1
+      value: 3.000000
+    Port_Value2_N045:
+      typeIdx: 1
+      value: 0.000000
+    Port_Value3_N045:
+      typeIdx: 1
+      value: 0.000000
+    Port_Value4_N045:
+      typeIdx: 1
+      value: 0.000000
+    Port_ValueA_N034:
+      typeIdx: 1
+      value: 0.000000
+    Port_ValueB_N034:
+      typeIdx: 1
+      value: 1.000000
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    amount:
+      typeIdx: 1
+      value: 1.000000
+    axisOffset:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.295003, y: 0.697459, z: 0.422446, w: 1.000000}
+    rotateOffset:
+      typeIdx: 1
+      value: 10.000000
+  Pass: !<reference> 79b34660-0230-44f6-954c-5f019e41b14a

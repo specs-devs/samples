@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/3c97990b-dca8-4839-a7b3-885e7b684cca>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e4a59af9-d878-4d35-84ba-b1d3f0b6f5d5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e4a59af9-d878-4d35-84ba-b1d3f0b6f5d5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 110aa85b-64f9-4854-9331-bf5c181748de
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/110aa85b-64f9-4854-9331-bf5c181748de>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: dacc2503-509d-47a1-9480-f162e80464af
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    lightAiInputManager: false
+    lightController: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - lightAiInputManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      lightController: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType lightAiInputManager
+    - // @input AssignableType_1 lightController

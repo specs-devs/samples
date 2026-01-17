@@ -1,0 +1,75 @@
+- !<Material/d47a4ae3-43b4-41ab-8fa9-fe433e48b876>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 324a5af1-c8c7-4240-a28f-8028a2e70ac5
+- !<PassInfo/324a5af1-c8c7-4240-a28f-8028a2e70ac5>
+  CachedProperties:
+    - baseTexBorderColor:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - baseTexDims:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - baseTexTransform:
+        typeIdx: 7
+        value:
+          0: {x: 1.000000, y: 0.000000, z: 0.000000}
+          1: {x: 0.000000, y: 1.000000, z: 0.000000}
+          2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - baseTexUvMinMax:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - Tweak_N27
+  BlendMode: PremultipliedAlphaAuto
+  Properties:
+    Port_Input0_N015:
+      typeIdx: 1
+      value: 0.500000
+    Port_Input1_N113:
+      typeIdx: 1
+      value: 0.000000
+    Port_Input2_N110:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input2_N113:
+      typeIdx: 1
+      value: 1.000000
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    baseTex:
+      typeIdx: 9
+      value:
+        id: 630d5143-d2b9-4f37-92db-759900fded79
+        sampler:
+          filteringMode: Trilinear
+          wrapModeU: Repeat
+          wrapModeV: Repeat
+          wrapModeW: Repeat
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+          mipmaps: false
+        type: Texture2D
+    lineColor:
+      typeIdx: 5
+      value: {x: 0.129412, y: 0.129412, z: 0.129412, w: 1.000000}
+    lineWeight:
+      typeIdx: 1
+      value: 0.250000
+    shadowIntensity:
+      typeIdx: 1
+      value: 0.220000
+  Pass: !<reference> 2ab98904-5471-4c36-bfd2-ce761f32cd02

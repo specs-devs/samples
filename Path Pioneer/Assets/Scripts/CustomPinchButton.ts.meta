@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/a1d7377d-0ce5-4d36-b3e7-c69c6af8abbf>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c72f17bc-4fe5-48ec-9bc2-1515bdc8dbe5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c72f17bc-4fe5-48ec-9bc2-1515bdc8dbe5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6f699847-567d-464d-b117-45cf099dfae8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6f699847-567d-464d-b117-45cf099dfae8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9bcb8ff4-249a-470b-b475-fce94404cdb3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    interactable: false
+    rmv: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - interactable: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      rmv: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType interactable
+    - // @input Component.RenderMeshVisual rmv

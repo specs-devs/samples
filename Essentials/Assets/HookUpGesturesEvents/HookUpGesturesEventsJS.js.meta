@@ -1,0 +1,48 @@
+- !<AssetImportMetadata/c0e2751d-670e-4f89-992d-9ab1aa372e9e>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 51230b48-6cd1-4506-88a1-75786b7aacd6
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 51230b48-6cd1-4506-88a1-75786b7aacd6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 9a0ca2aa-3ab4-4366-9615-8cb22ba7d378
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/9a0ca2aa-3ab4-4366-9615-8cb22ba7d378>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 22df9f4b-c3f7-41be-8808-c39d8a0917ec
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    destinationReference: false
+    destroyDelay: false
+    lerpSpeed: false
+    prefabToInstantiate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabToInstantiate: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      destinationReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      destroyDelay: !<float> 5.000000
+      lerpSpeed: 0.100000
+  ScriptTypes:
+    -
+      {}

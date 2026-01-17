@@ -1,0 +1,200 @@
+- !<AssetImportMetadata/69e252f9-429c-4da0-9305-922308d5f675>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 6b4a0e52-adca-416b-a833-2aecc01780df
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 6b4a0e52-adca-416b-a833-2aecc01780df
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 6f0e7fc6-5035-4632-90b2-0bc091bee059
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<BodyComponent/6381c88a-7e29-4c3d-67ae-b2cf79183b31>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: false
+    Radius: 4.500000
+  Matter: !<reference> 136fb47c-9df1-4aa9-841b-b3862ba4ca51
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 32fa292a-8acb-469e-b941-e9ec518d8ca0
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
+- !<ScriptComponent/6c4a68f8-b21c-47ba-8833-69592a998ed8>
+  PrefabRemaps:
+    []
+  Name: MatchTransform
+  Enabled: true
+  ScriptAsset: !<reference> 2ccacba5-3077-49e8-b50e-a2cd942a40e5
+  ScriptInputsDefault:
+    positionLerpSpeed: true
+    rotationLerpSpeed: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionLerpSpeed: !<float> 10.000000
+      rotationLerpSpeed: !<float> 10.000000
+      holdDistance: !<float> 2.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/6f0e7fc6-5035-4632-90b2-0bc091bee059>
+  Prototype: !<ObjectOwner/e6145e9a-5075-4c73-94a6-41e1255499dd>
+    PackagePath: ""
+    objects:
+      - !<own> e5721a0a-9d89-4f7e-5cef-5158046f2d81
+- !<ScriptComponent/7c178292-45ae-43f6-88f0-4fb117c9b9c0>
+  PrefabRemaps:
+    []
+  Name: CollisionSound
+  Enabled: true
+  ScriptAsset: !<reference> 87f39a88-1048-4f1c-ac27-9932b6953863
+  ScriptInputsDefault:
+    minVelocityThreshold: true
+    velocityToVolume: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      collisionSound: !<reference.AudioComponent> 84bf0f25-4ba0-4679-b382-355ab69e1da2
+      minVelocityThreshold: !<float> 5.000000
+      velocityToVolume: 0.050000
+  ScriptTypes:
+    "":
+      {}
+- !<AudioComponent/84bf0f25-4ba0-4679-b382-355ab69e1da2>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 45d779d1-873d-4106-b853-05b47fe960bb
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 100.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
+- !<ScriptComponent/a4161e10-23df-434d-9bb6-b00a6a4d2c56>
+  PrefabRemaps:
+    []
+  Name: GrabbableObject
+  Enabled: true
+  ScriptAsset: !<reference> 8161d97f-cfdc-4bca-bbbf-6bdb6b553795
+  ScriptInputsDefault:
+    objectType: true
+    destroyDelay: true
+    scoreBoard: true
+    dartThrowForce: true
+    handVelocityMultiplier: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      objectType: Ball
+      matchTransform: !<MappingBased.AssignableType> 6c4a68f8-b21c-47ba-8833-69592a998ed8
+      destroyDelay: 4.500000
+      scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      dartThrowForce: !<float> 800.000000
+      ballThrowForce: !<float> 20.000000
+      handVelocityMultiplier: 0.300000
+  ScriptTypes:
+    "":
+      {}
+- !<RenderMeshVisual/a72f1dd9-0c7f-4bb3-4a58-82ca4d24e2d7>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 7f851abc-bca3-48b8-95b7-732ed32f1498
+  Mesh: !<reference> 2426a3f3-7ee5-4956-8ef6-c7938b9939dc
+  Skin: !<reference> b21a5350-7572-40df-bb74-c5aa1c3db12a
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/ae74b397-c0fd-47b4-661e-364dd7fe4d33>
+  PrefabRemaps:
+    []
+  Name: Mesh
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -3.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a72f1dd9-0c7f-4bb3-4a58-82ca4d24e2d7
+- !<SceneObject/e5721a0a-9d89-4f7e-5cef-5158046f2d81>
+  PrefabRemaps:
+    []
+  Name: TennisBall
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> ae74b397-c0fd-47b4-661e-364dd7fe4d33
+  Components:
+    - !<own> 6381c88a-7e29-4c3d-67ae-b2cf79183b31
+    - !<own> a4161e10-23df-434d-9bb6-b00a6a4d2c56
+    - !<own> 6c4a68f8-b21c-47ba-8833-69592a998ed8
+    - !<own> 7c178292-45ae-43f6-88f0-4fb117c9b9c0
+    - !<own> 84bf0f25-4ba0-4679-b382-355ab69e1da2
+    - !<own> f24dad5b-768c-4fb2-a519-03d558da9e5c
+- !<ScriptComponent/f24dad5b-768c-4fb2-a519-03d558da9e5c>
+  PrefabRemaps:
+    []
+  Name: GrabbableOutlineFeedback
+  Enabled: true
+  ScriptAsset: !<reference> 8a626f92-5057-4017-87af-d53f5fde591f
+  ScriptInputsDefault:
+    targetOutlineMaterial: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetOutlineMaterial: !<reference.Material> 7ac80b6c-979a-4a00-a694-099f296be161
+      grabbedColor: !<Vec4> {x: 0.999420, y: 0.985550, z: 0.000000, w: 1.000000}
+      outlineWeight: 0.500000
+      meshVisuals: !<reference.RenderMeshVisual[]>
+        - !<reference> a72f1dd9-0c7f-4bb3-4a58-82ca4d24e2d7
+  ScriptTypes:
+    "":
+      {}

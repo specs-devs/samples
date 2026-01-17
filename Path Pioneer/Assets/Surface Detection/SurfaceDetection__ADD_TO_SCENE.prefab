@@ -1,0 +1,146 @@
+- !<ObjectPrefab/bbeb98be-e2ec-4500-8424-4f1a76494c9b>
+  PackagePath: ""
+  objects:
+    - !<own> bee4c0b3-4634-4d68-9016-450ba83a8167
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/1310f45e-97d3-4c31-9463-82a46060a0b2>
+  PrefabRemaps:
+    []
+  Name: SurfaceDetector
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 147b8681-0b62-4679-9138-decce2cdfb44
+  Components:
+    - !<own> 51b645cd-285a-4e66-afa3-219f4ff62448
+- !<SceneObject/147b8681-0b62-4679-9138-decce2cdfb44>
+  PrefabRemaps:
+    []
+  Name: VisualAnchor
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3054cb73-4236-4e13-8b82-98da94d5868d
+  Components:
+    - !<own> 48c1a684-c400-4061-9ffd-3ee40388d18f
+    - !<own> 73f4fb65-0609-4b36-8304-958c7fade083
+- !<SceneObject/3054cb73-4236-4e13-8b82-98da94d5868d>
+  PrefabRemaps:
+    []
+  Name: CalibrationWheel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 45.000000, y: 45.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 60cb0da5-b114-4ef8-b051-d066dccf098c
+- !<AudioComponent/48c1a684-c400-4061-9ffd-3ee40388d18f>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> b788cbaa-c1b9-4ec6-9238-fb34722ff6f1
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: true
+  RecordVolume: 0.350000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 0.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
+- !<ScriptComponent/51b645cd-285a-4e66-afa3-219f4ff62448>
+  PrefabRemaps:
+    []
+  Name: SurfaceDetection
+  Enabled: true
+  ScriptAsset: !<reference> d909b5a2-1c6a-44e1-ac44-49bef8508e2a
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      camObj: !<reference.SceneObject> b03d8e1f-3173-4e63-8552-3d716f664184
+      visualObj: !<reference.SceneObject> 147b8681-0b62-4679-9138-decce2cdfb44
+      animation: !<MappingBased.AssignableType> 73f4fb65-0609-4b36-8304-958c7fade083
+  ScriptTypes:
+    "":
+      {}
+- !<RenderMeshVisual/60cb0da5-b114-4ef8-b051-d066dccf098c>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 2cfaf7e3-88a3-4680-b0dc-269995eeeff4
+  Mesh: !<reference> 1ec7afc8-cb1d-4f98-b923-3300e09718db
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/73f4fb65-0609-4b36-8304-958c7fade083>
+  PrefabRemaps:
+    []
+  Name: CircleAnimation
+  Enabled: true
+  ScriptAsset: !<reference> e7ffe463-b3f6-4bbe-b753-1fccb140892f
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      calRenderer: !<reference.RenderMeshVisual> 60cb0da5-b114-4ef8-b051-d066dccf098c
+      audio: !<reference.AudioComponent> 48c1a684-c400-4061-9ffd-3ee40388d18f
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/bee4c0b3-4634-4d68-9016-450ba83a8167>
+  PrefabRemaps:
+    - 1310f45e-97d3-4c31-9463-82a46060a0b2: 1310f45e-97d3-4c31-6b9c-7d5b9f9f5f4d
+    - 147b8681-0b62-4679-9138-decce2cdfb44: 147b8681-0b62-4679-6ec7-21331d3204bb
+    - 3054cb73-4236-4e13-8b82-98da94d5868d: 3054cb73-4236-4e13-747d-67256b2a7972
+    - 48c1a684-c400-4061-9ffd-3ee40388d18f: 48c1a684-c400-4061-6002-c11bfc772e70
+    - 51b645cd-285a-4e66-afa3-219f4ff62448: 51b645cd-285a-4e66-505c-de60b009dbb7
+    - 60cb0da5-b114-4ef8-b051-d066dccf098c: 60cb0da5-b114-4ef8-4fae-2f992330f673
+    - 73f4fb65-0609-4b36-8304-958c7fade083: 73f4fb65-0609-4b36-7cfb-6a7380521f7c
+    - bee4c0b3-4634-4d68-9016-450ba83a8167: bee4c0b3-4634-4d68-6fe9-baf457c57e98
+  Name: SurfaceDetection
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 1310f45e-97d3-4c31-9463-82a46060a0b2
+  Components:
+    []

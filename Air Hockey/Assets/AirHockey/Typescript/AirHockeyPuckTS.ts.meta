@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/26026197-93a0-432e-8574-27c3b63810bf>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4034654b-cac7-46f4-8547-165fa2556212
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4034654b-cac7-46f4-8547-165fa2556212
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 09a31d33-61c8-4591-ad6c-16de68d5362f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/09a31d33-61c8-4591-ad6c-16de68d5362f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b8662455-bc1f-4d9f-9e18-263360d67723
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    controllerJS: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - controllerJS: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.ScriptComponent controllerJS

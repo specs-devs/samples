@@ -1,0 +1,54 @@
+- !<Material/831766a1-45f0-44b8-8c01-c60d30ff996b>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 7ff3f04a-9148-4a84-a3ea-66462ba2c0c8
+- !<PassInfo/7ff3f04a-9148-4a84-a3ea-66462ba2c0c8>
+  CachedProperties:
+    - overrideTimeElapsed:
+        typeIdx: 1
+        value: 0.000000
+    - overrideTimeEnabled:
+        typeIdx: 0
+        value: 0
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: PremultipliedAlphaAuto
+  Properties:
+    Port_AO_N014:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N014:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Input0_N018:
+      typeIdx: 1
+      value: 0.000000
+    Port_Input1_N018:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input2_N017:
+      typeIdx: 1
+      value: 0.500000
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.056931, y: 0.512535, z: 0.998672, w: 1.000000}
+    noiseScale:
+      typeIdx: 1
+      value: 0.500000
+    scrollSpeed:
+      typeIdx: 1
+      value: 1.000000
+  Pass: !<reference> 0acea999-a19b-423d-9030-dcbfcade2058

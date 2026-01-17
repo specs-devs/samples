@@ -1,0 +1,95 @@
+- !<AssetImportMetadata/d6e14bf6-df91-4805-bb77-1319ecd617c4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 00ea2f04-46e7-4292-ab86-745668651733
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 00ea2f04-46e7-4292-ab86-745668651733
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9d445307-d296-4b5f-a22d-1d4cc58530f8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9d445307-d296-4b5f-a22d-1d4cc58530f8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c6b9abb1-5d26-4b86-96a5-74a0e9db06ea
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bottomVertex0: false
+    bottomVertex1: false
+    bottomVertex2: false
+    bottomVertex3: false
+    closestPointMarker: false
+    colliderObject: false
+    googleSlideBridge: false
+    interactorPrefab: false
+    next: false
+    presentationSwitcher: false
+    pressThreshold: false
+    resetDuration: false
+    topVertex0: false
+    topVertex1: false
+    topVertex2: false
+    topVertex3: false
+    useGoogleSlide: false
+    useRightHand: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - colliderObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      interactorPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      useRightHand: true
+      closestPointMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pressThreshold: 0.700000
+      resetDuration: !<float> 1.000000
+      presentationSwitcher: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      googleSlideBridge: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      next: false
+      useGoogleSlide: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject colliderObject {"hint":"The collider that will detect the soft press interaction"}'
+    - '// @input Asset.ObjectPrefab interactorPrefab {"hint":"The prefab to attach to the wrist as the interactor"}'
+    - '// @input bool useRightHand = true {"hint":"Use right hand? (true = Right hand, false = Left hand)"}'
+    - '// @input SceneObject closestPointMarker {"hint":"Optional: A SceneObject to visually mark the closest point on the line (for debugging)"}'
+    - '// @input SceneObject topVertex0 {"hint":"Top vertex 0 of the collider cube"}'
+    - '// @input SceneObject topVertex1 {"hint":"Top vertex 1 of the collider cube"}'
+    - '// @input SceneObject topVertex2 {"hint":"Top vertex 2 of the collider cube"}'
+    - '// @input SceneObject topVertex3 {"hint":"Top vertex 3 of the collider cube"}'
+    - '// @input SceneObject bottomVertex0 {"hint":"Bottom vertex 0 of the collider cube"}'
+    - '// @input SceneObject bottomVertex1 {"hint":"Bottom vertex 1 of the collider cube"}'
+    - '// @input SceneObject bottomVertex2 {"hint":"Bottom vertex 2 of the collider cube"}'
+    - '// @input SceneObject bottomVertex3 {"hint":"Bottom vertex 3 of the collider cube"}'
+    - '// @input float pressThreshold = 0.7 {"hint":"The threshold for triggering the press event (0 to 1)"}'
+    - '// @input float resetDuration = 1 {"hint":"Time (in seconds) for the press value to smoothly reset to 0 after exit"}'
+    - '// @input AssignableType presentationSwitcher {"hint":"The switcher manager"}'
+    - '// @input AssignableType_1 googleSlideBridge {"hint":"The google switcher manager"}'
+    - '// @input bool next {"hint":"Does the presentation switcher bring you to the previous slide?"}'
+    - '// @input bool useGoogleSlide {"hint":"Enable this boolean if you are planning to Use Google Slide API and the Google Slide Bridge"}'

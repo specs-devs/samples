@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/ad578a52-4050-42e9-be6e-d2d21b9c7567>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1eb8bc9e-7a41-42ac-aafd-97305c0ead06
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1eb8bc9e-7a41-42ac-aafd-97305c0ead06
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 99a8904a-4fb5-44df-b1d8-1433dbc9dec8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/99a8904a-4fb5-44df-b1d8-1433dbc9dec8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9a8e0fd2-60fe-4a95-b73e-c366223a0142
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    center: false
+    prefab: false
+    radius: false
+    xSlices: false
+    yElementsPerSlice: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      xSlices: !<float> 8.000000
+      yElementsPerSlice: !<float> 5.000000
+      radius: !<float> 5.000000
+      center: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float xSlices = 8 {"hint":"Number of slices (radial divisions)"}'
+    - '// @input float yElementsPerSlice = 5 {"hint":"Number of elements per slice"}'
+    - '// @input float radius = 5 {"hint":"Radius of the circle"}'
+    - '// @input SceneObject center {"hint":"Center point of the circle"}'

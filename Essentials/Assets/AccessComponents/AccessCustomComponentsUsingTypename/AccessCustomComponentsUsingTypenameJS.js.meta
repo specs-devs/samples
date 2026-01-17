@@ -1,0 +1,45 @@
+- !<AssetImportMetadata/b30cb3da-825c-4a19-a301-6a1fbc5af9ae>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 131ddc45-ac1f-4af0-bfcc-44f34c7c1e00
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 131ddc45-ac1f-4af0-bfcc-44f34c7c1e00
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 89ca940f-3b03-478c-b5a1-572cd71147ff
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/89ca940f-3b03-478c-b5a1-572cd71147ff>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 76352c05-e545-4625-b5a6-0ec685825039
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    customComponent: false
+    debug: false
+  ScriptTypesHidden:
+    CustomComponentTS: false
+    annotation in JavaScript.: false
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - customComponent: !<Typename.CustomComponentTS> 00000000-0000-0000-0000-000000000000
+      debug: false
+  ScriptTypes:
+    - CustomComponentTS: !<reference.ScriptAsset> 00000000-0000-0000-0000-000000000000
+      annotation in JavaScript.: !<reference.ScriptAsset> 00000000-0000-0000-0000-000000000000

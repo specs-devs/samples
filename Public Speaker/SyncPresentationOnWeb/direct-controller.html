@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Slides Viewer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      h1 {
+        color: #4285f4;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #3367d6;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      input[type="text"] {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        flex-grow: 1;
+        font-size: 16px;
+      }
+
+      .status {
+        margin-top: 10px;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      .status.connected {
+        background-color: #e6f4ea;
+        color: #0f9d58;
+      }
+
+      .status.disconnected {
+        background-color: #fce8e6;
+        color: #db4437;
+      }
+
+      .log-container {
+        height: 200px;
+        overflow-y: auto;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        border: 1px solid #ddd;
+      }
+
+      .log-entry {
+        margin-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      .log-entry.sent {
+        color: #4285f4;
+      }
+
+      .log-entry.received {
+        color: #0f9d58;
+      }
+
+      .log-entry.error {
+        color: #db4437;
+      }
+
+      .log-entry .timestamp {
+        color: #666;
+        font-size: 0.8em;
+        margin-right: 10px;
+      }
+
+      .navigation-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .navigation-buttons button {
+        font-size: 18px;
+        padding: 15px 30px;
+        min-width: 180px;
+      }
+
+      .slide-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .slide-image {
+        max-width: 100%;
+        max-height: 600px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .slide-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+      }
+
+      .slide-number {
+        font-size: 18px;
+        font-weight: bold;
+        color: #4285f4;
+      }
+
+      .speaker-notes {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-left: 4px solid #4285f4;
+        border-radius: 4px;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .speaker-notes h3 {
+        margin-top: 0;
+        color: #4285f4;
+      }
+
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        font-size: 18px;
+        color: #666;
+      }
+
+      .loading::after {
+        content: "...";
+        animation: dots 1.5s infinite;
+      }
+
+      @keyframes dots {
+        0%,
+        20% {
+          content: ".";
+        }
+        40% {
+          content: "..";
+        }
+        60%,
+        100% {
+          content: "...";
+        }
+      }
+
+      .thumbnail-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px 0;
+        margin-top: 20px;
+      }
+
+      .thumbnail {
+        width: 120px;
+        height: 67px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        object-fit: cover;
+      }
+
+      .thumbnail.active {
+        border-color: #4285f4;
+        box-shadow: 0 0 0 2px #4285f4;
+      }
+
+      .thumbnail:hover {
+        border-color: #4285f4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Google Slides Viewer</h1>
+
+    <div class="container">
+      <div class="card">
+        <h2>Setup</h2>
+        <div class="controls">
+          <input
+            type="text"
+            id="presentation-id"
+            placeholder="Presentation ID (e.g., 19J8hxo8IiWyNzzQIFGkX9_B_qeUiCcJHosvsiL6Bcvs)"
+          />
+          <input type="text" id="access-token" placeholder="Access Token" />
+          <button id="load-button">Load Presentation</button>
+        </div>
+        <div class="controls">
+          <input
+            type="text"
+            id="server-url"
+            value="wss://google-slide-spectacles-03332e1cf78e.herokuapp.com"
+            placeholder="WebSocket URL"
+          />
+          <button id="connect-button">Connect</button>
+          <button id="disconnect-button" disabled>Disconnect</button>
+        </div>
+        <div id="connection-status" class="status disconnected">
+          Not connected
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Presentation</h2>
+        <div class="navigation-buttons">
+          <button id="previous-button" disabled>Previous Slide</button>
+          <button id="next-button" disabled>Next Slide</button>
+        </div>
+
+        <div id="slide-container" class="slide-container">
+          <div class="loading">Loading presentation</div>
+        </div>
+
+        <div id="thumbnail-container" class="thumbnail-container"></div>
+
+        <div id="speaker-notes" class="speaker-notes">
+          <h3>Speaker Notes</h3>
+          <p>No speaker notes available</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Communication Log</h2>
+        <div id="log-container" class="log-container"></div>
+      </div>
+    </div>
+
+    <script>
+      // DOM elements
+      const presentationIdInput = document.getElementById("presentation-id");
+      const accessTokenInput = document.getElementById("access-token");
+      const loadButton = document.getElementById("load-button");
+      const serverUrlInput = document.getElementById("server-url");
+      const connectButton = document.getElementById("connect-button");
+      const disconnectButton = document.getElementById("disconnect-button");
+      const connectionStatus = document.getElementById("connection-status");
+      const previousButton = document.getElementById("previous-button");
+      const nextButton = document.getElementById("next-button");
+      const slideContainer = document.getElementById("slide-container");
+      const thumbnailContainer = document.getElementById("thumbnail-container");
+      const speakerNotes = document.getElementById("speaker-notes");
+      const logContainer = document.getElementById("log-container");
+
+      // State
+      let presentationData = null;
+      let currentSlideIndex = 0;
+      let slides = [];
+      let socket = null;
+
+      // Initialize
+      function initialize() {
+        // Set up event listeners
+        loadButton.addEventListener("click", loadPresentation);
+        connectButton.addEventListener("click", connect);
+        disconnectButton.addEventListener("click", disconnect);
+        previousButton.addEventListener("click", () => {
+          goToPreviousSlide();
+          sendCommand("previous");
+        });
+        nextButton.addEventListener("click", () => {
+          goToNextSlide();
+          sendCommand("next");
+        });
+
+        // Log initialization
+        addLogEntry("Page initialized", "info");
+
+        // Check for URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const presentationId = urlParams.get("id");
+        const accessToken = urlParams.get("token");
+
+        if (presentationId) {
+          presentationIdInput.value = presentationId;
+        }
+
+        if (accessToken) {
+          accessTokenInput.value = accessToken;
+        }
+
+        if (presentationId && accessToken) {
+          loadPresentation();
+        }
+      }
+
+      // Load presentation
+      async function loadPresentation() {
+        const presentationId = presentationIdInput.value.trim();
+        const accessToken = accessTokenInput.value.trim();
+
+        if (!presentationId) {
+          addLogEntry("Please enter a presentation ID", "error");
+          return;
+        }
+
+        if (!accessToken) {
+          addLogEntry("Please enter an access token", "error");
+          return;
+        }
+
+        // Show loading state
+        clearElement(slideContainer);
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "loading";
+        loadingDiv.textContent = "Loading presentation";
+        slideContainer.appendChild(loadingDiv);
+
+        clearElement(thumbnailContainer);
+
+        clearElement(speakerNotes);
+        const notesTitle = document.createElement("h3");
+        notesTitle.textContent = "Speaker Notes";
+        const loadingText = document.createElement("p");
+        loadingText.textContent = "Loading...";
+        speakerNotes.appendChild(notesTitle);
+        speakerNotes.appendChild(loadingText);
+
+        try {
+          // Fetch presentation data
+          addLogEntry("Fetching presentation data...", "info");
+          const response = await fetch(
+            `https://slides.googleapis.com/v1/presentations/${presentationId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                Accept: "application/json",
+              },
+            }
+          );
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            addLogEntry(
+              `API Error: ${response.status} ${response.statusText}`,
+              "error"
+            );
+            addLogEntry(errorText, "error");
+            clearElement(slideContainer);
+            const errorDiv = document.createElement("div");
+            errorDiv.textContent =
+              "Error loading presentation. Check console for details.";
+            slideContainer.appendChild(errorDiv);
+            return;
+          }
+
+          presentationData = await response.json();
+          slides = presentationData.slides || [];
+
+          addLogEntry(`Loaded presentation: ${presentationData.title}`, "info");
+          addLogEntry(`Found ${slides.length} slides`, "info");
+
+          // Enable navigation buttons
+          previousButton.disabled = false;
+          nextButton.disabled = false;
+
+          // Load thumbnails
+          await loadThumbnails();
+
+          // Load first slide
+          loadSlide(0);
+        } catch (error) {
+          addLogEntry(`Error loading presentation: ${error.message}`, "error");
+          clearElement(slideContainer);
+          const errorDiv = document.createElement("div");
+          errorDiv.textContent = `Error: ${error.message}`;
+          slideContainer.appendChild(errorDiv);
+        }
+      }
+
+      // Helper function to safely clear an element
+      function clearElement(element) {
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
+        }
+      }
+
+      // Load thumbnails for all slides
+      async function loadThumbnails() {
+        clearElement(thumbnailContainer);
+
+        for (let i = 0; i < slides.length; i++) {
+          const slide = slides[i];
+          const slideId = slide.objectId;
+
+          try {
+            const thumbnailUrl = await getSlideThumbUrl(slideId);
+
+            const thumbnail = document.createElement("img");
+            thumbnail.src = thumbnailUrl;
+            thumbnail.alt = `Slide ${i + 1}`;
+            thumbnail.className = "thumbnail";
+            if (i === currentSlideIndex) {
+              thumbnail.classList.add("active");
+            }
+
+            thumbnail.addEventListener("click", () => {
+              loadSlide(i);
+            });
+
+            thumbnailContainer.appendChild(thumbnail);
+          } catch (error) {
+            console.error(`Error loading thumbnail for slide ${i + 1}:`, error);
+          }
+        }
+      }
+
+      // Get thumbnail URL for a slide
+      async function getSlideThumbUrl(slideId) {
+        const presentationId = presentationIdInput.value.trim();
+        const accessToken = accessTokenInput.value.trim();
+
+        const response = await fetch(
+          `https://slides.googleapis.com/v1/presentations/${presentationId}/pages/${slideId}/thumbnail`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              Accept: "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to get thumbnail: ${response.status} ${response.statusText}`
+          );
+        }
+
+        const data = await response.json();
+        return data.contentUrl;
+      }
+
+      // Load a specific slide
+      async function loadSlide(index) {
+        if (index < 0 || index >= slides.length) {
+          addLogEntry(`Invalid slide index: ${index}`, "error");
+          return;
+        }
+
+        // Update current slide index
+        currentSlideIndex = index;
+
+        // Update thumbnails
+        const thumbnails = thumbnailContainer.querySelectorAll(".thumbnail");
+        thumbnails.forEach((thumb, i) => {
+          if (i === index) {
+            thumb.classList.add("active");
+          } else {
+            thumb.classList.remove("active");
+          }
+        });
+
+        // Get slide data
+        const slide = slides[index];
+        const slideId = slide.objectId;
+
+        try {
+          // Get slide thumbnail
+          const thumbnailUrl = await getSlideThumbUrl(slideId);
+
+          // Display slide
+          clearElement(slideContainer);
+
+          // Create slide info
+          const slideInfoDiv = document.createElement("div");
+          slideInfoDiv.className = "slide-info";
+
+          const slideNumberDiv = document.createElement("div");
+          slideNumberDiv.className = "slide-number";
+          slideNumberDiv.textContent = `Slide ${index + 1} of ${slides.length}`;
+
+          slideInfoDiv.appendChild(slideNumberDiv);
+          slideContainer.appendChild(slideInfoDiv);
+
+          // Create slide image
+          const slideImage = document.createElement("img");
+          slideImage.src = thumbnailUrl;
+          slideImage.alt = `Slide ${index + 1}`;
+          slideImage.className = "slide-image";
+          slideContainer.appendChild(slideImage);
+
+          // Load speaker notes
+          loadSpeakerNotes(slide);
+
+          addLogEntry(`Loaded slide ${index + 1}`, "info");
+        } catch (error) {
+          addLogEntry(`Error loading slide: ${error.message}`, "error");
+          clearElement(slideContainer);
+          const errorDiv = document.createElement("div");
+          errorDiv.textContent = `Error loading slide: ${error.message}`;
+          slideContainer.appendChild(errorDiv);
+        }
+      }
+
+      // Load speaker notes for a slide
+      function loadSpeakerNotes(slide) {
+        try {
+          let notesText = "No speaker notes available";
+
+          // Check if speaker notes exist
+          if (
+            slide &&
+            slide.slideProperties &&
+            slide.slideProperties.notesPage
+          ) {
+            const notesPage = slide.slideProperties.notesPage;
+
+            // Extract text content from notes page
+            if (notesPage.pageElements) {
+              // Collect all text from text boxes in the notes page
+              const textParts = [];
+
+              for (const element of notesPage.pageElements) {
+                if (element.shape && element.shape.text) {
+                  const textElements = element.shape.text.textElements || [];
+                  for (const textElement of textElements) {
+                    if (textElement.textRun && textElement.textRun.content) {
+                      textParts.push(textElement.textRun.content);
+                    }
+                  }
+                }
+              }
+
+              if (textParts.length > 0) {
+                notesText = textParts.join("");
+              }
+            }
+          }
+
+          // Update speaker notes
+          clearElement(speakerNotes);
+
+          const notesTitle = document.createElement("h3");
+          notesTitle.textContent = "Speaker Notes";
+
+          const notesParagraph = document.createElement("p");
+          notesParagraph.textContent = notesText;
+
+          speakerNotes.appendChild(notesTitle);
+          speakerNotes.appendChild(notesParagraph);
+        } catch (error) {
+          console.error("Error processing speaker notes:", error);
+          clearElement(speakerNotes);
+
+          const notesTitle = document.createElement("h3");
+          notesTitle.textContent = "Speaker Notes";
+
+          const errorParagraph = document.createElement("p");
+          errorParagraph.textContent = `Error loading speaker notes: ${error.message}`;
+
+          speakerNotes.appendChild(notesTitle);
+          speakerNotes.appendChild(errorParagraph);
+        }
+      }
+
+      // Go to next slide
+      function goToNextSlide() {
+        if (currentSlideIndex < slides.length - 1) {
+          loadSlide(currentSlideIndex + 1);
+        }
+      }
+
+      // Go to previous slide
+      function goToPreviousSlide() {
+        if (currentSlideIndex > 0) {
+          loadSlide(currentSlideIndex - 1);
+        }
+      }
+
+      // Connect to WebSocket server
+      function connect() {
+        const url = serverUrlInput.value.trim();
+        if (!url) {
+          addLogEntry("Please enter a WebSocket URL", "error");
+          return;
+        }
+
+        try {
+          // Convert http:// URLs to ws:// and https:// to wss://
+          let wsUrl = url;
+          if (url.startsWith("http://")) {
+            wsUrl = url.replace("http://", "ws://");
+          } else if (url.startsWith("https://")) {
+            wsUrl = url.replace("https://", "wss://");
+          }
+
+          addLogEntry(`Connecting to ${wsUrl}...`, "info");
+          connectionStatus.textContent = "Connecting...";
+
+          socket = new WebSocket(wsUrl);
+
+          // Connection opened
+          socket.addEventListener("open", (event) => {
+            updateConnectionStatus(true);
+            addLogEntry("Connected to server", "info");
+          });
+
+          // Listen for messages
+          socket.addEventListener("message", (event) => {
+            const message = event.data;
+            addLogEntry(`Received: ${message}`, "received");
+
+            try {
+              const data = JSON.parse(message);
+
+              // Handle incoming commands
+              if (data.type === "command" && !data.status) {
+                addLogEntry(`Received command: ${data.command}`, "received");
+
+                // Execute the command
+                if (data.command === "next") {
+                  goToNextSlide();
+                } else if (data.command === "previous") {
+                  goToPreviousSlide();
+                }
+              }
+            } catch (error) {
+              addLogEntry(`Error parsing message: ${error.message}`, "error");
+            }
+          });
+
+          // Connection closed
+          socket.addEventListener("close", (event) => {
+            updateConnectionStatus(false);
+            addLogEntry(
+              `Connection closed (${event.code}): ${event.reason}`,
+              "info"
+            );
+          });
+
+          // Connection error
+          socket.addEventListener("error", (event) => {
+            updateConnectionStatus(false);
+            addLogEntry("Connection error", "error");
+          });
+        } catch (error) {
+          addLogEntry(`Error creating WebSocket: ${error.message}`, "error");
+        }
+      }
+
+      // Disconnect from WebSocket server
+      function disconnect() {
+        if (socket) {
+          socket.close();
+          socket = null;
+        }
+      }
+
+      // Send command to server
+      function sendCommand(command) {
+        if (!socket || socket.readyState !== WebSocket.OPEN) {
+          addLogEntry("Not connected to server", "error");
+          return;
+        }
+
+        const message = JSON.stringify({
+          type: "command",
+          command: command,
+        });
+
+        socket.send(message);
+        addLogEntry(`Sent: ${message}`, "sent");
+      }
+
+      // Add this function to sanitize any potentially unsafe strings
+      function sanitizeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.textContent;
+      }
+
+      // Update connection status and UI
+      function updateConnectionStatus(connected) {
+        if (connected) {
+          connectionStatus.textContent = "Connected";
+          connectionStatus.className = "status connected";
+          connectButton.disabled = true;
+          disconnectButton.disabled = false;
+        } else {
+          connectionStatus.textContent = "Not connected";
+          connectionStatus.className = "status disconnected";
+          connectButton.disabled = false;
+          disconnectButton.disabled = true;
+        }
+      }
+
+      // Add entry to log
+      function addLogEntry(message, type = "info") {
+        const entry = document.createElement("div");
+        entry.className = `log-entry ${type}`;
+
+        const timestamp = document.createElement("span");
+        timestamp.className = "timestamp";
+        timestamp.textContent = new Date().toLocaleTimeString();
+
+        entry.appendChild(timestamp);
+        entry.appendChild(document.createTextNode(message));
+
+        logContainer.appendChild(entry);
+        logContainer.scrollTop = logContainer.scrollHeight;
+      }
+
+      // Add keyboard event listeners
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "ArrowRight" ||
+          event.key === "ArrowDown" ||
+          event.key === " "
+        ) {
+          goToNextSlide();
+          sendCommand("next");
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          goToPreviousSlide();
+          sendCommand("previous");
+        }
+      });
+
+      // Initialize the page
+      initialize();
+    </script>
+  </body>
+</html>

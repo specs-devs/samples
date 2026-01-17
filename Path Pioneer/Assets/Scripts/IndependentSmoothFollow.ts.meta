@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/491cf9b0-7c63-4dc6-b3d8-cbfc34802186>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1c322828-3827-4dec-8883-27cb0348a93b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1c322828-3827-4dec-8883-27cb0348a93b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ebcc9343-9fe7-41cd-a86c-9a03b2dc54c1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ebcc9343-9fe7-41cd-a86c-9a03b2dc54c1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c4cb319a-1e84-455e-bac3-b454bea15bf9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    mainCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera mainCamera

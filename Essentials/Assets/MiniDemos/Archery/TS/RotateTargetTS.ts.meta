@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/74dcd159-89f2-477b-9edb-aeab0008c814>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e10112c2-dfe5-4c5f-a522-b0f8adcd5d2e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e10112c2-dfe5-4c5f-a522-b0f8adcd5d2e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 147363de-dba1-471c-ae7e-61156a5d27c1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/147363de-dba1-471c-ae7e-61156a5d27c1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 31ed4bd6-d565-4896-91f2-3125924bd974
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    maxRotationAngle: false
+    minRotationAngle: false
+    rotationInterval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rotationInterval: !<float> 2.000000
+      minRotationAngle: !<float> -20.000000
+      maxRotationAngle: !<float> 20.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float rotationInterval = 2 {"hint":"The time between rotations in seconds"}'
+    - '// @input float minRotationAngle = -20 {"hint":"The minimum rotation angle in degrees"}'
+    - '// @input float maxRotationAngle = 20 {"hint":"The maximum rotation angle in degrees"}'

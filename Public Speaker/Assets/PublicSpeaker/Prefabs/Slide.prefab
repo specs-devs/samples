@@ -1,0 +1,168 @@
+- !<ObjectPrefab/a5871722-00a7-44d3-82fe-4f0a14d827ea>
+  PackagePath: ""
+  objects:
+    - !<own> 1b84e850-234e-4f97-97ae-233fc0af15ec
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/1b84e850-234e-4f97-97ae-233fc0af15ec>
+  PrefabRemaps:
+    - 1b84e850-234e-4f97-97ae-233fc0af15ec: 1b84e850-234e-4f97-6851-dcc03f50ea13
+    - 6a13b88c-18ec-4394-9bd0-55e2d845fc3a: 6a13b88c-18ec-4394-642f-aa1d27ba03c5
+    - a4744d34-20c7-4787-91db-332490db8ea2: a4744d34-20c7-4787-6e24-ccdb6f24715d
+    - b8f82209-a304-4629-a54f-4d22a472d1fb: b8f82209-a304-4629-5ab0-b2dd5b8d2e04
+    - fdb3b5cb-3b2c-484a-8d8c-7d53c396aca8: fdb3b5cb-3b2c-484a-7273-82ac3c695357
+  Name: Slide
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a4744d34-20c7-4787-91db-332490db8ea2
+    - !<own> fdb3b5cb-3b2c-484a-8d8c-7d53c396aca8
+  Components:
+    []
+- !<Text/6a13b88c-18ec-4394-9bd0-55e2d845fc3a>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Top
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |
+    > This is Alessio from the Developer Experience team for Spectacles. 
+    
+    > I am also a Unity developer for more than 10 years, it was the main way to build app at Magic Leap
+    
+    > I have been hesitant to learn new tools, but as part of Snap and using these tools everyday I really understood the potential of it. 
+    
+    > Just because it is one of the major tools available, does not mean it is the best option. 
+    
+    > Before we get started, let’s just talk about why a Unity developer should start looking into Lens Studio. Let’s be upfront about this: Unity is a great tool, and its major strength is the multi platform deployment workflow. You build for one, you build for all. 
+    
+    > On the other hand is quite resource intensive software. 
+
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 36
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 16.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/a4744d34-20c7-4787-91db-332490db8ea2>
+  PrefabRemaps:
+    []
+  Name: Texture
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: -2.700514, y: 6.891428, z: 2.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 25.001524, y: 25.001524, z: 62.503807}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b8f82209-a304-4629-a54f-4d22a472d1fb
+- !<Image/b8f82209-a304-4629-a54f-4d22a472d1fb>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> c15e994f-528e-45e5-b26b-77af1e1f899a
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/fdb3b5cb-3b2c-484a-8d8c-7d53c396aca8>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 45.316376, y: 10.875717, z: 2.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.601571, y: 1.601571, z: 1.601571}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 6a13b88c-18ec-4394-9bd0-55e2d845fc3a

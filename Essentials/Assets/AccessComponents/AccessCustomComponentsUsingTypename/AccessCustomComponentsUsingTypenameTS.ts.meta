@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/0e531d73-9ccb-41e3-b683-525fad099779>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f1ced0fa-892b-4ed6-b3ab-f1b1d2d13ff3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f1ced0fa-892b-4ed6-b3ab-f1b1d2d13ff3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8493791e-a70d-4a3e-b619-52d0729734d9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8493791e-a70d-4a3e-b619-52d0729734d9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5be3710f-3df7-4357-ab04-a6d9ad1e7733
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    customComponent: false
+    debug: false
+  ScriptTypesHidden:
+    CustomComponentTS: false
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - customComponent: !<Typename.CustomComponentTS> 00000000-0000-0000-0000-000000000000
+      debug: false
+  ScriptTypes:
+    - CustomComponentTS: !<reference.ScriptAsset> 00000000-0000-0000-0000-000000000000
+  InputLines:
+    - // @typename CustomComponentTS
+    - // @input CustomComponentTS customComponent
+    - // @input bool debug

@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/7dbd4a43-bca0-44f4-89d0-7948fb06fb45>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 6ed190fc-7a19-4a56-873b-f6539498ef46
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 6ed190fc-7a19-4a56-873b-f6539498ef46
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> e428b952-ba7c-4a99-b283-e23385dc8c4b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/e428b952-ba7c-4a99-b283-e23385dc8c4b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ceca9967-f11b-4baa-a876-3f1dbab664aa
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    flattenDuringTargetRotation: false
+    horizontalDistanceFromTarget: false
+    lerpSpeed: false
+    offset: false
+    reorientDuringTargetRotation: false
+    target: false
+    verticalDistanceFromTarget: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      verticalDistanceFromTarget: 0.100000
+      horizontalDistanceFromTarget: 0.100000
+      reorientDuringTargetRotation: true
+      flattenDuringTargetRotation: true
+      offset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      lerpSpeed: !<float> 5.000000
+  ScriptTypes:
+    -
+      {}

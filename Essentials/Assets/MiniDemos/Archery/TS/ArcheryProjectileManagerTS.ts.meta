@@ -1,0 +1,83 @@
+- !<AssetImportMetadata/332b2bfc-39ec-4079-b18c-a174aee3ad13>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2bfd6c70-e310-4b55-be3f-190d446733c5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2bfd6c70-e310-4b55-be3f-190d446733c5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8af72a35-8ce1-4ccb-b46a-e840ab646014
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8af72a35-8ce1-4ccb-b46a-e840ab646014>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 41ece5f8-1e6f-47f7-9057-7a0f339e1c98
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    archCharger: false
+    chargingText: false
+    dragFactor: false
+    gravityStrength: false
+    initialSpeed: false
+    interactableManipulation: false
+    lineA: false
+    lineB: false
+    manipulatingObject: false
+    projectile: false
+    rotatingTarget: false
+    scoreText: false
+    shootingRayEnd: false
+    shootingRayStart: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - initialSpeed: !<float> 10.000000
+      gravityStrength: 9.800000
+      dragFactor: 0.010000
+      projectile: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      shootingRayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      shootingRayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineA: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineB: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      archCharger: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      manipulatingObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      chargingText: !<reference.Component> 00000000-0000-0000-0000-000000000000
+      scoreText: !<reference.Component> 00000000-0000-0000-0000-000000000000
+      rotatingTarget: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      interactableManipulation: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float initialSpeed = 30 {"hint":"Initial velocity of projectiles when fired (higher = faster arrows)"}'
+    - '// @input float gravityStrength = 15 {"hint":"Gravity effect on projectiles (lower = flatter trajectory)"}'
+    - '// @input float dragFactor = 0.005 {"hint":"Air resistance factor (higher = more drag, slower arrows)"}'
+    - '// @input Asset.ObjectPrefab projectile {"hint":"Projectile to instantiate when firing"}'
+    - '// @input SceneObject shootingRayStart {"hint":"Start point for the charging line"}'
+    - '// @input SceneObject shootingRayEnd {"hint":"End point for the charging line"}'
+    - '// @input SceneObject lineA {"hint":"Start point for the charging line"}'
+    - '// @input SceneObject lineB {"hint":"End point for the charging line"}'
+    - '// @input SceneObject archCharger {"hint":"Object that visualizes the charge level"}'
+    - '// @input SceneObject manipulatingObject {"hint":"Hand position reference"}'
+    - '// @input Component.Component chargingText {"hint":"Text component to display charging percentage"}'
+    - '// @input Component.Component scoreText {"hint":"Text component to display score"}'
+    - '// @input SceneObject rotatingTarget {"hint":"Target object that rotates (for scoring)"}'
+    - '// @input AssignableType interactableManipulation {"hint":"The interactable object for manipulation"}'

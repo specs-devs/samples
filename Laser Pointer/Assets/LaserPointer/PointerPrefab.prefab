@@ -1,0 +1,116 @@
+- !<ObjectPrefab/fc82cd8e-b6a2-4c26-b96f-9b34334f13a7>
+  PackagePath: ""
+  objects:
+    - !<own> aef33813-0ec4-4bd4-bf07-af9264336640
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/49f51933-c553-486a-9d37-07217b3a24c6>
+  PrefabRemaps:
+    []
+  Name: SyncMaterials
+  Enabled: true
+  ScriptAsset: !<reference> 2188acca-211b-474d-ae70-543ccec6cf65
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    autoClone: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      autoClone: true
+      mainMaterial: !<reference.Material> 669038fd-66ea-4c6c-9750-4c913831373a
+      propertyNames: !<string[]>
+        - baseColor
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/a01a895b-1ee8-46b8-a19b-dad59b953a05>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Location
+      rotationSyncString: Location
+      scaleSyncString: Location
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
+- !<RenderMeshVisual/ad8fb4cb-03ea-402f-bb57-f7d379ad1ce1>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 669038fd-66ea-4c6c-9750-4c913831373a
+  Mesh: !<reference> a2c11ff8-5f45-425e-95b7-91b503177c62
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/aef33813-0ec4-4bd4-bf07-af9264336640>
+  PrefabRemaps:
+    - 49f51933-c553-486a-9d37-07217b3a24c6: 49f51933-c553-486a-62c8-f8de84c5db39
+    - a01a895b-1ee8-46b8-a19b-dad59b953a05: a01a895b-1ee8-46b8-5e64-252a646ac5fa
+    - ad8fb4cb-03ea-402f-bb57-f7d379ad1ce1: ad8fb4cb-03ea-402f-44a8-082c8652e31e
+    - aef33813-0ec4-4bd4-bf07-af9264336640: aef33813-0ec4-4bd4-40f8-506d9bcc99bf
+    - ccdb6a01-aa6a-4e8c-93d0-303706689e50: ccdb6a01-aa6a-4e8c-6c2f-cfc8f99761af
+  Name: PointerPrefab
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 20.000000, y: 20.000000, z: 20.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ad8fb4cb-03ea-402f-bb57-f7d379ad1ce1
+    - !<own> 49f51933-c553-486a-9d37-07217b3a24c6
+    - !<own> a01a895b-1ee8-46b8-a19b-dad59b953a05
+    - !<own> ccdb6a01-aa6a-4e8c-93d0-303706689e50
+- !<ScriptComponent/ccdb6a01-aa6a-4e8c-93d0-303706689e50>
+  PrefabRemaps:
+    []
+  Name: Pointer
+  Enabled: true
+  ScriptAsset: !<reference> 6cd69aa5-1134-4b5c-9104-688fda93d56f
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      pointerRmv: !<reference.RenderMeshVisual> ad8fb4cb-03ea-402f-bb57-f7d379ad1ce1
+  ScriptTypes:
+    "":
+      {}

@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/15cf0fe3-2153-402b-86c4-fea9d81b1866>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5fd91f90-7201-427d-b2e5-9fe0d434e3b6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5fd91f90-7201-427d-b2e5-9fe0d434e3b6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0e0d23b4-fead-43d9-bf6d-b1f88d1ee3ff
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0e0d23b4-fead-43d9-bf6d-b1f88d1ee3ff>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 577a064a-a92c-40b3-b1c8-4cfeee933e86
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    center: false
+    numberOfPrefabs: false
+    prefab: false
+    radius: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - center: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPrefabs: !<float> 10.000000
+      radius: !<float> 5.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject center {"hint":"Center of the circle area"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float numberOfPrefabs = 10 {"hint":"Number of prefabs to instantiate"}'
+    - '// @input float radius = 5 {"hint":"Radius of the circle"}'

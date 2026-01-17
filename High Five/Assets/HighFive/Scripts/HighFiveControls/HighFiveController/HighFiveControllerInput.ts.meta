@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/788dfbcf-c250-4c57-935b-28a822741fc4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 70f0aca6-a1bc-42ea-ae8d-ef0f867c6f7c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 70f0aca6-a1bc-42ea-ae8d-ef0f867c6f7c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e80a7124-515d-4977-ae96-69fca568c321
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e80a7124-515d-4977-ae96-69fca568c321>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c94ab8f4-1636-4b27-89c7-426e9823ed68
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bubbleAnimationControllerInput: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bubbleAnimationControllerInput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType bubbleAnimationControllerInput

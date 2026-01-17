@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/3a9c950e-105f-4731-9e34-05a2e2904ec5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2908fed9-9381-4442-b4c1-8edc016fcd3e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2908fed9-9381-4442-b4c1-8edc016fcd3e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 45e8cf2e-be8c-44f4-8884-901708bcc1cf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/45e8cf2e-be8c-44f4-8884-901708bcc1cf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 61735d8d-5679-42ab-8575-e3065c553246
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    continuousPainting: false
+    paintablePattern: false
+    playerCamera: false
+    raycastDistance: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - playerCamera: !<reference.Component> 00000000-0000-0000-0000-000000000000
+      raycastDistance: !<float> 100.000000
+      paintablePattern: Paintable
+      continuousPainting: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Component playerCamera {"hint":"Camera from which the ray will be shot"}'
+    - '// @input float raycastDistance = 100 {"hint":"Max distance for the raycast"}'
+    - '// @input string paintablePattern = "Paintable" {"hint":"Name pattern to identify paintable objects"}'
+    - '// @input bool continuousPainting {"hint":"Whether colors should change continuously or only once per touch"}'

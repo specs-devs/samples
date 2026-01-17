@@ -1,0 +1,99 @@
+- !<Material/953aef03-34e4-4618-a6f3-9cff0e0b9129>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> f25d19cc-8327-4df8-ab22-4faabaa7a53a
+- !<PassInfo/f25d19cc-8327-4df8-ab22-4faabaa7a53a>
+  CachedProperties:
+    - backgroundBorderColor:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - backgroundDims:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - backgroundUvMinMax:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: true
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: Disabled
+  Properties:
+    Port_AO_N006:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N006:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Input0_N005:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input0_N025:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input2_N012:
+      typeIdx: 1
+      value: 0.100000
+    Port_Metallic_N006:
+      typeIdx: 1
+      value: 0.000000
+    Port_Opacity_N006:
+      typeIdx: 1
+      value: 1.000000
+    Port_Roughness_N006:
+      typeIdx: 1
+      value: 0.000000
+    Port_SpecularAO_N006:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    Tweak_N8:
+      typeIdx: 1
+      value: 1.500000
+    background:
+      typeIdx: 9
+      value:
+        id: 2dcbaeef-604a-40e1-bac8-e66a5a0bef90
+        sampler:
+          filteringMode: Trilinear
+          wrapModeU: MirroredRepeat
+          wrapModeV: MirroredRepeat
+          wrapModeW: MirroredRepeat
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+          mipmaps: true
+        type: Texture2D
+    backgroundTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    chromaticAberration:
+      typeIdx: 1
+      value: 0.300000
+    colorTint:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    darken:
+      typeIdx: 1
+      value: 0.790000
+    exponent:
+      typeIdx: 1
+      value: 1.000000
+    intensity:
+      typeIdx: 1
+      value: 0.160000
+    thickness:
+      typeIdx: 1
+      value: 2.000000
+  Pass: !<reference> e60b654d-3ff8-490e-9eac-eecb40b882cc

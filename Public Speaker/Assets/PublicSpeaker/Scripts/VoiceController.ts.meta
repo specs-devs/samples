@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/3280f361-716a-4eb7-8c48-d5edec72daea>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a14e77f3-e83a-475e-8bf5-2890eadd85b9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a14e77f3-e83a-475e-8bf5-2890eadd85b9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1a08b8c1-a06c-4726-83b4-98e04f7f0ac0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1a08b8c1-a06c-4726-83b4-98e04f7f0ac0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 01213bea-fb5e-412f-b948-001faa715308
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonImage: false
+    commandDelay: false
+    googleSlideBridge: false
+    listeningMicImage: false
+    normalMicImage: false
+    presentationSwitcher: false
+    text: false
+    useGoogleSlide: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      presentationSwitcher: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      googleSlideBridge: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      commandDelay: !<float> 2.000000
+      buttonImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      normalMicImage: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      listeningMicImage: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      useGoogleSlide: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text text {"hint":"Text component to display transcriptions"}'
+    - '// @input AssignableType presentationSwitcher {"hint":"Reference to the PresentationSwitcher component"}'
+    - '// @input AssignableType_1 googleSlideBridge {"hint":"Reference to the GoogleSlideBridge component"}'
+    - '// @input float commandDelay = 2 {"hint":"Delay time (in seconds) to wait before confirming a command"}'
+    - '// @input Component.Image buttonImage {"hint":"The button image component to swap icons"}'
+    - '// @input Asset.Texture normalMicImage {"hint":"Texture for the normal mic icon (listening off)"}'
+    - '// @input Asset.Texture listeningMicImage {"hint":"Texture for the listening mic icon (listening on)"}'
+    - '// @input bool useGoogleSlide {"hint":"Enable this boolean if you are planning to Use Google Slide API and the Google Slide Bridge"}'

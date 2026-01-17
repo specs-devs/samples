@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/e6776031-e8e7-4e5b-9094-a847525eb4a0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f83893ce-4ea5-48ab-a6c3-18ac86dc66f1
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f83893ce-4ea5-48ab-a6c3-18ac86dc66f1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4e052675-1906-460a-8db5-7f02544b24dc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4e052675-1906-460a-8db5-7f02544b24dc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9e5f0097-378a-4d97-a044-8f9a570d9080
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debug: false
+    parentSceneobject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - parentSceneobject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      debug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject parentSceneobject {"hint":"The parent component"}'
+    - '// @input bool debug {"hint":"Show logs in the console"}'

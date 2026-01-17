@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/7850040d-55ca-48b8-a5aa-cb8e757bfcc2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 66c56ea9-c5be-41f7-a224-9e7e364e1f32
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 66c56ea9-c5be-41f7-a224-9e7e364e1f32
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ca5656d3-8490-4425-8cb3-3cbc639f40b2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ca5656d3-8490-4425-8cb3-3cbc639f40b2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 704b4df1-d9be-47c5-8359-a47e8ce946d7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    accessToken: false
+    pollForChanges: false
+    pollingInterval: false
+    presentationId: false
+    slideImage: false
+    speakerNotes: false
+    syncNavigationToGoogle: false
+    webSocketController: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - presentationId: ""
+      accessToken: ""
+      slideImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      speakerNotes: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      syncNavigationToGoogle: true
+      pollForChanges: true
+      pollingInterval: !<float> 5.000000
+      webSocketController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string presentationId {"hint":"Your presentation id - find it in the google slide link"}'
+    - '// @input string accessToken {"hint":"Your refreshed access token, find it in the https://developers.google.com/oauthplayground"}'
+    - '// @input Component.Image slideImage {"hint":"Image component to display slide"}'
+    - '// @input Component.Text speakerNotes {"hint":"Text component to display speaker notes"}'
+    - '// @input bool syncNavigationToGoogle = true {"hint":"Auto-sync with Google Slides when navigating locally"}'
+    - '// @input bool pollForChanges = true {"hint":"Poll for changes from Google Slides"}'
+    - '// @input float pollingInterval = 5 {"hint":"Polling interval in seconds"}'
+    - // @input AssignableType webSocketController

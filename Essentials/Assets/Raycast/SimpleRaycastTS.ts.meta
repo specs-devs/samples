@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/d87c67c8-ac01-4c76-a6af-5fa0fcfee817>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ae574aa5-aae3-463b-a2fe-ab6ab9995448
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ae574aa5-aae3-463b-a2fe-ab6ab9995448
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 29a792e1-b49d-4d51-b1fc-159d8a132ac8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/29a792e1-b49d-4d51-b1fc-159d8a132ac8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fc3e10d1-d161-422e-9c17-c6dc92ef9ab5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    endPointAttachment: false
+    rayEnd: false
+    rayStart: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPointAttachment: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject rayStart
+    - // @input SceneObject rayEnd
+    - // @input SceneObject endPointAttachment

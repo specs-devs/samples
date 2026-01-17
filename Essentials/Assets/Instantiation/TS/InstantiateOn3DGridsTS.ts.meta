@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/103355e9-418d-4536-8540-f69497df4c0b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 33e6a4af-f8c5-4c27-993f-de59b005b422
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 33e6a4af-f8c5-4c27-993f-de59b005b422
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> aa7c2782-0afb-46b2-a75c-de192849c404
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/aa7c2782-0afb-46b2-a75c-de192849c404>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fac90ae7-e802-4c0f-b8a2-0bcbb9dbddb8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    gridCenter: false
+    gridDepth: false
+    gridHeight: false
+    gridWidth: false
+    prefab: false
+    spacingX: false
+    spacingY: false
+    spacingZ: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      gridCenter: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      gridWidth: !<float> 5.000000
+      gridHeight: !<float> 5.000000
+      gridDepth: !<float> 5.000000
+      spacingX: 1.500000
+      spacingY: 1.500000
+      spacingZ: 1.500000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"The prefab to instantiate"}'
+    - '// @input SceneObject gridCenter {"hint":"The center of the grid"}'
+    - '// @input float gridWidth = 5 {"hint":"Number of elements along the X axis"}'
+    - '// @input float gridHeight = 5 {"hint":"Number of elements along the Y axis"}'
+    - '// @input float gridDepth = 5 {"hint":"Number of elements along the Z axis"}'
+    - '// @input float spacingX = 1.5 {"hint":"Spacing between elements in the X direction"}'
+    - '// @input float spacingY = 1.5 {"hint":"Spacing between elements in the Y direction"}'
+    - '// @input float spacingZ = 1.5 {"hint":"Spacing between elements in the Z direction"}'

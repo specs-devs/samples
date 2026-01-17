@@ -1,0 +1,105 @@
+- !<AssetImportMetadata/48103875-e3d0-4553-a3cf-8df9d2b89ab9>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 825a9190-8094-43e0-9da3-862abb8e446b
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 825a9190-8094-43e0-9da3-862abb8e446b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 9f260798-5109-4e3d-afd7-a47ae97d5237
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/035a6d28-53aa-4c2d-687b-a735c34da18b>
+  PrefabRemaps:
+    []
+  Name: LoopController
+  Enabled: true
+  ScriptAsset: !<reference> b5c929fd-7682-40db-a9ec-24d53f062573
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      audio: !<reference.AudioComponent> 30bafb4b-e5cc-4b3e-707f-39d03066a824
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/301b5033-0bf1-4296-456d-6fc6f60e25d7>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 30bafb4b-e5cc-4b3e-707f-39d03066a824
+- !<AudioComponent/30bafb4b-e5cc-4b3e-707f-39d03066a824>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> b788cbaa-c1b9-4ec6-9238-fb34722ff6f1
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: true
+  RecordVolume: 0.350000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 0.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
+- !<SceneObject/5d1b2ccc-3c1f-4402-5397-8b61f6e000fb>
+  PrefabRemaps:
+    []
+  Name: pfb_LoopController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 300.000000, y: 300.000092, z: 300.000092}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 301b5033-0bf1-4296-456d-6fc6f60e25d7
+  Components:
+    - !<own> d3bd2b2b-0e60-4558-6d8d-da7ff2a646f2
+    - !<own> 035a6d28-53aa-4c2d-687b-a735c34da18b
+- !<ObjectPrefabAssetData/9f260798-5109-4e3d-afd7-a47ae97d5237>
+  Prototype: !<ObjectOwner/3f2e452f-cd46-4fe6-9412-8845a38d746c>
+    PackagePath: ""
+    objects:
+      - !<own> 5d1b2ccc-3c1f-4402-5397-8b61f6e000fb
+- !<RenderMeshVisual/d3bd2b2b-0e60-4558-6d8d-da7ff2a646f2>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 12
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 93083335-479b-4a4e-97fd-c5faf31da41d
+  Mesh: !<reference> 76537827-5c50-4651-a49a-a75b57e71ce3
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

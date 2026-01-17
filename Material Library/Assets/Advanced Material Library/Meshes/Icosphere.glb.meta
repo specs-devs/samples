@@ -1,0 +1,125 @@
+- !<AssetImportMetadata/a09bdf3a-7f81-41b3-a2a5-d9f88aaeb1b6>
+  ImportedAssetIds:
+    Meshes/Icosphere: !<reference> 60f86432-3d9b-4f5b-9047-672c01a2d679
+    Scene: !<reference> afc29142-d529-451e-9273-42f1d317a3c2
+    _3DSceneImportRoot_0|: !<reference> 220c1ffd-4e68-4113-ba13-2c98f0029298
+    _3DSceneImportRoot_0|_Scenes_0|: !<reference> 954338a5-e49d-4dca-8c03-a2eaa94704e4
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|: !<reference> 6310e841-4637-4607-805d-383347318acd
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|_Icosphere_0|: !<reference> 53c6896c-25cd-4f5a-9c58-c14cd211c0ad
+    _3DSceneImportRoot_0|_Scenes_0|_Scene_0|_Icosphere_0|_RenderMeshVisual_0|: !<reference> 17434aa0-62a8-4468-a394-6bf5dc818f63
+  ImporterName: GltfImporter
+  PrimaryAsset: !<reference> afc29142-d529-451e-9273-42f1d317a3c2
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 02b24c4d-9fe5-43be-9180-3fee51db8ed9
+  DependentFiles:
+    []
+  ImporterSettings: !<GltfImporterSettings>
+    UseLegacyImporter: true
+    WithMaterials: true
+    NamingConvention: ByCategory
+    PersistentIdGenerationAlgorithm: Legacy
+    AnimationCurveOptimization: false
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangents: true
+    ImportMorphTargetAnimation: false
+    ConvertMetersToCentimeters: false
+    RegenerateTangents: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: None
+        CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<ObjectPrefabAssetData/02b24c4d-9fe5-43be-9180-3fee51db8ed9>
+  Prototype: !<ObjectOwner/32ab2417-c379-49bb-8d2a-69cd1276e23f>
+    PackagePath: ""
+    objects:
+      - !<own> 220c1ffd-4e68-4113-45ec-d3670ffd6d67
+- !<RenderMeshVisual/17434aa0-62a8-4468-5c6b-940a237e709c>
+  PrefabRemaps:
+    []
+  Name: Icosphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Mesh: !<reference> 60f86432-3d9b-4f5b-9047-672c01a2d679
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/220c1ffd-4e68-4113-45ec-d3670ffd6d67>
+  PrefabRemaps:
+    []
+  Name: Icosphere
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 954338a5-e49d-4dca-73fc-5d1556b8fb1b
+  Components:
+    []
+- !<SceneObject/53c6896c-25cd-4f5a-63a7-3eb32dee3f52>
+  PrefabRemaps:
+    []
+  Name: Icosphere
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 17434aa0-62a8-4468-5c6b-940a237e709c
+- !<SceneObject/6310e841-4637-4607-7fa2-c7ccb8ce7532>
+  PrefabRemaps:
+    []
+  Name: Scene
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 53c6896c-25cd-4f5a-63a7-3eb32dee3f52
+  Components:
+    []
+- !<SceneObject/954338a5-e49d-4dca-73fc-5d1556b8fb1b>
+  PrefabRemaps:
+    []
+  Name: Scenes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 6310e841-4637-4607-7fa2-c7ccb8ce7532
+  Components:
+    []

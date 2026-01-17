@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/94af62e5-7646-45ac-9fbe-fe5b97b0bb4c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 931b77a6-90f6-47e6-9f6f-0a5345457ef2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 931b77a6-90f6-47e6-9f6f-0a5345457ef2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 07c466fa-47d6-49ea-8080-7d701f984224
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/07c466fa-47d6-49ea-8080-7d701f984224>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 17fe7711-86ee-4e02-8845-960843ee60ab
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    endPoint: false
+    fixedDistance: false
+    prefab: false
+    startPoint: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      startPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPoint: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      fixedDistance: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.ObjectPrefab prefab {"hint":"The prefab to instantiate"}'
+    - '// @input SceneObject startPoint {"hint":"The start point of the line"}'
+    - '// @input SceneObject endPoint {"hint":"The end point of the line"}'
+    - '// @input float fixedDistance = 1 {"hint":"Fixed distance between each instantiated object"}'

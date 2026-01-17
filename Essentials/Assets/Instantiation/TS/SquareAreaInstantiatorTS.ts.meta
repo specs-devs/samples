@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/c6ddb954-b744-4119-94c0-a2cda8e7ff49>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 742cb1ce-8c96-43b8-bd4a-9b863e4284bc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 742cb1ce-8c96-43b8-bd4a-9b863e4284bc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0db5f1fa-0be4-4073-a4aa-16b836dd168f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0db5f1fa-0be4-4073-a4aa-16b836dd168f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b2a66b5b-6bd5-4222-a847-b74b806a04d8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    center: false
+    numberOfPrefabs: false
+    prefab: false
+    size: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - center: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPrefabs: !<float> 10.000000
+      size: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject center {"hint":"Center of the square area"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float numberOfPrefabs = 10 {"hint":"Number of prefabs to instantiate"}'
+    - '// @input float size = 5 {"hint":"Size of the square (half-width/half-height)"}'

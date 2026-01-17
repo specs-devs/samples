@@ -1,0 +1,264 @@
+- !<AssetImportMetadata/1a11bfa2-f30b-4590-8100-0bd7115ab1a8>
+  ImportedAssetIds:
+    .hidden/lambert26: !<reference> 474d72a4-b9b0-47ee-82ff-557cf3601ecc
+    .hidden/white: !<reference> e3d1a58b-7384-44a8-b665-6011b7aab927
+    66780cf3a4dcb2b8: !<reference> 445e1cf6-9d62-46e6-a1bc-8dad4b8aec33
+    6edb69a670745627: !<reference> dd05ce41-9258-453a-a59d-a3f1e1345ab5
+    708f06a5db3c3bfd: !<reference> 84751a5e-dd2e-4d32-92de-6cc653c1a2d1
+    930b4a4116a00e7a: !<reference> 23e39025-896d-4bfd-8051-bf9cb14c51fb
+    Animations/BaseLayer: !<reference> 817083d5-2b56-4abc-b92b-47ce030aa983
+    Materials/lambert26: !<reference> 8b7b3e1b-41b8-4863-a30b-1818822379fa
+    Materials/lambert26|lambert26|GraphPassInfo: !<reference> 59d9597b-0100-4cf2-b7eb-59628c34b678
+    Meshes/GroundArrow_UI: !<reference> 63237019-492d-4d70-ae8e-1d775aab354e
+    Scene: !<reference> aa36fb86-6875-43b0-a2da-a95b04d43c74
+    a3af77d5bfb09c70: !<reference> 89b982ae-ba11-48d0-b83a-9fc33e931fdd
+    be06ff78d926d61e: !<reference> 1a929032-b14d-4825-9987-0f05bc766e1f
+    c379ec34de9c7812: !<reference> 55069ed4-c753-4c2d-a0d1-3277b8ff5db2
+    d56449042852e538: !<reference> acd35a52-8788-43a1-ab89-3c8eae9f5f70
+    e66f25ad2366abfa: !<reference> 6d6bb33d-264a-4109-8774-403c184ed897
+    f3c5e2104eee0b9c: !<reference> 84fdc200-bcc2-44d4-8c53-9a189d691fbc
+    f958386a1e5be4ee: !<reference> 857e92e6-e0c5-4961-bae5-56e7a50b2554
+    fdd71e0e9efa6e61: !<reference> f088a2de-a223-4a89-b8b2-0426c5091565
+  ImporterName: FbxImporter
+  PrimaryAsset: !<reference> aa36fb86-6875-43b0-a2da-a95b04d43c74
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> a9ed43cf-e823-465f-ac99-9465645b6680
+  DependentFiles:
+    []
+  ImporterSettings: !<FbxImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangentsAndBinormals: true
+    RegenerateTangentsAndBinormals: false
+    RegenerateNormalsForSkinnedMeshes: true
+    ImportBlendShapeAnimation: true
+    ImportVertexAnimation: true
+    GeneratePivots: true
+    TriangulateNURBS: true
+    UseLegacyFbxLoader: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: None
+        CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+      Performance Compression: !<SingleCompressionSettings>
+        CompressorName: Performance
+        CompressionSettings: !<TextureCompressionSettings>
+          Level: Medium
+    ExtensionMappings:
+      mesh: None Compression
+      jpg: Performance Compression
+    Overrides:
+      {}
+- !<SceneObject/1a929032-b14d-4825-6678-f0fa438991e0>
+  PrefabRemaps:
+    []
+  Name: joint3
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -83.206001}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<SceneObject/23e39025-896d-4bfd-7fae-40634eb3ae04>
+  PrefabRemaps:
+    []
+  Name: GroundArrow_UI
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> dd05ce41-9258-453a-5a62-5c0e1ecba54a
+- !<SceneObject/445e1cf6-9d62-46e6-5e43-7252b47513cc>
+  PrefabRemaps:
+    []
+  Name: Arrow_UI_Start_v1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 23e39025-896d-4bfd-7fae-40634eb3ae04
+    - !<own> 89b982ae-ba11-48d0-47c5-603cc16ce022
+  Components:
+    - !<own> 6d6bb33d-264a-4109-788b-bfc3e7b12768
+    - !<own> acd35a52-8788-43a1-5476-c3715160a08f
+- !<SceneObject/55069ed4-c753-4c2d-5f2e-cd884700a24d>
+  PrefabRemaps:
+    []
+  Name: joint6
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -208.014999}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<Skin/6d6bb33d-264a-4109-788b-bfc3e7b12768>
+  PrefabRemaps:
+    []
+  Name: component_2
+  Enabled: true
+  skinBones:
+    Arrow_UI_Start_v1: !<reference> 445e1cf6-9d62-46e6-5e43-7252b47513cc
+    Arrows_Controls_NoHierarchy: !<reference> 89b982ae-ba11-48d0-47c5-603cc16ce022
+    GroundArrow_UI: !<reference> 23e39025-896d-4bfd-7fae-40634eb3ae04
+    joint1: !<reference> 84751a5e-dd2e-4d32-6d21-9339ac3e5d2e
+    joint2: !<reference> f088a2de-a223-4a89-474d-fbd93af6ea9a
+    joint3: !<reference> 1a929032-b14d-4825-6678-f0fa438991e0
+    joint4: !<reference> 857e92e6-e0c5-4961-451a-a9185af4daab
+    joint5: !<reference> 84fdc200-bcc2-44d4-73ac-65e76296e043
+    joint6: !<reference> 55069ed4-c753-4c2d-5f2e-cd884700a24d
+- !<SceneObject/84751a5e-dd2e-4d32-6d21-9339ac3e5d2e>
+  PrefabRemaps:
+    []
+  Name: joint1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<SceneObject/84fdc200-bcc2-44d4-73ac-65e76296e043>
+  PrefabRemaps:
+    []
+  Name: joint5
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -166.412003}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<SceneObject/857e92e6-e0c5-4961-451a-a9185af4daab>
+  PrefabRemaps:
+    []
+  Name: joint4
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -124.808998}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<SceneObject/89b982ae-ba11-48d0-47c5-603cc16ce022>
+  PrefabRemaps:
+    []
+  Name: Arrows_Controls_NoHierarchy
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 84751a5e-dd2e-4d32-6d21-9339ac3e5d2e
+    - !<own> f088a2de-a223-4a89-474d-fbd93af6ea9a
+    - !<own> 1a929032-b14d-4825-6678-f0fa438991e0
+    - !<own> 857e92e6-e0c5-4961-451a-a9185af4daab
+    - !<own> 84fdc200-bcc2-44d4-73ac-65e76296e043
+    - !<own> 55069ed4-c753-4c2d-5f2e-cd884700a24d
+  Components:
+    []
+- !<ObjectPrefabAssetData/a9ed43cf-e823-465f-ac99-9465645b6680>
+  Prototype: !<ObjectOwner/e098e366-db1d-4e5e-97b5-45b1c3a6bae5>
+    PackagePath: ""
+    objects:
+      - !<own> 445e1cf6-9d62-46e6-5e43-7252b47513cc
+- !<AnimationPlayer/acd35a52-8788-43a1-5476-c3715160a08f>
+  PrefabRemaps:
+    []
+  Name: component_3
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 817083d5-2b56-4abc-b92b-47ce030aa983
+      Name: BaseLayer
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 0.000000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<RenderMeshVisual/dd05ce41-9258-453a-5a62-5c0e1ecba54a>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 8b7b3e1b-41b8-4863-a30b-1818822379fa
+  Mesh: !<reference> 63237019-492d-4d70-ae8e-1d775aab354e
+  Skin: !<reference> 6d6bb33d-264a-4109-788b-bfc3e7b12768
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/f088a2de-a223-4a89-474d-fbd93af6ea9a>
+  PrefabRemaps:
+    []
+  Name: joint2
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -41.603001}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []

@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/43aa9e83-eafd-48a0-8cfd-ed2c6193005b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> cd44ec92-d3ae-43d5-9f5e-8d9fb190e599
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> cd44ec92-d3ae-43d5-9f5e-8d9fb190e599
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> fdf4ec69-3e9b-472e-bca3-88c0069e20f1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/fdf4ec69-3e9b-472e-bca3-88c0069e20f1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9fd928e6-ffec-4cfc-a909-122f612f3fb1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    closestIsBigger: false
+    endObject: false
+    maxDistance: false
+    maxScale: false
+    minDistance: false
+    minScale: false
+    objectToScale: false
+    startObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - startObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      minScale: 0.500000
+      maxScale: !<float> 2.000000
+      objectToScale: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      closestIsBigger: true
+      minDistance: !<float> 0.000000
+      maxDistance: !<float> 100.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject startObject
+    - // @input SceneObject endObject
+    - // @input float minScale = 0.5
+    - // @input float maxScale = 2
+    - // @input SceneObject objectToScale
+    - // @input bool closestIsBigger = true
+    - // @input float minDistance
+    - // @input float maxDistance = 100

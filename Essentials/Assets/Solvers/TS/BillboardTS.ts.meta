@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/75d25367-dfb8-49c3-859c-67c5b33b7aae>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 63350e98-057b-48df-a02c-f43dbf0eb0e5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 63350e98-057b-48df-a02c-f43dbf0eb0e5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7aef4980-b8b3-4ae3-aed7-027b2a0e95bc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7aef4980-b8b3-4ae3-aed7-027b2a0e95bc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6948d60e-429f-45a0-bf2f-9cf99d35e6c2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    lookAway: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - lookAway: true
+      target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input bool lookAway = true {"hint":"Is billboard looking at default direction or opposite?"}'
+    - '// @input SceneObject target {"hint":"Override default target mainCamera with your target"}'

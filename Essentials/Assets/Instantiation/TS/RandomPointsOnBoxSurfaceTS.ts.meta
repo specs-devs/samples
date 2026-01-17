@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/1e8cf86b-ad67-4075-832c-bc1386d07029>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1a63a19a-d7c6-423f-9cbc-7ff094ea6552
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1a63a19a-d7c6-423f-9cbc-7ff094ea6552
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2b60cf92-2958-49a9-af21-a21fb5b109ee
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2b60cf92-2958-49a9-af21-a21fb5b109ee>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2c0f33d9-8ec6-4593-a2d6-720bce430c44
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxObject: false
+    numberOfPoints: false
+    prefab: false
+    sizeX: false
+    sizeY: false
+    sizeZ: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - boxObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPoints: !<float> 10.000000
+      sizeX: !<float> 1.000000
+      sizeY: !<float> 1.000000
+      sizeZ: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject boxObject {"hint":"Reference to the box (a SceneObject that defines the box center)"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @input float numberOfPoints = 10 {"hint":"Number of random points to generate"}'
+    - '// @input float sizeX = 1 {"hint":"Size of the box in x direction"}'
+    - '// @input float sizeY = 1 {"hint":"Size of the box in y direction"}'
+    - '// @input float sizeZ = 1 {"hint":"Size of the box in z direction"}'

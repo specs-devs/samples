@@ -1,0 +1,137 @@
+- !<AssetImportMetadata/8a5b92c1-01ec-48be-9142-4edf57d38f83>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 6d3ff4ec-5dcf-4301-af38-da5dcfc7dffd
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 6d3ff4ec-5dcf-4301-af38-da5dcfc7dffd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> ae7f88c4-93c5-49bd-8283-9731df7ac83f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/233756d7-13c9-4ad6-5092-e4ffca02d57e>
+  PrefabRemaps:
+    []
+  Name: ImageForSizingAndSpacing
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4f293973-583d-42f7-726a-ddfddbdd6cfb
+    - !<own> b6c89129-a4c1-4449-432d-bd67ec9f9dca
+- !<SceneObject/487a95a3-c8b3-4e9d-617f-5d93519d7448>
+  PrefabRemaps:
+    []
+  Name: pfbScrollViewItemSpot
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 233756d7-13c9-4ad6-5092-e4ffca02d57e
+  Components:
+    - !<own> b16f69cd-5647-4a16-73f3-680714d798b1
+- !<Image/4f293973-583d-42f7-726a-ddfddbdd6cfb>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: false
+  RenderOrder: 15
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1aa60a9e-cd4d-4a04-b7ca-91febfc9abd2
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/ae7f88c4-93c5-49bd-8283-9731df7ac83f>
+  Prototype: !<ObjectOwner/6f7f827a-6fd0-4167-a131-cb8a423a672b>
+    PackagePath: ""
+    objects:
+      - !<own> 487a95a3-c8b3-4e9d-617f-5d93519d7448
+- !<ScreenTransform/b16f69cd-5647-4a16-73f3-680714d798b1>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: -1.000000
+    right: 1.000000
+    top: 1.000000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000
+- !<ScreenTransform/b6c89129-a4c1-4449-432d-bd67ec9f9dca>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: 0.300000
+    right: 1.000000
+    top: 0.300000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000

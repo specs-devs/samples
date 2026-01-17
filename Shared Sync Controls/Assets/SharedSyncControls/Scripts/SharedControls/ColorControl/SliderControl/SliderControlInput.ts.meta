@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/475e08b7-ebab-4e01-904c-4d394b1061a3>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a5938b6e-e195-4be3-99ed-21ad41ccf08f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a5938b6e-e195-4be3-99ed-21ad41ccf08f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7d275818-35d9-45a4-aadc-4318cd161676
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7d275818-35d9-45a4-aadc-4318cd161676>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f7e0f454-d838-46b7-8414-74de6d943ab7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    slider: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - slider: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType slider

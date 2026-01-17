@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/dbc3ef55-4930-4f25-b97c-0268ab1cc999>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 925262df-27ba-4ae6-8ee5-adc23429faa5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 925262df-27ba-4ae6-8ee5-adc23429faa5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 28f10389-3063-4538-ab30-9da05399fd65
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/28f10389-3063-4538-ab30-9da05399fd65>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8ebb5787-3fb2-44bc-a3fd-a49681210d91
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    BarMat: false
+    Mats: false
+    endPosScreenTransform: false
+    globalOpacity: false
+    initialProgress: false
+    pointer: false
+    startPosScreenTransform: false
+    textComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - pointer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      Mats: !<reference.Material[]>
+        []
+      BarMat: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      initialProgress: !<float> 0.000000
+      globalOpacity: !<float> 0.000000
+      startPosScreenTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+      endPosScreenTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject pointer
+    - // @input Component.Text textComponent
+    - "// @input Asset.Material[] Mats"
+    - // @input Asset.Material BarMat
+    - // @input float initialProgress
+    - // @input float globalOpacity = 1
+    - // @input Component.ScreenTransform startPosScreenTransform
+    - // @input Component.ScreenTransform endPosScreenTransform

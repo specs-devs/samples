@@ -1,0 +1,86 @@
+- !<AssetImportMetadata/c14b79a6-7ea3-4e57-9639-36e873e2483d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b9e16576-f61c-4cd4-a6a8-26592e0978bc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b9e16576-f61c-4cd4-a6a8-26592e0978bc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 889348ab-1943-435c-b37b-17193fba0303
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/889348ab-1943-435c-b37b-17193fba0303>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5be71fc8-3ab9-41cd-96cd-3a88edd74a32
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    controllerJS: false
+    leftGoalCollider: false
+    leftPaddle: false
+    leftPaddleInteractable: false
+    leftPaddleManipulation: false
+    leftScore1: false
+    leftScore2: false
+    puck: false
+    rightGoalCollider: false
+    rightPaddle: false
+    rightPaddleInteractable: false
+    rightPaddleManipulation: false
+    rightScore1: false
+    rightScore2: false
+    startGameButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - controllerJS: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      puck: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      leftGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      rightGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      leftPaddle: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      leftPaddleInteractable: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      leftPaddleManipulation: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      rightPaddle: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      rightPaddleInteractable: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      rightPaddleManipulation: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      startGameButton: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      leftScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      leftScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.ScriptComponent controllerJS
+    - // @input AssignableType puck
+    - // @input Component.ColliderComponent leftGoalCollider
+    - // @input Component.ColliderComponent rightGoalCollider
+    - // @input AssignableType_1 leftPaddle
+    - // @input AssignableType_2 leftPaddleInteractable
+    - // @input AssignableType_3 leftPaddleManipulation
+    - // @input AssignableType_4 rightPaddle
+    - // @input AssignableType_5 rightPaddleInteractable
+    - // @input AssignableType_6 rightPaddleManipulation
+    - // @input AssignableType_7 startGameButton
+    - // @input Component.Text leftScore1
+    - // @input Component.Text rightScore1
+    - // @input Component.Text leftScore2
+    - // @input Component.Text rightScore2

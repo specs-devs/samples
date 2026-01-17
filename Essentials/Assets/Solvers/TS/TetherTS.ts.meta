@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/32fa3cac-39d6-4434-9f15-26a8dfef86d9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 52125bba-b55f-4d1b-9873-6efa93b08e8b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 52125bba-b55f-4d1b-9873-6efa93b08e8b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 13c9127d-ac8a-4712-9b1c-15a98faff7ea
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/13c9127d-ac8a-4712-9b1c-15a98faff7ea>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1646e5b5-5c48-4d93-84ba-d556eaeecb87
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    flattenDuringTargetRotation: false
+    horizontalDistanceFromTarget: false
+    lerpSpeed: false
+    offset: false
+    reorientDuringTargetRotation: false
+    target: false
+    verticalDistanceFromTarget: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      verticalDistanceFromTarget: 0.100000
+      horizontalDistanceFromTarget: 0.100000
+      reorientDuringTargetRotation: true
+      flattenDuringTargetRotation: true
+      offset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      lerpSpeed: !<float> 5.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject target {"hint":"Override default target mainCamera"}'
+    - '// @input float verticalDistanceFromTarget = 0.1 {"hint":"Minimum vertical movement to recalculate position"}'
+    - '// @input float horizontalDistanceFromTarget = 0.1 {"hint":"Minimum horizontal movement to recalculate position"}'
+    - '// @input bool reorientDuringTargetRotation = true {"hint":"Should the content rotate and reposition with the target"}'
+    - '// @input bool flattenDuringTargetRotation = true {"hint":"Flatten Y-axis rotation during target rotation"}'
+    - '// @input vec3 offset = {0,0,0} {"hint":"Offset for tethering the content in relation to the target"}'
+    - '// @input float lerpSpeed = 5 {"hint":"Lerp speed for smooth movement"}'

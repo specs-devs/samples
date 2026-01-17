@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/6810e751-974e-46a4-8cbc-bdfc4cc6aef2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 44bb0081-8774-4dca-807f-4f0fe57a9a7d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 44bb0081-8774-4dca-807f-4f0fe57a9a7d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> bdf02715-2c85-42f4-b834-6b24db349fb4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/bdf02715-2c85-42f4-b834-6b24db349fb4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0370ffbb-0f35-49dd-85b7-a4f6c8544bb9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    distanceObject: false
+    planeTransform: false
+    snapDistance: false
+    snappingObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - planeTransform: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snappingObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snapDistance: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input SceneObject planeTransform {\"hint\":\"The reference for the plane's position and normal\"}"
+    - '// @input SceneObject snappingObject {"hint":"The object that will snap to the plane"}'
+    - '// @input SceneObject distanceObject {"hint":"The object used to measure distance to the plane for snap detection"}'
+    - '// @input float snapDistance = 1 {"hint":"How close the object needs to be to snap to the plane"}'

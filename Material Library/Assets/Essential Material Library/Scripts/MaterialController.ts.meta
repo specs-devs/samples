@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/473b7736-4ce5-4298-8ea3-4dab088ab12f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ca2cba1b-4101-4495-9692-f787668a3164
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ca2cba1b-4101-4495-9692-f787668a3164
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 14661ed1-6cbe-4a6d-811d-722ec0dda839
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/14661ed1-6cbe-4a6d-811d-722ec0dda839>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 10cc0c46-b405-466c-bebc-e23915a09982
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    nextButton: false
+    previousButton: false
+    sceneObjects: false
+    textObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sceneObjects: !<reference.SceneObject[]>
+        []
+      textObject: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      previousButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input SceneObject[] sceneObjects"
+    - // @input Component.Text textObject
+    - // @input AssignableType nextButton
+    - // @input AssignableType_1 previousButton

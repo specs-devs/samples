@@ -1,0 +1,80 @@
+- !<AssetImportMetadata/8a863595-e89d-47cb-8509-89b6dd06d064>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a684a791-e43c-4595-a411-9d1b39586fab
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a684a791-e43c-4595-a411-9d1b39586fab
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d4b9cb45-a6e6-4fcb-b2d8-af41e28a6ebf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d4b9cb45-a6e6-4fcb-b2d8-af41e28a6ebf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3603ddf9-0ed4-4326-8ee4-ffb02aa2c485
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _color: false
+    axisDirection: false
+    axisLength: false
+    centerObject: false
+    endRadiusAmplitude: false
+    followRotation: false
+    lineMaterial: false
+    lineStyle: false
+    lineWidth: false
+    loops: false
+    spiralType: false
+    startRadiusAmplitude: false
+    totalSegments: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - centerObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startRadiusAmplitude: !<float> 1.000000
+      endRadiusAmplitude: !<float> 1.000000
+      axisLength: !<float> 5.000000
+      loops: !<float> 3.000000
+      followRotation: true
+      axisDirection: !<float> 1.000000
+      lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      _color: !<Vec3> {x: 1.000000, y: 0.500000, z: 0.000000}
+      lineWidth: 0.500000
+      lineStyle: !<float> 0.000000
+      totalSegments: !<float> 120.000000
+      spiralType: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject centerObject {"hint":"The center point of the spiral"}'
+    - '// @input float startRadiusAmplitude = 1 {"hint":"The starting radius amplitude of the spiral"}'
+    - '// @input float endRadiusAmplitude = 1 {"hint":"The ending radius amplitude of the spiral"}'
+    - '// @input float axisLength = 5 {"hint":"Length of the spiral along its axis direction"}'
+    - '// @input float loops = 3 {"hint":"Number of complete loops in the spiral"}'
+    - "// @input bool followRotation = true {\"hint\":\"Whether the spiral should follow the center object's rotation\"}"
+    - '// @input float axisDirection = 1 {"hint":"Which axis the spiral should expand along (0=X, 1=Y, 2=Z)", "widget":"combobox", "values":[{"label":"X Axis", "value":0}, {"label":"Y Axis", "value":1}, {"label":"Z Axis", "value":2}]}'
+    - // @input Asset.Material lineMaterial
+    - '// @input vec3 _color = "{1, 0.5, 0}" {"widget":"color"}'
+    - // @input float lineWidth = 0.5
+    - '// @input float lineStyle {"widget":"combobox", "values":[{"label":"Full", "value":0}, {"label":"Split", "value":1}, {"label":"FadedEnd", "value":2}]}'
+    - '// @input float totalSegments = 120 {"hint":"Total number of segments for the entire spiral (higher = smoother)"}'
+    - '// @input float spiralType {"hint":"Type of spiral growth", "widget":"combobox", "values":[{"label":"Linear", "value":0}, {"label":"Exponential", "value":1}, {"label":"Logarithmic", "value":2}, {"label":"Helix", "value":3}]}'
