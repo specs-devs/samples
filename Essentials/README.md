@@ -62,7 +62,7 @@ For example:
 
 <img src="./README-ref/essentials-gizmos.png" alt="essentials-gizmos" width="500" />
 
-Exemples are purposefully made for you to modify them or add them to your projects.
+Examples are purposefully made for you to modify them or add them to your projects.
 They highlight a specific logic or mechanics in a legible way.  
 
 <img src="./README-ref/essentials-press.gif" alt="essentials-press" width="500" />
