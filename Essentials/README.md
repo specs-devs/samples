@@ -398,6 +398,10 @@ private handlePinchDown() {
 
 ## Testing the Lens
 
+In both instances below, the specific example you are trying to test should be the only example enabled. Enabling multiple examples at once may cause the examples not to work or cause confusion as to what elements go with what examples.
+
+To learn how to enable/disable objects in the Scene Hierarchy panel, refer to the guide provided [here](https://developers.snap.com/lens-studio/lens-studio-workflow/lens-studio-interface/panels#enabled--disabled-objects).
+
 ### In Lens Studio Editor
 
 Check out all of the single SceneObjects 1 by 1 and get what you need.  
