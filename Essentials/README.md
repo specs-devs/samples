@@ -404,7 +404,7 @@ To learn how to enable/disable objects in the Scene Hierarchy panel, refer to th
 
 ### In Lens Studio Editor
 
-View all of the single SceneObjects (1 by 1) to see which one you want to test.  
+To preview an example in Lens Studio, refer to the guide provided [here](https://developers.snap.com/lens-studio/lens-studio-workflow/previewing-your-lens).  
 
 ### In Spectacles Device
 
