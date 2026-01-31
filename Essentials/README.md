@@ -62,7 +62,7 @@ For example:
 
 <img src="./README-ref/essentials-gizmos.png" alt="essentials-gizmos" width="500" />
 
-Exemples are purposefully made for you to modify them or add them to your projects.
+Examples are purposefully made for you to modify them or add them to your projects.
 They highlight a specific logic or mechanics in a legible way.  
 
 <img src="./README-ref/essentials-press.gif" alt="essentials-press" width="500" />
@@ -398,9 +398,13 @@ private handlePinchDown() {
 
 ## Testing the Lens
 
+In both instances below, the specific example you are trying to test should be the only example enabled. Enabling multiple examples at once may cause the examples not to work or cause confusion as to what elements go with what examples.
+
+To learn how to enable/disable objects in the Scene Hierarchy panel, refer to the guide provided [here](https://developers.snap.com/lens-studio/lens-studio-workflow/lens-studio-interface/panels#enabled--disabled-objects).
+
 ### In Lens Studio Editor
 
-Check out all of the single SceneObjects 1 by 1 and get what you need.  
+To preview an example in Lens Studio, refer to the guide provided [here](https://developers.snap.com/lens-studio/lens-studio-workflow/previewing-your-lens).  
 
 ### In Spectacles Device
 
