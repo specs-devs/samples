@@ -27,11 +27,11 @@ export class ArcheryProjectileManagerTS extends BaseScriptComponent {
   projectile!: ObjectPrefab
 
   @input
-  @hint("Start point for the charging line")
+  @hint("Start point for the shooting ray")
   shootingRayStart!: SceneObject
 
   @input
-  @hint("End point for the charging line")
+  @hint("End point for the shooting ray")
   shootingRayEnd!: SceneObject
 
   @input
