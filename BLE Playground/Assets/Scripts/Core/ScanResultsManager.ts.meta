@@ -1,0 +1,85 @@
+- !<AssetImportMetadata/42de9a23-41ae-4a9a-a1a5-99499bd5a832>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 07ddf64b-2bfb-4ceb-94e3-e4b323916195
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 07ddf64b-2bfb-4ceb-94e3-e4b323916195
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1d1bc92a-ef1f-4cb9-b806-ee86bf8cb348
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1d1bc92a-ef1f-4cb9-b806-ee86bf8cb348>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: dac4c016-10ad-47d8-bff9-3a8b055f265e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    climateTex: false
+    connectedTex: false
+    disconnectedTex: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    filterButtonToggle: false
+    gridLayoutParent: false
+    hrmTex: false
+    lightTex: false
+    maxSlots: false
+    unknownTex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - gridLayoutParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      filterButtonToggle: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      lightTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      hrmTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      climateTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      unknownTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      connectedTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      disconnectedTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      maxSlots: !<float> 12.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ScanResultsManager – scan result card manager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Uses existing GridLayout button children as slots for discovered BLE devices.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject gridLayoutParent {"hint":"GridLayout scene object — existing button children are used as device card slots."}'
+    - '// @input AssignableType filterButtonToggle {"hint":"Rectangle button (Toggleable on) that enables filtering to show only known device types"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Type Icons</span>"}'
+    - '// @input Asset.Texture lightTex {"hint":"Icon texture for Hue light peripheral type"}'
+    - '// @input Asset.Texture hrmTex {"hint":"Icon texture for heart rate monitor peripheral type"}'
+    - '// @input Asset.Texture climateTex {"hint":"Icon texture for climate sensor peripheral type"}'
+    - '// @input Asset.Texture unknownTex {"hint":"Icon texture for unknown peripheral type"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Connection Icons</span>"}'
+    - '// @input Asset.Texture connectedTex {"hint":"Texture shown on the connection image when the device is connected"}'
+    - '// @input Asset.Texture disconnectedTex {"hint":"Texture shown on the connection image when the device is disconnected"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Settings</span>"}'
+    - '// @input float maxSlots = 12 {"hint":"Maximum number of scan result cards to display (capped by actual grid children count)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

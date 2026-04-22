@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/3b119d20-bb14-4bf5-a326-2b96d044dc65>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 59491b38-58e8-4937-a76b-165a2ed86093
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 59491b38-58e8-4937-a76b-165a2ed86093
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2358013f-0559-4d3d-8503-dbf8ae099b20
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2358013f-0559-4d3d-8503-dbf8ae099b20>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ae5a734b-eb9f-475c-b905-31daafa324c6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    asrQueryController: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    snap3DFactory: false
+    targetPosition: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snap3DFactory: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      asrQueryController: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      targetPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">InteractableSnap3DGenerator – voice-driven 3D generation</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Connects ASR voice queries to the Snap3D factory to generate 3D objects in the scene.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType snap3DFactory {"hint":"Snap3DInteractableFactory used to create 3D objects from text prompts"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType_1 asrQueryController {"hint":"ASRQueryController that fires voice query events"}'
+    - '// @input SceneObject targetPosition {"hint":"SceneObject whose world position is used as the spawn target for generated objects"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

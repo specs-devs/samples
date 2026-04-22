@@ -1,0 +1,84 @@
+- !<AssetImportMetadata/1fbaaa8b-f1c1-48f0-a63d-f701a26bb84d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 54099172-e311-4b2a-9536-8be605a7d7be
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 54099172-e311-4b2a-9536-8be605a7d7be
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 03b3df2f-3aca-4a44-849c-ce9f9f8a1b5a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/03b3df2f-3aca-4a44-849c-ce9f9f8a1b5a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0bf2883a-3382-4998-a0ca-6086cbce980d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    dynamicAudioOutput: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    haveAudioOutput: false
+    haveVideoInput: false
+    instructions: false
+    microphoneRecorder: false
+    voice: false
+    websocketRequirementsObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - websocketRequirementsObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      dynamicAudioOutput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      microphoneRecorder: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      instructions: You are a helpful assistant that loves to make puns
+      haveVideoInput: false
+      haveAudioOutput: false
+      voice: Puck
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GeminiAssistant – Gemini Live connection</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Connects to the Gemini Live API via WebSocket for real-time audio and video streaming.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Setup</span>"}'
+    - '// @ui {"widget":"group_start", "label":"Setup"}'
+    - '// @input SceneObject websocketRequirementsObj {"hint":"SceneObject that enables the WebSocket requirements when the session starts"}'
+    - '// @input AssignableType dynamicAudioOutput {"hint":"DynamicAudioOutput component for PCM16 audio playback"}'
+    - '// @input AssignableType_1 microphoneRecorder {"hint":"MicrophoneRecorder component for capturing microphone input"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Inputs</span>"}'
+    - '// @ui {"widget":"group_start", "label":"Inputs"}'
+    - '// @input string instructions = "You are a helpful assistant that loves to make puns" {"hint":"System instruction text sent to Gemini on session setup", "widget":"text_area"}'
+    - '// @input bool haveVideoInput {"hint":"Send camera frames to Gemini alongside microphone audio"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Outputs</span>"}'
+    - '// @ui {"widget":"group_start", "label":"Outputs"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: yellow;\">⚠️ To prevent audio feedback loop in Lens Studio Editor, use headphones or manage your microphone input.</span>"}'
+    - '// @input bool haveAudioOutput {"hint":"Enable audio output from Gemini responses"}'
+    - '// @input string voice = "Puck" {"hint":"Voice name for Gemini audio output", "widget":"combobox", "values":[{"label":"Puck", "value":"Puck"}, {"label":"Charon", "value":"Charon"}, {"label":"Kore", "value":"Kore"}, {"label":"Fenrir", "value":"Fenrir"}, {"label":"Aoede", "value":"Aoede"}, {"label":"Leda", "value":"Leda"}, {"label":"Orus", "value":"Orus"}, {"label":"Zephyr", "value":"Zephyr"}], "showIf":"haveAudioOutput", "showIfValue":true}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

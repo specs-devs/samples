@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/2b601122-e209-48ba-b008-f881d6992da5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 718ddc78-341e-4731-8410-4a5962659cb8
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 718ddc78-341e-4731-8410-4a5962659cb8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4a1595b8-2953-458f-bfe3-243769e1018c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4a1595b8-2953-458f-bfe3-243769e1018c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5499d12f-356d-4bc0-b8e5-4f52e6d81ec5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    photoImage: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - photoImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WidgetBase – Abstract base class for all widget types</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Extended by NoteWidget, WatchWidget, PhotoWidget. Do not attach directly.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PhotoWidget – Photo display</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.Image photoImage {"hint":"Image component for photo display"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging"}'

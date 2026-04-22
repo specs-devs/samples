@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/2c6a3564-0385-454b-94f3-83f8cd69bf1c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8ca8d764-7491-404b-a7b8-337601a4e6f4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8ca8d764-7491-404b-a7b8-337601a4e6f4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5b4d1787-b6be-4984-90fd-092c7ff572cb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5b4d1787-b6be-4984-90fd-092c7ff572cb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 92378ccd-4a67-411d-a869-44ac3a20c84a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _audioComponent: false
+    _dynamicAudioOutput: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - _dynamicAudioOutput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      _audioComponent: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Music Player – PCM audio playback controller</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages DynamicAudioOutput and detects playback completion.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType _dynamicAudioOutput {"hint":"DynamicAudioOutput component used for PCM audio streaming"}'
+    - '// @input Component.AudioComponent _audioComponent {"hint":"AudioComponent used to detect when playback finishes"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

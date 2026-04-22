@@ -1,0 +1,31 @@
+input_float D1;
+input_float D2;
+input_float D3;
+input_float D4;
+input_float CornerRadius;
+output_vec4 Result;
+
+void main()
+{
+    float u = D3 / D4;
+    float v = D2 / D1;
+
+    float halfW = sqrt(D4);
+    float halfH = sqrt(D1);
+    float aspect = halfW / halfH;
+
+    float r = CornerRadius;
+    float rU = r / aspect;
+    float rV = r;
+
+    vec2 uv = vec2(u, v) - 0.5;
+    vec2 halfSize = vec2(0.5, 0.5);
+    vec2 cornerR = vec2(rU, rV);
+    vec2 q = abs(uv) - halfSize + cornerR;
+
+    vec2 qScaled = vec2(q.x * aspect, q.y);
+    float sdf = length(max(qScaled, 0.0)) - r;
+
+    float inside = 1.0 - smoothstep(-0.005, 0.005, sdf);
+    Result = vec4(inside, 0.0, 0.0, 0.0);
+}

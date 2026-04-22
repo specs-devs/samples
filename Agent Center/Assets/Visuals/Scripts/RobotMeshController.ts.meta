@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/6768c20b-c774-48d2-929c-e8f7840ef879>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4ed2048e-d913-4cee-96e3-cdee351e49d0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4ed2048e-d913-4cee-96e3-cdee351e49d0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> cb9f84f7-4fdf-42a0-95fe-ccd0f5cf6f7b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/cb9f84f7-4fdf-42a0-95fe-ccd0f5cf6f7b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 695c7b05-a87b-427b-8039-826e3069b7d2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    currentState: false
+    currentTheme: false
+    pinched: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - currentState: idle
+      currentTheme: robot
+      pinched: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string currentState = "idle" {"widget":"combobox", "values":[{"label":"IDLE", "value":"idle"}, {"label":"LISTENING", "value":"listening"}, {"label":"THINKING", "value":"thinking"}, {"label":"TOOL_CALL", "value":"tool_call"}, {"label":"IGNORING", "value":"ignoring"}, {"label":"SLEEPING", "value":"sleeping"}, {"label":"ERROR", "value":"error"}, {"label":"DEACTIVATED", "value":"deactivated"}, {"label":"CONNECTING", "value":"connecting"}, {"label":"AWAITING_ACTION", "value":"awaiting_action"}]}'
+    - '// @input string currentTheme = "robot" {"widget":"combobox", "values":[{"label":"Cat", "value":"cat"}, {"label":"Owl", "value":"owl"}, {"label":"Ghost", "value":"ghost"}, {"label":"Axolotl", "value":"axolotl"}, {"label":"CRT TV", "value":"crt"}, {"label":"Robot", "value":"robot"}]}'
+    - // @input bool pinched

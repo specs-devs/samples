@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/6e618fad-9a77-4c73-a067-242e8a1d4050>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3ffd1cf9-217f-4f7e-9a19-34561f14c1a1
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3ffd1cf9-217f-4f7e-9a19-34561f14c1a1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f4e5848f-7abf-4494-a384-44ef076c2503
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f4e5848f-7abf-4494-a384-44ef076c2503>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 937afe21-8f84-4e04-8306-7bff3e58351c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WidgetBase – Abstract base class for all widget types</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Extended by NoteWidget, WatchWidget, PhotoWidget. Do not attach directly.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

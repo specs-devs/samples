@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/c0998bac-675d-40d4-8ac8-f34432227245>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b2fa94e3-f9ac-4d91-8ee2-55e8a47ee80e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b2fa94e3-f9ac-4d91-8ee2-55e8a47ee80e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 39a9f98c-6574-4d9c-8ce2-7efba6dfbd2c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/39a9f98c-6574-4d9c-8ce2-7efba6dfbd2c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: dfda3cd7-6221-43d3-946c-e6d9eb309ace
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    navigationModule: false
+    panelManager: false
+    placesApi: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      navigationModule: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      placesApi: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - // @input AssignableType panelManager
+    - // @input AssignableType_1 navigationModule
+    - // @input AssignableType_2 placesApi
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

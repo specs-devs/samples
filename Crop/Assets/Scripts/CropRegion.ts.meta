@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/a3e823f3-04fa-46e1-97ea-e64fcf7c3e07>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2780cbc4-fc22-4209-a193-2e86cb12c031
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2780cbc4-fc22-4209-a193-2e86cb12c031
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 077ef33a-a314-4c14-bfed-0237eddf26ef
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/077ef33a-a314-4c14-bfed-0237eddf26ef>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 639b0802-2bb1-44a5-9a35-a0584cbc92d2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraService: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    pointsToTrack: false
+    screenCropTexture: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      pointsToTrack: !<reference.SceneObject[]>
+        []
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CropRegion – maps 3D tracking points to camera crop texture</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Projects scene objects into camera space each frame and updates the crop texture rectangle accordingly.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType cameraService {"hint":"CameraService providing world-to-camera-space projection"}'
+    - '// @input Asset.Texture screenCropTexture {"hint":"Crop texture whose rectangle is updated each frame"}'
+    - '// @input SceneObject[] pointsToTrack {"hint":"Scene objects whose positions define the crop boundary corners"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

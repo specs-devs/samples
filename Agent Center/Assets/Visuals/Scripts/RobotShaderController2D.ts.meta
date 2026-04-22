@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/7cd23d20-7b69-4cf1-8c74-8b1b3a192957>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> eef52bca-62ba-49f8-8111-f4dddd5a4530
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> eef52bca-62ba-49f8-8111-f4dddd5a4530
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b0a3ee15-ef75-4532-b529-38c0002e867a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b0a3ee15-ef75-4532-b529-38c0002e867a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 29921ef1-8767-4afc-848e-1467050ab865
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    currentState: false
+    currentTheme: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - currentState: idle
+      currentTheme: robot
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string currentState = "idle" {"widget":"combobox", "values":[{"label":"IDLE", "value":"idle"}, {"label":"LISTENING", "value":"listening"}, {"label":"THINKING", "value":"thinking"}, {"label":"TOOL_CALL", "value":"tool_call"}, {"label":"IGNORING", "value":"ignoring"}, {"label":"SLEEPING", "value":"sleeping"}, {"label":"ERROR", "value":"error"}, {"label":"DEACTIVATED", "value":"deactivated"}, {"label":"CONNECTING", "value":"connecting"}, {"label":"AWAITING_ACTION", "value":"awaiting_action"}]}'
+    - '// @input string currentTheme = "robot" {"widget":"combobox", "values":[{"label":"Cat", "value":"cat"}, {"label":"Owl", "value":"owl"}, {"label":"Ghost", "value":"ghost"}, {"label":"Axolotl", "value":"axolotl"}, {"label":"CRT TV", "value":"crt"}, {"label":"Robot", "value":"robot"}]}'

@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/ac917b4e-9b2d-4931-820d-d4575fc4c7a0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d3732e6d-aa7e-4b7d-b272-0edf10613022
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d3732e6d-aa7e-4b7d-b272-0edf10613022
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b3b2353d-a6c5-4489-ba91-549fcbbca187
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b3b2353d-a6c5-4489-ba91-549fcbbca187>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b2967a91-eb63-40d5-a58c-c31af4e1a66d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationDuration: false
+    aspectRatio: false
+    loop: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - aspectRatio: 0.562500
+      loop: false
+      animationDuration: !<float> 2.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input float aspectRatio = 1
+    - // @input bool loop
+    - // @input float animationDuration = 2

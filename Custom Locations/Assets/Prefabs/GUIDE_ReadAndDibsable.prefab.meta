@@ -1,0 +1,147 @@
+- !<AssetImportMetadata/cedbb18e-1c09-45bf-a53a-5602b62be855>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 04eb8a4d-d189-4646-ba70-6a20425becb7
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 04eb8a4d-d189-4646-ba70-6a20425becb7
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 67672f50-b6e3-41c5-a034-68b3c89a02e5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/67672f50-b6e3-41c5-a034-68b3c89a02e5>
+  Prototype: !<ObjectOwner/385f4183-66cb-42df-ab07-760665d030b3>
+    PackagePath: ""
+    objects:
+      - !<own> eb9872c4-5adc-40c8-4c97-f8170f9ac8b6
+- !<Text/72eaaf51-73bd-41e9-74e1-510bcd44d789>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Custom Location
+    
+    This project enables you to recognize small to mid-sized environments in two simple steps.
+    
+    Step 1: Scan the Location
+    
+    Open the Custom Location Lens in Lens Explorer.
+    Scan up to five areas within the location you want to recognize.
+    
+    Once the scanning process is complete, you will receive a location code.
+    
+    Step 2: Load the Location
+    
+    Enter the generated code into the LocationRoot field.
+    Click “Load Group” to reload and activate the saved location.
+    
+    Step 3: Anchor your scene objects
+    
+    Just lilke the placeholder example you see here, place your scene object under the chidren of the location root. They will show up when you are physically exploring that location. 
+    
+    Best Practices
+    
+    This Lens works best in small to mid-sized environments.
+    
+    Spaces with strong visual contrast and distinct, recognizable objects produce better results.
+    
+    For example, a small lobby area with a couch and table is ideal.
+    
+    Learn more:
+    https://developers.snap.com/spectacles/about-spectacles-features/apis/custom-locations
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 60
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/eb9872c4-5adc-40c8-4c97-f8170f9ac8b6>
+  PrefabRemaps:
+    []
+  Name: GUIDE_ReadAndDibsable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 72eaaf51-73bd-41e9-74e1-510bcd44d789

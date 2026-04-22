@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/4ff3f36c-5578-dc3a-ffe6-3964f66f956b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 642def51-e04f-4bfa-b57c-b9a20d3588df
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 642def51-e04f-4bfa-b57c-b9a20d3588df
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3c70b37c-93b6-41af-b2fc-34afa34d4d36
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3c70b37c-93b6-41af-b2fc-34afa34d4d36>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: bc4b8421-d817-45d4-abce-c7635aed8728
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audioController: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - audioController: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">VolumeController – dual-deck volume crossfader</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Call setVolume(0-1) to crossfade between deck 1 and deck 2.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.ScriptComponent audioController {"hint":"AudioController script component to control"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/00e5e00a-7314-48a8-b3c1-f6370fbd99a0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 282e26e7-7c80-460b-867c-eddd5b6dc75c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 282e26e7-7c80-460b-867c-eddd5b6dc75c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 91e148ef-da34-4c24-b0f5-1d94fb152bc8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/91e148ef-da34-4c24-b0f5-1d94fb152bc8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 24b1d85e-2cfa-4951-ab28-b6c9b63ca5ca
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    mapComponent: false
+    mapboxApiKey: false
+    navigationDataComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mapboxApiKey: ""
+      navigationDataComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      mapComponent: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string mapboxApiKey {"hint":"Mapbox public access token (pk.…)"}'
+    - '// @input AssignableType navigationDataComponent {"hint":"NavigationDataComponent driving the current navigation session"}'
+    - '// @input AssignableType_1 mapComponent {"hint":"MapComponent used to receive live GPS position updates"}'

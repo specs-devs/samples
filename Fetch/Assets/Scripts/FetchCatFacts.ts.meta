@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/9350bd03-4579-48ae-879d-83472591319b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 871459bf-f019-4184-9dd4-aa5f7e537a1a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 871459bf-f019-4184-9dd4-aa5f7e537a1a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b4f6b1fb-4ef8-47c8-9a6d-19a9fbc5cb3c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b4f6b1fb-4ef8-47c8-9a6d-19a9fbc5cb3c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 74a42a01-5a80-4da2-a57c-d1eaeb086319
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FetchCatFacts – Fetches cat facts from a remote API</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Triggers HTTP GET requests and exposes results via the catFactReceived event.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/3f18fddb-0035-497f-a67e-de5512e50d01>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4e55312b-0a58-4b31-bd6d-03e9ecf904a2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4e55312b-0a58-4b31-bd6d-03e9ecf904a2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ea82fcd1-5591-455a-abf1-3e40167fce8d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ea82fcd1-5591-455a-abf1-3e40167fce8d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 836862bf-1fdb-4c12-9f75-af6f5875ef5c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    lineEnd: false
+    lineStart: false
+    visual: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - visual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AirHockeyPaddle – Line-constrained networked paddle</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Projects the grabbed handle onto a line segment; syncs position via StorageProperty.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject visual {"hint":"The visible paddle object (mesh + physics collider) that slides on the line"}'
+    - '// @input SceneObject lineStart {"hint":"Start point of the movement line"}'
+    - '// @input SceneObject lineEnd {"hint":"End point of the movement line"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

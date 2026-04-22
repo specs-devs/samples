@@ -1,0 +1,78 @@
+- !<AssetImportMetadata/40328449-967d-4783-93c8-10c8e547b135>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 91140710-b20c-470b-88b2-1d28973978f4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 91140710-b20c-470b-88b2-1d28973978f4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6451723e-607e-4bb9-9bd1-a1250febc270
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6451723e-607e-4bb9-9bd1-a1250febc270>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: dace00d9-371f-40c2-a1f2-490117c814ce
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _beginColor: false
+    _endColor: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endPointObject: false
+    lineLength: false
+    lineMaterial: false
+    lineStyle: false
+    lineWidth: false
+    shouldStick: false
+    startPointObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - startPointObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPointObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      _beginColor: !<Vec3> {x: 1.000000, y: 1.000000, z: 0.000000}
+      _endColor: !<Vec3> {x: 1.000000, y: 1.000000, z: 0.000000}
+      lineWidth: 0.500000
+      lineLength: !<float> 160.000000
+      lineStyle: !<float> 2.000000
+      shouldStick: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Line – visual line renderer between two scene objects</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Renders a dynamic line between two points using InteractorLineRenderer, updated every frame.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject startPointObject {"hint":"The SceneObject marking the start of the line"}'
+    - '// @input SceneObject endPointObject {"hint":"The SceneObject marking the end of the line"}'
+    - '// @input Asset.Material lineMaterial {"hint":"Material used to render the line"}'
+    - '// @input vec3 _beginColor = "{1, 1, 0}" {"hint":"Color at the start of the line", "widget":"color"}'
+    - '// @input vec3 _endColor = "{1, 1, 0}" {"hint":"Color at the end of the line", "widget":"color"}'
+    - '// @input float lineWidth = 0.5 {"hint":"Thickness of the line in world units"}'
+    - '// @input float lineLength = 160 {"hint":"Length of the line in units"}'
+    - '// @input float lineStyle = 2 {"hint":"Visual style of the line (Full, Split, or FadedEnd)", "widget":"combobox", "values":[{"label":"Full", "value":0}, {"label":"Split", "value":1}, {"label":"FadedEnd", "value":2}]}'
+    - '// @input bool shouldStick = true {"hint":"Whether the line should stick to its endpoint objects"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

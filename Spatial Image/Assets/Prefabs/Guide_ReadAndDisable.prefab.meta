@@ -1,0 +1,136 @@
+- !<AssetImportMetadata/800907a5-6b76-4515-a99e-2ac122325fa5>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 02ea3586-865a-4d35-9f9c-2e7d68dc3fe3
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 02ea3586-865a-4d35-9f9c-2e7d68dc3fe3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 14dbd303-88f0-4c5c-9552-db75b836213b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/14dbd303-88f0-4c5c-9552-db75b836213b>
+  Prototype: !<ObjectOwner/2ab64d1b-ba78-4a97-af2c-d47c141a3845>
+    PackagePath: ""
+    objects:
+      - !<own> 2e7091b9-ac08-4cf1-4c9a-056d29f8d78f
+- !<SceneObject/2e7091b9-ac08-4cf1-4c9a-056d29f8d78f>
+  PrefabRemaps:
+    []
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5c7e5d9a-8f1e-41b1-7eca-58d6d1c7b0c6
+- !<Text/5c7e5d9a-8f1e-41b1-7eca-58d6d1c7b0c6>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 200
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    This series of examples demonstrates different approaches to creating spatial image and video effects.
+    
+    1. Spatial Image API 
+    
+    This API takes an image as input, converts it into a spatial representation, and returns a mesh.
+    Multiple meshes can be enabled one at a time to create and play a full sequence.
+    The API is powered by the Remote Service Gateway.
+    
+    2. Gaussian Splatting
+    
+    This local feature takes a .ply file as input and renders it as a spatial scene.
+    By clicking the “+” icon in the Asset Browser and selecting “Gaussian Splatting from .ply files,” you can import a sequence of .ply files and play them back as a spatial video.
+    
+    3. Experimental Depth Estimation
+    
+    This system runs locally using an .onnx model to estimate depth from images.
+    It generates a 3D representation of each frame by predicting depth and displaying it in three dimensions.
+    
+    To get started enable one example at the time and learn about the utility in the inspector panel
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false

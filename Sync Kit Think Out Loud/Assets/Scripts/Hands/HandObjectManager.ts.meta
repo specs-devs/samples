@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/0c3223bd-b5cb-4d04-a3ee-3f77beb5e6d1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> db17ffa9-d6b6-44fb-abd5-5c616966009f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> db17ffa9-d6b6-44fb-abd5-5c616966009f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d2f70516-48ab-4441-8f29-c852399636f8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d2f70516-48ab-4441-8f29-c852399636f8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b6935fa8-5fee-44aa-baf1-342b201ce432
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    instantiator: false
+    leftHandPrefab: false
+    rightHandPrefab: false
+    testingMode: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      leftHandPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      rightHandPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      testingMode: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HandObjectManager – manages instantiation of synced hand objects for all players</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Instantiates left and right hand prefabs once the session and instantiator are ready.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType instantiator {"hint":"Instantiator component for creating synced hand objects"}'
+    - '// @input Asset.ObjectPrefab leftHandPrefab {"hint":"Prefab used for the left hand visual"}'
+    - '// @input Asset.ObjectPrefab rightHandPrefab {"hint":"Prefab used for the right hand visual"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Settings</span>"}'
+    - '// @input bool testingMode {"hint":"Enable testing mode; uses camera offset instead of hand tracking"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

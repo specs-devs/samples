@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/6faa1100-db6a-4227-903a-ef670507ca5f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ae33bdec-795d-4de2-9bfc-62138c3e1253
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ae33bdec-795d-4de2-9bfc-62138c3e1253
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c5dfe62-4415-44c6-83a4-bb2e93bee79c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c5dfe62-4415-44c6-83a4-bb2e93bee79c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 94336627-5a05-4acb-b18a-93b65f28650f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    defaultScale: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    refineMesh: false
+    targetPosition: false
+    useVertexColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - targetPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      refineMesh: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+      useVertexColor: false
+      defaultScale: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ModelGen</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject targetPosition {"hint":"Scene object reference for the 3D model position"}'
+    - '// @input bool refineMesh = true {"hint":"Enable mesh refinement for higher quality models"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'
+    - '// @input bool useVertexColor {"hint":"Use vertex colors in generated models"}'
+    - '// @input float defaultScale = 1 {"hint":"Default model scale for generated objects", "widget":"slider", "min":0.1, "max":5, "step":0.1}'

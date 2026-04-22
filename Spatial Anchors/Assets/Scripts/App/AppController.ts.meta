@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/fbefae12-7396-4c78-be35-8ebc227ac0ad>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5e6abcb8-32f0-4b7d-83fb-2ba54944368b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5e6abcb8-32f0-4b7d-83fb-2ba54944368b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a04d3a45-67ff-4469-9cb3-2596de2e77ff
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a04d3a45-67ff-4469-9cb3-2596de2e77ff>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 795d7a04-cf4a-40cf-b92d-b3b401588a82
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    noteWidgetPrefab: false
+    photoWidgetPrefab: false
+    rootContainer: false
+    watchWidgetPrefab: false
+    widgetParent: false
+    worldQueryModule: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rootContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      widgetParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      worldQueryModule: !<reference.WorldQueryModule> 00000000-0000-0000-0000-000000000000
+      noteWidgetPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      watchWidgetPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      photoWidgetPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AppController – Main entry point and lifecycle coordinator</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Attach to a single SceneObject. Wire minimal inspector refs below.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
+    - '// @input SceneObject rootContainer {"hint":"Parent SceneObject for all programmatic UI"}'
+    - '// @input SceneObject widgetParent {"hint":"Parent SceneObject for spawned widgets (has AnchorComponent)"}'
+    - '// @input Component.Camera camera {"hint":"World camera reference"}'
+    - '// @input Asset.WorldQueryModule worldQueryModule {"hint":"WorldQueryModule for surface snapping"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Widget Prefabs</span>"}'
+    - '// @input Asset.ObjectPrefab noteWidgetPrefab {"hint":"Prefab for Note Widget (scene object with NoteWidget script)"}'
+    - '// @input Asset.ObjectPrefab watchWidgetPrefab {"hint":"Prefab for Watch Widget (scene object with WatchWidget script)"}'
+    - '// @input Asset.ObjectPrefab photoWidgetPrefab {"hint":"Prefab for Photo Widget (scene object with PhotoWidget script)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onDestroy)"}'

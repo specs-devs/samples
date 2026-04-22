@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/68f0452f-30eb-af42-3ebb-ec82beb5b3ac>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5ca3b2a2-f223-4b44-817c-bb6e705a8619
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5ca3b2a2-f223-4b44-817c-bb6e705a8619>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e705b658-9969-45c2-a9f1-fcb20021b0d7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    activityIndicator: false
+    button: false
+    transcriptionText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - button: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      activityIndicator: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      transcriptionText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ASRQueryController – voice query capture controller</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Records a voice query on button pinch and emits the transcribed string via onQueryEvent.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType button {"hint":"Round button that triggers voice recording when pinched"}'
+    - '// @input SceneObject activityIndicator {"hint":"Scene object shown while recording is active, hidden when idle"}'
+    - '// @input Component.Text transcriptionText {"hint":"Text component that displays the live ASR transcription"}'
