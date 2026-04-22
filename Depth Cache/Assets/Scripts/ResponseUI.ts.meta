@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/5f2a0479-2dbd-4a5d-bffb-5e0e47f1deae>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 27c1eb2d-80a7-4f22-9f87-5ac19ef55eae
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 27c1eb2d-80a7-4f22-9f87-5ac19ef55eae
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9f471734-224d-446e-863c-9b8404f4cc8b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9f471734-224d-446e-863c-9b8404f4cc8b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 57caa9cc-18c0-4b44-935b-04c29030ee6a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    responseAIText: false
+    responseUIObj: false
+    worldArrowPrefab: false
+    worldLabelPrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - responseAIText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      worldLabelPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      worldArrowPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      responseUIObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ResponseUI – AI response bubble and world labels</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages the response bubble and instantiates world-space labels from Gemini output.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.Text responseAIText {"hint":"Text component displaying the AI response message"}'
+    - '// @input Asset.ObjectPrefab worldLabelPrefab {"hint":"Prefab for label world objects"}'
+    - '// @input Asset.ObjectPrefab worldArrowPrefab {"hint":"Prefab for arrow world objects"}'
+    - '// @input SceneObject responseUIObj {"hint":"Root scene object for the response UI bubble"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

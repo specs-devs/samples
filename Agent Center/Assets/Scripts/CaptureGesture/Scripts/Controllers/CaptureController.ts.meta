@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/373dcf29-04fa-45d3-8402-7ff3096e11be>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 26196b1b-ae8f-4637-afd9-2e584592d5a4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 26196b1b-ae8f-4637-afd9-2e584592d5a4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7958f882-70a2-4a80-b96e-75a22c9dcbb2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7958f882-70a2-4a80-b96e-75a22c9dcbb2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d6177351-e36b-4c47-ae74-616b9e07b7ea
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    gestureMode: false
+    picAnchorObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - gestureMode: both
+      picAnchorObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string gestureMode = "both" {"widget":"combobox", "values":[{"label":"Both", "value":"both"}, {"label":"Double Hand", "value":"double"}, {"label":"Single Hand", "value":"single"}]}'
+    - // @input SceneObject picAnchorObj

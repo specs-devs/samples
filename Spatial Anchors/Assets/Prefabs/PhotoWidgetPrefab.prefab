@@ -1,0 +1,77 @@
+- !<ObjectPrefab/7b62f455-086b-4c0e-8d9c-872e961a9697>
+  PackagePath: ""
+  objects:
+    - !<own> 8ca9b169-b73f-47b1-9476-e6a1c031ddf3
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/20d3f02f-5baf-486d-83a6-ba669044fdeb>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.100000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 18.000000, y: 18.000000, z: 18.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b8fd0548-cb16-4422-baa1-194f71b5eaff
+- !<ScriptComponent/583694cb-4c1f-4a7d-a3a6-f95d96e52da3>
+  PrefabRemaps:
+    []
+  Name: PhotoWidget
+  Enabled: true
+  ScriptAsset: !<reference> 718ddc78-341e-4731-8410-4a5962659cb8
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      photoImage: !<reference.Image> b8fd0548-cb16-4422-baa1-194f71b5eaff
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/8ca9b169-b73f-47b1-9476-e6a1c031ddf3>
+  PrefabRemaps:
+    - 20d3f02f-5baf-486d-83a6-ba669044fdeb: 30e213fc-bf63-4006-b482-56e72b0a42a0
+    - 583694cb-4c1f-4a7d-a3a6-f95d96e52da3: 583694cb-4c1f-4a7d-5c59-06a2691ad25c
+    - 8ca9b169-b73f-47b1-9476-e6a1c031ddf3: 8ca9b169-b73f-47b1-6b89-195e3fce220c
+    - b8fd0548-cb16-4422-baa1-194f71b5eaff: f6023058-655d-4ce4-9f59-9d257ab0c2e4
+  Name: WeatherWidgetPrefab
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 20d3f02f-5baf-486d-83a6-ba669044fdeb
+  Components:
+    - !<own> 583694cb-4c1f-4a7d-a3a6-f95d96e52da3
+- !<Image/b8fd0548-cb16-4422-baa1-194f71b5eaff>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1f279c57-a9e1-4020-8a59-d7ae18976f05
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000

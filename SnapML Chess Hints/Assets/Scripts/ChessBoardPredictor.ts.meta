@@ -1,0 +1,118 @@
+- !<AssetImportMetadata/a3e823f3-04fa-46e1-97ea-e64fcf7c3e07>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2780cbc4-fc22-4209-a193-2e86cb12c031
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2780cbc4-fc22-4209-a193-2e86cb12c031
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 077ef33a-a314-4c14-bfed-0237eddf26ef
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/077ef33a-a314-4c14-bfed-0237eddf26ef>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7614ae22-7c5b-43d0-9429-34eb9a1a98b4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    AISearchDepth: false
+    blackLetter: false
+    boardInterface: false
+    cameraService: false
+    cornerLeftMarker: false
+    cornerRightMarker: false
+    debugImage: false
+    detectionController: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    hintButton: false
+    hintButtonText: false
+    markerLeft: false
+    markerRight: false
+    positionPlane: false
+    renderService: false
+    resetButton: false
+    screenCropTexture: false
+    useStockfish: false
+    whiteLetter: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - useStockfish: false
+      AISearchDepth: !<float> 4.000000
+      cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      renderService: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      detectionController: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      debugImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      whiteLetter: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      blackLetter: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      boardInterface: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      hintButtonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      resetButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      positionPlane: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      markerLeft: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      markerRight: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cornerLeftMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cornerRightMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ChessBoardPredictor – chess board detection and hint orchestration</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Processes ML detections, aligns board geometry, and requests AI move suggestions.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AI Settings</span>"}'
+    - '// @input bool useStockfish {"hint":"Use Stockfish API instead of Gemini for move suggestions"}'
+    - '// @input float AISearchDepth = 8 {"hint":"Search depth for the Stockfish engine", "widget":"slider", "min":1, "max":12, "step":1, "showIf":"useStockfish"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
+    - '// @input AssignableType cameraService {"hint":"Camera service that provides camera frames and pose data"}'
+    - '// @input AssignableType_1 renderService {"hint":"Render service used to display board markers and move hints"}'
+    - '// @input AssignableType_2 detectionController {"hint":"Detection controller that visualizes bounding boxes for detected pieces"}'
+    - '// @input Component.Image debugImage {"hint":"Debug image overlay showing the ML model input frame"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Textures</span>"}'
+    - '// @input Asset.Texture screenCropTexture {"hint":"Cropped camera texture fed into the ML model"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Piece Prefabs</span>"}'
+    - '// @input Asset.ObjectPrefab whiteLetter {"hint":"Prefab used to instantiate white piece label overlays"}'
+    - '// @input Asset.ObjectPrefab blackLetter {"hint":"Prefab used to instantiate black piece label overlays"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Board UI</span>"}'
+    - '// @input SceneObject boardInterface {"hint":"Root object of the board UI panel"}'
+    - '// @input AssignableType_3 hintButton {"hint":"UIKit RectangleButton that triggers the AI hint request"}'
+    - "// @input Component.Text hintButtonText {\"hint\":\"Text component on the hint button – updated to '...' while fetching and back to 'Get Hint' when done\"}"
+    - '// @input AssignableType_4 resetButton {"hint":"UIKit RectangleButton that resets board alignment – shown on palm-up gesture"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Board Geometry</span>"}'
+    - '// @input SceneObject positionPlane {"hint":"Plane object used to define board position and orientation"}'
+    - '// @input SceneObject markerLeft {"hint":"Left reference marker for board edge visualization"}'
+    - '// @input SceneObject markerRight {"hint":"Right reference marker for board edge visualization"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Corner Markers</span>"}'
+    - '// @input SceneObject cornerLeftMarker {"hint":"Interactable marker for the front-left board corner (L pin)"}'
+    - '// @input SceneObject cornerRightMarker {"hint":"Interactable marker for the front-right board corner (R pin)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

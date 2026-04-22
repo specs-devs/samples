@@ -1,0 +1,88 @@
+- !<AssetImportMetadata/59bd3142-1da0-4963-a992-e0cb8fb29a08>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 01b0248b-1e4b-48ef-bd13-901fce3feca9
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 01b0248b-1e4b-48ef-bd13-901fce3feca9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 0453f722-40df-4682-853a-dfdfe189c3b9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/0453f722-40df-4682-853a-dfdfe189c3b9>
+  Prototype: !<ObjectOwner/625751fd-cbb4-459d-8ca1-7b8d3c8e31d5>
+    PackagePath: ""
+    objects:
+      - !<own> bc02a3f9-80aa-4a7b-4b04-033ab2985604
+- !<RenderMeshVisual/416d14c7-931a-4f32-6d37-2404d23390a9>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 8d10e445-6796-49a7-a3d5-020b6ed1de30
+  Mesh: !<reference> 177459c0-51d4-4374-9e15-6cbda2f0631a
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/bc02a3f9-80aa-4a7b-4b04-033ab2985604>
+  PrefabRemaps:
+    []
+  Name: CaptureController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c99b7d0c-7077-41d1-5104-0defee4307c6
+  Components:
+    - !<own> d5a3b97f-aa9f-458e-7191-d120ab352488
+- !<SceneObject/c99b7d0c-7077-41d1-5104-0defee4307c6>
+  PrefabRemaps:
+    []
+  Name: Object 0
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 416d14c7-931a-4f32-6d37-2404d23390a9
+- !<ScriptComponent/d5a3b97f-aa9f-458e-7191-d120ab352488>
+  PrefabRemaps:
+    []
+  Name: CaptureController
+  Enabled: true
+  ScriptAsset: !<reference> 26196b1b-ae8f-4637-afd9-2e584592d5a4
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      gestureMode: double
+      picAnchorObj: !<reference.SceneObject> c99b7d0c-7077-41d1-5104-0defee4307c6
+  ScriptTypes:
+    "":
+      {}

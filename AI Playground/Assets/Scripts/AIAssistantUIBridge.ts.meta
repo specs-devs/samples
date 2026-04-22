@@ -1,0 +1,82 @@
+- !<AssetImportMetadata/b62ab56f-63cc-41c3-b8f8-1d51782e5921>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 70c94890-c2d9-416c-b14d-a0cd0d0cfb27
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 70c94890-c2d9-416c-b14d-a0cd0d0cfb27
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f5e613bb-b932-47b3-9b0a-e2e1e9cf0196
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f5e613bb-b932-47b3-9b0a-e2e1e9cf0196>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1a01a00a-1393-49ef-8edb-0f123d692ac6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    geminiAssistant: false
+    geminiButton: false
+    hintText: false
+    hintTitle: false
+    openAIAssistant: false
+    openAIButton: false
+    snap3DInteractableFactory: false
+    sphereController: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - geminiAssistant: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      openAIAssistant: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      sphereController: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      snap3DInteractableFactory: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      hintTitle: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      hintText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      geminiButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      openAIButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AIAssistantUIBridge – AI assistant to UI bridge</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Connects AI assistants (Gemini Live, OpenAI Realtime) to the Sphere Controller UI.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Assistants</span>"}'
+    - '// @ui {"widget":"group_start", "label":"Assistants"}'
+    - '// @input AssignableType geminiAssistant {"hint":"GeminiAssistant component for Gemini Live interactions"}'
+    - '// @input AssignableType_1 openAIAssistant {"hint":"OpenAIAssistant component for OpenAI Realtime interactions"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI Elements</span>"}'
+    - '// @ui {"widget":"group_start", "label":"UI Elements"}'
+    - '// @input AssignableType_2 sphereController {"hint":"SphereController managing the orb UI and hand tracking"}'
+    - '// @input AssignableType_3 snap3DInteractableFactory {"hint":"Factory for creating interactable Snap3D scene objects"}'
+    - '// @input Component.Text hintTitle {"hint":"Text element displaying the hint title"}'
+    - '// @input Component.Text hintText {"hint":"Text element displaying hint instructions to the user"}'
+    - '// @input AssignableType_4 geminiButton {"hint":"Button that activates the Gemini assistant"}'
+    - '// @input AssignableType_5 openAIButton {"hint":"Button that activates the OpenAI assistant"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

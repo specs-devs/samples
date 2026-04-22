@@ -1,0 +1,163 @@
+- !<AssetImportMetadata/9bdfbb1b-1fa8-4e5a-b49d-8ca83bf50ba1>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 51fcb707-88d0-453b-9b84-a0239c624bdd
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 51fcb707-88d0-453b-9b84-a0239c624bdd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> b09f9791-e4a3-4186-9ba6-db74966fbc70
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ColliderComponent/1f3ed716-73b6-4ce1-4565-adb0ae6b1c92>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Box>
+    FitVisual: false
+    Size: {x: 1.000000, y: 1.000000, z: 1.000000}
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<ScriptComponent/24f47f35-f418-4ce3-4dc9-2d0223dd289c>
+  PrefabRemaps:
+    []
+  Name: Interactable
+  Enabled: true
+  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
+  ScriptInputsDefault:
+    targetingMode: true
+    targetingVisual: true
+    ignoreInteractionPlane: true
+    keepHoverOnTrigger: true
+    enableInstantDrag: true
+    isScrollable: true
+    allowMultipleInteractors: true
+    enablePokeDirectionality: true
+    acceptableXDirections: true
+    acceptableYDirections: true
+    acceptableZDirections: true
+    useFilteredPinch: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetingMode: !<float> 3.000000
+      targetingVisual: !<float> 1.000000
+      ignoreInteractionPlane: false
+      keepHoverOnTrigger: false
+      enableInstantDrag: false
+      isScrollable: false
+      allowMultipleInteractors: true
+      enablePokeDirectionality: false
+      acceptableXDirections: !<float> 0.000000
+      acceptableYDirections: !<float> 0.000000
+      acceptableZDirections: !<float> 1.000000
+      useFilteredPinch: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/32a22122-3524-41d8-6e81-bb903ab2de1b>
+  PrefabRemaps:
+    []
+  Name: Robot
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -3.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 7.000000, y: 6.000000, z: 6.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b0d69e37-b97b-46b5-4eb0-607223eddf83
+    - !<own> 50693d98-fafe-4029-524f-a2d0821f6409
+    - !<own> 1f3ed716-73b6-4ce1-4565-adb0ae6b1c92
+    - !<own> 24f47f35-f418-4ce3-4dc9-2d0223dd289c
+- !<ScriptComponent/50693d98-fafe-4029-524f-a2d0821f6409>
+  PrefabRemaps:
+    []
+  Name: RobotShaderController
+  Enabled: true
+  ScriptAsset: !<reference> c187162e-0f9b-4719-83b2-b1741c6a4f9b
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      currentState: sleeping
+      currentTheme: cat
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/b09f9791-e4a3-4186-9ba6-db74966fbc70>
+  Prototype: !<ObjectOwner/60d6dfde-ba0e-40ff-9056-769dfb722d09>
+    PackagePath: ""
+    objects:
+      - !<own> b179ea96-a104-43be-5b5d-78e69ff10e6f
+- !<RenderMeshVisual/b0d69e37-b97b-46b5-4eb0-607223eddf83>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 5f2af39c-be65-4da7-9720-d8144268354d
+  Mesh: !<reference> c6810bab-f5c3-4e1b-8499-3e39a3d874b8
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/b179ea96-a104-43be-5b5d-78e69ff10e6f>
+  PrefabRemaps:
+    []
+  Name: Agent
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 32a22122-3524-41d8-6e81-bb903ab2de1b
+  Components:
+    - !<own> e823d5b7-871b-4701-5d9a-b96322413c72
+- !<ScriptComponent/e823d5b7-871b-4701-5d9a-b96322413c72>
+  PrefabRemaps:
+    []
+  Name: AgentObject
+  Enabled: true
+  ScriptAsset: !<reference> 063ca389-a56f-441c-b698-4685051768d4
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}

@@ -1,0 +1,70 @@
+- !<AssetImportMetadata/a560de78-e72a-4c00-9f5b-1bc8d324e7a1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d07a9c4a-fbee-40a6-8c92-134671ceebae
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d07a9c4a-fbee-40a6-8c92-134671ceebae
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8ca57f46-0eca-4f08-a235-4494b541f390
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8ca57f46-0eca-4f08-a235-4494b541f390>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 57caa9cc-18c0-4b44-935b-04c29030ee6a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    asrVoiceController: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    mainCamObj: false
+    micRend: false
+    speecBocAnchor: false
+    speechButtonCollider: false
+    speechText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      speecBocAnchor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      micRend: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      speechText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      asrVoiceController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      speechButtonCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SpeechUI – speech bubble with microphone button</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Follows the main camera and shows ASR transcription text.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject mainCamObj {"hint":"Main camera scene object used to position the speech UI"}'
+    - '// @input SceneObject speecBocAnchor {"hint":"Anchor for the speech bubble popup"}'
+    - '// @input Component.RenderMeshVisual micRend {"hint":"Render mesh for the microphone icon with animated shader"}'
+    - '// @input Component.Text speechText {"hint":"Text component displaying the transcribed speech"}'
+    - '// @input AssignableType asrVoiceController {"hint":"ASR voice controller for starting and stopping transcription"}'
+    - '// @input Component.ColliderComponent speechButtonCollider {"hint":"Collider for enabling and disabling the speech button tap area"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

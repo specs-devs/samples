@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/61a92a04-ef74-1a29-c6e1-4804018adb1d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d4c5c54e-2b9d-4df9-b022-9df28507e36e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d4c5c54e-2b9d-4df9-b022-9df28507e36e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 498eae2f-89a3-4e71-9e7d-44038a63dffd
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/498eae2f-89a3-4e71-9e7d-44038a63dffd>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 41659c56-133f-4618-8988-89191e5d9632
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    loadingIconTransform: false
+    loadingUI: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - loadingUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      loadingIconTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Loading – animated loading indicator</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Spins a loading icon while active and exposes an activation method for the owning controller.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject loadingUI {"hint":"Root scene object that contains the loading icon and any associated UI elements"}'
+    - '// @input Component.ScreenTransform loadingIconTransform {"hint":"Screen transform of the loading icon that will be rotated each frame"}'

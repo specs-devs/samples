@@ -1,0 +1,56 @@
+/**
+ * Specs Inc. 2026
+ * Debug Visualizer component for the BLE Playground Spectacles lens.
+ */
+import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
+import {SceneController} from "./SceneController"
+
+@component
+export class DebugVisualizer extends BaseScriptComponent {
+  @ui.label('<span style="color: #60A5FA;">DebugVisualizer – depth capture debug overlay</span><br/><span style="color: #94A3B8; font-size: 11px;">Displays the captured camera frame and instantiates point markers for detected pixel positions.</span>')
+  @ui.separator
+
+  @ui.label('<span style="color: #60A5FA;">References</span>')
+  @input
+  @hint("Prefab instantiated at each detected pixel position for debug visualization")
+  pointPrefab: ObjectPrefab
+
+  @input
+  @hint("Scene object whose mesh material shows the last captured camera frame")
+  testCamVisualObj: SceneObject
+
+  onAwake() {}
+
+  @bindStartEvent
+  private onStart() {
+    this.testCamVisualObj.enabled = SceneController.SHOW_DEBUG
+  }
+
+  updateCameraFrame(cameraFrame: Texture) {
+    this.destroyAllLocalPoints(this.testCamVisualObj)
+    this.testCamVisualObj.getComponent("RenderMeshVisual").mainPass.baseTex = cameraFrame
+  }
+
+  visualizeLocalPoint(pixelPos: vec2, cameraFrame: Texture) {
+    const localX = MathUtils.remap(pixelPos.x, 0, cameraFrame.getWidth(), -0.5, 0.5)
+    // this one is flipped earlier for lens studio
+    const localY = MathUtils.remap(pixelPos.y, 0, cameraFrame.getHeight(), 0.5, -0.5)
+    const localPos = new vec3(localX, localY, 0.01)
+    const pointObj = this.pointPrefab.instantiate(this.testCamVisualObj)
+    const pointTrans = pointObj.getTransform()
+    pointTrans.setLocalPosition(localPos)
+    pointTrans.setWorldScale(vec3.one().uniformScale(0.5))
+  }
+
+  private destroyAllLocalPoints(parentObj: SceneObject) {
+    const points = []
+    for (let i = 0; i < parentObj.getChildrenCount(); i++) {
+      const childObj = parentObj.getChild(i)
+      points.push(childObj)
+    }
+    for (let i = 0; i < points.length; i++) {
+      const child = points[i]
+      child.destroy()
+    }
+  }
+}

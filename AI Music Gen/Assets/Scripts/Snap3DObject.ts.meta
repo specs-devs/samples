@@ -1,0 +1,70 @@
+- !<AssetImportMetadata/2e66caa9-c68a-d77c-1ce8-a8a68f41eb45>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 01568e2a-eb8f-4ec3-9ccf-beb9f1654199
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 01568e2a-eb8f-4ec3-9ccf-beb9f1654199
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c49e498-028b-463f-a595-7e588f56a81b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c49e498-028b-463f-a595-7e588f56a81b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 95fc6844-532b-459b-9635-d2e8af5ed566
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    displayPlate: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    img: false
+    mat: false
+    modelParent: false
+    promptDisplay: false
+    spinner: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - modelParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      img: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      promptDisplay: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      spinner: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mat: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      displayPlate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap3D Object – 3D model and preview image display</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Shows a preview image while generating, then transitions to the base and refined 3D mesh.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
+    - '// @input SceneObject modelParent {"hint":"Parent SceneObject under which instantiated 3D models are placed"}'
+    - '// @input Component.Image img {"hint":"Image component used to display the preview texture before the model is ready"}'
+    - '// @input Component.Text promptDisplay {"hint":"Text component that shows the current prompt or status message"}'
+    - '// @input SceneObject spinner {"hint":"SceneObject for the loading spinner shown during generation"}'
+    - '// @input Asset.Material mat {"hint":"Material applied to instantiated 3D models"}'
+    - '// @input SceneObject displayPlate {"hint":"SceneObject containing the display plate positioned below the model"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

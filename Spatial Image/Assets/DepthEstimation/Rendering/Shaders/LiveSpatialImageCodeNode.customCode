@@ -1,0 +1,43 @@
+// DIBR stereo depth shader - horizontal pixel shift per eye based on depth map
+// White (1.0) = near, Black (0.0) = far. Convergence plane = no shift.
+// Works standalone (fragment-only) or with vertex displacement (reduce OffsetStrength for 70/30 split).
+
+input_texture_2d BaseTex;
+input_texture_2d DepthTex;
+input_float OffsetStrength;
+input_float Convergence;
+input_float DepthMin;
+input_float DepthMax;
+input_float InvertDepth;
+input_float DepthFlipX;
+input_float DepthFlipY;
+output_vec4 OutputColor;
+
+void main()
+{
+	vec2 uv = system.getSurfaceUVCoord0();
+	vec2 depthUV = uv;
+	if (DepthFlipX > 0.5) depthUV.x = 1.0 - depthUV.x;
+	if (DepthFlipY > 0.5) depthUV.y = 1.0 - depthUV.y;
+	float rawDepth = DepthTex.sample(depthUV).r;
+
+	// Normalize raw depth to [0,1] (done in shader for performance)
+	float range = max(DepthMax - DepthMin, 1e-6);
+	float depth = clamp((rawDepth - DepthMin) / range, 0.0, 1.0);
+	if (InvertDepth > 0.5) depth = 1.0 - depth;
+
+	// Left eye (0) shifts negative, right eye (1) shifts positive
+	float eyeDir = (system.getStereoViewIndex() < 1) ? -1.0 : 1.0;
+
+	// Scale disparity by aspect so effect is consistent across portrait/landscape
+	float aspect = BaseTex.textureSize().x / BaseTex.textureSize().y;
+	float disparity = (depth - Convergence) * OffsetStrength * eyeDir / aspect;
+	vec2 stereoUV = vec2(uv.x + disparity, uv.y);
+
+	// Edge occlusion: black where we've pulled pixels away (no valid sample)
+	if (stereoUV.x < 0.0 || stereoUV.x > 1.0) {
+		OutputColor = vec4(0.0, 0.0, 0.0, 1.0);
+	} else {
+		OutputColor = BaseTex.sample(stereoUV);
+	}
+}

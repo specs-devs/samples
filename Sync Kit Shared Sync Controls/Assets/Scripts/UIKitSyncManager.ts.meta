@@ -1,0 +1,85 @@
+- !<AssetImportMetadata/c6616967-9d63-48d8-b98f-c0043fdd2cc3>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e06a8202-9f95-4588-a130-33f2283d95ec
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e06a8202-9f95-4588-a130-33f2283d95ec
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> aba523ea-783f-4be0-9123-c494a2e37058
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/aba523ea-783f-4be0-9123-c494a2e37058>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5833531b-4817-46b3-8f94-acc4e0296549
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    colorMesh: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    inputField: false
+    panelRoot: false
+    sliderB: false
+    sliderG: false
+    sliderR: false
+    syncButton: false
+    syncButtonText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      sliderR: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      sliderG: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      sliderB: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      colorMesh: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      inputField: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      syncButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      syncButtonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIKit Sync Manager</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Syncs UIKit Sliders, TextInputField, and RectangleButton across a Connected Lens session.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Panel</span>"}'
+    - '// @input SceneObject panelRoot {"hint":"Root SceneObject of the UI panel – disabled at start, enabled once the session is ready"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Color Sliders</span>"}'
+    - '// @input AssignableType sliderR {"hint":"UIKit Slider for the Red channel (0–1)"}'
+    - '// @input AssignableType_1 sliderG {"hint":"UIKit Slider for the Green channel (0–1)"}'
+    - '// @input AssignableType_2 sliderB {"hint":"UIKit Slider for the Blue channel (0–1)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Color Target</span>"}'
+    - '// @input Component.RenderMeshVisual colorMesh {"hint":"RenderMeshVisual whose mainMaterial.mainPass.baseColor is driven by the sliders"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Sync Text</span>"}'
+    - '// @input AssignableType_3 inputField {"hint":"UIKit TextInputField whose content is synced across the session"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Sync Button</span>"}'
+    - '// @input AssignableType_4 syncButton {"hint":"UIKit RectangleButton that broadcasts a click event to all users"}'
+    - '// @input Component.Text syncButtonText {"hint":"Text component on the sync button – updated with the last-clicking user label e.g. \"User A Clicked\""}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

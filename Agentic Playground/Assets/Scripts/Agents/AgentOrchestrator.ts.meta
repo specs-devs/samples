@@ -1,0 +1,105 @@
+- !<AssetImportMetadata/b8097a6b-12dc-4589-9882-24cc18d44260>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3ab602eb-50af-4da9-87da-bba1b83d50d0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3ab602eb-50af-4da9-87da-bba1b83d50d0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b09fd98b-40c5-4be6-8f43-1dc37c058f53
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b09fd98b-40c5-4be6-8f43-1dc37c058f53>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e85f69fe-0a9e-4274-b87f-33c93391e4b8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    chatComponent: false
+    conversationContextMessages: false
+    defaultProvider: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    enableSystem: false
+    enableTestMode: false
+    enableVoiceOutput: false
+    geminiAssistant: false
+    maxRetries: false
+    openAIAssistant: false
+    showQueryRouting: false
+    showToolUsage: false
+    storageManager: false
+    summaryComponent: false
+    toolDisplayText: false
+    toolTimeout: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - openAIAssistant: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      geminiAssistant: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      summaryComponent: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      chatComponent: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      storageManager: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      toolDisplayText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableSystem: true
+      enableTestMode: false
+      conversationContextMessages: !<float> 10.000000
+      toolTimeout: !<float> 15000.000000
+      maxRetries: !<float> 3.000000
+      defaultProvider: openai
+      enableVoiceOutput: true
+      showToolUsage: true
+      showQueryRouting: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AgentOrchestrator – Central coordinator for the agentic system</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Routes queries through tools, manages AI providers and memory.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType openAIAssistant {"hint":"OpenAI Assistant component for language model integration"}'
+    - '// @input AssignableType_1 geminiAssistant {"hint":"Gemini Assistant component for language model integration"}'
+    - '// @input AssignableType_2 summaryComponent {"hint":"FastDeckController component for reading summary context"}'
+    - '// @input AssignableType_3 chatComponent {"hint":"FastChatController component for chat integration"}'
+    - '// @input AssignableType_4 storageManager {"hint":"Storage Manager for centralized storage control"}'
+    - '// @input Component.Text toolDisplayText {"hint":"Text display component for tool usage information"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">System Configuration</span>"}'
+    - '// @input bool enableSystem = true {"hint":"Enable the agent system"}'
+    - '// @input bool enableTestMode {"hint":"Enable test mode to use mock summary data when no real summary exists"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Agent Configuration</span>"}'
+    - '// @input float conversationContextMessages = 10 {"hint":"Number of recent conversation messages to include as context"}'
+    - '// @input float toolTimeout = 15000 {"hint":"Tool execution timeout in milliseconds"}'
+    - '// @input float maxRetries = 3 {"hint":"Maximum number of retries for failed tool executions"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AI Provider Configuration</span>"}'
+    - '// @input string defaultProvider = "openai" {"hint":"Default AI provider to use for language generation", "widget":"combobox", "values":[{"label":"openai", "value":"OpenAI"}, {"label":"gemini", "value":"Gemini"}]}'
+    - '// @input bool enableVoiceOutput = true {"hint":"Enable voice output from AI responses"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug Configuration</span>"}'
+    - '// @input bool showToolUsage = true {"hint":"Show which tool was selected for each query"}'
+    - '// @input bool showQueryRouting = true {"hint":"Show query routing decisions in the logger"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

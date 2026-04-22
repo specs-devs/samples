@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/ab5e7cd6-5cee-439b-9734-1020d67a38b5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e8f5ba38-3e51-4277-a5a9-23611c6f419f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e8f5ba38-3e51-4277-a5a9-23611c6f419f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c5118ca2-2152-4e30-a615-ae8526505785
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c5118ca2-2152-4e30-a615-ae8526505785>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 89838ca5-3dd1-4d93-88fc-1d6828e84b88
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    defaultStatusMessages: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    handMenuReferences: false
+    pingMenu: false
+    subStatusOptions: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - handMenuReferences: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pingMenu: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      defaultStatusMessages: !<string[]>
+        - Ready to connect!
+        - Open for collaboration
+        - Looking for teammates
+        - Exploring ideas
+        - Building something cool
+      subStatusOptions: !<string[]>
+        - Available
+        - Busy
+        - Away
+        - Do Not Disturb
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HandMenuController – connects hand menu UI to head label updates and ping management</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Wires buttons, toggles, and text fields from HandMenuReferences to the head label and ping systems.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType handMenuReferences {"hint":"Reference to the hand menu UI components"}'
+    - '// @input AssignableType_1 pingMenu {"hint":"Reference to the ping menu for managing active ping connections"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Status Defaults</span>"}'
+    - '// @input string[] defaultStatusMessages = {"Ready to connect!","Open for collaboration","Looking for teammates","Exploring ideas","Building something cool"} {"hint":"Default status messages shown when status text is empty"}'
+    - '// @input string[] subStatusOptions = {"Available","Busy","Away","Do Not Disturb"} {"hint":"Sub-status labels corresponding to each availability toggle"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/363a2605-d1c0-baec-3358-7bfd5b71ba0e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d21ce91a-96f0-4f01-bb19-9d306469af7a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d21ce91a-96f0-4f01-bb19-9d306469af7a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 425cea93-43b0-4e6e-b6b3-3a46c89c79a5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/425cea93-43b0-4e6e-b6b3-3a46c89c79a5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4b5a2296-3b91-4293-beb1-76e920852daf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    label: false
+    lineRenderer: false
+    lineScale: false
+    startVisible: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - lineRenderer: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      label: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      lineScale: !<float> 1.000000
+      startVisible: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MeasureLine – world-space measurement line renderer</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Draws a line between two world-space points and displays the distance in the provided label.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.RenderMeshVisual lineRenderer {"hint":"RenderMeshVisual that represents the line segment between two points"}'
+    - '// @input Component.Text label {"hint":"Text component that shows the measured distance between the two points"}'
+    - '// @input float lineScale = 1 {"hint":"Scale factor applied to the line mesh height to match the world-space length"}'
+    - '// @input bool startVisible {"hint":"Whether the measurement widget should be visible on start"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

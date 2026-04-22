@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/c132b363-bb94-42e5-adee-217beacb9b6e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0db6a9f7-7b38-4143-be32-2f71f348422f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0db6a9f7-7b38-4143-be32-2f71f348422f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 363c6196-fdfa-40e1-a1f6-5759d0fd4452
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/363c6196-fdfa-40e1-a1f6-5759d0fd4452>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 65632b5d-1445-4471-94f7-4606eeac18dd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    styleIndex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - styleIndex: 0
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIKitCustomVisualsSwitch – gradient style for a UIKit Switch</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Styles the track, fill, and knob for both OFF and ON states. Attach to the same SceneObject as Switch.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input int styleIndex {"hint":"Visual style preset: Candy = pink/blue, Ocean = teal/navy with radial knob, Lime = yellow/green", "widget":"combobox", "values":[{"label":"Candy", "value":0}, {"label":"Ocean", "value":1}, {"label":"Lime", "value":2}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

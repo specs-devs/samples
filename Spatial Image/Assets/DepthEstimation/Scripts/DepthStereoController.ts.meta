@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/4a024a19-e254-216f-0d9a-25a2290afb63>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4cb64546-32f2-4f75-9f93-9803f295d713
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4cb64546-32f2-4f75-9f93-9803f295d713
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3a6d8c70-c164-4f27-a2d1-20baa8553981
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3a6d8c70-c164-4f27-a2d1-20baa8553981>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b6eac622-e5f1-4a83-a1cb-577aabd4dd8c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    colorTexture: false
+    convergence: false
+    depthEstimator: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    material: false
+    meshDepthScale: false
+    offsetStrength: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - material: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      depthEstimator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      colorTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      offsetStrength: 0.030000
+      convergence: 0.500000
+      meshDepthScale: 0.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Depth Stereo Controller – depth-displaced stereo rendering</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Connects depth and color textures to the stereo material and manages shader parameters.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Asset.Material material {"hint":"The stereo rendering material to control"}'
+    - '// @input AssignableType depthEstimator {"hint":"Reference to the MLDepthEstimator component"}'
+    - '// @input Asset.Texture colorTexture {"hint":"The color/video texture to display"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Stereo Settings</span>"}'
+    - '// @input float offsetStrength = 0.03 {"hint":"Depth intensity (0.01–0.05 typical). Higher = more pronounced 3D.", "widget":"slider", "min":0, "max":0.1, "step":0.005}'
+    - '// @input float convergence = 0.5 {"hint":"Depth value (0–1) at lens surface. 0.5 = mid-range.", "widget":"slider", "min":0, "max":1, "step":0.05}'
+    - '// @input float meshDepthScale = 0.5 {"hint":"Vertex displacement intensity. ~70% of 3D effect. Increase for stronger geometry parallax.", "widget":"slider", "min":0, "max":2, "step":0.1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

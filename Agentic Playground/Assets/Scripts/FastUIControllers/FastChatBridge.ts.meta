@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/8d14330e-449f-4175-8f54-deb1ba93895d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c5a709c5-6659-4414-bf02-57ba4733256f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c5a709c5-6659-4414-bf02-57ba4733256f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 563984d1-2286-4cac-b711-50b166800007
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/563984d1-2286-4cac-b711-50b166800007>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 50ac6821-c4b5-433b-a3ab-a8a1e6b703cc
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    agentOrchestrator: false
+    chatLayout: false
+    chatStorage: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    maxDisplayMessages: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - agentOrchestrator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      chatStorage: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      chatLayout: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      maxDisplayMessages: 50
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastChatBridge</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType agentOrchestrator {"hint":"Reference to AgentOrchestrator component"}'
+    - '// @input AssignableType_1 chatStorage {"hint":"Reference to ChatStorage component"}'
+    - '// @input AssignableType_2 chatLayout {"hint":"Reference to FastChatController for UI display"}'
+    - '// @input int maxDisplayMessages = "50" {"hint":"Maximum number of messages to display"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

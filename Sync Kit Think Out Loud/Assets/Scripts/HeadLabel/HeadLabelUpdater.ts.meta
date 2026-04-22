@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/6964f90d-d0cc-48d1-bfd2-72b88e1ba57d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ef601259-758c-4b2f-b57a-0a2e85ee106c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ef601259-758c-4b2f-b57a-0a2e85ee106c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> db6ee8de-d28f-4f36-9fa6-5994ae605746
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/db6ee8de-d28f-4f36-9fa6-5994ae605746>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 43846d8e-42d7-4abc-8e47-0dd54b21b93e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    headLabelObjectManager: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headLabelObjectManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #60A5FA;\\\">HeadLabelUpdater – bridge between hand menu and the local player's head label data</span><br/><span style=\\\"color: #94A3B8; font-size: 11px;\\\">Singleton; provides a clean API for HandMenuController to update status via HeadLabelObjectManager.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType headLabelObjectManager {"hint":"Reference to the head label object manager"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

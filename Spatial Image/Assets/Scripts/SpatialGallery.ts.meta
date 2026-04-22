@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/254792ef-577f-486b-8fe0-c5e5675c34e5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 17bdada1-b595-43e5-bd69-17807688d877
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 17bdada1-b595-43e5-bd69-17807688d877
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 42dfe6bd-acee-4f3d-a8fb-a39bb10f078e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/42dfe6bd-acee-4f3d-a8fb-a39bb10f078e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 17692ecd-a426-4fdd-ba52-90753238a0d0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    advanceDelay: false
+    autoAdvance: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    gallery: false
+    image: false
+    loop: false
+    shuffle: false
+  ScriptTypesHidden:
+    SpatialImage: false
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - image: !<Typename.SpatialImage> 00000000-0000-0000-0000-000000000000
+      gallery: !<reference.Texture[]>
+        []
+      shuffle: false
+      autoAdvance: false
+      advanceDelay: !<float> 5.000000
+      loop: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    - SpatialImage: !<reference.ScriptAsset> 00000000-0000-0000-0000-000000000000
+  InputLines:
+    - // @typename SpatialImage
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Spatial Gallery – standalone browsable gallery of spatialized images</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Navigates through a list of textures, spatializing each on selection. No external frame dependencies.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SpatialImage image {"hint":"The SpatialImage custom component used for spatialization"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Gallery</span>"}'
+    - '// @input Asset.Texture[] gallery {"hint":"The ordered list of textures that make up the gallery"}'
+    - '// @input bool shuffle {"hint":"If true, the gallery order will be randomized on initialization"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Auto-Advance</span>"}'
+    - '// @input bool autoAdvance {"hint":"Automatically advance to the next image after it loads"}'
+    - '// @input float advanceDelay = 5 {"hint":"Seconds to wait on each image before advancing to the next", "widget":"slider", "min":1, "max":60, "step":1}'
+    - '// @input bool loop = true {"hint":"Loop back to the first image after the last"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

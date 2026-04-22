@@ -1,0 +1,44 @@
+input_vec3 u_antenna_color;
+input_vec3 u_surface_normal;
+input_vec3 u_view_dir;
+input_float u_pulse_speed;
+input_float u_theme;
+input_float u_irid_brightness;
+input_float u_irid_speed;
+input_float u_core_glow_strength;
+input_float u_edge_white;
+input_float u_outline_width;
+input_float u_outline_brightness;
+input_float u_fill;
+input_float iTime;
+output_vec4 Result;
+
+vec3 spectral(float t) {
+    return 0.5 + 0.5 * cos(6.28318 * (t + vec3(0.0, 0.33, 0.67)));
+}
+
+void main() {
+    float gTime = iTime;
+
+    vec3 n = normalize(u_surface_normal);
+    vec3 vd = normalize(u_view_dir);
+    float facing = abs(dot(n, vd));
+    float fTerm = 1.0 - facing;
+    float fresnel = smoothstep(0.0, 1.0, fTerm);
+    fresnel = fresnel * fresnel;
+
+    float outline = smoothstep(u_outline_width, 0.0, facing);
+
+    vec3 irid = spectral(fresnel * 0.8 + gTime * u_irid_speed) * fresnel * u_irid_brightness;
+    float internal = fresnel * 0.6;
+    vec3 coreGlow = u_antenna_color * internal * u_core_glow_strength;
+    vec3 outlineCol = mix(u_antenna_color, spectral(gTime * 0.1) * 1.5, 0.4) * outline * u_outline_brightness;
+
+    float pulse = (u_pulse_speed < 0.01) ? 1.0 : sin(gTime * u_pulse_speed) * 0.5 + 0.5;
+    float fillMask = mix(fresnel, 1.0, u_fill);
+    vec3 col = irid + coreGlow + outlineCol + fresnel * fresnel * u_edge_white;
+    col += u_antenna_color * fillMask * mix(0.5, 2.0, pulse);
+    col += spectral(gTime * 0.2) * 0.15 * mix(fresnel, 1.0, u_fill * 0.5);
+
+    Result = vec4(clamp(col, 0.0, 2.5), 1.0);
+}
