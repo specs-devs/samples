@@ -1,0 +1,111 @@
+- !<AssetImportMetadata/8ff4fd71-2558-4c4a-8871-bac047b1c6d1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 40361e63-8b75-43fd-8e3a-d5547f82b063
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 40361e63-8b75-43fd-8e3a-d5547f82b063
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f6063842-ef06-437e-9c0c-074f0e201eea
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f6063842-ef06-437e-9c0c-074f0e201eea>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3b9e77ac-5529-41c1-8d59-e54fa1dc059a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    centerThreshold: false
+    classLabels: false
+    debugLogging: false
+    detectionPersistence: false
+    enableAllClasses: false
+    enableCallbacks: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    inputTexture: false
+    iouThreshold: false
+    logText: false
+    maxDetectionCount: false
+    model: false
+    monitorDetectedFunctions: false
+    monitorDetectionCallbacks: false
+    monitorLostFunctions: false
+    scoreThreshold: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - model: !<reference.MLAsset> 00000000-0000-0000-0000-000000000000
+      inputTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      maxDetectionCount: !<float> 5.000000
+      detectionPersistence: 0.500000
+      scoreThreshold: 0.400000
+      iouThreshold: 0.500000
+      centerThreshold: 0.500000
+      classLabels: !<string[]>
+        - Chair
+        - Table
+        - Sofa
+      enableAllClasses: true
+      enableCallbacks: false
+      monitorDetectionCallbacks: !<MappingBased.AssignableType[]>
+        []
+      monitorDetectedFunctions: !<string[]>
+        []
+      monitorLostFunctions: !<string[]>
+        []
+      debugLogging: true
+      logText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MLSpatializer – YOLO ML inference driver</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs a YOLOv7 ONNX model on the camera input and emits 2D detection results each frame.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ML Model</span>"}'
+    - '// @input Asset.MLAsset model {"hint":"ONNX model asset"}'
+    - '// @input Asset.Texture inputTexture {"hint":"Input texture for the model (Device Camera Texture)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Detection Settings</span>"}'
+    - '// @input float maxDetectionCount = 5 {"hint":"Maximum number of objects to detect and place", "widget":"slider", "min":1, "max":20, "step":1}'
+    - '// @input float detectionPersistence = 0.5 {"hint":"Time in seconds to keep detections after they disappear", "widget":"slider", "min":0, "max":5, "step":0.1}'
+    - '// @input float scoreThreshold = 0.2 {"hint":"Score threshold for detections (0-1) - Lower values make it more sensitive to detections", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float iouThreshold = 0.5 {"hint":"IOU threshold for non-maximum suppression (0-1) - Higher threshold allows more overlapping boxes; lower removes more", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float centerThreshold = 0.5 {"hint":"Center threshold (0-1) - Higher values exclude more detections from edges", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Class Configuration</span>"}'
+    - '// @input string[] classLabels = {"Chair","Table","Sofa"} {"hint":"Class labels matching the model output order"}'
+    - '// @input bool enableAllClasses = true {"hint":"Enable all classes by default"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Callbacks</span>"}'
+    - '// @input bool enableCallbacks {"hint":"Enable callbacks for detection updates"}'
+    - '// @input AssignableType[] monitorDetectionCallbacks = {} {"hint":"Callbacks for monitor detection state changes"}'
+    - '// @input string[] monitorDetectedFunctions = {} {"hint":"Function names to call on the callback objects when a monitor is detected"}'
+    - '// @input string[] monitorLostFunctions = {} {"hint":"Function names to call on the callback objects when a monitor is lost"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug</span>"}'
+    - '// @input bool debugLogging {"hint":"Log verbose detection results to console and log text"}'
+    - '// @input Component.Text logText {"hint":"Text component to display status messages"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

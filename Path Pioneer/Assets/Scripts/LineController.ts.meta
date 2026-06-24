@@ -1,0 +1,105 @@
+- !<AssetImportMetadata/b99bbd57-928d-45e2-928d-ce271968a23d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 007809d2-1d3c-4429-a19e-0d6a54479f9c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 007809d2-1d3c-4429-a19e-0d6a54479f9c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> eab7e7cc-ec09-484f-8e10-7c3d0411c91c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/eab7e7cc-ec09-484f-8e10-7c3d0411c91c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6849f46d-8186-41cc-8f04-a784ca599275
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camCol: false
+    countdownCollider: false
+    countdownSo: false
+    countdownSoArray: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    finishLineTurnArrow: false
+    finishVisual: false
+    hintFinishVisual: false
+    hintStartVisual: false
+    hintVisualsParent: false
+    lapCounter3Dtext: false
+    pathCollisionEvents: false
+    pathWalker: false
+    realVisualsParent: false
+    startLineTurnArrow: false
+    startVisual: false
+    visualSo: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - visualSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      finishVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      realVisualsParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintVisualsParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startLineTurnArrow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      finishLineTurnArrow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintStartVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintFinishVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      countdownSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      countdownSoArray: !<reference.SceneObject[]>
+        []
+      countdownCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      camCol: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      lapCounter3Dtext: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      pathCollisionEvents: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pathWalker: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">LineController – start/finish line manager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Controls visuals, countdown, and collision events for path endpoint lines.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Visuals</span>"}'
+    - '// @input SceneObject visualSo {"hint":"Root visual scene object for the line that can be repositioned"}'
+    - '// @input SceneObject startVisual {"hint":"Scene object shown when this line acts as the start line"}'
+    - '// @input SceneObject finishVisual {"hint":"Scene object shown when this line acts as the finish line"}'
+    - '// @input SceneObject realVisualsParent {"hint":"Parent scene object for the final real-look visual assets"}'
+    - '// @input SceneObject hintVisualsParent {"hint":"Parent scene object for the hint/preview visual assets"}'
+    - '// @input SceneObject startLineTurnArrow {"hint":"Arrow shown on the start line indicating the turn direction"}'
+    - '// @input SceneObject finishLineTurnArrow {"hint":"Arrow shown on the finish line indicating the turn direction"}'
+    - '// @input SceneObject hintStartVisual {"hint":"Hint visual used when this line is in start position"}'
+    - '// @input SceneObject hintFinishVisual {"hint":"Hint visual used when this line is in finish position"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Countdown</span>"}'
+    - '// @input SceneObject countdownSo {"hint":"Root scene object shown during the walk countdown sequence"}'
+    - '// @input SceneObject[] countdownSoArray {"hint":"Array of countdown digit scene objects shown in sequence"}'
+    - '// @input Component.ColliderComponent countdownCollider {"hint":"Collider that detects the player standing inside the countdown zone"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Collision & Lap</span>"}'
+    - '// @input Component.ColliderComponent camCol {"hint":"Collider attached to the camera used for line crossing detection"}'
+    - '// @input Component.Text3D lapCounter3Dtext {"hint":"3D text showing the current lap number above the start line"}'
+    - '// @input AssignableType pathCollisionEvents {"hint":"PathCollisionEvents component handling enter/exit collision callbacks"}'
+    - '// @input AssignableType_1 pathWalker {"hint":"PathWalker notified when start area collision is detected"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

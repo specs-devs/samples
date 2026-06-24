@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/7d35bef2-be36-4715-8ab1-70245d0ca6f4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6a64831f-6af5-4ea9-9109-6f7f2917496b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6a64831f-6af5-4ea9-9109-6f7f2917496b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5a702deb-d9d4-49e7-89a9-ce8fb069f715
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5a702deb-d9d4-49e7-89a9-ce8fb069f715>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 45d8ae4f-534b-4848-9cac-09a68a59302b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIController – Screen state machine & navigation</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No inspector inputs — call initialize(rootContainer) from AppController.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

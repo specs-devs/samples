@@ -1,0 +1,67 @@
+- !<AssetImportMetadata/3c00e927-30d6-44e9-8888-84a154a0ff9b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0b373354-6567-4e74-bd76-ee0a65094a17
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0b373354-6567-4e74-bd76-ee0a65094a17
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e75a3a04-8a8d-462b-88e8-7648e8aacefe
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e75a3a04-8a8d-462b-88e8-7648e8aacefe>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 41b5d6cd-3db5-4680-bdbf-06086b1d0950
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    followPosition: false
+    followRotation: false
+    positionOffset: false
+    rotationOffset: false
+    smoothing: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - followPosition: true
+      followRotation: true
+      positionOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      rotationOffset: !<Quat> {0: 0.000000, 1: 0.000000, 2: 0.000000, 3: 1.000000}
+      smoothing: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AttachToMobileController – Follow the mobile controller transform</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Attaches this object to the Spectacles mobile controller position and rotation.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Follow Settings</span>"}'
+    - '// @input bool followPosition = true {"hint":"Enable following the mobile controller position each frame"}'
+    - '// @input bool followRotation = true {"hint":"Enable following the mobile controller rotation each frame"}'
+    - '// @input vec3 positionOffset {"hint":"World-space position offset applied on top of the controller position"}'
+    - '// @input quat rotationOffset {"hint":"Rotation offset applied on top of the controller rotation"}'
+    - '// @input float smoothing {"hint":"Lerp factor: 0 = instant/no smoothing, 0.1-0.3 = heavy smoothing/slow follow, 0.7-0.9 = light smoothing/fast follow, 1.0 = almost instant"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

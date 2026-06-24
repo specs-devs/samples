@@ -1,0 +1,81 @@
+- !<AssetImportMetadata/dbc3ef55-4930-4f25-b97c-0268ab1cc999>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 925262df-27ba-4ae6-8ee5-adc23429faa5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 925262df-27ba-4ae6-8ee5-adc23429faa5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 28f10389-3063-4538-ab30-9da05399fd65
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/28f10389-3063-4538-ab30-9da05399fd65>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8ebb5787-3fb2-44bc-a3fd-a49681210d91
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    BarMat: false
+    Mats: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endPosScreenTransform: false
+    globalOpacity: false
+    initialProgress: false
+    pointer: false
+    startPosScreenTransform: false
+    textComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - pointer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      Mats: !<reference.Material[]>
+        []
+      BarMat: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      initialProgress: !<float> 0.000000
+      globalOpacity: !<float> 0.000000
+      startPosScreenTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+      endPosScreenTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ProgressBarController – path progress indicator</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Moves the pointer and updates bar material based on walk progress.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject pointer {"hint":"Scene object used as the sliding progress pointer"}'
+    - '// @input Component.Text textComponent {"hint":"Text component displaying the percentage value"}'
+    - '// @input Asset.Material[] Mats {"hint":"Array of materials used for visual state representation"}'
+    - '// @input Asset.Material BarMat {"hint":"Bar material whose currentPosition parameter tracks walk progress"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Settings</span>"}'
+    - '// @input float initialProgress {"hint":"Starting progress value shown before walking begins"}'
+    - '// @input float globalOpacity = 1 {"hint":"Global opacity multiplier applied to bar materials"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Layout</span>"}'
+    - '// @input Component.ScreenTransform startPosScreenTransform {"hint":"ScreenTransform marking the leftmost position of the progress bar"}'
+    - '// @input Component.ScreenTransform endPosScreenTransform {"hint":"ScreenTransform marking the rightmost position of the progress bar"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

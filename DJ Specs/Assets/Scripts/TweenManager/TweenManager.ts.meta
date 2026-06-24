@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/af8fe890-cedf-c90e-c572-4094dcecdc61>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2e66549c-86f2-431f-b172-7bc384fb4e19
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2e66549c-86f2-431f-b172-7bc384fb4e19
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 82236c97-ef80-4cd3-9d8f-417c7d64b286
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/82236c97-ef80-4cd3-9d8f-417c7d64b286>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d308b6a6-f1f8-4ae9-88c3-781a1c9aaa75
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    printDebugLog: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - printDebugLog: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TweenManager – central tween update and registry</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Place at the top of the Objects Panel. Drives TWEEN engine each frame.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool printDebugLog {"hint":"Print debug messages for tween operations"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

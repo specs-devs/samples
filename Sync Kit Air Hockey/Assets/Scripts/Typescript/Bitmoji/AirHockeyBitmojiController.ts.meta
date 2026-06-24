@@ -1,0 +1,88 @@
+- !<AssetImportMetadata/2a49806a-8f7d-416b-a7bb-cb549f5d9bce>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0b94aee0-9aeb-4a2c-811a-98f2bb93c110
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0b94aee0-9aeb-4a2c-811a-98f2bb93c110
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9c5b6c98-1f8a-4e58-b411-4d9fc8fe7caf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9c5b6c98-1f8a-4e58-b411-4d9fc8fe7caf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 94008376-49c4-4e37-8669-3d689918374e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableIK: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    enableNeckTracking: false
+    leftBitmoji: false
+    leftPaddle: false
+    leftPlayerAvatarParent: false
+    leftPlayerRestTarget: false
+    playerSlotManager: false
+    puck: false
+    rightBitmoji: false
+    rightPaddle: false
+    rightPlayerAvatarParent: false
+    rightPlayerRestTarget: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - leftBitmoji: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      rightBitmoji: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      playerSlotManager: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      leftPlayerAvatarParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rightPlayerAvatarParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      leftPaddle: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rightPaddle: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      leftPlayerRestTarget: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rightPlayerRestTarget: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      puck: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableNeckTracking: true
+      enableIK: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AirHockeyBitmojiController – Per-player bitmoji avatars with IK arm tracking</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Downloads and animates bitmoji avatars for both players using FABRIK inverse kinematics.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType leftBitmoji {"hint":"Bitmoji3D component for left player"}'
+    - '// @input AssignableType_1 rightBitmoji {"hint":"Bitmoji3D component for right player"}'
+    - '// @input AssignableType_2 playerSlotManager {"hint":"PlayerSlotManager component for tracking player connection IDs"}'
+    - '// @input SceneObject leftPlayerAvatarParent {"hint":"Parent SceneObject for the left player avatar hierarchy"}'
+    - '// @input SceneObject rightPlayerAvatarParent {"hint":"Parent SceneObject for the right player avatar hierarchy"}'
+    - '// @input SceneObject leftPaddle {"hint":"Left player paddle SceneObject used as IK arm target"}'
+    - '// @input SceneObject rightPaddle {"hint":"Right player paddle SceneObject used as IK arm target"}'
+    - '// @input SceneObject leftPlayerRestTarget {"hint":"Target for left player rest arm (e.g. table edge)"}'
+    - '// @input SceneObject rightPlayerRestTarget {"hint":"Target for right player rest arm (e.g. table edge)"}'
+    - '// @input SceneObject puck {"hint":"Puck object to track with neck rotation (leave empty to disable)"}'
+    - '// @input bool enableNeckTracking = true {"hint":"Enable neck tracking to follow the puck"}'
+    - '// @input bool enableIK = true {"hint":"Enable FABRIK arm IK solving"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

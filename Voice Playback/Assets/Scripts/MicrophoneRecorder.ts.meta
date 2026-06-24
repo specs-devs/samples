@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/b48d5f18-2b1a-449b-a96d-77f1d6d24c39>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8522d19b-552c-4428-80a2-c9d1d1a7711c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8522d19b-552c-4428-80a2-c9d1d1a7711c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8f4ccab6-e483-4341-9eb9-595ce8910e8f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8f4ccab6-e483-4341-9eb9-595ce8910e8f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 19a541af-acea-4f65-9e78-f8a9ab269e3a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audioOutput: false
+    debugText: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    microphoneAsset: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - microphoneAsset: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      audioOutput: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      debugText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MicrophoneRecorder – Records and plays back microphone audio</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign the microphone and output audio track assets to get started.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio Assets</span>"}'
+    - '// @input Asset.AudioTrackAsset microphoneAsset {"hint":"Audio track asset used as the microphone input source"}'
+    - '// @input Asset.AudioTrackAsset audioOutput {"hint":"Audio track asset used for playback output"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug</span>"}'
+    - '// @input Component.Text debugText {"hint":"Optional text component for displaying recording and playback status"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

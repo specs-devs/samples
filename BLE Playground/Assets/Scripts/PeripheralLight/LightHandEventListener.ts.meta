@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/1027b6cc-50f6-4aba-b95c-7b355a41cb65>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> df22ac3e-3deb-46fb-ad3b-4f78fb1a1d02
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> df22ac3e-3deb-46fb-ad3b-4f78fb1a1d02
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8ab9feb0-84e0-4a65-8933-454d82aa87f2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8ab9feb0-84e0-4a65-8933-454d82aa87f2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2b38d911-43e3-411c-ba43-cb7ecb9bde0c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cam: false
+    lightController: false
+    lightHandInputManager: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cam: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      lightController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      lightHandInputManager: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">LightHandEventListener – per-prefab hand event receiver</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Receives hand gesture events from LightHandInputManager.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.Camera cam {"hint":"Camera used as the origin for placement ray cast"}'
+    - '// @input AssignableType lightController {"hint":"Light controller that receives color and power commands from gesture events"}'
+    - '// @input AssignableType_1 lightHandInputManager {"hint":"Shared hand input manager this listener registers with on awake"}'
+    - '// @input Component.Text text {"hint":"Text component displaying the current placement instruction to the user"}'

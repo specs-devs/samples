@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/6c5b6d62-0c56-470d-a608-5a90eabc35b5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> df1b646f-ce02-4d29-a685-6cda2365ad6b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> df1b646f-ce02-4d29-a685-6cda2365ad6b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1ed21305-9748-44fd-b9ec-b87c80f3ac23
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1ed21305-9748-44fd-b9ec-b87c80f3ac23>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3a97e116-66e5-43a0-a833-876b4a05d409
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    MLController: false
+    debugImage: false
+    editorCamera: false
+    editorRenderTexture: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    labelRenderTarget: false
+    mainCamera: false
+    screenCropTexture: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      editorCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      MLController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      editorRenderTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      debugImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      labelRenderTarget: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CameraService – device camera access and pose tracking</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages camera setup, crop provider, and timestamped pose history.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Camera References</span>"}'
+    - '// @input Component.Camera mainCamera {"hint":"Main scene camera used for world transform tracking"}'
+    - '// @input Component.Camera editorCamera {"hint":"Editor-only camera used to simulate device camera in Lens Studio"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ML & Textures</span>"}'
+    - '// @input AssignableType MLController {"hint":"ML controller to initialize after camera crop is ready"}'
+    - '// @input Asset.Texture screenCropTexture {"hint":"Crop texture fed into the ML model as input"}'
+    - '// @input Asset.Texture editorRenderTexture {"hint":"Render texture used for the editor camera feed"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug</span>"}'
+    - '// @input Component.Image debugImage {"hint":"Debug image overlay for visualizing camera output"}'
+    - '// @input Asset.Texture labelRenderTarget {"hint":"Render target used for label overlay rendering"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

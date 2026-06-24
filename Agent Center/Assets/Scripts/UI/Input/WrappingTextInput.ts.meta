@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/d8ba5f3f-25e4-4656-a9d9-ee857b65a6f1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 790f066d-a3b9-4418-82f3-780175e01875
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 790f066d-a3b9-4418-82f3-780175e01875
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f73a6775-d9fd-4f8c-9728-fb16ee962c45
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f73a6775-d9fd-4f8c-9728-fb16ee962c45>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2c760373-eb6a-4d42-9576-4070ee5bfdc9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bleKeyboardManager: false
+    fieldHeight: false
+    fieldWidth: false
+    maxHeight: false
+    placeholderText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - fieldWidth: !<float> 14.000000
+      fieldHeight: !<float> 3.000000
+      maxHeight: !<float> 0.000000
+      placeholderText: ""
+      bleKeyboardManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float fieldWidth = 14 {"hint":"Width of the field in centimeters"}'
+    - '// @input float fieldHeight = 3 {"hint":"Minimum / starting height in centimeters"}'
+    - '// @input float maxHeight {"hint":"Maximum height before text shrinks to fit (cm)"}'
+    - // @input string placeholderText
+    - '// @input AssignableType bleKeyboardManager {"hint":"Optional BLE keyboard manager for Bluetooth keyboard input"}'

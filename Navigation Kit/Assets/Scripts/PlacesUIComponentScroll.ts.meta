@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/3e0c160c-f30e-48dd-b7ab-99eeb650e480>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2f8d151d-621e-4143-8465-d3827b49c996
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2f8d151d-621e-4143-8465-d3827b49c996
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 27b4b9f8-bfab-474c-aec5-6d3185a6c085
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/27b4b9f8-bfab-474c-aec5-6d3185a6c085>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0e084ef9-253b-4e66-9913-c075745927e3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    navigationComponent: false
+    windowSize: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - navigationComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      windowSize: !<Vec2> {x: 16.000000, y: 20.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType navigationComponent
+    - '// @input vec2 windowSize = "{16,20}" {"hint":"Visible window size (width, height) in cm"}'

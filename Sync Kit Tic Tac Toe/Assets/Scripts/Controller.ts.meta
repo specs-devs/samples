@@ -1,0 +1,83 @@
+- !<AssetImportMetadata/4b02aa1a-df05-4381-9733-0dd402877010>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4c10aa18-990c-468d-a925-458babaaf01c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4c10aa18-990c-468d-a925-458babaaf01c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 88559c03-1fc6-4868-84ee-bbcce21dee2f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/88559c03-1fc6-4868-84ee-bbcce21dee2f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: de4b3e97-89e7-47c4-b827-cab575d4266c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    gameResultTextSceneObj: false
+    gridSceneObj: false
+    gridSnapAudio: false
+    instantiator: false
+    oPrefab: false
+    restartButton: false
+    scoreTextSceneObj: false
+    winnerPanelSceneObj: false
+    xPrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      xPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      oPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      scoreTextSceneObj: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      gameResultTextSceneObj: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      winnerPanelSceneObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      restartButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      gridSnapAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      gridSceneObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Controller – Tic Tac Toe game controller</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages player assignment, piece spawning, and game state sync.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Prefabs & Instantiator</span>"}'
+    - '// @input AssignableType instantiator {"hint":"Instantiator component used to spawn synced prefabs"}'
+    - '// @input Asset.ObjectPrefab xPrefab {"hint":"Prefab for the X player piece"}'
+    - '// @input Asset.ObjectPrefab oPrefab {"hint":"Prefab for the O player piece"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI</span>"}'
+    - '// @input Component.Text scoreTextSceneObj {"hint":"Text component showing the current score"}'
+    - '// @input Component.Text gameResultTextSceneObj {"hint":"Text component showing the game result message"}'
+    - '// @input SceneObject winnerPanelSceneObj {"hint":"Scene object for the winner announcement panel"}'
+    - '// @input AssignableType_1 restartButton {"hint":"Button that triggers a game restart"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio & Scene</span>"}'
+    - '// @input Component.AudioComponent gridSnapAudio {"hint":"Audio component played when a piece snaps to the grid"}'
+    - '// @input SceneObject gridSceneObj {"hint":"Scene object containing the grid snap point children"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

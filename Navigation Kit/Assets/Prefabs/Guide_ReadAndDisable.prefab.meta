@@ -1,0 +1,339 @@
+- !<AssetImportMetadata/147d28f4-50bd-4f0f-98e2-c0b8e28acf98>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> b36cd538-6aa9-4c4a-b10d-b5d82159527a
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> b36cd538-6aa9-4c4a-b10d-b5d82159527a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 0b884bb2-7e4f-47fe-9e74-94101d6b3a59
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/0b884bb2-7e4f-47fe-9e74-94101d6b3a59>
+  Prototype: !<ObjectOwner/7000fd16-857e-478a-a228-f96ee7fc2f18>
+    PackagePath: ""
+    objects:
+      - !<own> 1d486e16-caca-4a71-4550-9d5455e12017
+- !<SceneObject/1d486e16-caca-4a71-4550-9d5455e12017>
+  PrefabRemaps:
+    []
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -120.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 9c5a9a1c-1602-49b0-49bb-ffb166a0064f
+    - !<own> fd540578-71da-4fea-66cd-82f4a1b7183b
+    - !<own> b1b39f19-e46a-4523-4b1e-0832264aa5d6
+  Components:
+    []
+- !<SceneObject/9c5a9a1c-1602-49b0-49bb-ffb166a0064f>
+  PrefabRemaps:
+    []
+  Name: TEST-EnableThisToRetrievePlacesInLogger
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 120.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e9053a2e-407f-4c7a-6341-59fa4ee82bd3
+- !<SceneObject/b1b39f19-e46a-4523-4b1e-0832264aa5d6>
+  PrefabRemaps:
+    []
+  Name: Part 2
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 23.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> de8bb5e5-7619-488d-51c3-8cb47704375f
+- !<Text/de8bb5e5-7619-488d-51c3-8cb47704375f>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |+
+    Navigation Kit Example – Please Read (Part 2)
+    
+    This example demonstrates how to create a Guided Tour Lens using Custom Locations.
+    
+    With Custom Locations in Lens Explorer, you can scan a series of real-world locations (small or mid-sized environments) and import the scan data into Lens Studio via code.
+    
+    Once imported, you can:
+    
+    Assign a GPS location to each scan
+    Add the location to your Place List
+    
+    What is a Place List?
+    
+    A Place List is a collection of locations that can include:
+    
+    GPS-only locations
+    Custom Locations linked to GPS coordinates
+    
+    How the Guided Tour Works
+    
+    During the guided tour, users can explore locations one by one.
+    
+    There are two possible behaviors:
+    
+    1. GPS-Only Locations
+       When the user enters the proximity of the GPS location, they receive a notification or alert.
+    
+    2. Custom Location + GPS
+       When the user reaches the GPS proximity, the associated Custom Location activates.
+       This allows the Lens to accurately instantiate the virtual content that was previously anchored to that scanned environment.
+    
+    Tracking Tour Progress
+    
+    You can monitor the status of the tour through the on-screen status text, which continuously updates to reflect the user’s progress and completion state.
+    
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 40
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/e9053a2e-407f-4c7a-6341-59fa4ee82bd3>
+  PrefabRemaps:
+    []
+  Name: PlacesApiTest
+  Enabled: true
+  ScriptAsset: !<reference> 8bac95cb-5605-40b5-8438-bf7a3e6dac50
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      placesApi: !<MappingBased.AssignableType> c356e7b7-d1cf-4f2c-9045-bac6286d869b
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<Text/fc38bc9a-ee80-4fe2-6d30-478c29d627f8>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Navigation Kit Example - Please read (Part 1)
+    
+    This example demonstrates how to create a Navigation Lens with interactive, location-based capabilities.
+    
+    With this Lens, you can:
+    
+    Display a map using the built-in Map Component
+    
+    Detect the user’s position using Navigation GPS
+    
+    Integrate the Places API to display nearby locations or filter them by category
+    
+    Select a destination and enable a real-time pointer guiding the user toward it
+    
+    Optionally retrieve turn-by-turn directions using Mapbox guides (External API)
+    
+    Create accurate itineraries using Custom Locations
+    
+    By leveraging Custom Locations, you can improve proximity accuracy around specific GPS coordinates. When a user approaches a point of interest, a Custom Location can be triggered to enhance tracking precision near recognizable mid-size landmarks. This is especially useful for guided tours, allowing visitors to stop directly in front of notable objects or landmarks for an enhanced experience. 
+    Getting Started
+    
+    To start using the example:
+    
+    Check the Map Component
+    In the hierarchy, locate the Map Component and ensure that “Set to Custom Location” is disabled. It should display London as the default location in the editor.
+    When you build and run the Lens on your device, your actual location will be displayed automatically.
+    
+    Use Outdoors for Best Performance
+    This Lens performs best outdoors. For accurate north-heading alignment, walk approximately 10–20 meters after launching the experience.
+    
+    Explore the Navigation Panel
+    Use the Navigation Panel to view your current position, adjust zoom levels, apply location filters, and access other navigation controls.
+    
+    Start Navigation
+    Select a location to begin navigating in that direction. The UI will dynamically respond to your movement.
+    Once navigation starts, the interface minimizes and splits into two sections to enable hands-free interaction while displaying key navigation information.
+    
+    
+    GPS and HEADING-NORTH works ONLY on device - NOT in Editor
+    If you do not find filtered location (Coffee, Restaurant, etc.) chances are there is non categorized as such in your area - if you find places using the "Search Button" (same function but with filter "ALL" - the issue might be related to those filtered buttons and not the Places API.
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 40
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/fd540578-71da-4fea-66cd-82f4a1b7183b>
+  PrefabRemaps:
+    []
+  Name: Part 1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: -23.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> fc38bc9a-ee80-4fe2-6d30-478c29d627f8

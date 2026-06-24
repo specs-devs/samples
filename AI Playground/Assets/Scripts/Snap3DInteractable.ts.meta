@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/14de37b6-d89c-4775-8ec6-2565a12aa62d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 01568e2a-eb8f-4ec3-9ccf-beb9f1654199
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 01568e2a-eb8f-4ec3-9ccf-beb9f1654199
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c49e498-028b-463f-a595-7e588f56a81b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c49e498-028b-463f-a595-7e588f56a81b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 95fc6844-532b-459b-9635-d2e8af5ed566
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    colliderObj: false
+    displayPlate: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    img: false
+    mat: false
+    modelParent: false
+    promptDisplay: false
+    spinner: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - modelParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      img: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      promptDisplay: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      spinner: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mat: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      displayPlate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      colliderObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap3DInteractable – 3D generation result viewer</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Receives image and mesh data from the factory and renders them on an interactable scene object.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject modelParent {"hint":"Parent SceneObject where the instantiated 3D model will be placed"}'
+    - '// @input Component.Image img {"hint":"Image component used to display the preview image while the model loads"}'
+    - '// @input Component.Text promptDisplay {"hint":"Text element displaying the generation prompt"}'
+    - '// @input SceneObject spinner {"hint":"SceneObject shown as a loading spinner during generation"}'
+    - '// @input Asset.Material mat {"hint":"Material applied to the instantiated 3D model"}'
+    - '// @input SceneObject displayPlate {"hint":"SceneObject containing the display plate UI element"}'
+    - '// @input SceneObject colliderObj {"hint":"SceneObject whose scale defines the collision boundary"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

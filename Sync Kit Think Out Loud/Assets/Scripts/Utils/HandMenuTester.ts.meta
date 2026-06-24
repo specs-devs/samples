@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/1cb79798-9631-42bc-88c4-0020c6af5f23>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0a720b0f-6160-47bd-b503-e08d976f775a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0a720b0f-6160-47bd-b503-e08d976f775a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 640bd125-5a77-4361-a476-80f7ba54b45c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/640bd125-5a77-4361-a476-80f7ba54b45c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5ae216c0-ef7b-409f-8daf-539d70db4480
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    enableTapToExitPing: false
+    enableTapToShow: false
+    handMenu: false
+    pingMenu: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - handMenu: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pingMenu: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      enableTapToShow: true
+      enableTapToExitPing: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HandMenuTester – test helper for triggering hand menu and ping via tap</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Tap the screen to show/hide the hand menu or exit ping connections without needing hand tracking.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType handMenu {"hint":"Reference to the HandMenu component to activate"}'
+    - '// @input AssignableType_1 pingMenu {"hint":"Reference to the PingMenu component for exit ping testing"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Testing</span>"}'
+    - '// @input bool enableTapToShow = true {"hint":"Enable tap to show hand menu (for testing)"}'
+    - '// @input bool enableTapToExitPing {"hint":"Enable tap to exit ping connections (for testing)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

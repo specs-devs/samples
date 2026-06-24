@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/90586938-44e1-401d-b58b-95e7b2776bed>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> bd3c49e2-7970-4000-a32f-1e716af96502
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> bd3c49e2-7970-4000-a32f-1e716af96502
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a6d90296-ca76-4fed-8762-a55e38a87f17
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a6d90296-ca76-4fed-8762-a55e38a87f17>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4afe134c-6e20-4c63-8694-b0c99225837f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    headLabelPrefab: false
+    instantiator: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      headLabelPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #60A5FA;\\\">HeadLabelObjectManager – manages instantiation and tracking of all head labels in session</span><br/><span style=\\\"color: #94A3B8; font-size: 11px;\\\">Instantiates the local player's head label and tracks all labels in the session.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType instantiator {"hint":"Instantiator component for creating synced head label objects"}'
+    - "// @input Asset.ObjectPrefab headLabelPrefab {\"hint\":\"Prefab to instantiate for each player's floating head label\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

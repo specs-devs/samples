@@ -1,0 +1,230 @@
+input_vec3 u_face_pos;
+input_vec3 u_surface_normal;
+input_vec3 u_view_dir;
+input_vec2 u_look_dir;
+input_float u_hover_intensity;
+input_float u_click_intensity;
+input_float u_state;
+input_float u_prev_state;
+input_float u_blend_t;
+input_float u_theme;
+input_float u_irid_brightness;
+input_float u_irid_speed;
+input_float u_outline_width;
+input_float u_outline_brightness;
+input_float u_core_glow_strength;
+input_float u_edge_white;
+input_float iTime;
+output_vec4 Result;
+
+const float eyeYOffsets[6] = float[](0.02, 0.05, 0.24, -0.02, 0.0, 0.0);
+const float eyeXSpreads[6] = float[](0.16, 0.16, 0.10, 0.22, 0.15, 0.18);
+const float eyeScales[6]   = float[](1.0, 1.0, 0.5, 1.0, 1.0, 1.0);
+
+// State data tables — index: 0=idle 1=listening 2=thinking 3=tool_call
+//   4=ignoring 5=sleeping 6=error 7=deactivated 8=connecting 9=awaiting_action
+const vec2 S_EYE_SIZE[10] = vec2[](
+    vec2(0.035, 0.035), vec2(0.045, 0.045), vec2(0.045, 0.015), vec2(0.12, 0.008),
+    vec2(0.03,  0.012), vec2(0.035, 0.002), vec2(0.0,   0.0),   vec2(0.0,  0.0),
+    vec2(0.035, 0.002), vec2(0.045, 0.025)
+);
+const float S_EYE_CURVE[10]  = float[]( 1.5,  2.5, -4.0,  0.0, -1.5, -1.5,  0.0,  0.0, -1.5, -3.0);
+const float S_EYE_BRIGHT[10] = float[]( 1.0,  1.0,  1.0,  1.0,  1.0,  0.2,  1.0,  0.0,  0.2,  1.0);
+const vec3 S_ANTENNA[10] = vec3[](
+    vec3(0.3,  0.5,  0.8), vec3(0.0,  1.0, 0.6), vec3(1.0, 0.5, 0.1), vec3(0.0, 0.8, 1.0),
+    vec3(0.8,  0.1,  0.1), vec3(0.1,  0.2, 0.6), vec3(1.0, 0.0, 0.0), vec3(0.05, 0.05, 0.05),
+    vec3(0.0,  1.0,  0.8), vec3(1.0,  0.7, 0.1)
+);
+const float S_PULSE[10]   = float[](  0.0,  5.0,  8.0, 20.0,  0.0,  1.5,  0.0,  0.0, 12.0,  3.0);
+const float S_BOB[10]     = float[](  1.0,  1.0,  1.0,  1.0,  1.0,  0.3,  0.0,  0.0,  0.5,  1.0);
+const float S_LISTEN[10]  = float[](  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0);
+const float S_THINK[10]   = float[](  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0);
+const float S_TOOL[10]    = float[](  0.0,  0.0,  0.5,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0);
+const float S_SLEEP[10]   = float[](  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0);
+const float S_ERROR[10]   = float[](  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0);
+const float S_CONNECT[10] = float[](  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0);
+const float S_AWAIT[10]   = float[](  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0);
+
+float sdRoundBox2D(vec2 p, vec2 b, float r) {
+    vec2 q = abs(p) - b;
+    return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+
+float sdSegment(vec2 p, vec2 a, vec2 b) {
+    vec2 pa = p - a, ba = b - a;
+    float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+    return length(pa - ba * h);
+}
+
+mat2 rot2D(float a) { float s = sin(a), c = cos(a); return mat2(c, -s, s, c); }
+
+float hash(float n) { return fract(n * 127.1 + n * n * 311.7); }
+
+vec3 spectral(float t) {
+    return 0.5 + 0.5 * cos(6.28318 * (t + vec3(0.0, 0.33, 0.67)));
+}
+
+float getBinaryBit(vec2 uv, float id) {
+    float type = step(0.5, hash(id));
+    vec2 p = uv * 2.0 - 1.0;
+    float dotVal = smoothstep(0.12, 0.06, abs(p.x)) * smoothstep(0.85, 0.75, abs(p.y));
+    float box = sdRoundBox2D(p, vec2(0.35, 0.55), 0.1);
+    float boxVal = smoothstep(0.1, 0.05, abs(box)) * step(-0.05, box);
+    return mix(boxVal, dotVal, type);
+}
+
+void main() {
+    int theme = clamp(int(u_theme + 0.1), 0, 5);
+    float gTime = iTime;
+
+    // --- State lerp ---
+    int cur  = clamp(int(u_state      + 0.5), 0, 9);
+    int prev = clamp(int(u_prev_state + 0.5), 0, 9);
+    float t = u_blend_t;
+
+    vec2  eyeSize                 = mix(S_EYE_SIZE[prev],  S_EYE_SIZE[cur],  t);
+    float eyeCurve                = mix(S_EYE_CURVE[prev], S_EYE_CURVE[cur], t);
+    float eyeBrightness           = mix(S_EYE_BRIGHT[prev],S_EYE_BRIGHT[cur],t);
+    vec3  antennaColor            = mix(S_ANTENNA[prev],   S_ANTENNA[cur],   t);
+    float pulseSpeed              = mix(S_PULSE[prev],     S_PULSE[cur],     t);
+    float bobIntensity            = mix(S_BOB[prev],       S_BOB[cur],       t);
+    float listeningIntensity      = mix(S_LISTEN[prev],    S_LISTEN[cur],    t);
+    float thinkingIntensity       = mix(S_THINK[prev],     S_THINK[cur],     t);
+    float toolCallIntensity       = mix(S_TOOL[prev],      S_TOOL[cur],      t);
+    float sleepIntensity          = mix(S_SLEEP[prev],     S_SLEEP[cur],     t);
+    float errorIntensity          = mix(S_ERROR[prev],     S_ERROR[cur],     t);
+    float connectingIntensity     = mix(S_CONNECT[prev],   S_CONNECT[cur],   t);
+    float awaitingActionIntensity = mix(S_AWAIT[prev],     S_AWAIT[cur],     t);
+
+    // --- Body iridescence (base layer) ---
+    vec3 n = normalize(u_surface_normal);
+    vec3 vd = normalize(u_view_dir);
+
+    float facing = abs(dot(n, vd));
+    float fTerm = 1.0 - facing;
+    float fresnel = smoothstep(0.0, 1.0, fTerm);
+    fresnel = fresnel * fresnel;
+
+    float outline = smoothstep(u_outline_width, 0.0, facing);
+
+    vec3 antennaFresnel = antennaColor * fresnel;
+
+    float iridBright = u_irid_brightness + u_hover_intensity * 1.5;
+    vec3 irid = spectral(fresnel * 0.8 + gTime * (u_irid_speed + u_hover_intensity * 0.1)) * fresnel * iridBright;
+    vec3 coreGlow = antennaFresnel * (0.6 * u_core_glow_strength);
+    if (theme == 2) coreGlow *= 2.0;
+
+    vec3 spectralSlow = spectral(gTime * 0.1);
+    vec3 outlineCol = mix(antennaColor, spectralSlow * 1.5, 0.4) * outline * u_outline_brightness;
+
+    vec3 col = irid + coreGlow + outlineCol + fresnel * fresnel * u_edge_white;
+
+    // --- State-driven body coloring ---
+
+    float pulse = (pulseSpeed < 0.01) ? 1.0 : sin(gTime * pulseSpeed) * 0.5 + 0.5;
+    float stateAccum = 0.15 * pulse
+        + 0.2 * connectingIntensity * pulse
+        + 0.15 * awaitingActionIntensity * pulse
+        + u_click_intensity * 0.3;
+
+    if (thinkingIntensity > 0.01)
+        stateAccum += 0.1 * thinkingIntensity * (sin(gTime * 5.0) * 0.5 + 0.5);
+
+    col += antennaFresnel * stateAccum;
+
+    if (errorIntensity > 0.01)
+        col = mix(col, vec3(0.8, 0.05, 0.05) * fresnel * 2.0, errorIntensity * 0.3);
+
+    if (sleepIntensity > 0.01)
+        col *= mix(1.0, 0.4, sleepIntensity);
+
+    // --- Face position mask (eliminates per-fragment branch divergence) ---
+    float faceMask = step(0.1, u_face_pos.y);
+
+    // --- Tool call binary rain ---
+    vec2 p = vec2(u_face_pos.x, -u_face_pos.z);
+    if (toolCallIntensity > 0.01) {
+        vec2 fuv = p * 5.0;
+        fuv.y += gTime * (1.0 + hash(floor(fuv.x)) * 1.5);
+        col += antennaColor * getBinaryBit(fract(fuv), floor(fuv.x) + floor(fuv.y) * 10.0) * 0.5 * toolCallIntensity * faceMask;
+    }
+
+    // --- Face features (front face only, via faceMask) ---
+    vec2 faceUv = p - vec2(u_look_dir.x * 0.032, u_look_dir.y * 0.024);
+
+    if (eyeBrightness > 0.01) {
+        vec3 eyeCol = mix(vec3(2.5), vec3(3.0, 0.2, 0.2), errorIntensity) * eyeBrightness;
+
+        if (theme == 4) {
+            vec2 grid = fract(faceUv * 40.0);
+            eyeCol *= (0.5 + 0.5 * (smoothstep(0.0, 0.2, grid.y) * smoothstep(1.0, 0.8, grid.y) *
+                                     smoothstep(0.0, 0.2, grid.x) * smoothstep(1.0, 0.8, grid.x)));
+            if (abs(fract(faceUv.y * 2.0 - gTime) - 0.5) < 0.02)
+                eyeCol += vec3(0.5) * eyeBrightness;
+        }
+
+        float eyeSc = eyeScales[theme];
+        vec2 eyePos = faceUv - vec2(0.0, eyeYOffsets[theme]);
+        eyePos.x = abs(eyePos.x) - eyeXSpreads[theme];
+
+        vec2 normEyePos = eyePos;
+        normEyePos.y += eyeCurve * (normEyePos.x * normEyePos.x) * 4.0;
+        float blinkTime = mod(gTime, 4.0);
+        float blink = (blinkTime < 0.12 || (blinkTime > 0.3 && blinkTime < 0.42)) ? 1.0 : 0.0;
+        vec2 eSize = eyeSize * (1.0 + u_hover_intensity * 0.2) * eyeSc;
+        float h_eye = max(mix(eSize.y, 0.001, blink * bobIntensity), 0.001);
+
+        float eyeSDF = sdRoundBox2D(normEyePos, vec2(eSize.x, h_eye), min(eSize.x, h_eye) * 0.99);
+        if (errorIntensity > 0.01) {
+            float errorEyeSDF = min(
+                sdSegment(eyePos, vec2(-0.03, 0.03) * eyeSc, vec2(0.03, -0.03) * eyeSc),
+                sdSegment(eyePos, vec2(-0.03, -0.03) * eyeSc, vec2(0.03, 0.03) * eyeSc)
+            ) - 0.008 * eyeSc;
+            eyeSDF = mix(eyeSDF, errorEyeSDF, smoothstep(0.1, 0.9, errorIntensity));
+        }
+        float eyeMask = smoothstep(0.015, 0.0, eyeSDF) * faceMask;
+        col = mix(col, eyeCol, eyeMask);
+
+        if (theme == 0) {
+            float noseMask = smoothstep(0.005, 0.0, length(faceUv - vec2(0.0, -0.09)) - 0.012) * faceMask;
+            col = mix(col, eyeCol * 1.2, noseMask);
+
+            vec2 mUv = faceUv - vec2(0.0, -0.13);
+            mUv.x = abs(mUv.x) - 0.025;
+            float mouthMask = smoothstep(0.005, 0.0, max(abs(length(mUv) - 0.025) - 0.004, mUv.y)) * faceMask;
+            col = mix(col, eyeCol * 1.2, mouthMask);
+
+            vec2 wUv = faceUv;
+            wUv.x = abs(wUv.x) - 0.24;
+            wUv.y += 0.08;
+            float whiskers = 1.0;
+            for (int w = -1; w <= 1; w++) {
+                vec2 wl = wUv;
+                wl.y -= float(w) * 0.05;
+                wl *= rot2D(float(w) * -0.15);
+                whiskers = min(whiskers, sdSegment(wl, vec2(0.0), vec2(0.12, 0.0)));
+            }
+            vec3 whiskerCol = eyeCol * mix(1.2, 3.5, listeningIntensity);
+            float whiskerMask = smoothstep(0.006, 0.002, whiskers) * faceMask;
+            col = mix(col, whiskerCol, whiskerMask);
+        } else if (theme == 1) {
+            vec2 bUv = faceUv - vec2(0.0, -0.10);
+            float beakSDF = abs(bUv.x) * 1.2 + abs(bUv.y) * 0.8 - 0.04;
+            float beakMask = smoothstep(0.005, 0.0, beakSDF) * faceMask;
+            col = mix(col, mix(vec3(1.0, 0.5, 0.0), eyeCol, 0.5) * 1.5, beakMask);
+        } else if (theme == 2) {
+            float dotsMask = smoothstep(0.005, 0.0, min(
+                length(eyePos - vec2(0.0, -0.03)) - 0.006,
+                length(eyePos - vec2(0.01, -0.05)) - 0.004
+            )) * faceMask;
+            col = mix(col, eyeCol * 0.8, dotsMask);
+        } else if (theme == 3) {
+            vec2 smUv = faceUv - vec2(0.0, -0.1);
+            float smileMask = smoothstep(0.005, 0.0, max(
+                abs(length(vec2(smUv.x, smUv.y * 1.5)) - 0.15) - 0.006, smUv.y)) * faceMask;
+            col = mix(col, eyeCol * 1.2, smileMask);
+        }
+    }
+
+    Result = vec4(clamp(col, 0.0, 2.5), 1.0);
+}

@@ -1,0 +1,97 @@
+- !<AssetImportMetadata/cb3c4178-e9df-4e3e-bfde-106460ccfcc0>
+  ImportedAssetIds:
+    Meshes/OutSpheer: !<reference> d4d522f0-5a24-4434-86ec-7833c6bc754f
+    Scene: !<reference> cd1be259-0a2c-4925-9905-972d81ee6498
+    _3DSceneImportRoot_0|: !<reference> 11345755-f1b7-4b0d-b9a7-7e67582e8074
+    _3DSceneImportRoot_0|_OutSpheer_0|: !<reference> dfddd8bd-ad79-40d8-8dd0-f5bfa3c16af7
+    _3DSceneImportRoot_0|_OutSpheer_0|_RenderMeshVisual_0|: !<reference> 4b0155c3-0b2a-49ad-bf92-b44a31c1efbc
+  ImporterName: FbxImporter
+  PrimaryAsset: !<reference> cd1be259-0a2c-4925-9905-972d81ee6498
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> b12db586-5edb-42fe-a235-9092542c359f
+  DependentFiles:
+    []
+  ImporterSettings: !<FbxImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategory
+    PersistentIdGenerationAlgorithm: Legacy
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangentsAndBinormals: true
+    RegenerateTangentsAndBinormals: false
+    RegenerateNormalsForSkinnedMeshes: true
+    ImportBlendShapeAnimation: true
+    ImportVertexAnimation: true
+    GeneratePivots: true
+    TriangulateNURBS: true
+    UseLegacyFbxLoader: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: None
+        CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<SceneObject/11345755-f1b7-4b0d-4658-8198a7d17f8b>
+  PrefabRemaps:
+    []
+  Name: Spheer
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> dfddd8bd-ad79-40d8-722f-0a405c3e9508
+  Components:
+    []
+- !<RenderMeshVisual/4b0155c3-0b2a-49ad-406d-4bb5ce3e1043>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Mesh: !<reference> d4d522f0-5a24-4434-86ec-7833c6bc754f
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefabAssetData/b12db586-5edb-42fe-a235-9092542c359f>
+  Prototype: !<ObjectOwner/b9d61074-9e7c-44ab-b43c-bb48c4e06a7f>
+    PackagePath: ""
+    objects:
+      - !<own> 11345755-f1b7-4b0d-4658-8198a7d17f8b
+- !<SceneObject/dfddd8bd-ad79-40d8-722f-0a405c3e9508>
+  PrefabRemaps:
+    []
+  Name: OutSpheer
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4b0155c3-0b2a-49ad-406d-4bb5ce3e1043

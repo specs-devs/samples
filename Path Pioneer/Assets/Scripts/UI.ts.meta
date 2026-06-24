@@ -1,0 +1,92 @@
+- !<AssetImportMetadata/4282d6b3-193c-4005-a0de-0412dbd62c95>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 06afeee2-f108-41b0-a56f-b705e3d13ec0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 06afeee2-f108-41b0-a56f-b705e3d13ec0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7b1ac8bd-3f22-4175-953c-37346e24c465
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7b1ac8bd-3f22-4175-953c-37346e24c465>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4f230b06-8d68-43b1-98e0-57645a8dcebf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    backplateSo: false
+    camObj: false
+    duringPathCreationUI: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endSessionUI: false
+    goToStartUI: false
+    goToStartUiDistance: false
+    homeUI: false
+    pfbLoopUi: false
+    tutorialAnimationPlayer: false
+    tutorialText: false
+    tutorialUI: false
+    warningTutorialUI: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      homeUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      duringPathCreationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      goToStartUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      goToStartUiDistance: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      endSessionUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pfbLoopUi: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      backplateSo: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      warningTutorialUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tutorialUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tutorialAnimationPlayer: !<reference.AnimationPlayer> 00000000-0000-0000-0000-000000000000
+      tutorialText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI – manages all in-lens UI panels</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Controls visibility of home, tutorial, path creation, and session UI.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Camera</span>"}'
+    - '// @input SceneObject camObj {"hint":"Camera scene object used as the follow anchor for UI panels"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI Panels</span>"}'
+    - '// @input SceneObject homeUI {"hint":"Root scene object for the home screen UI panel"}'
+    - '// @input SceneObject duringPathCreationUI {"hint":"Root scene object shown during active path creation"}'
+    - '// @input SceneObject goToStartUI {"hint":"Root scene object instructing the player to walk to the start line"}'
+    - '// @input Component.Text goToStartUiDistance {"hint":"Text component inside the go-to-start panel displaying distance to start"}'
+    - '// @input SceneObject endSessionUI {"hint":"Root scene object for the end-session panel shown while walking"}'
+    - '// @input Asset.ObjectPrefab pfbLoopUi {"hint":"Prefab instantiated to create the loop lock UI controller"}'
+    - '// @input SceneObject backplateSo {"hint":"Background plate scene object shown behind the active UI panel"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Tutorial</span>"}'
+    - '// @input SceneObject warningTutorialUI {"hint":"Root scene object for the safety warning shown before the tutorial"}'
+    - '// @input SceneObject tutorialUI {"hint":"Root scene object for the main tutorial instructional panel"}'
+    - '// @input Component.AnimationPlayer tutorialAnimationPlayer {"hint":"AnimationPlayer driving the tutorial clip transitions"}'
+    - '// @input Component.Text tutorialText {"hint":"Text component displaying the current tutorial instruction"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

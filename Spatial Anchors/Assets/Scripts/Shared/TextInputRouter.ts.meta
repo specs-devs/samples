@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/2bbbade2-1b5b-4885-a8e3-a35d37e3f2a8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d46b4372-d0ba-479c-9318-9d8066b2ab6a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d46b4372-d0ba-479c-9318-9d8066b2ab6a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f0ffc5ac-3fbd-482c-a789-b30bccaf457e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f0ffc5ac-3fbd-482c-a789-b30bccaf457e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 03918e6a-6382-48aa-96f3-2ece7a6724c2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TextInputRouter – AR keyboard routing</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Routes AR keyboard input to the currently focused NoteWidget.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

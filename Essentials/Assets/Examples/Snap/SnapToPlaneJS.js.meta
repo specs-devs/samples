@@ -1,0 +1,48 @@
+- !<AssetImportMetadata/aaf06567-4cf8-463b-a5c3-123f8acdd2a4>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 9984834a-013d-4faa-be32-6eebe4d0b8f6
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 9984834a-013d-4faa-be32-6eebe4d0b8f6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> d48717e7-d0d9-4b62-bbc2-c39d2dec4f2a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/d48717e7-d0d9-4b62-bbc2-c39d2dec4f2a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1c2df40e-a0db-498a-a02a-728d14661fc0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    distanceObject: false
+    planeTransform: false
+    snapDistance: false
+    snappingObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - planeTransform: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snappingObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      snapDistance: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}

@@ -1,0 +1,146 @@
+- !<AssetImportMetadata/1fa3b6c2-c79d-451e-a909-6d5f71b75418>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 1fdc78b4-237e-43fa-a096-f5899034aa2b
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 1fdc78b4-237e-43fa-a096-f5899034aa2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 5df7e39a-181c-4754-a9af-99eadbcce47b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/3c9ac244-42aa-40c9-4c21-e6b3f38e1c19>
+  PrefabRemaps:
+    []
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4cfd0cf0-ad5c-4646-711d-7c626f6ddfe4
+- !<Text/4cfd0cf0-ad5c-4646-711d-7c626f6ddfe4>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 200
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |
+    Spectacles Mobile Kit is a SDK that enables seamless communication between mobile applications and Lenses running on Spectacles via Bluetooth Low Energy (BLE). It empowers creators to build rich, interactive experiences that bridge mobile and Spectacles. 
+    
+    Whether you're developing Lenses that respond to mobile input or enhancing your application with Spectacles integration, Spectacles Mobile Kit simplifies connectivity and enables two-way communication, unlocking new possibilities for dynamic, cross-device AR experiences.
+    
+      To test as a new user:
+    
+      1. Open the lens project in Lens Studio confirm Lens Name is SpecsMobileKit in Project Settings, then click Preview Lens to push it to your Spectacles.
+    
+      2. Open the mobile sample app from Spectacles
+       Mobile Kit/app — run it on a physical iPhone (Xcode 16) or Android device.
+    
+     3. Bond: Tap the bind button in the app → approve in Spectacles App when
+      prompted.
+    
+     4. Start session: Tap the binding result → tap Start Session. The lens will
+      auto-connect and run all tests (echo, digest, subscription, asset loading) —
+      watch the on-screen log in your Spectacles.
+    
+      5. Send a message: Type text in the app and tap Send to see it appear in the
+      lens.
+    
+      The /sdk folder contains the TypeScript/JS SDK you'd use to build your own
+      mobile app integration.
+    
+    
+    See more at 
+    
+    https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-mobile-kit/getting-started
+
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ObjectPrefabAssetData/5df7e39a-181c-4754-a9af-99eadbcce47b>
+  Prototype: !<ObjectOwner/1ce93daa-cafe-425b-9024-c1ea30f3b097>
+    PackagePath: ""
+    objects:
+      - !<own> 3c9ac244-42aa-40c9-4c21-e6b3f38e1c19

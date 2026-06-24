@@ -1,0 +1,80 @@
+- !<AssetImportMetadata/baf9fcbe-3f0e-44a3-a5f5-f88897f77e75>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 33cf9e07-bf75-4300-aa25-cf1e90404a48
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 33cf9e07-bf75-4300-aa25-cf1e90404a48
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2c6178dd-0d26-4fd8-bd67-99edc8e73f3c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2c6178dd-0d26-4fd8-bd67-99edc8e73f3c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9eca77ba-918e-4fa0-98fb-6577a1ea0af9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugImage: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    lostFramesThreshold: false
+    matchDetections: false
+    matchThreshold: false
+    maxCount: false
+    objectToCopy: false
+    setObjectPosition: false
+    smoothCoef: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - debugImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      objectToCopy: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      maxCount: !<float> 70.000000
+      setObjectPosition: true
+      matchDetections: false
+      matchThreshold: 0.500000
+      lostFramesThreshold: !<float> 4.000000
+      smoothCoef: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DetectionController – bounding box visualization</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Instantiates and positions overlay objects for each ML detection on screen.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
+    - '// @input Component.Image debugImage {"hint":"Debug image overlay rendered on top of the camera feed"}'
+    - '// @input SceneObject objectToCopy {"hint":"Scene object used as the template for each detection overlay"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Detection Settings</span>"}'
+    - '// @input float maxCount = 70 {"hint":"Maximum number of simultaneous detection overlays to instantiate", "widget":"slider", "min":0, "max":100, "step":1}'
+    - '// @input bool setObjectPosition = true {"hint":"Move each overlay object to match its corresponding detection position"}'
+    - '// @input bool matchDetections {"hint":"Match current detections to those from the previous frame to reuse scene objects"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Match Settings</span>", "showIf":"matchDetections"}'
+    - '// @input float matchThreshold = 0.5 {"hint":"IoU threshold below which an unmatched detection persists for lostFrameThreshold updates", "widget":"slider", "min":0, "max":0.95, "step":0.05}'
+    - '// @input float lostFramesThreshold = 4 {"hint":"Number of update frames a lost detection remains active before being removed", "widget":"slider", "min":0, "max":10, "step":1, "showIf":"matchDetections"}'
+    - '// @input float smoothCoef {"hint":"Smoothing coefficient applied to detection position interpolation", "widget":"slider", "min":0, "max":1, "step":0.01, "showIf":"matchDetections"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

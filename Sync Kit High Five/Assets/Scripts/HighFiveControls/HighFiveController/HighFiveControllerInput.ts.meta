@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/788dfbcf-c250-4c57-935b-28a822741fc4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 70f0aca6-a1bc-42ea-ae8d-ef0f867c6f7c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 70f0aca6-a1bc-42ea-ae8d-ef0f867c6f7c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e80a7124-515d-4977-ae96-69fca568c321
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e80a7124-515d-4977-ae96-69fca568c321>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c94ab8f4-1636-4b27-89c7-426e9823ed68
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bubbleAnimationControllerInput: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bubbleAnimationControllerInput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HighFiveControllerInput – high-five controller dependencies</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Provides the bubble animation controller input to the high-five controller.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType bubbleAnimationControllerInput {"hint":"The bubble animation controller input used for high-five visual feedback"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

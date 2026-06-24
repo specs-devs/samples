@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/b5149967-99e1-427d-b3dd-f09b4a952f38>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 1cf50e95-bc0a-493b-9088-cb74387bc51a
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 1cf50e95-bc0a-493b-9088-cb74387bc51a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 2689fbde-5d9f-4f80-ad6c-328d2999ad8f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/2689fbde-5d9f-4f80-ad6c-328d2999ad8f>
+  Prototype: !<ObjectOwner/22d69bde-d976-4c2e-9357-ed8eba4f6c43>
+    PackagePath: ""
+    objects:
+      - !<own> 34296932-02c8-4d66-5bcb-7a69b2c427bb
+- !<GaussianSplattingVisual/2a29c388-e0df-4c35-47d0-6879bb3f7236>
+  PrefabRemaps:
+    []
+  Name: Gaussian Splatting
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Asset: !<reference> b02fa45c-fcbf-4187-a269-28ea9ad11510
+  FrostingShell: !<reference> 00000000-0000-0000-0000-000000000000
+  ActiveFrame: 0
+  AutoPlay: true
+  FPS: 30.000000
+- !<SceneObject/34296932-02c8-4d66-5bcb-7a69b2c427bb>
+  PrefabRemaps:
+    []
+  Name: SpatialImageGaussianSplat
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 90.000000, y: 0.000000, z: 180.000000}
+    Scale: {x: 30.000000, y: 30.000000, z: 30.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 2a29c388-e0df-4c35-47d0-6879bb3f7236

@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/5251c59f-7609-4a77-90c9-7795239dc0bd>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 31768301-8b2c-40c0-8a10-1230513aae90
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 31768301-8b2c-40c0-8a10-1230513aae90
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7bcf0ddb-8839-4dbb-b087-6fb58ec6ae06
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7bcf0ddb-8839-4dbb-b087-6fb58ec6ae06>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c8972ae4-5c4b-4f24-b083-04bfbe1d5f6a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraButton: false
+    micButton: false
+    sendButton: false
+    textInputField: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - textInputField: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      micButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cameraButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      sendButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType textInputField
+    - // @input SceneObject micButton
+    - // @input SceneObject cameraButton
+    - // @input SceneObject sendButton

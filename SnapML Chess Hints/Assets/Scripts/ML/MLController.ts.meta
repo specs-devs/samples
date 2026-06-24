@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/9e0f8ca0-7766-4882-ad46-ec2108991eda>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b4bfaaad-75f8-43ba-9e03-dfdcc1fe162b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b4bfaaad-75f8-43ba-9e03-dfdcc1fe162b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f78d4fd3-3906-4dad-b697-72e35fa22501
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f78d4fd3-3906-4dad-b697-72e35fa22501>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b779772a-3105-4cb8-afa5-584e650e3174
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraService: false
+    chessBoardPredictor: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    iouThreshold: false
+    model: false
+    modelInfo: false
+    scoreThreshold: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      chessBoardPredictor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      model: !<reference.MLAsset> 00000000-0000-0000-0000-000000000000
+      modelInfo: false
+      scoreThreshold: !<float> 0.000000
+      iouThreshold: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MLController – YOLOv7 chess piece detection</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs the ML model on camera frames and outputs chess piece detections.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType cameraService {"hint":"Camera service that provides the cropped input texture and frame callbacks"}'
+    - '// @input AssignableType_1 chessBoardPredictor {"hint":"Chess board predictor that receives detection results each frame"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Model Settings</span>"}'
+    - '// @input Asset.MLAsset model {"hint":"ML model asset containing the YOLOv7 chess piece detector"}'
+    - '// @input bool modelInfo {"hint":"Enable logging of model build and configuration info"}'
+    - '// @input float scoreThreshold = 0.33 {"hint":"Minimum confidence score for a detection to be considered valid", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float iouThreshold = 0.5 {"hint":"Intersection-over-union threshold for non-maximum suppression", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

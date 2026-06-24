@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/4c28864a-7c29-4b3d-a9ba-83acc9941100>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 308eb154-85ea-4f6c-b118-c5813e87ab73
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 308eb154-85ea-4f6c-b118-c5813e87ab73
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 77a9f53e-aa6a-4e67-8904-a4e02b720b6f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/77a9f53e-aa6a-4e67-8904-a4e02b720b6f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6d5d7ab6-4bb7-4129-83d1-341daaf670d2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    inputFieldObject: false
+    textComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      inputFieldObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WidgetBase – Abstract base class for all widget types</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Extended by NoteWidget, WatchWidget, PhotoWidget. Do not attach directly.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">NoteWidget – Sticky note with editable text</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.Text textComponent {"hint":"Text component displaying the note content"}'
+    - '// @input SceneObject inputFieldObject {"hint":"SceneObject that has the TextInputField component"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging"}'

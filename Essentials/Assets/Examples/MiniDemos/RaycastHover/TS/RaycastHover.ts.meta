@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/3be901fa-56d2-4ee2-b496-9c9de838d3c1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ff733232-767f-4fc3-bf4b-06ac8703136c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ff733232-767f-4fc3-bf4b-06ac8703136c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3fa88649-f6ad-4177-976b-3955d749909c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3fa88649-f6ad-4177-976b-3955d749909c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 77b5ccd8-486d-43eb-a901-5531c932b89f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationDuration: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    expandedScale: false
+    normalScale: false
+    rayEnd: false
+    rayStart: false
+    targetCollider: false
+    targetPanel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      targetCollider: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      animationDuration: !<float> 300.000000
+      normalScale: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
+      expandedScale: !<Vec3> {x: 1.200000, y: 1.200000, z: 1.200000}
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RaycastHoverTS – scale a panel on raycast hover</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Detects when the ray between two points hits a collider and animates the target panel scale.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject rayStart {"hint":"The origin SceneObject of the ray"}'
+    - '// @input SceneObject rayEnd {"hint":"The destination SceneObject of the ray"}'
+    - '// @input SceneObject targetPanel {"hint":"The panel SceneObject to scale on hover"}'
+    - '// @input SceneObject targetCollider {"hint":"The collider SceneObject to test the ray against"}'
+    - '// @input float animationDuration = 500 {"hint":"Duration of the scale animation in milliseconds"}'
+    - '// @input vec3 normalScale = {1,1,1} {"hint":"Default scale of the panel when not hovered"}'
+    - '// @input vec3 expandedScale = {1.2,1.2,1.2} {"hint":"Expanded scale of the panel when hovered"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

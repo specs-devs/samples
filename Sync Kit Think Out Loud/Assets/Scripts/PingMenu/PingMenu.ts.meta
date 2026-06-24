@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/347d38f8-fb28-4070-8411-0e2548fb22ea>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f305f337-4284-4cb7-b6d9-d0529658fe20
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f305f337-4284-4cb7-b6d9-d0529658fe20
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 58b96869-1c6a-4328-a7e2-86b9c8e110e8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/58b96869-1c6a-4328-a7e2-86b9c8e110e8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c24c2f6d-8d66-4ad1-8ff3-2ac5629146ce
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    headLabelManager: false
+    pingMenuPrefab: false
+    pingSendAudio: false
+    preferUserId: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headLabelManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pingMenuPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      pingSendAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      preferUserId: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PingMenu – manages ping request network events and visual connection state</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Broadcasts ping requests and responses via SyncEntity events; updates head label materials on connection.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType headLabelManager {"hint":"Reference to the head label manager to get all user head labels"}'
+    - '// @input Asset.ObjectPrefab pingMenuPrefab {"hint":"PingMenu prefab to instantiate when receiving ping requests"}'
+    - '// @input Component.AudioComponent pingSendAudio {"hint":"Audio component to play when sending a ping"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Settings</span>"}'
+    - '// @input bool preferUserId {"hint":"Prefer UserId over ConnectionId for targeting; enable for same user across devices, disable for device-specific targeting"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

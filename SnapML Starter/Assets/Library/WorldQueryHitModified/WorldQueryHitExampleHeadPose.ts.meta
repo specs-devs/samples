@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/dcfcaadb-8516-43fb-8e54-c87f85ff6230>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c806ec8a-3b86-4e7c-9ea1-0c99bf2050ea
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c806ec8a-3b86-4e7c-9ea1-0c99bf2050ea
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    AssetLibraryId: 3pSS78N86NN7AmQn7vDmZy
+  AssetDataMap:
+    TypeScriptAsset: !<own> 970ba55d-c65b-46c2-814b-802283336955
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/970ba55d-c65b-46c2-814b-802283336955>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4b0f89f8-58f4-4dd0-843c-f0fe30381391
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endPointAttachment: false
+    rayEnd: false
+    rayStart: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endPointAttachment: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SimpleRaycastTS – head-pose physics raycast</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Casts a physics ray from rayStart to rayEnd each frame and snaps the attachment to the hit point.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Ray</span>"}'
+    - '// @input SceneObject rayStart {"hint":"Scene object defining the start of the ray"}'
+    - '// @input SceneObject rayEnd {"hint":"Scene object defining the end of the ray"}'
+    - '// @input SceneObject endPointAttachment {"hint":"Scene object repositioned to the raycast hit point"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

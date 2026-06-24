@@ -1,0 +1,53 @@
+- !<ObjectPrefab/ad22fe8a-05dc-4376-94a2-dd133b404207>
+  PackagePath: ""
+  objects:
+    - !<own> 8f99321f-59fd-43c3-bc53-88bcf84a8fbb
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/8f99321f-59fd-43c3-bc53-88bcf84a8fbb>
+  PrefabRemaps:
+    - 8f99321f-59fd-43c3-bc53-88bcf84a8fbb: 8f99321f-59fd-43c3-43ac-774307b57044
+    - c7bcaf89-8fe9-4bf1-a72b-6766a0f67f0b: c7bcaf89-8fe9-4bf1-58d4-98995f0980f4
+  Name: VirtualCamera
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c7bcaf89-8fe9-4bf1-a72b-6766a0f67f0b
+- !<Camera/c7bcaf89-8fe9-4bf1-a72b-6766a0f67f0b>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  renderLayer: 1
+  MipmapLevel: 0
+  RenderOrder: 0
+  Size: 20.000000
+  Near: 1.000000
+  Far: 1000.000000
+  Fov: 63.541019
+  ClearColor: !<CameraClearColor>
+    Mode: None
+    Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  ClearDepth: !<CameraClearDepth>
+    Mode: Value
+    Value: 1.000000
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  Aspect: 1.000000
+  CameraType: Perspective
+  DepthMode: Regular
+  DeviceProperty: None
+  AspectPreset: Custom
+  OitLayers: NoOit
+  RenderTarget: !<reference> 00000000-0000-0000-0000-000000000000
+  DepthStencilRenderTarget: !<reference> 00000000-0000-0000-0000-000000000000
+  MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
+  DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000

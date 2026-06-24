@@ -1,0 +1,76 @@
+- !<AssetImportMetadata/a6b10c99-36cb-4350-be9c-4d5498e23a52>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 798cec70-deaf-4285-a931-20dfad3a7701
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 798cec70-deaf-4285-a931-20dfad3a7701
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 1930c421-1ad0-4565-9b65-34d0f82c8c74
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/0a960e4a-a824-4651-7c67-cc028cbf4d28>
+  PrefabRemaps:
+    []
+  Name: DartBoard
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -315.039551}
+    Rotation: {x: 90.000000, y: -0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 10.000000, z: 100.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1cbbb100-3926-4eaa-6a4c-94fd8c203a8a
+    - !<own> 174d5d2e-c13f-4ce2-7bc0-2c690beeed2e
+- !<ColliderComponent/174d5d2e-c13f-4ce2-7bc0-2c690beeed2e>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Cylinder>
+    Axis: Y
+    Length: 1.000000
+    Radius: 0.500000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<ObjectPrefabAssetData/1930c421-1ad0-4565-9b65-34d0f82c8c74>
+  Prototype: !<ObjectOwner/c1e92ccb-d046-486f-b7ce-a458ad75286d>
+    PackagePath: ""
+    objects:
+      - !<own> 0a960e4a-a824-4651-7c67-cc028cbf4d28
+- !<RenderMeshVisual/1cbbb100-3926-4eaa-6a4c-94fd8c203a8a>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> c492c9bf-20c3-45e0-98dd-e2db460e80f9
+  Mesh: !<reference> 90131c52-1de1-4364-b1b4-f71fcb79e04d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

@@ -1,0 +1,83 @@
+- !<AssetImportMetadata/04cf10b8-9496-2640-8b46-fa3dfb44e007>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0e5659af-c8c0-488e-96c6-396c1e649d84
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0e5659af-c8c0-488e-96c6-396c1e649d84
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 393235ae-7233-41e3-949c-4c9d353b12d5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/393235ae-7233-41e3-949c-4c9d353b12d5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b4000fef-baa1-4a6e-bd84-a4f0ee56150e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audio: false
+    djParent: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    inputTrack: false
+    loopAudio: false
+    loopAudio2: false
+    outputAudio: false
+    predefinedAudioParent: false
+    sampleRate: false
+    trackButtons: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - inputTrack: !<reference.AudioTrackAsset[]>
+        []
+      loopAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      loopAudio2: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      outputAudio: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      sampleRate: !<float> 44100.000000
+      predefinedAudioParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      trackButtons: !<MappingBased.AssignableType[]>
+        []
+      djParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AudioController – dual-deck audio engine</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages two audio decks with real-time speed and volume control.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio Tracks</span>"}'
+    - '// @input Asset.AudioTrackAsset[] inputTrack {"hint":"Array of audio tracks to load into the deck"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio Components</span>"}'
+    - '// @input Component.AudioComponent loopAudio {"hint":"Loop audio component for deck 1"}'
+    - '// @input Component.AudioComponent loopAudio2 {"hint":"Loop audio component for deck 2"}'
+    - '// @input Asset.AudioTrackAsset outputAudio {"hint":"Output audio track asset for the mixed signal"}'
+    - '// @input Component.AudioComponent audio {"hint":"Main audio output component that plays the mixed signal"}'
+    - '// @input number sampleRate = 44100 {"hint":"Sample rate for audio processing in Hz"}'
+    - '// @input SceneObject predefinedAudioParent {"hint":"Parent scene object containing predefined audio components"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Track Buttons</span>"}'
+    - '// @input AssignableType[] trackButtons {"hint":"Array of RectangleButton components — one per track, in order"}'
+    - '// @input SceneObject djParent {"hint":"DJ parent scene object"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

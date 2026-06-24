@@ -1,0 +1,103 @@
+- !<AssetImportMetadata/93105ec1-385f-4701-8f9f-2739813d37a1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7cfaa8c7-e8e5-4fc5-9095-0e5bc5f47f03
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7cfaa8c7-e8e5-4fc5-9095-0e5bc5f47f03
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> de0d1d44-7f47-4c18-93a1-1c129fa081d1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/de0d1d44-7f47-4c18-93a1-1c129fa081d1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9e39df15-40af-420b-87ee-c289eff44eeb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    constrainPositionX: false
+    constrainPositionY: false
+    constrainPositionZ: false
+    constrainRotationX: false
+    constrainRotationY: false
+    constrainRotationZ: false
+    constrainScaleX: false
+    constrainScaleY: false
+    constrainScaleZ: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    positionLerpSpeed: false
+    positionOffset: false
+    rotationLerpSpeed: false
+    scaleLerpSpeed: false
+    target: false
+    usePositionLerp: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      positionOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      usePositionLerp: true
+      positionLerpSpeed: !<float> 1.000000
+      constrainPositionX: false
+      constrainPositionY: false
+      constrainPositionZ: false
+      rotationLerpSpeed: !<float> 1.000000
+      constrainRotationX: false
+      constrainRotationY: false
+      constrainRotationZ: false
+      scaleLerpSpeed: !<float> 1.000000
+      constrainScaleX: false
+      constrainScaleY: false
+      constrainScaleZ: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MatchTransformTS – world-space transform follower</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Copies or lerps the world position, rotation, and scale of a target object each frame.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - '// @input SceneObject target {"hint":"Scene object whose transform will be matched"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Position</span>"}'
+    - '// @input vec3 positionOffset = {0,0,0} {"hint":"World-space offset added to the target position"}'
+    - '// @input bool usePositionLerp = true {"hint":"Use lerping for smooth position transitions"}'
+    - '// @input float positionLerpSpeed = 1 {"hint":"Speed for moving towards the target position when lerping is enabled"}'
+    - '// @input bool constrainPositionX {"hint":"Prevent matching on the X axis"}'
+    - '// @input bool constrainPositionY {"hint":"Prevent matching on the Y axis"}'
+    - '// @input bool constrainPositionZ {"hint":"Prevent matching on the Z axis"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Rotation</span>"}'
+    - '// @input float rotationLerpSpeed = 1 {"hint":"Speed for rotating towards the target rotation"}'
+    - '// @input bool constrainRotationX {"hint":"Prevent matching rotation on the X axis"}'
+    - '// @input bool constrainRotationY {"hint":"Prevent matching rotation on the Y axis"}'
+    - '// @input bool constrainRotationZ {"hint":"Prevent matching rotation on the Z axis"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scale</span>"}'
+    - '// @input float scaleLerpSpeed = 1 {"hint":"Speed for scaling towards the target scale"}'
+    - '// @input bool constrainScaleX {"hint":"Prevent matching scale on the X axis"}'
+    - '// @input bool constrainScaleY {"hint":"Prevent matching scale on the Y axis"}'
+    - '// @input bool constrainScaleZ {"hint":"Prevent matching scale on the Z axis"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

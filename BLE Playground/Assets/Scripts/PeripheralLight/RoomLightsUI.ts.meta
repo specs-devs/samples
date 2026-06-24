@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/9eb502e7-f9b4-4e7e-9acc-2aebbbdcc78d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 60d869fa-5cc3-49df-b5c5-76671a0ff6a6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 60d869fa-5cc3-49df-b5c5-76671a0ff6a6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> abf3900e-eff2-4878-b07f-dd4b1b6c575f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/abf3900e-eff2-4878-b07f-dd4b1b6c575f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b5aad047-6bb3-43d4-a46a-1cdb01f20bc6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    handToggle: false
+    lightHandInputManager: false
+    node: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - node: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      handToggle: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      lightHandInputManager: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RoomLightsUI – hand control toggle panel</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages hand gesture control toggle for all connected lights.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject node {"hint":"Scene object used as parent anchor for this panel when a light is connected"}'
+    - '// @input AssignableType handToggle {"hint":"Switch for toggling hand gesture light control on/off"}'
+    - '// @input AssignableType_1 lightHandInputManager {"hint":"Hand input manager driven by the hand toggle"}'

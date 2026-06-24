@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/9d46bc4b-3f4a-4a01-9dff-34860bbe6f0e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 401d04fa-890e-4b4b-9958-20e14863b10e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 401d04fa-890e-4b4b-9958-20e14863b10e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 49f29c9f-22f4-4603-b747-2e3636450d85
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/49f29c9f-22f4-4603-b747-2e3636450d85>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 36c1ad55-a3ae-40f3-a31a-7416017d3523
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Frame Destroy Test – timed scene object destruction</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Counts down 3 seconds then destroys its scene object to test Frame OnDestroyEvent.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

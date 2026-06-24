@@ -1,0 +1,26 @@
+- !<AssetImportMetadata/3ed52750-84ce-44f2-8c02-fd14380848b6>
+  ImportedAssetIds:
+    frame_0010: !<reference> 360e1408-29ba-4219-86cc-2a8bfcb6b2a5
+  ImporterName: GaussianSplattingAssetImporter
+  PrimaryAsset: !<reference> 360e1408-29ba-4219-86cc-2a8bfcb6b2a5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    frame_0010: !<own> 68714579-29b4-4519-9e8a-f4224c38eee2
+  DependentFiles:
+    []
+  ImporterSettings: !<GaussianSplattingImporterSettings>
+    CompressionMode: Draco
+    BitsCenter: 10
+    BitsScale: 8
+    BitsRotation: 12
+    BitsColor: 8
+    MinimumOpacity: 0.000000
+    MortonOrder: true
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<GaussianSplattingAssetData/68714579-29b4-4519-9e8a-f4224c38eee2>
+  Recenter: false
+  FlipXY: true
+  Scale: 1.000000

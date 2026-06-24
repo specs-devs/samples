@@ -1,0 +1,244 @@
+- !<AssetImportMetadata/ed246843-4e6e-434b-af03-1f3b0eb07eda>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> ea5df356-faf8-4524-a205-eaa9ac6c6a36
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> ea5df356-faf8-4524-a205-eaa9ac6c6a36
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 52b8b7dd-e7cb-409f-974e-84bcd3bfa44a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/51981096-5be8-4797-79ff-502ff1f8b0f7>
+  PrefabRemaps:
+    []
+  Name: Spatial Image
+  Enabled: true
+  ScriptAsset: !<reference> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+  ScriptInputsDefault:
+    meshMaterial: true
+    remoteServiceModule: true
+    internetModule: true
+    remoteMediaModule: true
+    imageTexture: true
+    advancedSettings: true
+    _frameHeight: true
+    _frameOffset: true
+    _depthScale: true
+    _fadeBorder: true
+    _frameOn: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      meshMaterial: !<reference.Material> ae9cf7bb-8c5f-4177-b597-c6760fc60d80
+      remoteServiceModule: !<reference.RemoteServiceModule> d7c48e28-8882-4f34-a84f-6dd3b0921e97
+      internetModule: !<reference.InternetModule> 2e3110cc-840c-4773-93dd-34bff0d2e911
+      remoteMediaModule: !<reference.RemoteMediaModule> ab201da2-9b8f-406c-8aac-fb378b619ebb
+      imageTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      advancedSettings: false
+      _frameHeight: 100
+      _frameOffset: -200
+      _depthScale: 100
+      _fadeBorder: true
+      _frameOn: true
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/52b8b7dd-e7cb-409f-974e-84bcd3bfa44a>
+  Prototype: !<ObjectOwner/c5821a6e-f592-48b5-bcf8-f92812127fa9>
+    PackagePath: ""
+    objects:
+      - !<own> 5b2736ef-d42c-47d3-65dc-88f787a7b377
+- !<SceneObject/5aa17bbf-78d9-4fad-6524-c377880fb52b>
+  PrefabRemaps:
+    []
+  Name: FlatImage
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 30.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.247861, y: 0.800000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ad33e5fc-b81d-4873-6c71-315bebf5129c
+- !<SceneObject/5b2736ef-d42c-47d3-65dc-88f787a7b377>
+  PrefabRemaps:
+    []
+  Name: SpatialImageGallery-API
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -200.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5aa17bbf-78d9-4fad-6524-c377880fb52b
+    - !<own> 8241af12-0f7a-45e8-53ca-32ead7955a45
+  Components:
+    - !<own> 67f0b429-725b-4d57-6efb-79234e7f1d54
+- !<ScriptComponent/67f0b429-725b-4d57-6efb-79234e7f1d54>
+  PrefabRemaps:
+    []
+  Name: SpatialGallery
+  Enabled: true
+  ScriptAsset: !<reference> 17bdada1-b595-43e5-bd69-17807688d877
+  ScriptInputsDefault:
+    advanceDelay: true
+    loop: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      image: !<Typename.SpatialImage> 51981096-5be8-4797-79ff-502ff1f8b0f7
+      gallery: !<reference.Texture[]>
+        - !<reference> df6ddcc3-9e14-4fe4-8190-b7e727e47582
+        - !<reference> 887fbdcd-a66e-425c-bf84-0ed6b49c8a16
+        - !<reference> e71260cf-a749-4a46-94e7-132476eed821
+        - !<reference> c5a7120a-2140-4557-98ce-46a9af6e0e08
+        - !<reference> b4697b36-6e4e-4536-8854-80137228f48a
+        - !<reference> d33441c8-65a2-4e9b-a2b6-460187e45036
+        - !<reference> 7cde48ab-9c02-4303-9406-01a4f6de9080
+        - !<reference> 654bc848-808a-4522-9839-a1ca9b2d2bc4
+        - !<reference> 5174a111-dab5-47b9-9446-5cf99aab6f81
+        - !<reference> 3bb79a85-5dc2-4ed4-b10c-6e58fcf40d78
+        - !<reference> 4b12f274-827e-4e1c-a929-8313c184387d
+        - !<reference> 9c9034e8-577e-4400-8f28-e17b74a2d524
+        - !<reference> 7dd1e17b-6daa-41af-9ff9-62ef16d2f70e
+        - !<reference> 33999a32-f4ad-49e7-a29d-0bb1542ee448
+        - !<reference> 5e382a33-332c-4782-aa12-20eb5bcaaf5e
+        - !<reference> a394ee16-8d9c-48f3-852e-10f12a6ca999
+        - !<reference> 4aec5398-cc90-404f-8e69-ad0c57b2352a
+        - !<reference> 2d14aa00-8986-42ab-8bf2-efa45fc00181
+        - !<reference> bce9f33b-f2e9-40b0-8853-14eb487e0ac4
+        - !<reference> 93a7b063-d45b-4cfe-af87-3fac9968533e
+        - !<reference> fa7c8ac7-da9d-4493-b747-09a2970b40cf
+        - !<reference> 72ceb783-37b2-4b10-a222-43e010517878
+      shuffle: true
+      autoAdvance: true
+      advanceDelay: !<float> 5.000000
+      loop: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+- !<ScriptComponent/77a8692a-0fc3-4e7e-5cc9-89f1d78b4892>
+  PrefabRemaps:
+    []
+  Name: SpatialImageSwapper
+  Enabled: true
+  ScriptAsset: !<reference> 1bfa4523-8f05-4492-b285-19802d71533a
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      spatializer: !<Typename.SpatialImage> 51981096-5be8-4797-79ff-502ff1f8b0f7
+      flatImage: !<reference.Image> ad33e5fc-b81d-4873-6c71-315bebf5129c
+      autoSwapToSpatialized: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+- !<SceneObject/8241af12-0f7a-45e8-53ca-32ead7955a45>
+  PrefabRemaps:
+    []
+  Name: SpatialImage
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 30.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.247861, y: 0.800000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 51981096-5be8-4797-79ff-502ff1f8b0f7
+    - !<own> 82bc0395-9b85-425e-57c9-271e0878e4a4
+    - !<own> e84399d4-35d6-4bda-4dc1-6b608cdcbe2f
+    - !<own> 77a8692a-0fc3-4e7e-5cc9-89f1d78b4892
+- !<ScriptComponent/82bc0395-9b85-425e-57c9-271e0878e4a4>
+  PrefabRemaps:
+    []
+  Name: SpatialImageAngleValidator
+  Enabled: true
+  ScriptAsset: !<reference> 7d9b8736-c7d9-4e2d-89c5-f6a14dd9731e
+  ScriptInputsDefault:
+    validZoneFocal: true
+    validZoneAngle: true
+    validZoneThreshold: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      image: !<reference.SceneObject> 8241af12-0f7a-45e8-53ca-32ead7955a45
+      camera: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      validZoneFocal: !<float> 2.000000
+      validZoneAngle: !<float> 25.000000
+      validZoneThreshold: !<float> 5.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<Image/ad33e5fc-b81d-4873-6c71-315bebf5129c>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: FitHeight
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 448d0457-4ef0-43da-815f-1c8604ea9087
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/e84399d4-35d6-4bda-4dc1-6b608cdcbe2f>
+  PrefabRemaps:
+    []
+  Name: SpatialImageDepthAnimator
+  Enabled: true
+  ScriptAsset: !<reference> 009da2ad-cfd3-4203-a05d-2651825078d7
+  ScriptInputsDefault:
+    animateSpeed: true
+    minDepth: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      spatializer: !<Typename.SpatialImage> 51981096-5be8-4797-79ff-502ff1f8b0f7
+      angleValidator: !<MappingBased.AssignableType> 82bc0395-9b85-425e-57c9-271e0878e4a4
+      animateSpeed: 0.500000
+      minDepth: 0.050000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0

@@ -1,0 +1,89 @@
+- !<AssetImportMetadata/a2c2ebd2-49e9-4702-ba30-b89a05e1f0df>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 7b62f455-086b-4c0e-8d9c-872e961a9697
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 7b62f455-086b-4c0e-8d9c-872e961a9697
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 060ddeab-fdbb-4d45-b6dd-0fdf226bc100
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/060ddeab-fdbb-4d45-b6dd-0fdf226bc100>
+  Prototype: !<ObjectOwner/2a5c7680-eebd-47b6-9337-027e7c6feb5d>
+    PackagePath: ""
+    objects:
+      - !<own> 8ca9b169-b73f-47b1-6b89-195e3fce220c
+- !<SceneObject/30e213fc-bf63-4006-b482-56e72b0a42a0>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.100000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 18.000000, y: 18.000000, z: 18.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f6023058-655d-4ce4-9f59-9d257ab0c2e4
+- !<ScriptComponent/583694cb-4c1f-4a7d-5c59-06a2691ad25c>
+  PrefabRemaps:
+    []
+  Name: PhotoWidget
+  Enabled: true
+  ScriptAsset: !<reference> 718ddc78-341e-4731-8410-4a5962659cb8
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      photoImage: !<reference.Image> f6023058-655d-4ce4-9f59-9d257ab0c2e4
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/8ca9b169-b73f-47b1-6b89-195e3fce220c>
+  PrefabRemaps:
+    []
+  Name: WeatherWidgetPrefab
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 30e213fc-bf63-4006-b482-56e72b0a42a0
+  Components:
+    - !<own> 583694cb-4c1f-4a7d-5c59-06a2691ad25c
+- !<Image/f6023058-655d-4ce4-9f59-9d257ab0c2e4>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1f279c57-a9e1-4020-8a59-d7ae18976f05
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000

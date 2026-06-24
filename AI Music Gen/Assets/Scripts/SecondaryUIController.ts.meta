@@ -1,0 +1,85 @@
+- !<AssetImportMetadata/1e6d9559-8c24-4425-a1f7-182d49719ae4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b097767b-aaed-490e-99c8-24b8c1d769cd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b097767b-aaed-490e-99c8-24b8c1d769cd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 62b35c63-cac0-43be-800a-207acb087e32
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/62b35c63-cac0-43be-800a-207acb087e32>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f3c271be-a951-4881-a986-3ae5e8ff676e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _adderPrefab: false
+    _categoryButtons: false
+    _detailsPage: false
+    _hintText: false
+    _instrumentObj: false
+    _mainPage: false
+    _parentObj: false
+    _scrollWindow: false
+    _selectionController: false
+    _summonButton: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - _mainPage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _detailsPage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _adderPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      _scrollWindow: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      _categoryButtons: !<MappingBased.AssignableType_1[]>
+        []
+      _instrumentObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _summonButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      _hintText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      _parentObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _selectionController: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Secondary UI Controller – category browsing interface</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages Genres, Vibes, and Instruments scroll categories with reusable Adder items.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Pages</span>"}'
+    - '// @input SceneObject _mainPage {"hint":"SceneObject containing the main page UI"}'
+    - '// @input SceneObject _detailsPage {"hint":"SceneObject containing the category details page UI"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scroll</span>"}'
+    - '// @input Asset.ObjectPrefab _adderPrefab {"hint":"Prefab used to instantiate Adder buttons for each category item"}'
+    - '// @input AssignableType _scrollWindow {"hint":"ScrollWindow component for the category item grid"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Controls</span>"}'
+    - '// @input AssignableType_1[] _categoryButtons {"hint":"Buttons that switch between categories (Genres, Vibes, Instruments)"}'
+    - '// @input SceneObject _instrumentObj {"hint":"Parent SceneObject used for positioning Adder instances"}'
+    - '// @input AssignableType_2 _summonButton {"hint":"Button that repositions the UI panel in front of the user"}'
+    - '// @input Component.Text _hintText {"hint":"Hint text shown before the summon button is pressed"}'
+    - '// @input SceneObject _parentObj {"hint":"Root SceneObject for the entire secondary UI panel"}'
+    - '// @input AssignableType_3 _selectionController {"hint":"SelectionController that receives items when an Adder is pressed"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/c45c1aa5-502c-4193-8dd3-a26e382cc22d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 79e09c85-7146-4e63-aa7d-162d01067f11
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 79e09c85-7146-4e63-aa7d-162d01067f11
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5d2444f9-664a-4de6-b727-3ff03a8425b6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5d2444f9-664a-4de6-b727-3ff03a8425b6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c7fab37c-0f9e-4f85-bb64-2f5a3d144fc6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraService: false
+    detectionController: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    iouThreshold: false
+    model: false
+    poolTablePredictor: false
+    scoreThreshold: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      poolTablePredictor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      model: !<reference.MLAsset> 00000000-0000-0000-0000-000000000000
+      detectionController: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      scoreThreshold: 0.400000
+      iouThreshold: 0.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">MLController – YoloV7 ML inference and detection pipeline</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs the ML model on cropped camera frames and forwards detections to PoolTablePredictor.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType cameraService {"hint":"Camera service providing the cropped input texture and pose data"}'
+    - '// @input AssignableType_1 poolTablePredictor {"hint":"Pool table predictor that receives and processes ML detections"}'
+    - '// @input Asset.MLAsset model {"hint":"ONNX ML asset for the YoloV7-tiny 512x512 pool detection model"}'
+    - '// @input AssignableType_2 detectionController {"hint":"Detection controller used to visualize bounding boxes in the debug overlay"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Detection Settings</span>"}'
+    - '// @input float scoreThreshold = 0.33 {"hint":"Minimum confidence score to consider a detection valid", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float iouThreshold = 0.5 {"hint":"Intersection-over-union threshold for non-maximum suppression", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

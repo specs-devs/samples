@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/66f65106-8564-405d-9281-0fa232032b31>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c6a89eaf-e108-4a70-85e6-d8f6ee4e1869
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c6a89eaf-e108-4a70-85e6-d8f6ee4e1869
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9097dac7-ec38-4d86-8821-6c84974d9cc9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9097dac7-ec38-4d86-8821-6c84974d9cc9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 088d59fe-653b-43f3-91b8-f6c81133c592
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    styleIndex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - styleIndex: 0
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIKitCustomVisualsSlider – gradient style for a UIKit Slider</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Styles the track, progress fill, and knob. Attach to the same SceneObject as Slider.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input int styleIndex {"hint":"Visual style preset: Candy = pink/blue, Ocean = teal/navy with radial knob, Lime = yellow/green", "widget":"combobox", "values":[{"label":"Candy", "value":0}, {"label":"Ocean", "value":1}, {"label":"Lime", "value":2}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

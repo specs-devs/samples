@@ -1,0 +1,125 @@
+- !<ObjectPrefab/54c942ad-9fcf-488d-9d38-a3e339aace4b>
+  PackagePath: ""
+  objects:
+    - !<own> 4952cd7a-9d75-4439-825f-473593187541
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/4952cd7a-9d75-4439-825f-473593187541>
+  PrefabRemaps:
+    - 4952cd7a-9d75-4439-825f-473593187541: 4952cd7a-9d75-4439-7da0-b8ca6ce78abe
+    - ebb125e0-82b4-467f-8647-2316e5dd161e: ebb125e0-82b4-467f-79b8-dce91a22e9e1
+  Name: GUIDE_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ebb125e0-82b4-467f-8647-2316e5dd161e
+- !<Text/ebb125e0-82b4-467f-8647-2316e5dd161e>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    BLE Playground
+    
+    BLE Playground demonstrates how to use BLE (Bluetooth Low Energy) with Spectacles to build interactive, connected Lens experiences.
+    
+    The project also showcases how to leverage AI APIs and capabilities such as the Remote Service Gateway and Depth Cache, blending these technologies to create Lenses that can control IoT and smart devices in real time.
+    
+    Before getting started, please review the README.md for detailed explanations and a list of compatible devices supported by this sample.
+    
+    Once you’re set up, begin by scanning for your devices:
+    
+    If the object has been found a widget to control the object will be instantiated in front of you. 
+    
+    Controlling light color - use widget to control luminosity via slider and color via color wheel. Use depth cache first to identify lamp position (look up for the feedback at the bottom of the UI), once found, go into the "Room Lights" control and toggle on Hand Control. Wave your hand to control the color of the light, your motion is remapped to the color wheel values. 
+    Use the mic to ask to change lamp color. 
+    
+    Connecting a device to display your heart rate
+    The widget will simpy display the value. You will need to wear the device to be detected
+    
+    Displaying environmental data such as temperature
+    The widget will simpy display the value. You will need to enable the device to be detected
+    
+    Enjoy controlling your devices through context-aware AI experiences!
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 60
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false

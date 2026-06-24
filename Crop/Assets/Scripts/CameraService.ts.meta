@@ -1,0 +1,69 @@
+- !<AssetImportMetadata/6c5b6d62-0c56-470d-a608-5a90eabc35b5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> df1b646f-ce02-4d29-a685-6cda2365ad6b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> df1b646f-ce02-4d29-a685-6cda2365ad6b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1ed21305-9748-44fd-b9ec-b87c80f3ac23
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1ed21305-9748-44fd-b9ec-b87c80f3ac23>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f7c76ff5-50cb-48b2-bd6e-530a45f3832a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    deviceCamTexture: false
+    editorCamera: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    screenCropTexture: false
+    specsLeftCamera: false
+    specsRightCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - editorCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      specsLeftCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      specsRightCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      deviceCamTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CameraService – provides camera textures and coordinate projection</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Sets up camera module requests and virtual cameras for world-to-screen-space conversion.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Cameras</span>"}'
+    - '// @input Component.Camera editorCamera {"hint":"Editor camera used for world-to-screen projection in preview mode"}'
+    - '// @input Component.Camera specsLeftCamera {"hint":"Left eye virtual camera mirroring the Spectacles left tracking camera"}'
+    - '// @input Component.Camera specsRightCamera {"hint":"Right eye virtual camera mirroring the Spectacles right tracking camera"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Textures</span>"}'
+    - '// @input Asset.Texture screenCropTexture {"hint":"Crop texture driven by the camera module output"}'
+    - '// @input Asset.Texture deviceCamTexture {"hint":"Raw camera device texture from the camera module request"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

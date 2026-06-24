@@ -1,0 +1,128 @@
+- !<ObjectPrefab/ef755068-a7fe-45be-bd4e-63ba32390747>
+  PackagePath: ""
+  objects:
+    - !<own> 6988bbe6-953e-49c5-8dbc-5af008bbc183
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/6988bbe6-953e-49c5-8dbc-5af008bbc183>
+  PrefabRemaps:
+    - 6988bbe6-953e-49c5-8dbc-5af008bbc183: 6988bbe6-953e-49c5-7243-a50ff7443e7c
+    - e51522d9-18ae-4f1f-8d20-03546ffdb8a3: e51522d9-18ae-4f1f-72df-fcab9002475c
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e51522d9-18ae-4f1f-8d20-03546ffdb8a3
+- !<Text/e51522d9-18ae-4f1f-8d20-03546ffdb8a3>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 200
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Path Pioneer
+    
+    Create your own custom path — then walk it again to see it come to life.
+    
+    Path Pioneer is designed as a blueprint for building non-permanent paths that you can quickly recreate anywhere. Whether you're indoors, outdoors, or exploring a new space, you can design a flexible route that adapts to your surroundings.
+    
+    Customize this sample experience by shaping your own itinerary across any path you choose.
+    
+    How It Works
+    
+    Tap “OK” to begin creating your path.
+    
+    Set the starting point by placing a reference marker at the beginning of your route.
+    
+    Walk your desired path.
+    
+    When you reach your destination, place the end marker to complete the path setup.
+    
+    Experience Your Path
+    
+    Return to the starting point and walk the route again.
+    
+    As you move along the path you created, you’ll see the Path Completion HUD activate — guiding you and tracking your progress from start to finish.
+    
+    Create. Walk. Repeat.
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false

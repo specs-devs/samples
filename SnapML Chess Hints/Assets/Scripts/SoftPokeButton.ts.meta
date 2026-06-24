@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/d62ffe61-a07f-4a6f-acc7-0b2ad06d8ea4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 72f23157-1fc0-411b-961b-f596187a31c8
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 72f23157-1fc0-411b-961b-f596187a31c8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c118f549-7fc6-4ec7-81a5-488f7283db65
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c118f549-7fc6-4ec7-81a5-488f7283db65>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: cd11173c-8c29-4076-87e3-5d5b52ae051a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    activationDepth: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - activationDepth: !<float> -2.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SoftPokeButton – physical finger poke interaction</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Detects fingertip Z-axis penetration to trigger a soft poke callback.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Interaction Settings</span>"}'
+    - '// @input float activationDepth = -3 {"hint":"Z depth (in local units) at which the button registers a full poke"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

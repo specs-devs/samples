@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/f1208f9c-6303-4029-8c2d-fc9e4f14c314>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7b5fd1a2-a801-4bb5-9a11-18ce95560f32
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7b5fd1a2-a801-4bb5-9a11-18ce95560f32
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d03ef76f-be58-4792-840b-7563519eba22
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d03ef76f-be58-4792-840b-7563519eba22>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8ab56f6c-deba-40bc-892f-c3437fc05182
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    image: false
+    modelProvider: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - image: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      modelProvider: OpenAI
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ImageGen</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.Image image {"hint":"Image component to display generated image"}'
+    - '// @input string modelProvider = "OpenAI" {"widget":"combobox", "values":[{"label":"OpenAI", "value":"OpenAI"}, {"label":"Gemini", "value":"Gemini"}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

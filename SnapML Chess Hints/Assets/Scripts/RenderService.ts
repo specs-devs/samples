@@ -1,0 +1,188 @@
+/**
+ * Specs Inc. 2026
+ * Render Service component for the SnapML Chess Hints Spectacles lens.
+ */
+import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
+import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
+
+@component
+export class RenderService extends BaseScriptComponent {
+  @ui.label('<span style="color: #60A5FA;">RenderService – 3D move visualization and hint display</span><br/><span style="color: #94A3B8; font-size: 11px;">Manages animated arc markers showing the suggested move in world space.</span>')
+  @ui.separator
+
+  @ui.label('<span style="color: #60A5FA;">Prefabs</span>')
+  @input
+  @hint("Sphere prefab used for start and end position markers")
+  marker: ObjectPrefab
+
+  @input
+  @hint("Cylinder prefab used for the animated arc path balls")
+  cylinder: ObjectPrefab
+
+  @ui.separator
+  @ui.label('<span style="color: #60A5FA;">Scene References</span>')
+  @input
+  @hint("Text component used to display move hints and status messages")
+  debugText: Text
+
+  @input
+  @hint("Screen image used to overlay board UV coordinates and move arrows")
+  screenImage: Image
+
+  @input
+  @hint("Position plane used as parent for marker instantiation")
+  positionPlane: SceneObject
+
+  @ui.separator
+  @ui.label('<span style="color: #60A5FA;">Logging</span>')
+  @input
+  @hint("Enable general logging")
+  enableLogging: boolean = false
+
+  @input
+  @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)")
+  enableLoggingLifecycle: boolean = false
+
+  public moveStartPos: vec3 = null
+  public moveEndPos: vec3 = null
+
+  private startMarker: SceneObject
+  private endMarker: SceneObject
+  private moveStartTime = null
+  private movePath: SceneObject[] = []
+  public moveStartPosImage: vec2 = null
+  public moveEndPosImage: vec2 = null
+  public shouldRenderMove = false
+  private currentScale = 1
+
+  private logger: Logger
+
+  onAwake() {
+    this.logger = new Logger("RenderService", this.enableLogging || this.enableLoggingLifecycle, true)
+    if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()")
+
+    const scale = vec3.one().uniformScale(0.02)
+    this.startMarker = this.makeMarker(new vec3(0, 1, 1), scale, true)
+    this.endMarker = this.makeMarker(new vec3(0, 1, 0), scale, true)
+  }
+
+  resetMove() {
+    this.moveStartPos = null
+    this.moveEndPos = null
+    this.moveStartPosImage = null
+    this.moveEndPosImage = null
+    this.shouldRenderMove = false
+  }
+
+  @bindUpdateEvent
+  onUpdate() {
+    this.updateMarkers()
+  }
+
+  updateHint(hint: string) {
+    this.debugText.text = hint
+  }
+
+  makeMarker(color: any, scale: vec3, cylinder: boolean = false) {
+    const parent = this.positionPlane
+    const marker = cylinder ? this.cylinder.instantiate(parent) : this.marker.instantiate(parent)
+    marker.getTransform().setWorldScale(scale)
+
+    const mesh = cylinder
+      ? marker.getChild(0).getComponent("Component.RenderMeshVisual")
+      : marker.getComponent("Component.RenderMeshVisual")
+    const mat = mesh.mainMaterial.clone()
+    mat.mainPass.baseColor = cylinder ? new vec4(1, 1, 1, 1) : color
+    if (cylinder) {
+      mat.mainPass.rimColor = color
+    }
+    mesh.materials = [mat]
+    return marker
+  }
+
+  updateScreenImage(imageCorners: vec2[]) {
+    const names = ["bl", "br", "tl", "tr"]
+    for (let i = 0; i < 4; i++) {
+      this.screenImage.mainPass[names[i] + "_uv"] = imageCorners[i]
+    }
+    //this.screenImage.mainPass.move_to = startUV;
+    if (this.moveStartPosImage != null) {
+      this.screenImage.mainPass.move_from = this.moveStartPosImage
+    }
+    if (this.moveEndPosImage != null) {
+      this.screenImage.mainPass.move_to = this.moveEndPosImage
+    }
+  }
+
+  updateMarkers() {
+    if (!this.shouldRenderMove) {
+      this.startMarker.enabled = false
+      this.endMarker.enabled = false
+      for (let i = 0; i < this.movePath.length; i++) {
+        this.movePath[i].enabled = false
+      }
+      return
+    }
+
+    if (this.moveStartPos != null && this.moveEndPos != null) {
+      if (this.moveStartTime == null) {
+        this.moveStartTime = getTime()
+      }
+    } else {
+      return
+    }
+
+    //this.moveStartPos.y = this.moveEndPos.y + 3;
+    this.startMarker.getTransform().setWorldPosition(this.moveStartPos)
+    this.endMarker.getTransform().setWorldPosition(this.moveEndPos)
+
+    this.startMarker.enabled = true
+    this.endMarker.enabled = true
+
+    const dt = getTime() - this.moveStartTime
+    let progress = dt / 2.0 - Math.floor(dt / 2.0)
+    progress *= 5.0
+
+    const rainbowColors = [
+      new vec4(1, 0, 0, 1), // Red
+      new vec4(1, 0.5, 0, 1), // Orange
+      new vec4(1, 1, 0, 1), // Yellow
+      new vec4(0, 1, 0, 1), // Green
+      new vec4(0.25, 0.25, 1, 1), // Blue
+      new vec4(0, 1, 1, 1), // Indigo
+      new vec4(1, 0, 1, 1) // Violet
+    ]
+
+    const topVec = new vec3(0, this.startMarker.getTransform().getWorldScale().y * 10, 0)
+    const ballStartPos = this.moveStartPos.add(topVec)
+    const ballEndPos = this.moveEndPos.add(topVec)
+
+    const numBalls = 7
+    const ballScale = 1.0 * this.currentScale // Time spacing between balls
+    while (this.movePath.length < numBalls) {
+      const ball = this.makeMarker(
+        rainbowColors[this.movePath.length % rainbowColors.length],
+        vec3.one().uniformScale(ballScale)
+      )
+      ball.enabled = false
+      this.movePath.push(ball)
+    }
+
+    // Update each ball
+    for (let i = 0; i < numBalls; i++) {
+      const ball = this.movePath[i]
+      const ballProgress = progress - (i / numBalls) * ballScale * 3
+
+      if (ballProgress < 0 || ballProgress >= 1) {
+        ball.enabled = false
+        continue
+      }
+
+      ball.enabled = true
+      const pos = vec3.lerp(ballStartPos, ballEndPos, ballProgress)
+      const height = 5
+      pos.y += height * (4 * ballProgress * (1 - ballProgress)) // Parabolic arc
+      ball.getTransform().setWorldPosition(pos)
+    }
+  }
+}
