@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/828b5061-c1fa-408d-8aee-db422724897c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9426ab32-e7b1-4fca-b156-70a4c9d50f85
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9426ab32-e7b1-4fca-b156-70a4c9d50f85
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a7c5d057-c3ca-4953-9e70-c79e1c666022
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a7c5d057-c3ca-4953-9e70-c79e1c666022>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: d1a67c83-aef4-40dc-908f-542bf4cf8af9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    logHover: false
+    logText: false
+    maxLines: false
+    rescanInterval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - logText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      maxLines: !<float> 15.000000
+      rescanInterval: !<float> 3.000000
+      logHover: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PlaygroundLogger – holistic user-action logger</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Auto-discovers every Interactable in the scene and logs user actions to the console and an optional Text.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.Text logText {"hint":"Optional Text element showing the action feed on screen. Leave empty to log to the console only."}'
+    - '// @input float maxLines = 15 {"hint":"Maximum number of lines kept in the on-screen feed"}'
+    - '// @input float rescanInterval = 3 {"hint":"Seconds between scene rescans to pick up interactables created at runtime. Set 0 to scan only once at start."}'
+    - '// @input bool logHover {"hint":"Also log hover enter/exit (noisy — every time the cursor passes over a target)"}'

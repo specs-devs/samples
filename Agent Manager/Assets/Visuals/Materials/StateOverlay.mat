@@ -1,0 +1,144 @@
+- !<Material/509f615a-6699-4b08-abaf-7a9d56e6b000>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> f55e8727-b7d3-4e14-bc53-5aa38b1a154f
+- !<PassInfo/f55e8727-b7d3-4e14-bc53-5aa38b1a154f>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_GSplatRotation_N004:
+        typeIdx: 5
+        value: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    - Port_GSplatScale_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Multiplier_N013:
+        typeIdx: 1
+        value: 0.000000
+    - Port_PrevWorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - Port_u_core_glow_strength_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_edge_white_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_fill_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_irid_brightness_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_irid_speed_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_outline_brightness_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_outline_width_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_u_surface_normal_N000:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_u_view_dir_N000:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Tweak_N10:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N11:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N12:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N3:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N7:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N8:
+        typeIdx: 1
+        value: 1.000000
+    - u_theme:
+        typeIdx: 1
+        value: 1.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    iTime:
+      typeIdx: 1
+      value: 1.000000
+    u_antenna_color:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    u_core_glow_strength:
+      typeIdx: 1
+      value: 1.000000
+    u_edge_white:
+      typeIdx: 1
+      value: 1.000000
+    u_fill:
+      typeIdx: 1
+      value: 1.000000
+    u_irid_brightness:
+      typeIdx: 1
+      value: 1.000000
+    u_irid_speed:
+      typeIdx: 1
+      value: 1.000000
+    u_outline_brightness:
+      typeIdx: 1
+      value: 1.000000
+    u_outline_width:
+      typeIdx: 1
+      value: 1.000000
+    u_pulse_speed:
+      typeIdx: 1
+      value: 1.000000
+  Pass: !<reference> 61ea5de3-c5fb-46fb-86c1-f0712c952b82

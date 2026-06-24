@@ -1,0 +1,672 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 1
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Index:
+          Variable: 0
+        UVCoord:
+          IOType: 1
+          Variable: [0.0, 0.0]
+      PositionX: 2420
+      PositionY: -588
+      TemplateID: node_effect_global_surface_uvcoord0
+      Title1: Surface UV Coord
+    Node1:
+      ChildNodes:
+        Node0:
+          DependencyIndex: 0
+          LevelID: 140
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            DefaultItem:
+              Variable: 1
+            Group:
+              String: ""
+            ItemCount:
+              Variable: 2
+            ItemName0:
+              String: Clockwise
+            ItemName1:
+              String: Counter Clockwise
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Direction
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: 0.0
+          PositionX: -160
+          PositionY: -20
+          TemplateID: nodes_import_droplist
+          Title1: Droplist Import
+          Title2: Direction
+        Node1:
+          DependencyIndex: 2
+          LevelID: 143
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 1
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: UV Coords
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -150
+          PositionY: 70
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: UV Coords
+        Node2:
+          DependencyIndex: 3
+          LevelID: 142
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.5, 0.5, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Scale
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -150
+          PositionY: 160
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Scale
+        Node3:
+          DependencyIndex: 4
+          LevelID: 141
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 3
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Rotation Offset (Degrees)
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -220
+          PositionY: 250
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Rotation Offset (Degrees)
+        Node4:
+          DependencyIndex: 5
+          LevelID: 139
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.5, 0.5, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 4
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Center
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -150
+          PositionY: 340
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Center
+        Node5:
+          DependencyIndex: 6
+          LevelID: 144
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Center:
+              Connection0:
+                NodeLevelID: 139
+                PortID: Value
+              Variable: [0.0, 0.0]
+            Code:
+              ClassType1: TEXT
+              String: |-
+                input_bool Direction;
+                input_vec2 UV;
+                input_vec2 Scale;
+                input_float RotationOffset;
+                input_vec2 Center;
+                
+                output_vec2 PolarCoordinates;
+                
+                vec2 scaleAndRotateCoords(vec2 coordsIn, vec2 scale, float rotation, vec2 center){
+                	float Sin = sin( radians( rotation ) );
+                	float Cos = cos( radians( rotation ) );
+                	vec2 coordsOut = coordsIn - center;
+                	return vec2( dot( vec2( Cos, Sin ), coordsOut ), dot( vec2( -Sin, Cos ), coordsOut ) ) * scale + center;
+                }
+                
+                void main()
+                {
+                	vec2 uv = UV;
+                	vec2 scale = Scale * 2.0; // fix scale so default value of 1 produces a radius of 1
+                	uv = scaleAndRotateCoords(uv, scale, RotationOffset, Center);
+                
+                	// shift uv range to [-0.5, 0.5]
+                	uv -= Center;
+                
+                	float r = sqrt(uv.x * uv.x + uv.y * uv.y);
+                	float theta = atan(uv.y, uv.x);
+                
+                	if(Direction) {	// counter-clockwise
+                		theta = system.remap(theta, -system.pi(), system.pi(), 0.0, 1.0);
+                	} else {			// clockwise
+                		theta = system.remap(theta, -system.pi(), system.pi(), 1.0, 0.0);
+                	}	
+                
+                	PolarCoordinates = vec2(r, theta);
+                }
+            Description:
+              ClassType1: TEXT
+              String: ""
+            Direction:
+              Connection0:
+                NodeLevelID: 140
+                PortID: Value
+              Variable: 0.0
+            Examples:
+              ItemIndex: 0
+              ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+            ID:
+              Variable: 144
+            Locked:
+              Variable: false
+            PolarCoordinates:
+              IOType: 1
+              Variable: [0.0, 0.0]
+            RotationOffset:
+              Connection0:
+                NodeLevelID: 141
+                PortID: Value
+              Variable: 0.0
+            Scale:
+              Connection0:
+                NodeLevelID: 142
+                PortID: Value
+              Variable: [0.0, 0.0]
+            Stage:
+              ItemIndex: 1
+              ItemList: "Vertex : Pixel"
+            Title:
+              String: Polar Coordinates
+            UV:
+              Connection0:
+                NodeLevelID: 143
+                PortID: Value
+              Variable: [0.0, 0.0]
+            ngs_Height:
+              Variable: 400
+            ngs_Version:
+              String: 0.1.0
+          PositionX: 120
+          PositionY: 90
+          TemplateID: node_util_custom
+          TemplateVersionMinor: 2
+          Title1: Polar Coordinates
+        Node6:
+          DependencyIndex: 7
+          LevelID: 145
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Export:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            SortIndex:
+              Variable: 0
+            Title:
+              String: "Polar Coords (r, theta)"
+            Tooltip:
+              String: ""
+            Value:
+              Connection0:
+                NodeLevelID: 144
+                PortID: PolarCoordinates
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 390
+          PositionY: 90
+          TemplateID: nodes_export_float
+          Title1: Float Export
+          Title2: "Polar Coords (r, theta)"
+      DependencyIndex: 8
+      LevelID: 0
+      NodeType: 3
+      Ports:
+        Description:
+          String: ""
+        DescriptionText:
+          ClassType1: TEXT
+          String: |-
+            Converts Cartesian UV Coordinates to Polar coordinates (r,θ).
+            
+            TIP: the most common use case is a standard quad with bottom left UV coordinates of (0,0) and upper right coordinates of (1,1); in this use case, the UV coordinates will be used to generate circular coordinates around the center (0.5, 0.5) of the quad. You can easily test this subgraph on a Plane or Image object.
+            
+            Parameters:
+            - Direction: determines whether the theta (θ) coordinate will be measured from 0-1 in a clockwise or counter clockwise direction.
+            - UV Coords: coordinates used to generate Polar coordinates. These are in the range [0,1].
+            - Scale: applies scaling to the coordinates.
+            - Rotation Offset (Degrees): adds angular offset in degrees to the starting angle (θ).
+            - Center: the origin for the polar coordinates. The radius (r) and angle (θ) are measured relative to this center position. The default for UVs is (0.5, 0.5).
+            
+            Output:
+            - Polar Coords:
+                  - x = the radius from the center of the coordinates (r)
+                  - y = the angle from the starting position (θ) 
+        FirstTime:
+          Variable: false
+        Locked:
+          Variable: false
+        SubGraphUniqueID139:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID140:
+          ItemIndex: 1
+          ItemList: "Clockwise : Counter Clockwise"
+        SubGraphUniqueID141:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID142:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID143:
+          Connection0:
+            NodeLevelID: 1
+            PortID: UVCoord
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID145:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Title1:
+          String: Polar Coordinates
+      PositionX: 2619
+      PositionY: -542
+      TemplateID: nodes_main_subgraph
+      Title1: Polar Coordinates
+    Node10:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 17
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 3
+            PortID: Value
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 3649
+      PositionY: -617
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node2:
+      DependencyIndex: 9
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 0
+            PortID: SubGraphUniqueID145
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 2863
+      PositionY: -552
+      TemplateID: nodes_math_oneminus
+      Title1: One Minus
+    Node3:
+      DependencyIndex: 10
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Swizzle:
+          String: x
+      PositionX: 3008
+      PositionY: -571
+      TemplateID: node_channels_swizzle
+      Title1: Swizzle
+    Node4:
+      DependencyIndex: 11
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Input1:
+          Variable: [0.5, 0.0, 0.0, 0.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 3153
+      PositionY: -612
+      TemplateID: nodes_math_largerorequal
+      Title1: Is Greater or Equal
+    Node5:
+      DependencyIndex: 12
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0010000000474974513, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: Thickness
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Thickness
+        Tooltip:
+          String: ""
+      PositionX: 2752
+      PositionY: -369
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Thickness
+    Node6:
+      DependencyIndex: 13
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Clamp:
+          Variable: false
+        RangeMaxA:
+          Variable: 1.0
+        RangeMaxB:
+          Variable: 0.6000000238418579
+        RangeMinA:
+          Variable: 0.0
+        RangeMinB:
+          Variable: 0.5049999952316284
+        ValueIn:
+          Connection0:
+            NodeLevelID: 9
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ValueOut:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 2951
+      PositionY: -403
+      TemplateID: node_math_remap
+      Title1: Remap
+    Node7:
+      DependencyIndex: 14
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Input1:
+          Connection0:
+            NodeLevelID: 10
+            PortID: ValueOut
+          Variable: [0.5099999904632568, 1.0, 1.0, 1.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 3156
+      PositionY: -472
+      TemplateID: nodes_math_smallerorequal
+      Title1: Is Less or Equal
+    Node8:
+      DependencyIndex: 15
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        A:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        B:
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: 0.0
+        Result:
+          IOType: 1
+          Variable: 0.0
+      PositionX: 3348
+      PositionY: -531
+      TemplateID: nodes_math_trigonometry_and
+      Title1: And
+    Node9:
+      DependencyIndex: 16
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Dimension1:
+          ItemIndex: 2
+          ItemList: "1 : 2 : 3"
+        Dimension2:
+          ItemIndex: 0
+          ItemList: "1 : disabled"
+        Dimension3:
+          ItemIndex: 0
+          ItemList: disabled
+        Dimension4:
+          ItemIndex: 0
+          ItemList: disabled
+        IsColor:
+          Variable: false
+        Value:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value1:
+          Variable: [1.0, 1.0, 1.0, 0.0]
+        Value2:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Result
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value3:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value4:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 3458
+      PositionY: -613
+      TemplateID: node_channels_combine
+      Title1: Construct Vector
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

@@ -1,0 +1,74 @@
+- !<ObjectPrefab/8e804c49-711a-4d0d-ac49-da4672642454>
+  PackagePath: ""
+  objects:
+    - !<own> 2b7418a4-c579-4f62-828c-e4636f886ba1
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/2b7418a4-c579-4f62-828c-e4636f886ba1>
+  PrefabRemaps:
+    - 2b7418a4-c579-4f62-828c-e4636f886ba1: 2b7418a4-c579-4f62-7d73-1b9c9077945e
+    - 379a6fba-2736-45f8-8ca2-8fc1a63e9d4b: 379a6fba-2736-45f8-735d-703e59c162b4
+    - 60b6c52b-00c0-45a9-9a0f-8c3a628cc8e7: 60b6c52b-00c0-45a9-65f0-73c59d733718
+    - 6d479699-d142-4ce0-8142-1c8d5287e135: 6d479699-d142-4ce0-7ebd-e372ad781eca
+  Name: pfb_SideArrow
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 3.000000, y: 3.000000, z: 3.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 379a6fba-2736-45f8-8ca2-8fc1a63e9d4b
+  Components:
+    []
+- !<SceneObject/379a6fba-2736-45f8-8ca2-8fc1a63e9d4b>
+  PrefabRemaps:
+    []
+  Name: Side_Double_Arrows_Tile
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 45.000000, y: -90.000000, z: -135.000000}
+    Scale: {x: 1.700000, y: 1.700000, z: 1.700000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 6d479699-d142-4ce0-8142-1c8d5287e135
+  Components:
+    []
+- !<RenderMeshVisual/60b6c52b-00c0-45a9-9a0f-8c3a628cc8e7>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 61eb84bf-8540-4c94-a013-a4079e0c7c15
+  Mesh: !<reference> e5d86452-6f7b-4db0-b9bd-27932a48024f
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/6d479699-d142-4ce0-8142-1c8d5287e135>
+  PrefabRemaps:
+    []
+  Name: Side_Double_Arrows_Tile
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 60b6c52b-00c0-45a9-9a0f-8c3a628cc8e7

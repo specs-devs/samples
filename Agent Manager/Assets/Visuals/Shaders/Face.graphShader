@@ -1,0 +1,1403 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 4
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Group:
+          String: ""
+        Index:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_eye_size
+        Size:
+          Variable: 8
+        SizeOut:
+          IOType: 1
+          Variable: 0.0
+        SortIndex:
+          Variable: 0
+        Title:
+          String: u_eye_size
+        Tooltip:
+          String: ""
+      PositionX: -263
+      PositionY: 126
+      TemplateID: nodes_inputs_parameters_float_array
+      Title1: Float Array Parameter
+      Title2: u_eye_size
+      ViewMode: 0
+    Node1:
+      DependencyIndex: 1
+      LevelID: 14
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Position:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+        Space:
+          ItemIndex: 0
+          ItemList: "Object : World : Camera : Screen ( NDC )"
+      PositionX: -280
+      PositionY: -70
+      TemplateID: node_effect_global_surface_position
+      TemplateVersionMinor: 1
+      Title1: Surface Position
+    Node10:
+      DependencyIndex: 10
+      LevelID: 20
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_theme
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_theme
+        Tooltip:
+          String: ""
+      PositionX: -227
+      PositionY: 491
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_theme
+      ViewMode: 0
+    Node11:
+      DependencyIndex: 11
+      LevelID: 28
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_irid_brightness
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_irid_brightness
+        Tooltip:
+          String: ""
+      PositionX: -234
+      PositionY: 548
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_irid_brightness
+      ViewMode: 0
+    Node12:
+      DependencyIndex: 12
+      LevelID: 27
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_irid_speed
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_irid_speed
+        Tooltip:
+          String: ""
+      PositionX: -225
+      PositionY: 606
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_irid_speed
+      ViewMode: 0
+    Node13:
+      DependencyIndex: 13
+      LevelID: 26
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_outline_width
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_outline_width
+        Tooltip:
+          String: ""
+      PositionX: -227
+      PositionY: 650
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_outline_width
+      ViewMode: 0
+    Node14:
+      DependencyIndex: 14
+      LevelID: 25
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_outline_brightness
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_outline_brightness
+        Tooltip:
+          String: ""
+      PositionX: -238
+      PositionY: 703
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_outline_brightness
+      ViewMode: 0
+    Node15:
+      DependencyIndex: 15
+      LevelID: 24
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_core_glow_strength
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_core_glow_strength
+        Tooltip:
+          String: ""
+      PositionX: -248
+      PositionY: 756
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_core_glow_strength
+      ViewMode: 0
+    Node16:
+      DependencyIndex: 16
+      LevelID: 23
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_edge_white
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_edge_white
+        Tooltip:
+          String: ""
+      PositionX: -236
+      PositionY: 810
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_edge_white
+      ViewMode: 0
+    Node17:
+      DependencyIndex: 17
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Multiplier:
+          Variable: 1.0
+        Time:
+          IOType: 1
+          Variable: 0.0
+      PositionX: 127
+      PositionY: 647
+      TemplateID: node_effect_global_time_elapsed
+      Title1: Elapsed Time
+    Node18:
+      DependencyIndex: 18
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |-
+            input_vec3 u_local_pos;
+            input_vec2 u_look_dir;
+            input_vec2 u_eye_size;
+            input_float u_eye_curve;
+            input_float u_eye_brightness;
+            input_vec3 u_antenna_color;
+            input_float u_head_tilt;
+            input_float u_pulse_speed;
+            input_float u_bob_intensity;
+            input_float u_listening_intensity;
+            input_float u_thinking_intensity;
+            input_float u_tool_call_intensity;
+            input_float u_sleep_intensity;
+            input_float u_hover_intensity;
+            input_float u_click_intensity;
+            input_float u_error_intensity;
+            input_float u_audio_level;
+            input_float u_theme;
+            input_float iTime;
+            output_vec4 Result;
+            
+            const vec3 eyeOffset = vec3(3.25, 0.0, 0.0);
+            
+            mat2 gHRotY;
+            mat2 gHRotX;
+            mat2 gHRotT;
+            mat2 gRRotY;
+            mat2 gRRotX;
+            mat2 gR1xz;
+            mat2 gR1yz;
+            mat2 gR2xz;
+            mat2 gR2xy;
+            mat2 gR3xz;
+            mat2 gR3yz;
+            float gBob;
+            float gBallWobble;
+            float gHExp;
+            float gHoverZ;
+            
+            vec3 getStereoCamPosition() {
+                float offset = (float(system.getStereoViewIndex()) - 0.5) * 2.0;
+                vec3 coord = system.getCameraPosition();
+                coord += system.getCameraRight() * offset * eyeOffset;
+                return coord;
+            }
+            
+            mat2 rot(float a) {
+                float s = sin(a), c = cos(a);
+                return mat2(c, -s, s, c);
+            }
+            
+            float smin(float a, float b, float k) {
+                float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+                return mix(b, a, h) - k * h * (1.0 - h);
+            }
+            
+            float sdRoundBox(vec3 p, vec3 b, float r) {
+                vec3 q = abs(p) - b;
+                return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0) - r;
+            }
+            
+            float sdRoundBox2D(vec2 p, vec2 b, float r) {
+                vec2 q = abs(p) - b;
+                return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+            }
+            
+            float sdSegment(vec2 p, vec2 a, vec2 b) {
+                vec2 pa = p - a, ba = b - a;
+                float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+                return length(pa - ba * h);
+            }
+            
+            float sdZ(vec2 p, float size) {
+                p /= size;
+                float d = sdSegment(p, vec2(-0.4, 0.5), vec2(0.4, 0.5));
+                d = min(d, sdSegment(p, vec2(0.4, 0.5), vec2(-0.4, -0.5)));
+                d = min(d, sdSegment(p, vec2(-0.4, -0.5), vec2(0.4, -0.5)));
+                return d * size - 0.01;
+            }
+            
+            float sdFlatRing(vec3 p, float r, float w, float h) {
+                vec2 d = vec2(abs(length(p.xz) - r) - w, abs(p.y) - h);
+                return min(max(d.x, d.y), 0.0) + length(max(d, 0.0)) - 0.002;
+            }
+            
+            float hash(float n) {
+                return fract(sin(n) * 43758.5453123);
+            }
+            
+            vec3 spectral(float t) {
+                vec3 a = vec3(0.5, 0.5, 0.5);
+                vec3 b = vec3(0.5, 0.5, 0.5);
+                vec3 c = vec3(1.0, 1.0, 1.0);
+                vec3 d = vec3(0.0, 0.33, 0.67);
+                return a + b * cos(6.28318 * (c * t + d));
+            }
+            
+            float getBinaryBit(vec2 uv, float id) {
+                float h = hash(id);
+                float type = step(0.5, h);
+                vec2 p = uv * 2.0 - 1.0;
+                if (type > 0.5) {
+                    return smoothstep(0.12, 0.06, abs(p.x)) * smoothstep(0.85, 0.75, abs(p.y));
+                } else {
+                    float box = sdRoundBox2D(p, vec2(0.35, 0.55), 0.1);
+                    return smoothstep(0.1, 0.05, abs(box)) * step(-0.05, box);
+                }
+            }
+            
+            vec3 getHeadSpace(vec3 p) {
+                p *= 1.6;
+                p.y -= gHExp;
+                p.z -= gHoverZ;
+                p.y += gBob;
+                p.yz *= gHRotY;
+                p.xz *= gHRotX;
+                p.xy *= gHRotT;
+                return p;
+            }
+            
+            vec3 getRingSpace(vec3 p) {
+                p *= 1.6;
+                p.y -= gHExp;
+                p.z -= gHoverZ;
+                p.y += gBob;
+                p.yz *= gRRotY;
+                p.xz *= gRRotX;
+                return p;
+            }
+            
+            vec2 map(vec3 p, float time, float audio) {
+                vec3 bp = getHeadSpace(p);
+                int theme = int(u_theme + 0.1);
+                float body = 1e10;
+                float extra = 1e10;
+            
+                if (theme == 6) {
+                    body = sdRoundBox(bp, vec3(0.42, 0.3, 0.22), 0.12);
+                    vec3 earP = bp;
+                    earP.x = abs(earP.x);
+                    float ears = sdRoundBox(earP - vec3(0.58 + gHExp, 0.0, 0.0), vec3(0.02, 0.12, 0.06), 0.04);
+                    body = smin(body, ears, 0.04);
+                    float stem = sdRoundBox(bp - vec3(0.0, 0.5 + gHExp, 0.0), vec3(0.005, 0.1 + gHExp * 0.5, 0.005), 0.01);
+                    body = smin(body, stem, 0.05);
+                    vec3 ballP = bp - vec3(0.0, 0.68 + gHExp * 2.2, 0.0);
+                    ballP.x += gBallWobble;
+                    extra = length(ballP) - 0.07;
+                } else if (theme == 0) {
+                    body = sdRoundBox(bp, vec3(0.42, 0.3, 0.18), 0.12);
+                    vec3 ep = bp;
+                    ep.x = abs(ep.x) - 0.26;
+                    ep.y -= 0.32;
+                    ep.xy *= rot(-0.4);
+                    float e = sdRoundBox(ep, vec3(0.08, 0.14, 0.04), 0.03);
+                    vec3 ec = ep;
+                    ec.z -= 0.04;
+                    ec.y -= 0.02;
+                    float c = sdRoundBox(ec, vec3(0.05, 0.12, 0.04), 0.02);
+                    body = smin(body, max(e, -c), 0.06);
+                    vec3 bellP = bp - vec3(0.0, -0.35, 0.30);
+                    bellP.x += sin(time * 4.0) * 0.015 * u_bob_intensity;
+                    extra = max(length(bellP) - 0.06, -sdRoundBox(bellP - vec3(0.0, -0.03, 0.04), vec3(0.06, 0.005, 0.04), 0.01));
+                } else if (theme == 1) {
+                    body = sdRoundBox(bp, vec3(0.3, 0.38, 0.18), 0.15);
+                    vec3 tp = bp;
+                    tp.x = abs(tp.x) - 0.2;
+                    tp.y -= 0.45;
+                    tp.xy *= rot(-0.3);
+                    body = smin(body, sdRoundBox(tp, vec3(0.04, 0.15, 0.04), 0.02), 0.06);
+                    vec3 diaP = bp - vec3(0.0, -0.4, 0.25);
+                    diaP.xz *= rot(time);
+                    diaP.yz *= rot(time * 0.5);
+                    extra = sdRoundBox(diaP, vec3(0.04, 0.04, 0.04), 0.01);
+                } else if (theme == 2) {
+                    vec3 gp = bp;
+                    gp.y -= sin(time * 2.0) * 0.05 * u_bob_intensity;
+                    float y_cl = clamp(gp.y, -0.15, 0.15);
+                    vec3 p_seg = vec3(gp.x, gp.y - y_cl, gp.z);
+                    float ghostR = 0.28 + smoothstep(0.1, -0.25, gp.y) * 0.15;
+                    float ghostD = length(p_seg) - ghostR;
+                    float skirt = sin(atan(gp.z, gp.x) * 7.0 + time * 3.0) * 0.04;
+                    ghostD += skirt * smoothstep(-0.1, -0.3, gp.y);
+                    ghostD = max(ghostD, -gp.y - 0.28);
+                    vec3 ap = gp;
+                    ap.x = abs(ap.x) - 0.35;
+                    ap.xy *= rot(0.5);
+                    float arms = sdRoundBox(ap, vec3(0.1, 0.02, 0.02), 0.04);
+                    body = smin(ghostD, arms, 0.06);
+                    extra = length(bp - vec3(0.0, -0.05, 0.15)) - 0.08;
+                } else if (theme == 3) {
+                    body = sdRoundBox(bp, vec3(0.45, 0.22, 0.2), 0.15);
+                    vec3 glP = bp;
+                    glP.x = abs(glP.x) - 0.42;
+                    float spikeTime = time * 5.0;
+                    for (int i = -1; i <= 1; i++) {
+                        vec3 g = glP;
+                        g.y -= float(i) * 0.2;
+                        g.xy *= rot(0.4 * float(i));
+                        g.y += sin(g.x * 15.0 - spikeTime) * 0.02;
+                        float spikeX = clamp(g.x, 0.0, 0.35);
+                        float r = mix(0.06, 0.0, spikeX / 0.35);
+                        float gill = length(vec3(g.x - spikeX, g.y, g.z)) - max(r, 0.001);
+                        body = smin(body, gill, 0.05);
+                    }
+                    extra = length(bp - vec3(0.0, -0.35, 0.25)) - 0.05;
+                } else if (theme == 4) {
+                    body = sdRoundBox(bp, vec3(0.4, 0.32, 0.25), 0.05);
+                    float screen = sdRoundBox(bp - vec3(0.0, 0.0, 0.25), vec3(0.32, 0.24, 0.05), 0.05);
+                    body = max(body, -screen);
+                    vec3 ep = bp;
+                    ep.x = abs(ep.x) - 0.15;
+                    ep.y -= 0.35;
+                    ep.xy *= rot(-0.4);
+                    body = smin(body, sdRoundBox(ep, vec3(0.01, 0.18, 0.01), 0.01), 0.02);
+                    extra = length(ep - vec3(0.0, 0.18, 0.0)) - 0.03;
+                } else if (theme == 5) {
+                    vec3 sp = bp;
+                    sp += vec3(sin(sp.x * 3.0 + time * 1.5) * sin(sp.y * 3.0 - time * 1.0) * 0.02 * u_bob_intensity);
+                    sp.y += 0.05;
+                    float top = length(sp - vec3(0.0, 0.1, 0.0)) - 0.25;
+                    float bot = length(sp * vec3(1.0, 1.5, 1.0) - vec3(0.0, -0.25, 0.0)) - 0.38;
+                    body = smin(top, bot, 0.25);
+                    vec3 cp = bp;
+                    cp.y -= sin(time * 2.0) * 0.05;
+                    cp.xy *= rot(time);
+                    cp.xz *= rot(time * 0.5);
+                    extra = sdRoundBox(cp, vec3(0.06, 0.06, 0.06), 0.01);
+                }
+            
+                float wave = 1e10;
+                if (u_listening_intensity > 0.01) {
+                    float wX = 0.65;
+                    float wY = 0.0;
+                    float wRot = 0.0;
+                    float wSpread = 0.25;
+                    if (theme == 0) { wX = 0.55; wY = 0.25; wRot = 0.2; wSpread = 0.15; }
+                    else if (theme == 1) { wX = 0.4; wY = 0.2; wSpread = 0.15; }
+                    else if (theme == 2) { wX = 0.38; wY = 0.15; wRot = 0.1; wSpread = 0.15; }
+                    else if (theme == 3) { wX = 0.55; wY = 0.32; wRot = 0.3; wSpread = 0.15; }
+                    else if (theme == 4) { wX = 0.48; wY = 0.2; wSpread = 0.15; }
+                    else if (theme == 5) { wX = 0.42; wY = -0.05; wRot = 0.3; wSpread = 0.15; }
+            
+                    float wCenterX = wX + wSpread * 0.5;
+                    float waveBounds = sdRoundBox(bp - vec3(wCenterX, wY, 0.0), vec3(wSpread * 0.5 + 0.06, 0.3, 0.1), 0.05);
+                    if (waveBounds < 0.05) {
+                        mat2 wRotMat = rot(wRot);
+                        float t10 = time * 10.0;
+                        float audBump = audio * 0.15 + 0.01;
+                        for (int i = 0; i < 8; i++) {
+                            float progress = float(i) / 7.0;
+                            float x_pos = wX + progress * wSpread;
+                            float h = audBump + 0.08 * (0.5 + 0.5 * sin(t10 - progress * 8.0)) * (1.0 - progress * 0.5);
+                            vec3 wp = bp - vec3(x_pos, wY, 0.0);
+                            wp.xy *= wRotMat;
+                            wave = min(wave, sdRoundBox(wp, vec3(0.004, h, 0.004), 0.002));
+                        }
+                    } else {
+                        wave = waveBounds + 0.02;
+                    }
+                }
+            
+                vec2 res = vec2(body, 1.0);
+            
+                if (u_click_intensity > 0.01) {
+                    vec3 ringP = getRingSpace(p);
+                    ringP.y -= 0.05;
+            
+                    vec3 rp1 = ringP;
+                    rp1.xz *= gR1xz;
+                    rp1.yz *= gR1yz;
+                    float r1 = sdFlatRing(rp1, 0.72, 0.04 * u_click_intensity, 0.004);
+                    if (r1 < res.x) res = vec2(r1, 5.0);
+            
+                    vec3 rp2 = ringP;
+                    rp2.xz *= gR2xz;
+                    rp2.xy *= gR2xy;
+                    float r2 = sdFlatRing(rp2, 0.88, 0.006 * u_click_intensity, 0.004);
+                    if (r2 < res.x) res = vec2(r2, 6.0);
+            
+                    vec3 rp3 = ringP;
+                    rp3.xz *= gR3xz;
+                    rp3.yz *= gR3yz;
+                    float r3 = sdFlatRing(rp3, 1.05, 0.02 * u_click_intensity, 0.004);
+                    if (r3 < res.x) res = vec2(r3, 7.0);
+                }
+            
+                if (extra < res.x) res = vec2(extra, 3.0);
+                if (wave < res.x) res = vec2(wave, 4.0);
+            
+                return vec2(res.x / 1.6, res.y);
+            }
+            
+            vec3 calcNormal(vec3 p, float time, float audio) {
+                vec2 e = vec2(0.001, 0.0);
+                return normalize(vec3(
+                    map(p + e.xyy, time, audio).x - map(p - e.xyy, time, audio).x,
+                    map(p + e.yxy, time, audio).x - map(p - e.yxy, time, audio).x,
+                    map(p + e.yyx, time, audio).x - map(p - e.yyx, time, audio).x
+                ));
+            }
+            
+            void main() {
+                float time = iTime;
+                float audio = u_audio_level;
+                int theme = int(u_theme + 0.1);
+            
+                float lookX = u_look_dir.x * 0.4;
+                float lookY = u_look_dir.y * 0.3;
+                if (u_thinking_intensity > 0.01) {
+                    lookY += sin(time * 5.0) * 0.08 * u_thinking_intensity;
+                }
+                gHRotY = rot(lookY);
+                gHRotX = rot(-lookX);
+                gHRotT = rot(u_head_tilt);
+                gRRotY = rot(u_look_dir.y * 0.15);
+                gRRotX = rot(-u_look_dir.x * 0.2);
+                gBob = sin(time * 2.0) * 0.03 * u_bob_intensity;
+                gBallWobble = sin(time * 4.0) * 0.02 * u_bob_intensity;
+                gHExp = u_hover_intensity * 0.15;
+                gHoverZ = u_hover_intensity * 0.1;
+            
+                if (u_click_intensity > 0.01) {
+                    gR1xz = rot(time * 0.3);
+                    gR1yz = rot(0.15 * sin(time * 0.2));
+                    gR2xz = rot(-time * 1.2);
+                    gR2xy = rot(0.2 * cos(time * 0.4));
+                    gR3xz = rot(time * 0.6);
+                    gR3yz = rot(-0.15 * sin(time * 0.3));
+                }
+            
+                float eyeYOffset = 0.0;
+                float eyeXSpread = 0.18;
+                float eyeScale = 1.0;
+                if (theme == 0) { eyeYOffset = 0.02; eyeXSpread = 0.16; }
+                else if (theme == 1) { eyeYOffset = 0.05; eyeXSpread = 0.16; }
+                else if (theme == 2) { eyeYOffset = 0.24; eyeXSpread = 0.10; eyeScale = 0.5; }
+                else if (theme == 3) { eyeYOffset = -0.02; eyeXSpread = 0.22; }
+                else if (theme == 4) { eyeXSpread = 0.15; }
+                else if (theme == 5) { eyeYOffset = 0.05; eyeXSpread = 0.12; }
+            
+                vec3 worldCamPos = getStereoCamPosition();
+                vec3 localCamPos = (system.getMatrixWorldInverse() * vec4(worldCamPos, 1.0)).xyz;
+            
+                vec3 ro = localCamPos;
+                vec3 rd = normalize(u_local_pos - localCamPos);
+            
+                float boundingRadius = 1.5;
+                float b = dot(ro, rd);
+                float c = dot(ro, ro) - (boundingRadius * boundingRadius);
+                float h = b * b - c;
+            
+                if (h < 0.0) {
+                    discard;
+                }
+            
+                float t = -b - sqrt(h);
+                t = max(t, 0.0);
+            
+                float d = t;
+                float maxD = t + (boundingRadius * 2.0);
+                vec2 res = vec2(0.0);
+                vec3 hitP;
+                bool hasHit = false;
+            
+                for (int i = 0; i < 45; i++) {
+                    hitP = ro + rd * d;
+                    res = map(hitP, time, audio);
+                    if (res.x < 0.0015) {
+                        hasHit = true;
+                        break;
+                    }
+                    d += res.x * 0.85;
+                    if (d > maxD) break;
+                }
+            
+                vec3 finalCol = vec3(0.0);
+                float alpha = 0.0;
+            
+                if (hasHit) {
+                    alpha = 1.0;
+                    vec3 n = calcNormal(hitP, time, audio);
+                    float fresnel = pow(clamp(1.0 - max(dot(n, -rd), 0.0), 0.0, 1.0), 3.5);
+                    vec3 bp = getHeadSpace(hitP);
+            
+                    if (res.y == 1.0) {
+                        float iridBright = 1.8 + u_hover_intensity * 1.5;
+                        vec3 irid = spectral(fresnel * 0.8 + time * (0.05 + u_hover_intensity * 0.1)) * fresnel * iridBright;
+                        float internal = smoothstep(0.4, 0.0, map(hitP + n * 0.1, time, audio).x * 1.6);
+                        vec3 coreGlow = u_antenna_color * internal * 0.15;
+                        if (theme == 2 || theme == 5) coreGlow *= 2.0;
+                        finalCol += irid + coreGlow + pow(fresnel, 15.0) * 3.0;
+                        finalCol += vec3(0.4, 0.7, 1.0) * audio * 0.8 * u_listening_intensity;
+            
+                        if (u_tool_call_intensity > 0.01 && bp.z > 0.15) {
+                            vec2 fuv = bp.xy * 5.0;
+                            float colId = floor(fuv.x);
+                            float speed = 1.0 + hash(colId) * 1.5;
+                            fuv.y += time * speed;
+                            float bit = getBinaryBit(fract(fuv), floor(fuv.x) + floor(fuv.y) * 10.0);
+                            finalCol += u_antenna_color * bit * 0.5 * u_tool_call_intensity;
+                        }
+            
+                        if (bp.z > 0.1 && u_eye_brightness > 0.01) {
+                            vec2 faceUv = bp.xy;
+                            faceUv.x -= u_look_dir.x * 0.032;
+                            faceUv.y -= u_look_dir.y * 0.024;
+                            vec3 eyeCol = mix(vec3(2.5), vec3(3.0, 0.2, 0.2), u_error_intensity) * u_eye_brightness;
+            
+                            if (theme == 4) {
+                                vec2 grid = fract(faceUv * 40.0);
+                                float scanline = smoothstep(0.0, 0.2, grid.y) * smoothstep(1.0, 0.8, grid.y);
+                                float pixel = smoothstep(0.0, 0.2, grid.x) * smoothstep(1.0, 0.8, grid.x);
+                                eyeCol *= (0.5 + 0.5 * scanline * pixel);
+                                if (abs(fract(faceUv.y * 2.0 - time) - 0.5) < 0.02) eyeCol += vec3(0.5) * u_eye_brightness;
+                            }
+            
+                            vec2 eyePos = faceUv;
+                            eyePos.y -= eyeYOffset;
+                            eyePos.x = abs(eyePos.x) - eyeXSpread;
+            
+                            float xd1 = sdSegment(eyePos, vec2(-0.03, 0.03) * eyeScale, vec2(0.03, -0.03) * eyeScale);
+                            float xd2 = sdSegment(eyePos, vec2(-0.03, -0.03) * eyeScale, vec2(0.03, 0.03) * eyeScale);
+                            float errorEyeSDF = min(xd1, xd2) - 0.008 * eyeScale;
+            
+                            vec2 normEyePos = eyePos;
+                            normEyePos.y += u_eye_curve * (normEyePos.x * normEyePos.x) * 4.0;
+                            float blinkTime = mod(time, 4.0);
+                            float blink = (blinkTime < 0.12 || (blinkTime > 0.3 && blinkTime < 0.42)) ? 1.0 : 0.0;
+                            vec2 eyeSize = u_eye_size * (1.0 + u_hover_intensity * 0.2) * eyeScale;
+                            float h_eye = max(mix(eyeSize.y, 0.001, blink * u_bob_intensity), 0.001);
+                            float r_eye = min(eyeSize.x, h_eye) * 0.99;
+                            float normalEyeSDF = sdRoundBox2D(normEyePos, vec2(eyeSize.x, h_eye), r_eye);
+            
+                            float eyeSDF = mix(normalEyeSDF, errorEyeSDF, smoothstep(0.1, 0.9, u_error_intensity));
+                            float eyeMask = smoothstep(0.015, 0.0, eyeSDF);
+                            finalCol = mix(finalCol, eyeCol, eyeMask);
+            
+                            if (theme == 0) {
+                                float noseDist = length(faceUv - vec2(0.0, -0.09)) - 0.012;
+                                finalCol += eyeCol * 1.2 * smoothstep(0.005, 0.0, noseDist);
+                                vec2 mUv = faceUv - vec2(0.0, -0.13);
+                                mUv.x = abs(mUv.x) - 0.025;
+                                float mouthDist = max(abs(length(mUv) - 0.025) - 0.004, mUv.y);
+                                finalCol += eyeCol * 1.2 * smoothstep(0.005, 0.0, mouthDist);
+                                vec2 wUv = faceUv;
+                                wUv.x = abs(wUv.x) - 0.24;
+                                wUv.y += 0.08;
+                                float catWhiskers = 1.0;
+                                for (int w = -1; w <= 1; w++) {
+                                    vec2 wl = wUv;
+                                    wl.y -= float(w) * 0.05;
+                                    wl *= rot(float(w) * -0.15);
+                                    catWhiskers = min(catWhiskers, sdSegment(wl, vec2(0.0, 0.0), vec2(0.12, 0.0)));
+                                }
+                                finalCol += eyeCol * mix(1.2, 3.5, u_listening_intensity) * smoothstep(0.006, 0.002, catWhiskers);
+                            } else if (theme == 1) {
+                                vec2 bUv = faceUv - vec2(0.0, -0.08);
+                                float beak = max(abs(bUv.x) * 0.866 + bUv.y * 0.5, -bUv.y) - 0.03;
+                                finalCol += mix(vec3(1.0, 0.5, 0.0), eyeCol, 0.5) * 1.5 * smoothstep(0.005, 0.0, beak);
+                            } else if (theme == 2) {
+                                float tear = min(length(eyePos - vec2(0.0, -0.03)) - 0.006, length(eyePos - vec2(0.01, -0.05)) - 0.004);
+                                finalCol += eyeCol * 0.8 * smoothstep(0.005, 0.0, tear);
+                            } else if (theme == 3) {
+                                vec2 smUv = faceUv - vec2(0.0, -0.1);
+                                float smile = abs(length(vec2(smUv.x, smUv.y * 1.5)) - 0.15) - 0.006;
+                                finalCol += eyeCol * 1.2 * smoothstep(0.005, 0.0, max(smile, smUv.y));
+                            } else if (theme == 5) {
+                                vec2 smUv = faceUv - vec2(0.0, -0.05);
+                                smUv.x = abs(smUv.x);
+                                float mouth = sdSegment(smUv, vec2(0.0, 0.0), vec2(0.03, -0.02)) - 0.005;
+                                finalCol += eyeCol * 1.2 * smoothstep(0.005, 0.0, mouth);
+                            }
+                        }
+                    } else if (res.y == 3.0) {
+                        float pulse = sin(time * u_pulse_speed) * 0.5 + 0.5;
+                        if (u_pulse_speed < 0.01) pulse = 1.0;
+                        vec3 baseGlow = u_antenna_color * mix(0.5, 4.0, pulse);
+                        if (theme == 4) baseGlow = vec3(1.0, 0.1, 0.1) * mix(0.5, 4.0, pulse);
+                        finalCol = baseGlow + spectral(time * 0.1) * fresnel * 0.5;
+                    } else if (res.y == 4.0) {
+                        finalCol = u_antenna_color * (2.0 + audio * 3.0) * u_listening_intensity;
+                    } else if (abs(res.y - 5.0) < 0.1) {
+                        vec3 ringP = getRingSpace(hitP);
+                        ringP.y -= 0.05;
+                        vec3 rp1 = ringP;
+                        rp1.xz *= gR1xz;
+                        rp1.yz *= gR1yz;
+                        float angle = atan(rp1.z, rp1.x);
+                        float segments = step(0.05, fract(angle * 4.0 / 6.28318));
+                        finalCol = u_antenna_color * 2.5 * segments * u_click_intensity;
+                    } else if (abs(res.y - 6.0) < 0.1) {
+                        vec3 ringP = getRingSpace(hitP);
+                        ringP.y -= 0.05;
+                        vec3 rp2 = ringP;
+                        rp2.xz *= gR2xz;
+                        rp2.xy *= gR2xy;
+                        float angle = atan(rp2.z, rp2.x);
+                        float dashes = step(0.5, sin(angle * 60.0 + time * 15.0));
+                        vec3 accentCol = mix(vec3(0.0, 0.8, 1.0), u_antenna_color, 0.5);
+                        finalCol = accentCol * 4.0 * dashes * u_click_intensity;
+                    } else if (abs(res.y - 7.0) < 0.1) {
+                        vec3 ringP = getRingSpace(hitP);
+                        ringP.y -= 0.05;
+                        vec3 rp3 = ringP;
+                        rp3.xz *= gR3xz;
+                        rp3.yz *= gR3yz;
+                        float angle = atan(rp3.z, rp3.x);
+                        float bracket = step(0.9, cos(angle * 4.0));
+                        float scan = smoothstep(0.9, 1.0, sin(angle - time * 3.0));
+                        finalCol = u_antenna_color * (1.5 * bracket + 3.0 * scan) * u_click_intensity;
+                    }
+                }
+            
+                if (u_sleep_intensity > 0.01) {
+                    vec2 zUV = u_local_pos.xy * 1.6;
+                    for (int i = 0; i < 3; i++) {
+                        float life = fract(time * 0.3 + float(i) * 0.33);
+                        float size = 0.03 + life * 0.05;
+                        vec2 zPos = vec2(0.25 + sin(time + float(i)) * 0.1, -0.2 + life * 1.2);
+                        float distZ = sdZ(zUV - zPos, size);
+                        float zGlow = (1.0 - smoothstep(0.0, 0.02, distZ)) * (1.0 - life) * u_sleep_intensity;
+                        finalCol += u_antenna_color * zGlow * 1.5;
+                        alpha = max(alpha, zGlow);
+                    }
+                }
+            
+                vec3 glowOrigin = vec3(0.0, 0.68 + gHExp * 2.2, 0.0);
+                if (theme == 0) glowOrigin = vec3(0.0, -0.35, 0.30);
+                else if (theme == 1) glowOrigin = vec3(0.0, -0.4, 0.25);
+                else if (theme == 2) glowOrigin = vec3(0.0, -0.1, 0.15);
+                else if (theme == 3) glowOrigin = vec3(0.0, -0.35, 0.25);
+                else if (theme == 4) glowOrigin = vec3(0.15, 0.18, 0.0);
+                else if (theme == 5) glowOrigin = vec3(0.0, 0.0, 0.0);
+            
+                float haloStep = 0.2;
+                float hoverHaloScale = 1.0 + u_hover_intensity * 0.5;
+                for (float t = d - 0.4; t < d + 0.4; t += haloStep) {
+                    if (t < 0.0) continue;
+                    vec3 testP = ro + rd * t;
+                    vec3 testBp = getHeadSpace(testP);
+            
+                    float objDist = length(testBp - glowOrigin) - 0.07;
+                    if (objDist < 0.25) {
+                        float ant = 1.0 - smoothstep(0.0, 0.25, objDist);
+                        finalCol += u_antenna_color * 0.04 * ant * hoverHaloScale;
+                        alpha = max(alpha, ant * 0.1);
+                    }
+            
+                    if (testBp.z > 0.3 && u_eye_brightness > 0.1) {
+                        vec2 eyeP = abs(testBp.xy) - vec2(eyeXSpread, 0.0);
+                        float eH = length(eyeP) - 0.05;
+                        float eyeGlow = 1.0 - smoothstep(0.0, 0.1, eH);
+                        vec3 eyeHaloCol = mix(vec3(0.008), vec3(0.02, 0.0, 0.0), u_error_intensity);
+                        finalCol += eyeHaloCol * u_eye_brightness * eyeGlow * hoverHaloScale;
+                    }
+            
+                    if (u_click_intensity > 0.01) {
+                        vec3 testRingP = getRingSpace(testP);
+                        testRingP.y -= 0.05;
+                        float rDist = length(testRingP.xz);
+            
+                        float d1 = abs(rDist - 0.72);
+                        if (d1 < 0.1 && abs(testRingP.y) < 0.1) {
+                            finalCol += u_antenna_color * 0.01 * u_click_intensity * (1.0 - smoothstep(0.0, 0.1, d1));
+                        }
+            
+                        float d3 = abs(rDist - 1.05);
+                        if (d3 < 0.15 && abs(testRingP.y) < 0.15) {
+                            finalCol += u_antenna_color * 0.008 * u_click_intensity * (1.0 - smoothstep(0.0, 0.15, d3));
+                        }
+                    }
+                }
+            
+                Result = vec4(clamp(finalCol, 0.0, 2.5), clamp(alpha, 0.0, 1.0));
+            }
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: "15990626878319181971:9651891766785916804"
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Result:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        UseExternalFile:
+          Variable: true
+        iTime:
+          Connection0:
+            NodeLevelID: 9
+            PortID: Time
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        u_blend_t:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        u_click_intensity:
+          Connection0:
+            NodeLevelID: 12
+            PortID: Output
+          Variable: 0.0
+        u_core_glow_strength:
+          Connection0:
+            NodeLevelID: 24
+            PortID: Output
+          Variable: 0.0
+        u_edge_white:
+          Connection0:
+            NodeLevelID: 23
+            PortID: Output
+          Variable: 0.0
+        u_face_pos:
+          Connection0:
+            NodeLevelID: 14
+            PortID: Position
+          Variable: [0.0, 0.0, 0.0]
+        u_hover_intensity:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: 0.0
+        u_irid_brightness:
+          Connection0:
+            NodeLevelID: 28
+            PortID: Output
+          Variable: 0.0
+        u_irid_speed:
+          Connection0:
+            NodeLevelID: 27
+            PortID: Output
+          Variable: 0.0
+        u_look_dir:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [0.0, 0.0]
+        u_outline_brightness:
+          Connection0:
+            NodeLevelID: 25
+            PortID: Output
+          Variable: 0.0
+        u_outline_width:
+          Connection0:
+            NodeLevelID: 26
+            PortID: Output
+          Variable: 0.0
+        u_prev_state:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        u_state:
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: 0.0
+        u_surface_normal:
+          Connection0:
+            NodeLevelID: 10
+            PortID: Normal
+          Variable: [0.0, 0.0, 0.0]
+        u_theme:
+          Connection0:
+            NodeLevelID: 20
+            PortID: Output
+          Variable: 0.0
+        u_view_dir:
+          Connection0:
+            NodeLevelID: 1
+            PortID: Camera_Forward
+          Variable: [0.0, 0.0, 0.0]
+      PositionX: 140
+      PositionY: 76
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node19:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 19
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        EnableHighPrecisionSampling:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: Result
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 426
+      PositionY: 93
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node2:
+      DependencyIndex: 2
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Normal:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+        Space:
+          ItemIndex: 1
+          ItemList: "Object : World : Camera"
+      PositionX: -235
+      PositionY: 21
+      TemplateID: node_effect_global_surface_normal
+      Title1: Surface Normal
+      ViewMode: 0
+    Node3:
+      DependencyIndex: 3
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Camera_Forward:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+        Normalize:
+          Variable: true
+      PositionX: -232
+      PositionY: 52
+      TemplateID: node_effect_global_camera_direction
+      Title1: Camera Forward
+      ViewMode: 0
+    Node4:
+      DependencyIndex: 4
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Group:
+          String: ""
+        Index:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_look_dir
+        Size:
+          Variable: 8
+        SizeOut:
+          IOType: 1
+          Variable: 0.0
+        SortIndex:
+          Variable: 0
+        Title:
+          String: u_look_dir
+        Tooltip:
+          String: ""
+      PositionX: -263
+      PositionY: 77
+      TemplateID: nodes_inputs_parameters_float_array
+      Title1: Float Array Parameter
+      Title2: u_look_dir
+      ViewMode: 0
+    Node5:
+      DependencyIndex: 5
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_hover_intensity
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_hover_intensity
+        Tooltip:
+          String: ""
+      PositionX: -232
+      PositionY: 190
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_hover_intensity
+      ViewMode: 0
+    Node6:
+      DependencyIndex: 6
+      LevelID: 12
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_click_intensity
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_click_intensity
+        Tooltip:
+          String: ""
+      PositionX: -221
+      PositionY: 235
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_click_intensity
+      ViewMode: 0
+    Node7:
+      DependencyIndex: 7
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_state
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_state
+        Tooltip:
+          String: ""
+      PositionX: -212
+      PositionY: 308
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_state
+      ViewMode: 0
+    Node8:
+      DependencyIndex: 8
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_prev_state
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_prev_state
+        Tooltip:
+          String: ""
+      PositionX: -227
+      PositionY: 370
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_prev_state
+      ViewMode: 0
+    Node9:
+      DependencyIndex: 9
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_blend_l
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_blend_l
+        Tooltip:
+          String: ""
+      PositionX: -234
+      PositionY: 437
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_blend_l
+      ViewMode: 0
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

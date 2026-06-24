@@ -1,0 +1,400 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Index:
+          Variable: 0
+        UVCoord:
+          IOType: 1
+          Variable: [0.0, 0.0]
+      PositionX: -178
+      PositionY: 15
+      TemplateID: node_effect_global_surface_uvcoord0
+      Title1: Surface UV Coord
+    Node1:
+      DependencyIndex: 1
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_time
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_time
+        Tooltip:
+          String: ""
+      PositionX: -253
+      PositionY: 153
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_time
+    Node2:
+      DependencyIndex: 2
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_expl_start
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_expl_start
+        Tooltip:
+          String: ""
+      PositionX: -295
+      PositionY: 253
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_expl_start
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: u_aspect_ratio
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: u_aspect_ratio
+        Tooltip:
+          String: ""
+      PositionX: -245
+      PositionY: 404
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: u_aspect_ratio
+    Node4:
+      DependencyIndex: 4
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |-
+            input_vec2 uv;
+            input_float u_time;
+            input_float u_expl_start;
+            input_float u_aspect_ratio;
+            output_vec4 Result;
+            
+            float hash(vec2 p) {
+                p = fract(p * vec2(123.34, 456.21));
+                p += dot(p, p + 45.32);
+                return fract(p.x * p.y);
+            }
+            
+            float noise(vec2 p) {
+                vec2 i = floor(p);
+                vec2 f = fract(p);
+                f = f * f * (3.0 - 2.0 * f);
+                float a = hash(i);
+                float b = hash(i + vec2(1.0, 0.0));
+                float c = hash(i + vec2(0.0, 1.0));
+                float d = hash(i + vec2(1.0, 1.0));
+                return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+            }
+            
+            float fbm(vec2 p) {
+                float f = 0.0;
+                float amp = 0.5;
+                mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+                for(int i = 0; i < 5; i++) {
+                    f += amp * noise(p);
+                    p = rot * p * 2.0 + vec2(100.0, 100.0);
+                    amp *= 0.5;
+                }
+                return f;
+            }
+            
+            void main() {
+                float pixelSize = 120.0;
+                vec2 centeredUV = uv - 0.5;
+                centeredUV.x *= u_aspect_ratio;
+                centeredUV *= 2.0;
+                
+                vec2 pUV = floor(centeredUV * pixelSize) / pixelSize;
+                vec2 vPixel = floor(centeredUV * pixelSize);
+            
+                float t = u_expl_start >= 0.0 ? max(0.0, u_time - u_expl_start) : 0.0;
+                float duration = 4.2;
+                float fps = 15.0;
+                float sTime = floor(t * fps) / fps;
+            
+                vec2 center = vec2(0.0, sTime * 0.15);
+                vec2 pUV_drift = pUV - center;
+            
+                float d = length(pUV_drift);
+                vec2 dir = d > 0.0 ? pUV_drift / d : vec2(0.0, 0.0);
+            
+                vec3 finalColor = vec3(0.0, 0.0, 0.0);
+                float alpha = 0.0;
+            
+                if (sTime > 0.0 && sTime < duration) {
+                    float nTime = sTime / duration;
+            
+                    vec2 warpCoord = pUV_drift * 2.5 - dir * sTime * 2.0;
+                    vec2 q = vec2(fbm(warpCoord), fbm(warpCoord + vec2(1.2, 3.4)));
+                    float warpNoise = fbm(warpCoord + 3.0 * q + sTime * 1.2);
+            
+                    float n = fbm(pUV_drift * 3.5 + warpNoise * 2.5);
+            
+                    float angle = atan(pUV_drift.y, pUV_drift.x);
+                    float qAngleForLobe = floor(angle * 8.0) / 8.0;
+                    float asymmetry = fbm(vec2(qAngleForLobe * 3.0, sTime * 0.8)) * 0.6 + 0.4;
+            
+                    float maxRadius = 1.0 + sTime * 0.5;
+                    float baseRadius = maxRadius * (1.0 - exp(-sTime * (6.0 + asymmetry)));
+                    float fireRadius = baseRadius * 0.85 * exp(-sTime * 1.0);
+            
+                    float boundaryDist = baseRadius - d + (n - 0.5) * 1.2;
+                    float flatShape = clamp(boundaryDist * 2.0, 0.0, 1.0);
+            
+                    float erosion = nTime * (1.2 + n * 2.0);
+                    float smokeDensity = clamp(flatShape - erosion, 0.0, 1.0);
+            
+                    float fireBoundary = fireRadius - d + (n - 0.5) * 0.8;
+                    float fireDensity = clamp(fireBoundary * 2.0, 0.0, 1.0);
+            
+                    float temp = fireDensity * exp(-sTime * 1.2) * (n * 2.0 + 0.2);
+            
+                    float totalIntensity = smokeDensity * 0.24 + temp * 1.5;
+            
+                    if (totalIntensity > 0.01) {
+                        float bands = 7.0;
+                        float qIntensity = floor(totalIntensity * bands) / bands;
+            
+                        vec3 col;
+                        if (qIntensity >= 0.8) col = vec3(1.0, 1.0, 1.0);
+                        else if (qIntensity >= 0.6) col = vec3(1.0, 1.0, 0.0);
+                        else if (qIntensity >= 0.4) col = vec3(1.0, 0.5, 0.0);
+                        else if (qIntensity >= 0.25) col = vec3(0.8, 0.1, 0.0);
+                        else if (qIntensity >= 0.12) col = vec3(0.4, 0.4, 0.4);
+                        else col = vec3(0.15, 0.15, 0.15);
+            
+                        float dither = mod(vPixel.x + vPixel.y, 2.0);
+            
+                        if (totalIntensity < 0.1 && dither > 0.5) {
+                            alpha = 0.0;
+                        } else {
+                            finalColor = col;
+                            alpha = 1.0;
+                        }
+                    }
+            
+                    if (sTime < 0.1 && length(pUV) < 1.0) {
+                        if (mod(vPixel.x, 2.0) == mod(vPixel.y, 2.0)) {
+                            finalColor = vec3(1.0, 0.9, 0.8);
+                            alpha = 1.0;
+                        }
+                    }
+                }
+            
+                Result = vec4(finalColor, alpha);
+            }
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: ""
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Result:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        UseExternalFile:
+          Variable: false
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        u_aspect_ratio:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        u_expl_start:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: 0.0
+        u_time:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: 0.0
+        uv:
+          Connection0:
+            NodeLevelID: 1
+            PortID: UVCoord
+          Variable: [0.0, 0.0]
+      PositionX: 57
+      PositionY: 107
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node5:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 5
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        EnableHighPrecisionSampling:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: Result
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 220
+      PositionY: 90
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

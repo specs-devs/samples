@@ -1,0 +1,70 @@
+- !<AssetImportMetadata/78e1d78a-6295-4bfa-846c-b3d20884a5f6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a5590f95-600d-4791-b42f-26157843950f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a5590f95-600d-4791-b42f-26157843950f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f88036c4-9b83-4f76-9341-82cc7f1a30e1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f88036c4-9b83-4f76-9341-82cc7f1a30e1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 602b2e66-8201-4807-89c8-94fdc30c5bc8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _lyriaModel: false
+    _snapCloudRequirements: false
+    _spawnPosition: false
+    _storageBucket: false
+    _useSnapCloud: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - _spawnPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _useSnapCloud: true
+      _snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      _lyriaModel: lyria-3-clip-preview
+      _storageBucket: generated-music
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Music Generator – AI music generation pipeline</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Combines user selections into a Lyria prompt and spawns MusicObject instances.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject _spawnPosition {"hint":"Scene object whose world position is used as the spawn point for new music objects"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap Cloud</span>"}'
+    - '// @input bool _useSnapCloud = true {"hint":"Generate music with Lyria 3 (MP3, fits under the 4MB RemoteApi limit) and save each track to Snap Cloud Storage. When off, uses the original inline Lyria-002 path whose ~8MB WAV response currently exceeds the limit."}'
+    - '// @input AssignableType_1 _snapCloudRequirements {"hint":"Reference to SnapCloudRequirements for centralized Supabase configuration"}'
+    - '// @input string _lyriaModel = "lyria-3-clip-preview" {"hint":"Lyria 3 model id requested through the Remote Service Gateway Gemini endpoint"}'
+    - '// @input string _storageBucket = "generated-music" {"hint":"Supabase Storage bucket where generated tracks are saved (must exist)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,891 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: true
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: baseTex
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType2: TEXTURE_OBJECT_2D
+          IOType: 1
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Texture
+        Tooltip:
+          String: ""
+      PositionX: 2010
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: Texture
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Index:
+          Variable: 0
+        UVCoord:
+          IOType: 1
+          Variable: [0.0, 0.0]
+      PositionX: 2080
+      PositionY: -580
+      TemplateID: node_effect_global_surface_uvcoord0
+      Title1: Surface UV Coord
+    Node10:
+      DependencyIndex: 19
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 0
+            PortID: Color
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Input1:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Inputs:
+          ItemIndex: 0
+          ItemList: "2 : 3 : 4 : 5 : 6"
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 2888
+      PositionY: -44
+      TemplateID: nodes_math_multiply
+      Title1: Multiply
+    Node11:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 20
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 2895
+      PositionY: -270
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node2:
+      DependencyIndex: 2
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: maxBorderSize
+        SortIndex:
+          Variable: 1
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Max Border Size
+        Tooltip:
+          String: Size of the created border
+      PositionX: 2080
+      PositionY: -480
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Max Border Size
+    Node3:
+      DependencyIndex: 3
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: Slicing
+        Max:
+          Variable: 0.5
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: sliceSizeLeft
+        SortIndex:
+          Variable: 2
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Left
+        Tooltip:
+          String: The size of the slice part from the edge horizontally
+      PositionX: 2080
+      PositionY: -370
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Left
+    Node4:
+      DependencyIndex: 4
+      LevelID: 36
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: Slicing
+        Max:
+          Variable: 0.5
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: sliceSizeRight
+        SortIndex:
+          Variable: 2
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Right
+        Tooltip:
+          String: The size of the slice part from the edge horizontally
+      PositionX: 2080
+      PositionY: -280
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Right
+    Node5:
+      DependencyIndex: 5
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: Slicing
+        Max:
+          Variable: 0.5
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: sliceSizeTop
+        SortIndex:
+          Variable: 2
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Top
+        Tooltip:
+          String: The size of the slice part from the edge horizontally
+      PositionX: 2080
+      PositionY: -190
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Top
+    Node6:
+      DependencyIndex: 6
+      LevelID: 13
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: Slicing
+        Max:
+          Variable: 0.5
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: sliceSizeBottom
+        SortIndex:
+          Variable: 2
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: Bottom
+        Tooltip:
+          String: The size of the slice part from the edge horizontally
+      PositionX: 2080
+      PositionY: -100
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: Bottom
+    Node7:
+      ChildNodes:
+        Node0:
+          DependencyIndex: 7
+          LevelID: 25
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 0
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: UV Input
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2350
+          PositionY: -640
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: UV Input
+        Node1:
+          DependencyIndex: 8
+          LevelID: 17
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: true
+            EnableMin:
+              Variable: true
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 0
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Max Border Size
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2320
+          PositionY: -550
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Max Border Size
+        Node2:
+          DependencyIndex: 9
+          LevelID: 11
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.1, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Left
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2340
+          PositionY: -460
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Left
+        Node3:
+          DependencyIndex: 10
+          LevelID: 35
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.1, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Right
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2340
+          PositionY: -370
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Right
+        Node4:
+          DependencyIndex: 11
+          LevelID: 28
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.1, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Top
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2340
+          PositionY: -280
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Top
+        Node5:
+          DependencyIndex: 12
+          LevelID: 38
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.1, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Bottom
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2340
+          PositionY: -200
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Bottom
+        Node6:
+          DependencyIndex: 13
+          LevelID: 82
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [1.0, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 5
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Texture Size
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2340
+          PositionY: -110
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Texture Size
+        Node7:
+          DependencyIndex: 14
+          LevelID: 24
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Code:
+              ClassType1: TEXT
+              String: |-
+                input_vec2  UV;
+                input_float MaxBorderSize;
+                input_float SliceLeft;
+                input_float SliceRight;
+                input_float SliceTop;
+                input_float SliceBottom;
+                input_vec2  TextureSize;
+                
+                output_vec2 Result; 
+                
+                float clampBorderSize( float maxBorderSize, vec2 imageSize) {
+                	return min( min( maxBorderSize, imageSize.x/2.0 ), imageSize.y/2.0 );
+                }
+                
+                vec2 calculateBorders( vec2 texSize, float borderSize) {
+                	return vec2( (texSize.x/texSize.y) * borderSize, borderSize);
+                }
+                
+                bool epsilonEqual(float a, float b) {
+                	return a + .0005 > b && a - .0005 < b;
+                }
+                
+                void main()
+                {
+                    float scale_x         = length(system.getMatrixWorld()[0].xyz);
+                    float scale_y         = length(system.getMatrixWorld()[1].xyz);
+                    vec2 ImageSize        = vec2(scale_x, scale_y);
+                	bool isOrtho = !epsilonEqual(system.getMatrixProjection()[3].w, 0.0);
+                	if(isOrtho) {
+                		vec2 orthoSize = abs(vec2(system.getMatrixProjection()[0].x, system.getMatrixProjection()[1].y));
+                    		//We use 20.0 as the baseline because it is the default
+                    		float orthoRatio = orthoSize.y / 0.1;
+                    		ImageSize = ImageSize * orthoRatio;
+                	}
+                    float clampBorderSize = clampBorderSize(MaxBorderSize, ImageSize);
+                    vec2  borderSize      = calculateBorders(TextureSize, clampBorderSize);
+                	float borderLeft      = (SliceLeft * borderSize.x * 2.0) / ImageSize.x;
+                	float borderRight     = 1.0-((SliceRight * borderSize.x * 2.0) / ImageSize.x);
+                	float borderBottom    = (SliceBottom * borderSize.y * 2.0) / ImageSize.y;
+                    float borderTop       = 1.0-((SliceTop * borderSize.y * 2.0) / ImageSize.y);
+                
+                	float remapU1 = system.remap( UV.x, 0.0, borderLeft, 0.0, SliceLeft );
+                	float remapU2 = system.remap( UV.x, borderLeft, borderRight, SliceLeft, 1.0-SliceRight );
+                    float remapU3 = system.remap( UV.x, borderRight, 1.0, 1.0-SliceRight, 1.0);
+                
+                    float remapV1 = system.remap( UV.y, 0.0, borderBottom, 0.0, SliceBottom );
+                	float remapV2 = system.remap( UV.y, borderBottom, borderTop, SliceBottom, 1.0-SliceTop );
+                    float remapV3 = system.remap( UV.y, borderTop, 1.0, 1.0-SliceTop, 1.0);
+                
+                    float slicedU = (UV.x < borderLeft) ? (remapU1) : ((UV.x < borderRight) ? (remapU2) : (remapU3));
+                    float slicedV = (UV.y < borderBottom) ? (remapV1) : ((UV.y < borderTop) ? (remapV2) : (remapV3));
+                	Result = vec2( slicedU, slicedV);
+                }
+            Description:
+              ClassType1: TEXT
+              String: |-
+                9-slice scaling (also known as Scale 9 grid,  9-patch or 9-slicing ) is a 2D image resizing technique to proportionally scale an image by splitting it in a grid of nine parts.
+                
+                UV - coordinates of the surface;
+                Border Scale - Size of the created border.
+                Slice Left - 
+                Slice Right - 
+                Slice Top - 
+                Slice Bottom - 
+            Examples:
+              ItemIndex: 0
+              ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+            ID:
+              Variable: 24
+            Locked:
+              Variable: false
+            MaxBorderSize:
+              Connection0:
+                NodeLevelID: 17
+                PortID: Value
+              Variable: 0.0
+            Result:
+              IOType: 1
+              Variable: [0.0, 0.0]
+            SliceBottom:
+              Connection0:
+                NodeLevelID: 38
+                PortID: Value
+              Variable: 0.0
+            SliceLeft:
+              Connection0:
+                NodeLevelID: 11
+                PortID: Value
+              Variable: 0.0
+            SliceRight:
+              Connection0:
+                NodeLevelID: 35
+                PortID: Value
+              Variable: 0.0
+            SliceTop:
+              Connection0:
+                NodeLevelID: 28
+                PortID: Value
+              Variable: 0.0
+            Stage:
+              ItemIndex: 1
+              ItemList: "Vertex : Pixel"
+            TextureSize:
+              Connection0:
+                NodeLevelID: 82
+                PortID: Value
+              Variable: [0.0, 0.0]
+            Title:
+              String: 9-slicing
+            UV:
+              Connection0:
+                NodeLevelID: 25
+                PortID: Value
+              Variable: [0.0, 0.0]
+            ngs_Height:
+              Variable: 400
+            ngs_Version:
+              String: 0.1.0
+          PositionX: 2640
+          PositionY: -460
+          TemplateID: node_util_custom
+          TemplateVersionMinor: 1
+          Title1: 9-slicing
+        Node8:
+          DependencyIndex: 15
+          LevelID: 7
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 5
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Export:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            SortIndex:
+              Variable: 0
+            Title:
+              String: UV Output
+            Tooltip:
+              String: ""
+            Value:
+              Connection0:
+                NodeLevelID: 24
+                PortID: Result
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 2870
+          PositionY: -460
+          TemplateID: nodes_export_float
+          Title1: Float Export
+          Title2: UV Output
+      DependencyIndex: 16
+      LevelID: 5
+      NodeType: 3
+      Ports:
+        Description:
+          String: ""
+        DescriptionText:
+          ClassType1: TEXT
+          String: "9-slice scaling (also known as Scale 9 grid,  9-patch or 9-slicing ) is a 2D image resizing technique to proportionally scale an image by splitting it in a grid of nine parts."
+        FirstTime:
+          Variable: false
+        Locked:
+          Variable: false
+        SubGraphUniqueID11:
+          Connection0:
+            NodeLevelID: 9
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID17:
+          Connection0:
+            NodeLevelID: 10
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID25:
+          Connection0:
+            NodeLevelID: 3
+            PortID: UVCoord
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID28:
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID35:
+          Connection0:
+            NodeLevelID: 36
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID38:
+          Connection0:
+            NodeLevelID: 13
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID7:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID82:
+          Connection0:
+            NodeLevelID: 1
+            PortID: TextureSize
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Title1:
+          String: 9-Slicing
+      PositionX: 2490
+      PositionY: -110
+      TemplateID: nodes_main_subgraph
+      Title1: 9-Slicing
+    Node8:
+      DependencyIndex: 17
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Color:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Coords:
+          ItemIndex: 2
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Texture:
+          ClassType2: TEXTURE_OBJECT_2D
+          Connection0:
+            NodeLevelID: 1
+            PortID: Texture
+        Type:
+          ItemIndex: 0
+          ItemList: "2D Map : 2D Normal Map"
+        UVCoord:
+          Connection0:
+            NodeLevelID: 5
+            PortID: SubGraphUniqueID7
+          Variable: [0.0, 0.0]
+      PositionX: 2640
+      PositionY: -270
+      TemplateID: node_function_util_sample
+      TemplateVersionMajor: 2
+      TemplateVersionMinor: 1
+      Title1: Texture 2D Sample
+    Node9:
+      DependencyIndex: 18
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: baseColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: Base Color
+      PositionX: 2647
+      PositionY: -25
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: Base Color
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

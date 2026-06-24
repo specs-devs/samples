@@ -1,0 +1,308 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: baseColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: Color
+      PositionX: 171
+      PositionY: -136
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: Color
+    Node1:
+      DependencyIndex: 1
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Index:
+          Variable: 0
+        UVCoord:
+          IOType: 1
+          Variable: [0.0, 0.0]
+      PositionX: -435
+      PositionY: -77
+      TemplateID: node_effect_global_surface_uvcoord0
+      Title1: Surface UV Coord
+    Node2:
+      DependencyIndex: 2
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Center:
+          Variable: [0.5, 0.5]
+        CoordsIn:
+          Connection0:
+            NodeLevelID: 1
+            PortID: UVCoord
+          Variable: [0.0, 0.0]
+        CoordsOut:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Dimension:
+          Variable: [1.0, 1.0]
+        MaintainAspect:
+          Variable: false
+        Rotation:
+          Variable: 0.0
+      PositionX: -141
+      PositionY: -76
+      TemplateID: nodes_functions_coords_rotate
+      Title1: Rotate Coords
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: mask_1
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: "Use white for flat filling, use black to make gradient opacity"
+        UniqueID:
+          String: "Mask? (read tultips)"
+      PositionX: -270
+      PositionY: 76
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: "Mask? (read tultips)"
+    Node4:
+      DependencyIndex: 4
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: mask2
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: "Use white for flat filling, use 25% white for mask"
+        UniqueID:
+          String: "Mask? (read tultips)"
+      PositionX: -264
+      PositionY: 168
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: "Mask? (read tultips)"
+    Node5:
+      DependencyIndex: 5
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 1
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Dynamic:
+          Variable: false
+        Gradients:
+          Variable: 6
+        Position0:
+          Variable: 0.0
+        Position1:
+          Variable: 0.10000000149011612
+        Position2:
+          Variable: 0.4000000059604645
+        Position3:
+          Variable: 0.6000000238418579
+        Position4:
+          Variable: 0.8999999761581421
+        Position5:
+          Variable: 1.0
+        Ratio:
+          Connection0:
+            NodeLevelID: 2
+            PortID: CoordsOut
+          Variable: 0.5
+        Value:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value0:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        Value1:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: [0.2500038146972656, 0.2500038146972656, 0.2500038146972656, 1.0]
+        Value2:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Value3:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Value4:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        Value5:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        WrapMode:
+          ItemIndex: 0
+          ItemList: "Clamp : Mirrored Repeat : Repeat"
+      PositionX: 90
+      PositionY: 3
+      TemplateID: node_math_gradient
+      Title1: Gradient
+    Node6:
+      DependencyIndex: 6
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Dimension1:
+          ItemIndex: 2
+          ItemList: "1 : 2 : 3"
+        Dimension2:
+          ItemIndex: 0
+          ItemList: "1 : disabled"
+        Dimension3:
+          ItemIndex: 0
+          ItemList: disabled
+        Dimension4:
+          ItemIndex: 0
+          ItemList: disabled
+        IsColor:
+          Variable: false
+        Value:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value1:
+          Connection0:
+            NodeLevelID: 0
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value2:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Value
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value3:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value4:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 390
+      PositionY: 26
+      TemplateID: node_channels_combine
+      Title1: Construct Vector
+    Node7:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 7
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 6
+            PortID: Value
+          Variable: [0.14901961386203766, 0.14901961386203766, 0.14901961386203766, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 586
+      PositionY: -101
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

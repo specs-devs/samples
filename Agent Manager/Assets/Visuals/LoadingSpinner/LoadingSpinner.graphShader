@@ -1,0 +1,437 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: baseColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: baseColor
+      PositionX: 2920
+      PositionY: -800
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: baseColor
+    Node1:
+      DependencyIndex: 1
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: opacity
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: opacity
+        Tooltip:
+          String: ""
+      PositionX: 2920
+      PositionY: -720
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: opacity
+    Node2:
+      DependencyIndex: 2
+      LevelID: 27
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        BaseColor:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Code:
+          ClassType1: TEXT
+          String: |-
+            input_vec4 BaseColor;
+            input_float Opacity;
+            output_vec4 Result;
+            
+            void main()
+            {
+            	Result = BaseColor;
+            	Result.a *= Opacity;
+            }
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 27
+        Locked:
+          Variable: false
+        Opacity:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: 0.0
+        Result:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Pixel Shader
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+      PositionX: 3160
+      PositionY: -680
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Pixel Shader
+    Node3:
+      DependencyIndex: 3
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 4
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: ringRadius
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: ringRadius
+        Tooltip:
+          String: ""
+      PositionX: 2920
+      PositionY: -640
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: ringRadius
+    Node4:
+      DependencyIndex: 4
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 4
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: ringStroke
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: ringStroke
+        Tooltip:
+          String: ""
+      PositionX: 2920
+      PositionY: -560
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: ringStroke
+    Node5:
+      DependencyIndex: 5
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 4
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: arcCenter
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: arcCenter
+        Tooltip:
+          String: ""
+      PositionX: 2920
+      PositionY: -480
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: arcCenter
+    Node6:
+      DependencyIndex: 6
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 6.283199787139893
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: arcSpread
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: arcSpread
+        Tooltip:
+          String: ""
+      PositionX: 2920
+      PositionY: -400
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: arcSpread
+    Node7:
+      DependencyIndex: 7
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        ArcCenter:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0]
+        ArcSpread:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        Code:
+          ClassType1: TEXT
+          String: |-
+            input_vec2 RingRadius;
+            input_vec2 RingStroke;
+            input_vec2 ArcCenter;
+            input_float ArcSpread;
+            output_vec3 WorldPos;
+            
+            void main()
+            {
+            	vec3 pos = system.getSurfacePositionObjectSpace(); // [-0.5, 0.5]
+            	vec2 uv0 = system.getSurfaceUVCoord0(); // (1, 0) or (0, 1)
+            	vec2 uv1 = system.getSurfaceUVCoord1(); // [-0.5, 0.5]
+            	pos.xy *= dot(uv0, RingStroke);
+            	pos.x += dot(uv0, RingRadius);
+            	float theta = dot(uv0, ArcCenter);
+            	theta += ArcSpread * uv1.x;
+            	float ct = cos(theta);
+            	float st = sin(theta);
+            	float x = dot(pos.xy, vec2(ct, -st));
+            	float y = dot(pos.xy, vec2(st, ct));
+            	pos.x = x;
+            	pos.y = y;
+            	vec4 wpos = system.getMatrixWorld() * vec4(pos, 1.0);
+            	WorldPos = wpos.xyz / wpos.w;
+            }
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        RingRadius:
+          Connection0:
+            NodeLevelID: 1
+            PortID: Output
+          Variable: [0.0, 0.0]
+        RingStroke:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Vertex Shader
+        WorldPos:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+      PositionX: 3160
+      PositionY: -560
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Vertex Shader
+    Node8:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 8
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 27
+            PortID: Result
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Connection0:
+            NodeLevelID: 0
+            PortID: WorldPos
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 3400
+      PositionY: -640
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

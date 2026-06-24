@@ -1,0 +1,1143 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: Tweak_N1
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType2: TEXTURE_OBJECT_2D
+          IOType: 1
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Refl Map 1
+        Tooltip:
+          String: ""
+      PositionX: -462
+      PositionY: -178
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: Refl Map 1
+    Node1:
+      DependencyIndex: 1
+      LevelID: 11
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Coords:
+          ItemIndex: 0
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        Depth:
+          IOType: 1
+          Variable: 0.0
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: Tweak_N11
+        SortIndex:
+          Variable: 0
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Normal Map
+        Tooltip:
+          String: ""
+        Type:
+          ItemIndex: 1
+          ItemList: "2D Map : Normal Map : View Space Depth Map"
+        UVCoord:
+          Variable: [0.0, 0.0]
+      PositionX: -712
+      PositionY: -48
+      TemplateID: nodes_inputs_parameters_image
+      Title1: Texture 2D Parameter
+      Title2: Normal Map
+    Node10:
+      DependencyIndex: 26
+      LevelID: 12
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 26
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Input1:
+          Connection0:
+            NodeLevelID: 10
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Input2:
+          Connection0:
+            NodeLevelID: 13
+            PortID: Output
+          Variable: [0.5, 0.5, 0.5, 0.5]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type2:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 439
+      PositionY: 69
+      TemplateID: nodes_math_mix
+      Title1: Mix
+    Node11:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 27
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 12
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 736
+      PositionY: 17
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node2:
+      ChildNodes:
+        Node0:
+          DependencyIndex: 2
+          LevelID: 2
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.800000011920929, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Intensity
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 910
+          PositionY: -70
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Intensity
+        Node1:
+          DependencyIndex: 3
+          LevelID: 3
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Group:
+              String: ""
+            Import:
+              ClassType2: TEXTURE_OBJECT_2D
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Matcap Reflection Texture
+            Tooltip:
+              String: ""
+            Value:
+              ClassType2: TEXTURE_OBJECT_2D
+              IOType: 1
+          PositionX: 420
+          PositionY: -60
+          TemplateID: nodes_import_texture_object
+          Title1: Texture Object 2D Import
+          Title2: Matcap Reflection Texture
+        Node2:
+          DependencyIndex: 4
+          LevelID: 5
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            DefaultItem:
+              Variable: 1
+            Group:
+              String: ""
+            ItemCount:
+              Variable: 2
+            ItemName0:
+              String: World
+            ItemName1:
+              String: Tangent (Normal Map)
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Normal Space
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: 0.0
+          PositionX: -90
+          PositionY: 40
+          TemplateID: nodes_import_droplist
+          Title1: Droplist Import
+          Title2: Normal Space
+        Node3:
+          DependencyIndex: 5
+          LevelID: 6
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 4
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 1.0, 1.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 3
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Normal
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -80
+          PositionY: 140
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Normal
+        Node4:
+          DependencyIndex: 6
+          LevelID: 7
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Code:
+              ClassType1: TEXT
+              String: |-
+                input_int NormalSpace;
+                input_vec3 Normal;
+                output_vec2 ReflectionUV;
+                
+                void main()
+                {
+                	// get normal in World Space
+                	vec3 normal = Normal;
+                
+                	if(NormalSpace == 1)
+                	{	// tangent to world
+                		mat3 tangentToWorld = mat3(
+                			system.getSurfaceTangent(),
+                			system.getSurfaceBitangent(),
+                			system.getSurfaceNormal()
+                		);
+                		normal = normalize(tangentToWorld * normal);
+                	}
+                
+                	// Construct a rotation matrix using view direction and camera up,
+                	// then use it to rotate the world normal. This prevents puffing
+                	// and warping effects when the object is close to the edge of 
+                	// the viewing area.
+                	vec3 forward = normalize(-system.getViewVector());
+                	vec3 right = normalize(cross(forward, system.getCameraUp()));
+                	vec3 up = cross(right, forward);
+                	mat3 rotationMat = mat3(
+                		right.x,	 up.x, forward.x,
+                		right.y,	 up.y, forward.y,
+                		right.z,	 up.z, forward.z
+                	);
+                	normal = rotationMat * normal;
+                
+                	// convert to UVs
+                	ReflectionUV = normal.xy * 0.5 + 0.5;
+                }
+            Description:
+              ClassType1: TEXT
+              String: ""
+            Examples:
+              ItemIndex: 0
+              ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+            ID:
+              Variable: 7
+            Locked:
+              Variable: false
+            Normal:
+              Connection0:
+                NodeLevelID: 6
+                PortID: Value
+              Variable: [0.0, 0.0, 0.0]
+            NormalSpace:
+              Connection0:
+                NodeLevelID: 5
+                PortID: Value
+              Variable: 0.0
+            ReflectionUV:
+              IOType: 1
+              Variable: [0.0, 0.0]
+            Stage:
+              ItemIndex: 1
+              ItemList: "Vertex : Pixel"
+            Title:
+              String: Matcap Reflection
+            ngs_Height:
+              Variable: 400
+            ngs_Version:
+              String: 0.1.0
+          PositionX: 210
+          PositionY: 70
+          TemplateID: node_util_custom
+          TemplateVersionMinor: 1
+          Title1: Matcap Reflection
+        Node5:
+          DependencyIndex: 7
+          LevelID: 8
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Color:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Coords:
+              ItemIndex: 2
+              ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+            LODMode:
+              ItemIndex: 0
+              ItemList: "Auto : Custom"
+            LODValue:
+              Variable: 0.0
+            Texture:
+              ClassType2: TEXTURE_OBJECT_2D
+              Connection0:
+                NodeLevelID: 3
+                PortID: Value
+            Type:
+              ItemIndex: 0
+              ItemList: "2D Map : 2D Normal Map"
+            UVCoord:
+              Connection0:
+                NodeLevelID: 7
+                PortID: ReflectionUV
+              Variable: [0.0, 0.0]
+          PositionX: 680
+          PositionY: 30
+          TemplateID: node_function_util_sample
+          TemplateVersionMajor: 2
+          TemplateVersionMinor: 1
+          Title1: Texture 2D Sample
+        Node6:
+          DependencyIndex: 8
+          LevelID: 39
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Input0:
+              Connection0:
+                NodeLevelID: 2
+                PortID: Value
+              Variable: [1.0, 1.0, 1.0, 1.0]
+            Input1:
+              Connection0:
+                NodeLevelID: 8
+                PortID: Color
+              Variable: [1.0, 1.0, 1.0, 1.0]
+            Inputs:
+              ItemIndex: 0
+              ItemList: "2 : 3 : 4 : 5 : 6"
+            Output:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Type0:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Type1:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+          PositionX: 1100
+          PositionY: -10
+          TemplateID: nodes_math_multiply
+          Title1: Multiply
+        Node7:
+          DependencyIndex: 9
+          LevelID: 40
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Export:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Reflection Color
+            Tooltip:
+              String: ""
+            Value:
+              Connection0:
+                NodeLevelID: 39
+                PortID: Output
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 1250
+          PositionY: -10
+          TemplateID: nodes_export_float
+          Title1: Float Export
+          Title2: Reflection Color
+      DependencyIndex: 10
+      LevelID: 0
+      NodeType: 3
+      Ports:
+        Description:
+          String: ""
+        DescriptionText:
+          ClassType1: TEXT
+          String: |-
+            Matcap reflections are a cheap way of doing reflection. The reflection is created by sampling from a spherical texture instead of actual scene data. This technique is also sometimes referred to as material capture ("MatCap") reflection. The reference texture only stores one side of a sphere.
+            
+            Inputs:
+            Matcap Reflection Texture - The sphereical reflection map used to sample lighting.
+            Intensity - The strength of the reflection effect.
+            Normal Space: The space that the normal input is provided in. You can use World Space or Tangent Space (Normal Map) normals as input.
+            Normal: The surface normal.
+        FirstTime:
+          Variable: false
+        Locked:
+          Variable: false
+        SubGraphUniqueID2:
+          Variable: [0.800000011920929, 0.0, 0.0, 0.0]
+        SubGraphUniqueID3:
+          ClassType2: TEXTURE_OBJECT_2D
+          Connection0:
+            NodeLevelID: 1
+            PortID: Texture
+        SubGraphUniqueID40:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID5:
+          ItemIndex: 1
+          ItemList: "World : Tangent (Normal Map)"
+        SubGraphUniqueID6:
+          Connection0:
+            NodeLevelID: 11
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Title1:
+          String: Matcap Reflection
+      PositionX: -124
+      PositionY: -106
+      TemplateID: nodes_main_subgraph
+      Title1: Matcap Reflection
+    Node3:
+      DependencyIndex: 11
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Coords:
+          ItemIndex: 0
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        Depth:
+          IOType: 1
+          Variable: 0.0
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: Tweak_N9
+        SortIndex:
+          Variable: 0
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Base Map
+        Tooltip:
+          String: ""
+        Type:
+          ItemIndex: 0
+          ItemList: "2D Map : Normal Map : View Space Depth Map"
+        UVCoord:
+          Variable: [0.0, 0.0]
+      PositionX: -166
+      PositionY: 65
+      TemplateID: nodes_inputs_parameters_image
+      Title1: Texture 2D Parameter
+      Title2: Base Map
+    Node4:
+      DependencyIndex: 12
+      LevelID: 26
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Base:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 9
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Blend:
+          ItemIndex: 13
+          ItemList: |2-
+            			Normal :			Lighten :			Darken :			Multiply :			Divide :			Average :			Add :			Subtract :			Difference :			Negation :			Exclusion :			Screen :			Overlay :			SoftLight :			HardLight :			ColorDodge :			ColorBurn :			LinearLight :			VividLight :			PinLight :			HardMix :			Reflect :			Glow :			Phoenix :			Hue :			Saturation :			Color :			Luminosity		
+        Color:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: SubGraphUniqueID40
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Formula:
+          String: "If A < B, 2*B*A+B*B*(1-2*A), else sqrt(B)*(2*A-1)+2*B*(1-A))"
+        Mask:
+          Variable: 1.0
+        Mask Source:
+          ItemIndex: 0
+          ItemList: "None : Active.Red : Active.Green : Active.Blue : Active.Alpha : Background.Red : Background.Green : Background.Blue : Background.Alpha : Custom"
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Premultiply A:
+          Variable: true
+        Premultiply B:
+          Variable: false
+      PositionX: 123
+      PositionY: -107
+      TemplateID: node_math_blend
+      TemplateVersionMajor: 2
+      Title1: Blend
+      Title2: "Type: SoftLight"
+    Node5:
+      DependencyIndex: 13
+      LevelID: 23
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: Tweak_N23
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType2: TEXTURE_OBJECT_2D
+          IOType: 1
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Refl Map 2
+        Tooltip:
+          String: ""
+      PositionX: -567
+      PositionY: 260
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: Refl Map 2
+    Node6:
+      ChildNodes:
+        Node0:
+          DependencyIndex: 14
+          LevelID: 15
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 6
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.8999999761581421, 0.0, 0.0, 0.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 2
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Intensity
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 910
+          PositionY: -70
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Intensity
+        Node1:
+          DependencyIndex: 15
+          LevelID: 16
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Group:
+              String: ""
+            Import:
+              ClassType2: TEXTURE_OBJECT_2D
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Matcap Reflection Texture
+            Tooltip:
+              String: ""
+            Value:
+              ClassType2: TEXTURE_OBJECT_2D
+              IOType: 1
+          PositionX: 420
+          PositionY: -60
+          TemplateID: nodes_import_texture_object
+          Title1: Texture Object 2D Import
+          Title2: Matcap Reflection Texture
+        Node2:
+          DependencyIndex: 16
+          LevelID: 17
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            DefaultItem:
+              Variable: 1
+            Group:
+              String: ""
+            ItemCount:
+              Variable: 2
+            ItemName0:
+              String: World
+            ItemName1:
+              String: Tangent (Normal Map)
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Normal Space
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: 0.0
+          PositionX: -90
+          PositionY: 40
+          TemplateID: nodes_import_droplist
+          Title1: Droplist Import
+          Title2: Normal Space
+        Node3:
+          DependencyIndex: 17
+          LevelID: 18
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 4
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            EnableMax:
+              Variable: false
+            EnableMin:
+              Variable: false
+            Group:
+              String: ""
+            Import:
+              Variable: [0.0, 0.0, 1.0, 1.0]
+            Max:
+              Variable: 1.0
+            Min:
+              Variable: 0.0
+            SortIndex:
+              Variable: 3
+            Step:
+              Variable: 0.009999999776482582
+            Title:
+              String: Normal
+            Tooltip:
+              String: ""
+            Value:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: -80
+          PositionY: 140
+          TemplateID: nodes_import_float
+          Title1: Float Import
+          Title2: Normal
+        Node4:
+          DependencyIndex: 18
+          LevelID: 19
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Code:
+              ClassType1: TEXT
+              String: |-
+                input_int NormalSpace;
+                input_vec3 Normal;
+                output_vec2 ReflectionUV;
+                
+                void main()
+                {
+                	// get normal in World Space
+                	vec3 normal = Normal;
+                
+                	if(NormalSpace == 1)
+                	{	// tangent to world
+                		mat3 tangentToWorld = mat3(
+                			system.getSurfaceTangent(),
+                			system.getSurfaceBitangent(),
+                			system.getSurfaceNormal()
+                		);
+                		normal = normalize(tangentToWorld * normal);
+                	}
+                
+                	// Construct a rotation matrix using view direction and camera up,
+                	// then use it to rotate the world normal. This prevents puffing
+                	// and warping effects when the object is close to the edge of 
+                	// the viewing area.
+                	vec3 forward = normalize(-system.getViewVector());
+                	vec3 right = normalize(cross(forward, system.getCameraUp()));
+                	vec3 up = cross(right, forward);
+                	mat3 rotationMat = mat3(
+                		right.x,	 up.x, forward.x,
+                		right.y,	 up.y, forward.y,
+                		right.z,	 up.z, forward.z
+                	);
+                	normal = rotationMat * normal;
+                
+                	// convert to UVs
+                	ReflectionUV = normal.xy * 0.5 + 0.5;
+                }
+            Description:
+              ClassType1: TEXT
+              String: ""
+            Examples:
+              ItemIndex: 0
+              ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+            ID:
+              Variable: 19
+            Locked:
+              Variable: false
+            Normal:
+              Connection0:
+                NodeLevelID: 18
+                PortID: Value
+              Variable: [0.0, 0.0, 0.0]
+            NormalSpace:
+              Connection0:
+                NodeLevelID: 17
+                PortID: Value
+              Variable: 0.0
+            ReflectionUV:
+              IOType: 1
+              Variable: [0.0, 0.0]
+            Stage:
+              ItemIndex: 1
+              ItemList: "Vertex : Pixel"
+            Title:
+              String: Matcap Reflection
+            ngs_Height:
+              Variable: 400
+            ngs_Version:
+              String: 0.1.0
+          PositionX: 210
+          PositionY: 70
+          TemplateID: node_util_custom
+          TemplateVersionMinor: 1
+          Title1: Matcap Reflection
+        Node5:
+          DependencyIndex: 19
+          LevelID: 20
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Color:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Coords:
+              ItemIndex: 2
+              ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+            LODMode:
+              ItemIndex: 0
+              ItemList: "Auto : Custom"
+            LODValue:
+              Variable: 0.0
+            Texture:
+              ClassType2: TEXTURE_OBJECT_2D
+              Connection0:
+                NodeLevelID: 16
+                PortID: Value
+            Type:
+              ItemIndex: 0
+              ItemList: "2D Map : 2D Normal Map"
+            UVCoord:
+              Connection0:
+                NodeLevelID: 19
+                PortID: ReflectionUV
+              Variable: [0.0, 0.0]
+          PositionX: 680
+          PositionY: 30
+          TemplateID: node_function_util_sample
+          TemplateVersionMajor: 2
+          TemplateVersionMinor: 1
+          Title1: Texture 2D Sample
+        Node6:
+          DependencyIndex: 20
+          LevelID: 21
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Input0:
+              Connection0:
+                NodeLevelID: 15
+                PortID: Value
+              Variable: [1.0, 1.0, 1.0, 1.0]
+            Input1:
+              Connection0:
+                NodeLevelID: 20
+                PortID: Color
+              Variable: [1.0, 1.0, 1.0, 1.0]
+            Inputs:
+              ItemIndex: 0
+              ItemList: "2 : 3 : 4 : 5 : 6"
+            Output:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            Type0:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Type1:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+          PositionX: 1100
+          PositionY: -10
+          TemplateID: nodes_math_multiply
+          Title1: Multiply
+        Node7:
+          DependencyIndex: 21
+          LevelID: 22
+          NodeCount: 0
+          NodeType: 1
+          Ports:
+            Channels:
+              ItemIndex: 0
+              ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+            Export:
+              IOType: 1
+              Variable: [0.0, 0.0, 0.0, 0.0]
+            SortIndex:
+              Variable: 0
+            Title:
+              String: Reflection Color
+            Tooltip:
+              String: ""
+            Value:
+              Connection0:
+                NodeLevelID: 21
+                PortID: Output
+              Variable: [0.0, 0.0, 0.0, 0.0]
+          PositionX: 1250
+          PositionY: -10
+          TemplateID: nodes_export_float
+          Title1: Float Export
+          Title2: Reflection Color
+      DependencyIndex: 22
+      LevelID: 14
+      NodeType: 3
+      Ports:
+        Description:
+          String: ""
+        DescriptionText:
+          ClassType1: TEXT
+          String: |-
+            Matcap reflections are a cheap way of doing reflection. The reflection is created by sampling from a spherical texture instead of actual scene data. This technique is also sometimes referred to as material capture ("MatCap") reflection. The reference texture only stores one side of a sphere.
+            
+            Inputs:
+            Matcap Reflection Texture - The sphereical reflection map used to sample lighting.
+            Intensity - The strength of the reflection effect.
+            Normal Space: The space that the normal input is provided in. You can use World Space or Tangent Space (Normal Map) normals as input.
+            Normal: The surface normal.
+        FirstTime:
+          Variable: false
+        Locked:
+          Variable: false
+        SubGraphUniqueID15:
+          Variable: [0.8999999761581421, 0.0, 0.0, 0.0]
+        SubGraphUniqueID16:
+          ClassType2: TEXTURE_OBJECT_2D
+          Connection0:
+            NodeLevelID: 23
+            PortID: Texture
+        SubGraphUniqueID17:
+          ItemIndex: 1
+          ItemList: "World : Tangent (Normal Map)"
+        SubGraphUniqueID18:
+          Connection0:
+            NodeLevelID: 11
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        SubGraphUniqueID22:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Title1:
+          String: Matcap Reflection
+      PositionX: -181
+      PositionY: 238
+      TemplateID: nodes_main_subgraph
+      Title1: Matcap Reflection
+    Node7:
+      DependencyIndex: 23
+      LevelID: 25
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: Tweak_N25
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: Metall Color
+      PositionX: -182
+      PositionY: 402
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: Metall Color
+    Node8:
+      DependencyIndex: 24
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Base:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 25
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Blend:
+          ItemIndex: 17
+          ItemList: |2-
+            			Normal :			Lighten :			Darken :			Multiply :			Divide :			Average :			Add :			Subtract :			Difference :			Negation :			Exclusion :			Screen :			Overlay :			SoftLight :			HardLight :			ColorDodge :			ColorBurn :			LinearLight :			VividLight :			PinLight :			HardMix :			Reflect :			Glow :			Phoenix :			Hue :			Saturation :			Color :			Luminosity		
+        Color:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 14
+            PortID: SubGraphUniqueID22
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Formula:
+          String: "If A < 0.5, B+2*A-1, else, B+2*(A-0.5)"
+        Mask:
+          Variable: 1.0
+        Mask Source:
+          ItemIndex: 0
+          ItemList: "None : Active.Red : Active.Green : Active.Blue : Active.Alpha : Background.Red : Background.Green : Background.Blue : Background.Alpha : Custom"
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Premultiply A:
+          Variable: true
+        Premultiply B:
+          Variable: true
+      PositionX: 91
+      PositionY: 183
+      TemplateID: node_math_blend
+      TemplateVersionMajor: 2
+      Title1: Blend
+      Title2: "Type: LinearLight"
+    Node9:
+      DependencyIndex: 25
+      LevelID: 13
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Coords:
+          ItemIndex: 0
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        Depth:
+          IOType: 1
+          Variable: 0.0
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: Tweak_N13
+        SortIndex:
+          Variable: 0
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: Mask Map
+        Tooltip:
+          String: ""
+        Type:
+          ItemIndex: 0
+          ItemList: "2D Map : Normal Map : View Space Depth Map"
+        UVCoord:
+          Variable: [0.0, 0.0]
+      PositionX: 144
+      PositionY: 364
+      TemplateID: nodes_inputs_parameters_image
+      Title1: Texture 2D Parameter
+      Title2: Mask Map
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

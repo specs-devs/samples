@@ -1,0 +1,992 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 1
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: LineColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: LineColor
+      PositionX: 2913
+      PositionY: -610
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: LineColor
+    Node1:
+      DependencyIndex: 1
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 4
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 2.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: planeScale
+        SortIndex:
+          Variable: 1
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: planeScale
+        Tooltip:
+          String: ""
+      PositionX: 2883
+      PositionY: -167
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: planeScale
+    Node10:
+      DependencyIndex: 10
+      LevelID: 15
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        CreateGroup:
+          Variable: false
+        Group:
+          String: ""
+        OptimizeOnExport:
+          Variable: true
+        Output:
+          IOType: 1
+          Variable: 0.0
+        ScriptName:
+          String: ShowImage
+        SortIndex:
+          Variable: 0
+        SpecifySpecConst:
+          Variable: false
+        Static:
+          Variable: false
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: ShowImage
+      PositionX: 3061
+      PositionY: -1032
+      TemplateID: nodes_inputs_parameters_bool
+      Title1: Bool Parameter
+      Title2: ShowImage
+    Node11:
+      DependencyIndex: 11
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Coords:
+          ItemIndex: 0
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        Depth:
+          IOType: 1
+          Variable: 0.0
+        DepthDescription:
+          String: Normalized Non-linear Depth
+        DepthSpace:
+          ItemIndex: 0
+          ItemList: "Screen [0, 1] : NDC [-1, 1] : View [0, inf) : View [0, -inf) : View [0, 1]"
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: cropImageTex
+        SortIndex:
+          Variable: 0
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: cropImageTex
+        Tooltip:
+          String: ""
+        Type:
+          ItemIndex: 0
+          ItemList: "Default : Normal Map : Depth Map"
+        UVCoord:
+          Variable: [0.0, 0.0]
+      PositionX: 2919
+      PositionY: -724
+      TemplateID: nodes_inputs_parameters_image
+      TemplateVersionMinor: 1
+      Title1: Texture 2D Parameter
+      Title2: cropImageTex
+    Node12:
+      DependencyIndex: 12
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Dimension1:
+          ItemIndex: 2
+          ItemList: "1 : 2 : 3"
+        Dimension2:
+          ItemIndex: 0
+          ItemList: "1 : disabled"
+        Dimension3:
+          ItemIndex: 0
+          ItemList: disabled
+        Dimension4:
+          ItemIndex: 0
+          ItemList: disabled
+        IsColor:
+          Variable: false
+        Value:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value1:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value2:
+          Connection0:
+            NodeLevelID: 0
+            PortID: Mask
+          Variable: [1.0, 0.0, 0.0, 0.0]
+        Value3:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value4:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 3290
+      PositionY: -684
+      TemplateID: node_channels_combine
+      Title1: Construct Vector
+    Node13:
+      DependencyIndex: 13
+      LevelID: 19
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Index:
+          Variable: 0
+        UVCoord:
+          IOType: 1
+          Variable: [0.0, 0.0]
+      PositionX: 2635
+      PositionY: -968
+      TemplateID: node_effect_global_surface_uvcoord0
+      Title1: Surface UV Coord
+    Node14:
+      DependencyIndex: 14
+      LevelID: 21
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [8.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 20.0
+        Min:
+          Variable: 1.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: IconScale
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: IconScale
+        Tooltip:
+          String: ""
+      PositionX: 2470
+      PositionY: -796
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: IconScale
+    Node15:
+      DependencyIndex: 15
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |-
+            input_float planeAspect;
+            input_float iconScale;
+            output_vec2 Result; 
+            
+            void main()
+            {
+            	if (planeAspect > 1.0){
+            		Result = vec2(iconScale, iconScale / planeAspect);
+            	} else {
+            		Result = vec2(iconScale * planeAspect,iconScale);
+            	}
+            }
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: ""
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 6
+        Locked:
+          Variable: false
+        Result:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        UseExternalFile:
+          Variable: false
+        iconScale:
+          Connection0:
+            NodeLevelID: 21
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        planeAspect:
+          Connection0:
+            NodeLevelID: 14
+            PortID: Output
+          Variable: 0.0
+      PositionX: 2687
+      PositionY: -856
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node16:
+      DependencyIndex: 16
+      LevelID: 18
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Center:
+          Variable: [0.5, 0.5]
+        CoordsIn:
+          Connection0:
+            NodeLevelID: 19
+            PortID: UVCoord
+          Variable: [0.0, 0.0]
+        CoordsOut:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Scale:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Result
+          Variable: [1.0, 1.0]
+      PositionX: 2853
+      PositionY: -984
+      TemplateID: nodes_functions_coords_scale
+      Title1: Scale Coords
+    Node17:
+      DependencyIndex: 17
+      LevelID: 17
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Coords:
+          ItemIndex: 2
+          ItemList: "UV Coord 0 : UV Coord 1 : Custom"
+        Depth:
+          IOType: 1
+          Variable: 0.0
+        DepthDescription:
+          String: Normalized Non-linear Depth
+        DepthSpace:
+          ItemIndex: 0
+          ItemList: "Screen [0, 1] : NDC [-1, 1] : View [0, inf) : View [0, -inf) : View [0, 1]"
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        LODMode:
+          ItemIndex: 0
+          ItemList: "Auto : Custom"
+        LODValue:
+          Variable: 0.0
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: cameraIcon
+        SortIndex:
+          Variable: 0
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: cameraIcon
+        Tooltip:
+          String: ""
+        Type:
+          ItemIndex: 0
+          ItemList: "Default : Normal Map : Depth Map"
+        UVCoord:
+          Connection0:
+            NodeLevelID: 18
+            PortID: CoordsOut
+          Variable: [0.0, 0.0]
+      PositionX: 3191
+      PositionY: -911
+      TemplateID: nodes_inputs_parameters_image
+      TemplateVersionMinor: 1
+      Title1: Texture 2D Parameter
+      Title2: cameraIcon
+    Node18:
+      DependencyIndex: 18
+      LevelID: 16
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 15
+            PortID: Output
+          Variable: 1.0
+        Input1:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Value
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Input2:
+          Connection0:
+            NodeLevelID: 17
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type2:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 3426
+      PositionY: -894
+      TemplateID: nodes_math_conditional
+      Title1: Conditional
+    Node19:
+      DependencyIndex: 19
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Base:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 16
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Blend:
+          ItemIndex: 0
+          ItemList: |2-
+            			Normal :			Lighten :			Darken :			Multiply :			Divide :			Average :			Add :			Subtract :			Difference :			Negation :			Exclusion :			Screen :			Overlay :			SoftLight :			HardLight :			ColorDodge :			ColorBurn :			LinearLight :			VividLight :			PinLight :			HardMix :			Reflect :			Glow :			Phoenix :			Hue :			Saturation :			Color :			Luminosity		
+        Color:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 9
+            PortID: Value
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Formula:
+          String: A + B * (1.0 - A.a)
+        Mask:
+          Variable: 1.0
+        Mask Source:
+          ItemIndex: 0
+          ItemList: "None : Active.Red : Active.Green : Active.Blue : Active.Alpha : Background.Red : Background.Green : Background.Blue : Background.Alpha : Custom"
+        Output:
+          ClassType1: COLOR
+          IOType: 1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Premultiply A:
+          Variable: true
+        Premultiply B:
+          Variable: false
+      PositionX: 3619
+      PositionY: -709
+      TemplateID: node_math_blend
+      TemplateVersionMajor: 2
+      Title1: Blend
+      Title2: "Type: Normal"
+    Node2:
+      DependencyIndex: 2
+      LevelID: 13
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Dimension1:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3"
+        Dimension2:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : disabled"
+        Dimension3:
+          ItemIndex: 2
+          ItemList: "1 : 2 : disabled"
+        Dimension4:
+          ItemIndex: 2
+          ItemList: "1 : 2 : disabled"
+        Value:
+          Connection0:
+            NodeLevelID: 10
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value1:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value2:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value3:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value4:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 3088
+      PositionY: -143
+      TemplateID: node_channels_split
+      Title1: Split Vector
+    Node20:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 20
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        EnableHighPrecisionSampling:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 3914
+      PositionY: -732
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node3:
+      DependencyIndex: 3
+      LevelID: 14
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Input0:
+          Connection0:
+            NodeLevelID: 13
+            PortID: Value1
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Input1:
+          Connection0:
+            NodeLevelID: 13
+            PortID: Value2
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Type0:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+        Type1:
+          ItemIndex: 0
+          ItemList: "auto : xyzw : rgba : xyz : rgb : xy : x"
+      PositionX: 3276
+      PositionY: -150
+      TemplateID: nodes_math_common_divide
+      TemplateVersionMinor: 1
+      Title1: Divide
+    Node4:
+      DependencyIndex: 4
+      LevelID: 12
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.25, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 0.4000000059604645
+        Min:
+          Variable: 0.05000000074505806
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: CornerSize
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: CornerSize
+        Tooltip:
+          String: ""
+      PositionX: 3094
+      PositionY: -281
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: CornerSize
+    Node5:
+      DependencyIndex: 5
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 0.30000001192092896
+        Min:
+          Variable: 0.05000000074505806
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: CornerRadius
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: CornerRadius
+        Tooltip:
+          String: ""
+      PositionX: 2896
+      PositionY: -515
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: CornerRadius
+    Node6:
+      DependencyIndex: 6
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.019999999552965164, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 0.05000000074505806
+        Min:
+          Variable: 0.0010000000474974513
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: BorderWidth
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 9.999999747378752e-05
+        Title:
+          String: BorderWidth
+        Tooltip:
+          String: ""
+      PositionX: 2870
+      PositionY: -308
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: BorderWidth
+    Node7:
+      DependencyIndex: 7
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // Appearance
+            input_float cornerRadius;
+            input_float planeAspect;
+            input_float borderWidth;
+            
+            output_float Mask;
+            output_float Outline;
+            
+            float roundedBoxSDF(vec2 p, vec2 b, float r)
+            {
+                // Signed distance to a rounded box centered at origin
+                vec2 d = abs(p) - b + vec2(r);
+                return length(max(d, 0.0)) - r;
+            }
+            
+            void main()
+            {
+                vec2 uv = system.getSurfaceUVCoord0();
+            
+                // Centered UV
+                vec2 p = uv - vec2(0.5, 0.5);
+            
+                float aspect = planeAspect;
+                vec2 halfSize;
+            
+                // Put p into a space where units are "uniform" like you did before:
+                if (aspect < 1.0) {
+                    // Taller than wide: shrink X
+                    p.x *= aspect;
+                    halfSize = vec2(0.5 * aspect, 0.5);
+                } else {
+                    // Wider than tall: shrink Y
+                    float invAspect = 1.0 / aspect;
+                    p.y *= invAspect;
+                    halfSize = vec2(0.5, 0.5 * invAspect);
+                }
+            
+                // Signed distance to rounded rectangle in this uniform space
+                float dist = roundedBoxSDF(p, halfSize, cornerRadius);
+            
+                // Filled mask
+                Mask = 1.0 - smoothstep(0.0, 0.01, dist); 
+            
+                // Outline thickness in the SAME distance space
+                float outlineThickness = borderWidth;
+            
+                float innerEdge  = smoothstep(0.0,              0.01,              dist);
+                float innerLimit = smoothstep(-outlineThickness,
+                                              -outlineThickness + 0.01,            dist);
+            
+                Outline = innerLimit - innerEdge;
+            }
+
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: ""
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Mask:
+          IOType: 1
+          Variable: 0.0
+        Outline:
+          IOType: 1
+          Variable: 0.0
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: RoundedRect
+        UseExternalFile:
+          Variable: false
+        borderWidth:
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: 0.0
+        cornerRadius:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        planeAspect:
+          Connection0:
+            NodeLevelID: 14
+            PortID: Output
+          Variable: 0.0
+      PositionX: 3100
+      PositionY: -534
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: RoundedRect
+    Node8:
+      DependencyIndex: 8
+      LevelID: 11
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |-
+            // Inputs
+            input_float planeAspect;
+            input_float cornerSize;
+            input_float currOutline;
+            
+            output_float Outline;
+            
+            void main()
+            {
+                vec2 uv = system.getSurfaceUVCoord0();
+            
+                // Corner thickness in UV space
+                float cornerY = cornerSize;
+                float cornerX = cornerSize;
+            
+            	if (planeAspect > 1.0){
+            		cornerY *= planeAspect;
+            	} else {
+            		cornerX /= planeAspect;
+            	}
+            
+                // Are we near the left/right edges?
+                bool outsideX = (uv.x < cornerX) || (uv.x > 1.0 - cornerX);
+                // Are we near the top/bottom edges?
+                bool outsideY = (uv.y < cornerY) || (uv.y > 1.0 - cornerY);
+            
+                // Only draw corners, not edges
+                if (outsideX && outsideY) {
+                    Outline = currOutline;
+                } else {
+                    Outline = 0.0;
+                }
+            }
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: ""
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 11
+        Locked:
+          Variable: false
+        Outline:
+          IOType: 1
+          Variable: 0.0
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: RectCorners
+        UseExternalFile:
+          Variable: false
+        cornerSize:
+          Connection0:
+            NodeLevelID: 12
+            PortID: Output
+          Variable: 0.0
+        currOutline:
+          Connection0:
+            NodeLevelID: 0
+            PortID: Outline
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        planeAspect:
+          Connection0:
+            NodeLevelID: 14
+            PortID: Output
+          Variable: 0.0
+      PositionX: 3308
+      PositionY: -348
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: RectCorners
+    Node9:
+      DependencyIndex: 9
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Dimension1:
+          ItemIndex: 2
+          ItemList: "1 : 2 : 3"
+        Dimension2:
+          ItemIndex: 0
+          ItemList: "1 : disabled"
+        Dimension3:
+          ItemIndex: 0
+          ItemList: disabled
+        Dimension4:
+          ItemIndex: 0
+          ItemList: disabled
+        IsColor:
+          Variable: false
+        Value:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value1:
+          Connection0:
+            NodeLevelID: 1
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value2:
+          Connection0:
+            NodeLevelID: 11
+            PortID: Outline
+          Variable: [1.0, 0.0, 0.0, 0.0]
+        Value3:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Value4:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 3294
+      PositionY: -524
+      TemplateID: node_channels_combine
+      Title1: Construct Vector
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders
