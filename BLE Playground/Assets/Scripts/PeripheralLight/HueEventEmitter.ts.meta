@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/bbb57b04-2343-405f-b51d-6d4f24556b51>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f8d3caa4-06df-4306-be05-09486e48be72
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f8d3caa4-06df-4306-be05-09486e48be72
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 753281cc-5822-4983-ac54-014ff3be3e19
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/753281cc-5822-4983-ac54-014ff3be3e19>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 35095c51-3f4b-4fa2-ab51-6c40171d8ecb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    lightStatusVisual: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - lightStatusVisual: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HueEventEmitter – Hue BLE light writer</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Writes power, brightness and color to a connected Hue BLE device via GATT characteristics.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType lightStatusVisual {"hint":"Status visual component that mirrors the light state in the UI sphere and slider"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/8f41e8d7-8469-6704-f8ea-1bfde7cac51b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1f9f6217-bd69-4697-9ad4-670903b7c3a9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1f9f6217-bd69-4697-9ad4-670903b7c3a9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a53727db-036e-4b11-916b-de0aef4b6154
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a53727db-036e-4b11-916b-de0aef4b6154>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 80b84d91-4b92-439c-986f-7a1f29d4ed81
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    prompt: false
+    refineMesh: false
+    runOnTap: false
+    snap3DInteractablePrefab: false
+    useVertexColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prompt: A cute dog wearing a hat
+      refineMesh: true
+      useVertexColor: false
+      runOnTap: false
+      snap3DInteractablePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap3DInteractableFactory – Snap3D generation factory</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Submits a Snap3D generation job and instantiates a Snap3DInteractable to show progress and the final mesh.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Generation Settings</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Submit and Get Status Example"}'
+    - '// @input string prompt = "A cute dog wearing a hat" {"hint":"Default prompt used when runOnTap is enabled for editor testing", "widget":"text_area"}'
+    - '// @input bool refineMesh = true {"hint":"Enable mesh refinement pass for higher quality output"}'
+    - '// @input bool useVertexColor {"hint":"Use vertex color instead of texture for the generated mesh"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @input bool runOnTap {"hint":"Enable tap-to-generate for quick editor testing without voice input"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Asset.ObjectPrefab snap3DInteractablePrefab {"hint":"Prefab instantiated to display generation progress and the final 3D object"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

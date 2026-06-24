@@ -1,0 +1,81 @@
+- !<AssetImportMetadata/44ba88b3-6800-4944-b3f3-faedc2acf91b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6c4f6fe4-dcc3-4562-96eb-b2c45a16aca5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6c4f6fe4-dcc3-4562-96eb-b2c45a16aca5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 98771dc7-3322-4522-941e-2a30045f1d30
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/98771dc7-3322-4522-941e-2a30045f1d30>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b18688f7-ac8c-4780-b5f7-8ab3da84e81f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraService: false
+    cornerLeftMarker: false
+    cornerRightMarker: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    hintText: false
+    marker: false
+    markerLeft: false
+    markerRight: false
+    positionPlane: false
+    resetButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      marker: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      positionPlane: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      markerLeft: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      markerRight: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cornerLeftMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cornerRightMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hintText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      resetButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PoolTablePredictor – table alignment and ball tracking</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Guides the user to align calibration pins and projects ML detections to 3D world positions.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Core References</span>"}'
+    - '// @input AssignableType cameraService {"hint":"Camera service providing device camera data and world-space transforms"}'
+    - '// @input Asset.ObjectPrefab marker {"hint":"Prefab instantiated for each tracked pool ball marker"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene Objects</span>"}'
+    - '// @input SceneObject positionPlane {"hint":"Plane used to define the pool table surface for 3D unprojection"}'
+    - '// @input SceneObject markerLeft {"hint":"Left reference marker (editor only) for initial table alignment"}'
+    - '// @input SceneObject markerRight {"hint":"Right reference marker (editor only) for initial table alignment"}'
+    - '// @input SceneObject cornerLeftMarker {"hint":"Interactable corner marker for the left pocket calibration pin"}'
+    - '// @input SceneObject cornerRightMarker {"hint":"Interactable corner marker for the right pocket calibration pin"}'
+    - '// @input Component.Text hintText {"hint":"Text element used to display alignment hint messages to the user"}'
+    - '// @input SceneObject resetButton {"hint":"Button to reset the table alignment; shown when palm faces camera"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

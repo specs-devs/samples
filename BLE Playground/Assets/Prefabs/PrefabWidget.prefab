@@ -1,0 +1,114 @@
+- !<ObjectPrefab/1b547122-8f1a-4e94-a91a-6e603e58dfed>
+  PackagePath: ""
+  objects:
+    - !<own> 0beca4bf-48e7-406d-a143-954c7aeeb1a6
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/01f70284-0582-4faa-9702-5e36ac0321a3>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _appearance: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnBorder: true
+    allowTranslation: true
+    _cutOutCenter: true
+    _minimumSize: true
+    _maximumSize: true
+    useBillboarding: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _showFollowButton: true
+    useFollowBehavior: true
+    _following: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      autoShowHide: false
+      _appearance: Large
+      _innerSize: !<Vec2> {x: 14.000000, y: 21.000000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnBorder: false
+      allowTranslation: true
+      _cutOutCenter: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _showFollowButton: false
+      useFollowBehavior: false
+      _following: false
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/0beca4bf-48e7-406d-a143-954c7aeeb1a6>
+  PrefabRemaps:
+    - 01f70284-0582-4faa-9702-5e36ac0321a3: 01f70284-0582-4faa-68fd-a1c953fcde5c
+    - 0beca4bf-48e7-406d-a143-954c7aeeb1a6: 0beca4bf-48e7-406d-5ebc-6ab385114e59
+    - 0f7750f5-4fb0-4899-8d35-74def4024337: 0f7750f5-4fb0-4899-72ca-8b210bfdbcc8
+  Name: PrefabWidget
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -40.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0f7750f5-4fb0-4899-8d35-74def4024337
+    - !<own> 01f70284-0582-4faa-9702-5e36ac0321a3
+- !<ScriptComponent/0f7750f5-4fb0-4899-8d35-74def4024337>
+  PrefabRemaps:
+    []
+  Name: Widget
+  Enabled: true
+  ScriptAsset: !<reference> 2212284e-011c-4c5b-8936-9406dd0e8b5f
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      frame: !<MappingBased.AssignableType> 01f70284-0582-4faa-9702-5e36ac0321a3
+  ScriptTypes:
+    "":
+      {}

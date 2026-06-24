@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/82d10767-64c0-4a07-a743-aa2fc8f0832f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 37ecb0e5-fc3b-472e-95f2-fd4f798cb06e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 37ecb0e5-fc3b-472e-95f2-fd4f798cb06e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 20147e9f-6024-40d9-bbf7-16dd78cb8f3b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/20147e9f-6024-40d9-bbf7-16dd78cb8f3b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2fb9eea6-1229-45eb-a66e-54d24ce007c2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    initialText: false
+    panelMinHeight: false
+    panelStyle: false
+    panelWidth: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - initialText: Waiting for tool...
+      panelWidth: !<float> 22.000000
+      panelMinHeight: !<float> 5.000000
+      panelStyle: bot
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastToolPanel</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string initialText = "Waiting for tool..." {"hint":"Initial text shown on the panel"}'
+    - '// @input number panelWidth = "22" {"hint":"Panel width in cm"}'
+    - '// @input number panelMinHeight = "5" {"hint":"Minimum panel height in cm"}'
+    - "// @input string panelStyle = \"bot\" {\"hint\":\"Use 'user' (blue) or 'bot' (gray) color style for the panel\", \"widget\":\"combobox\", \"values\":[{\"label\":\"Blue (user)\", \"value\":\"user\"}, {\"label\":\"Gray (bot)\", \"value\":\"bot\"}, {\"label\":\"Green\", \"value\":\"green\"}]}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'

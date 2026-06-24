@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/fe404101-2079-41da-aa78-92c389cb402c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 036d0671-259d-49f9-83f6-5c6d2f251080
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 036d0671-259d-49f9-83f6-5c6d2f251080
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f55dc4b3-8b42-429d-99f3-0891935cbb89
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f55dc4b3-8b42-429d-99f3-0891935cbb89>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fb25429f-ff8c-4495-adef-036516bdca1e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    hintsComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - hintsComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType hintsComponent {"hint":"ExperimentalMapboxHints data component"}'

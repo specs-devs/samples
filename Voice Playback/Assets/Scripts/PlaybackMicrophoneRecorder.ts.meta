@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/ec253f54-d2e6-4365-83fa-e44cb87a027c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d5d91beb-a4a5-49c1-a3d3-b5943ba1702a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d5d91beb-a4a5-49c1-a3d3-b5943ba1702a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3fc8d86f-4574-4fe0-bae4-85de9c111e5f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3fc8d86f-4574-4fe0-bae4-85de9c111e5f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1442a7e2-0891-4d71-b84f-a2c843cd8797
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    button: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    microphoneRecorder: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - microphoneRecorder: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      button: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PlaybackActivateMicrophoneRecorder – Triggers audio playback on button press</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign the MicrophoneRecorder and optional button to enable playback control.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType microphoneRecorder {"hint":"The MicrophoneRecorder component to trigger playback on"}'
+    - '// @input AssignableType_1 button {"hint":"Optional button that triggers recorded audio playback when pressed"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

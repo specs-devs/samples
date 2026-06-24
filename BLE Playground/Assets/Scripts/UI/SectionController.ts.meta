@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/2b2acce9-2276-4e3f-8009-83b8fe9c17e7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> dc5062c2-311e-4010-8c5c-98a6b863ca12
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> dc5062c2-311e-4010-8c5c-98a6b863ca12
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8d819c46-662b-4b22-89e1-2dbf3f565c7a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8d819c46-662b-4b22-89e1-2dbf3f565c7a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 24a90d81-a833-4807-9030-be820e86257e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttons: false
+    sections: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sections: !<reference.SceneObject[]>
+        []
+      buttons: !<MappingBased.AssignableType[]>
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SectionController – static section switcher</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Button at index N shows panel at index N and hides all others. Arrays must match in length.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject[] sections {"hint":"One content panel per section."}'
+    - '// @input AssignableType[] buttons {"hint":"One button per section. Index must match sections array."}'

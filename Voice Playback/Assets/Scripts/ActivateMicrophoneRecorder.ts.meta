@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/08d2b9d8-387c-4c37-b709-7dcef30c0717>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f12eb2d1-6286-4eaa-82a7-19f5936335c3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f12eb2d1-6286-4eaa-82a7-19f5936335c3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ce18e91a-07df-4b3a-b35d-e6d85b1fe9fc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ce18e91a-07df-4b3a-b35d-e6d85b1fe9fc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d7507ba8-9b99-477b-b9ff-b6e851328e9b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    button: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    microphoneRecorder: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - microphoneRecorder: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      button: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ActivateMicrophoneRecorder – Triggers recording on button press</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign the MicrophoneRecorder and optional button to enable recording control.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType microphoneRecorder {"hint":"The MicrophoneRecorder component to control for recording"}'
+    - '// @input AssignableType_1 button {"hint":"Optional button that starts recording on press and stops on release"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

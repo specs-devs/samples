@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/30e16701-569e-490b-8493-cfbf2807fd6f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 40f0fa1a-6cb6-476b-ae16-7bfe39a25c01
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 40f0fa1a-6cb6-476b-ae16-7bfe39a25c01
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 763d89d2-0fb3-46ff-86f6-946350585268
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/763d89d2-0fb3-46ff-86f6-946350585268>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3b94d7bc-a0f7-479c-b62d-cead9ea136fd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    styleIndex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - styleIndex: 0
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIKitCustomVisualsRoundButton – gradient style for a UIKit RoundButton</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Replaces the default visual with a custom gradient. Attach to the same SceneObject as RoundButton.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input int styleIndex {"hint":"Visual style preset applied to the button: Candy = pink/blue, Ocean = teal/navy radial, Lime = yellow/green", "widget":"combobox", "values":[{"label":"Candy", "value":0}, {"label":"Ocean", "value":1}, {"label":"Lime", "value":2}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

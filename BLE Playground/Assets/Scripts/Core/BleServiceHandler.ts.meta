@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/e9d925d1-7ac6-4b56-92e0-ffc4aca5910a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ab6de828-654b-4a0f-84ba-ff5cbcea4a24
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ab6de828-654b-4a0f-84ba-ff5cbcea4a24
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1dde4078-c7a2-419a-8beb-1ded673f5688
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1dde4078-c7a2-419a-8beb-1ded673f5688>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f890bd27-3e4e-440f-b70a-76fcbc196ed4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bluetoothModule: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    scanToggle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bluetoothModule: !<reference.BluetoothCentralModule> 00000000-0000-0000-0000-000000000000
+      scanToggle: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">BleServiceHandler – BLE scan & stop scan manager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Handles BLE scanning, result dispatch and scan toggle button state.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Asset.BluetoothCentralModule bluetoothModule {"hint":"Bluetooth central module for BLE operations"}'
+    - '// @input AssignableType scanToggle {"hint":"Rectangle button (Toggleable on) for starting and stopping scans"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

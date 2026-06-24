@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/77a400e9-a653-4c18-9fb9-e5c4b2de7989>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e6473c13-4b96-4d5c-9577-6d398dfee971
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e6473c13-4b96-4d5c-9577-6d398dfee971
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> dcc9695f-0bd8-4d99-8ba4-9f9d8582cd2e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/dcc9695f-0bd8-4d99-8ba4-9f9d8582cd2e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d5404393-faf7-4da5-9e70-2ea7bc8bf8c4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugLogs: false
+    snapCloudRequirements: false
+    useMockData: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - useMockData: true
+      debugLogs: false
+      snapCloudRequirements: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input bool useMockData = true {"hint":"Use mock agents instead of connecting to a real server"}'
+    - '// @input bool debugLogs {"hint":"Enable debug logging to the console"}'
+    - '// @input AssignableType snapCloudRequirements {"hint":"SnapCloudRequirements component holding the Supabase project"}'

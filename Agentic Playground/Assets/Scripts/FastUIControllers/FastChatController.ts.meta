@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/f10cc7ad-2f5c-40a6-ab53-213faa01658b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 717d96f5-c42d-401b-9225-d3fa0a93ee02
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 717d96f5-c42d-401b-9225-d3fa0a93ee02
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d98718e4-2c08-4ec2-b16a-4b813c534e73
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d98718e4-2c08-4ec2-b16a-4b813c534e73>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6337d466-d5f7-43a7-a02f-7190a9f9d6c0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    fastChat: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - fastChat: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastChatController</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType fastChat {"hint":"Reference to the FastChat component that renders the chat UI"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

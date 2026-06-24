@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/7600b1e6-effa-447b-86b0-c9c92d080b6d>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 6f5c58d5-9c98-4ff7-8885-6d8bd152b38b
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 6f5c58d5-9c98-4ff7-8885-6d8bd152b38b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 6a936804-cbd7-42aa-bd6f-023e52067d59
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/6a936804-cbd7-42aa-bd6f-023e52067d59>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 021c0175-a057-4358-b73d-1ccbf1b2a4f1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    leftGoalCollider: false
+    leftPaddle: false
+    leftScore1: false
+    leftScore2: false
+    puck: false
+    rightGoalCollider: false
+    rightPaddle: false
+    rightScore1: false
+    rightScore2: false
+    startGameButtonObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - puck: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      leftGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      rightGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      leftPaddle: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      rightPaddle: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      startGameButtonObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      leftScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      leftScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}

@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/8456bffb-6802-42bc-a9ac-af74eda3e5ed>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1bfa4523-8f05-4492-b285-19802d71533a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1bfa4523-8f05-4492-b285-19802d71533a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0a724901-a8da-418f-9455-5af99df3a8c7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0a724901-a8da-418f-9455-5af99df3a8c7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7e85228e-7984-444b-bb9a-0022c084e160
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoSwapToSpatialized: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    flatImage: false
+    spatializer: false
+  ScriptTypesHidden:
+    SpatialImage: false
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - spatializer: !<Typename.SpatialImage> 00000000-0000-0000-0000-000000000000
+      flatImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      autoSwapToSpatialized: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    - SpatialImage: !<reference.ScriptAsset> 00000000-0000-0000-0000-000000000000
+  InputLines:
+    - // @typename SpatialImage
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Spatial Image Swapper – controls flat/spatialized display state</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages switching between flat image and spatialized 3D version.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SpatialImage spatializer {"hint":"The SpatialImage component used for spatialization"}'
+    - '// @input Component.Image flatImage {"hint":"The flat Image mesh displayed before spatialization completes"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Settings</span>"}'
+    - '// @input bool autoSwapToSpatialized {"hint":"If true, automatically swaps to the spatialized image once loading finishes"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

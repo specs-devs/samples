@@ -1,0 +1,250 @@
+- !<ObjectPrefab/ac197e8f-b132-414a-8f95-ec64bd821b82>
+  PackagePath: ""
+  objects:
+    - !<own> 4df8b225-0860-4d4c-99be-b79ed2897ec1
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/0d2609af-99df-4b35-a511-134928d4ccb7>
+  PrefabRemaps:
+    []
+  Name: SpatialImageSwapper
+  Enabled: true
+  ScriptAsset: !<reference> 1bfa4523-8f05-4492-b285-19802d71533a
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      spatializer: !<Typename.SpatialImage> 990fdba7-b078-487a-9e1e-e5b284cb95e5
+      flatImage: !<reference.Image> 7755dc3f-f86f-4caa-addf-cd1825ace1a1
+      autoSwapToSpatialized: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+- !<ScriptComponent/36e8064e-da6a-43d3-831d-0796915a897f>
+  PrefabRemaps:
+    []
+  Name: SpatialImageAngleValidator
+  Enabled: true
+  ScriptAsset: !<reference> 7d9b8736-c7d9-4e2d-89c5-f6a14dd9731e
+  ScriptInputsDefault:
+    validZoneFocal: true
+    validZoneAngle: true
+    validZoneThreshold: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      image: !<reference.SceneObject> ec97eb6f-c0bf-4903-ae14-860c51b067bb
+      camera: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      validZoneFocal: !<float> 2.000000
+      validZoneAngle: !<float> 25.000000
+      validZoneThreshold: !<float> 5.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/4df8b225-0860-4d4c-99be-b79ed2897ec1>
+  PrefabRemaps:
+    - 0d2609af-99df-4b35-a511-134928d4ccb7: 0d2609af-99df-4b35-5aee-ecb6d72b3348
+    - 36e8064e-da6a-43d3-831d-0796915a897f: 36e8064e-da6a-43d3-7ce2-f8696ea57680
+    - 4df8b225-0860-4d4c-99be-b79ed2897ec1: 4df8b225-0860-4d4c-6641-48612d76813e
+    - 7755dc3f-f86f-4caa-addf-cd1825ace1a1: 7755dc3f-f86f-4caa-5220-32e7da531e5e
+    - 87d7d4b2-05c4-46ab-8d3d-4605ce743a14: 87d7d4b2-05c4-46ab-72c2-b9fa318bc5eb
+    - 990fdba7-b078-487a-9e1e-e5b284cb95e5: 990fdba7-b078-487a-61e1-1a4d7b346a1a
+    - e8c57c70-1475-4bbd-8492-9ba399baaf07: e8c57c70-1475-4bbd-7b6d-645c664550f8
+    - ec97eb6f-c0bf-4903-ae14-860c51b067bb: ec97eb6f-c0bf-4903-51eb-79f3ae4f9844
+    - f6ea770c-c844-4583-ab8c-e8f86040f444: f6ea770c-c844-4583-5473-17079fbf0bbb
+  Name: SpatialImageAnimationSequence-API
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> e8c57c70-1475-4bbd-8492-9ba399baaf07
+    - !<own> ec97eb6f-c0bf-4903-ae14-860c51b067bb
+  Components:
+    - !<own> f6ea770c-c844-4583-ab8c-e8f86040f444
+- !<Image/7755dc3f-f86f-4caa-addf-cd1825ace1a1>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: FitHeight
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 448d0457-4ef0-43da-815f-1c8604ea9087
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/87d7d4b2-05c4-46ab-8d3d-4605ce743a14>
+  PrefabRemaps:
+    []
+  Name: SpatialImageDepthAnimator
+  Enabled: true
+  ScriptAsset: !<reference> 009da2ad-cfd3-4203-a05d-2651825078d7
+  ScriptInputsDefault:
+    animateSpeed: true
+    minDepth: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      spatializer: !<Typename.SpatialImage> 990fdba7-b078-487a-9e1e-e5b284cb95e5
+      angleValidator: !<MappingBased.AssignableType> 36e8064e-da6a-43d3-831d-0796915a897f
+      animateSpeed: 0.500000
+      minDepth: 0.050000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+- !<ScriptComponent/990fdba7-b078-487a-9e1e-e5b284cb95e5>
+  PrefabRemaps:
+    []
+  Name: Spatial Image
+  Enabled: true
+  ScriptAsset: !<reference> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0
+  ScriptInputsDefault:
+    meshMaterial: true
+    remoteServiceModule: true
+    internetModule: true
+    remoteMediaModule: true
+    imageTexture: true
+    advancedSettings: true
+    _frameHeight: true
+    _frameOffset: true
+    _depthScale: true
+    _fadeBorder: true
+    _frameOn: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      meshMaterial: !<reference.Material> ae9cf7bb-8c5f-4177-b597-c6760fc60d80
+      remoteServiceModule: !<reference.RemoteServiceModule> d7c48e28-8882-4f34-a84f-6dd3b0921e97
+      internetModule: !<reference.InternetModule> 2e3110cc-840c-4773-93dd-34bff0d2e911
+      remoteMediaModule: !<reference.RemoteMediaModule> ab201da2-9b8f-406c-8aac-fb378b619ebb
+      imageTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      advancedSettings: false
+      _frameHeight: 100
+      _frameOffset: -200
+      _depthScale: 100
+      _fadeBorder: true
+      _frameOn: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/e8c57c70-1475-4bbd-8492-9ba399baaf07>
+  PrefabRemaps:
+    []
+  Name: FlatImage
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -200.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.360000, y: 0.800000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7755dc3f-f86f-4caa-addf-cd1825ace1a1
+- !<SceneObject/ec97eb6f-c0bf-4903-ae14-860c51b067bb>
+  PrefabRemaps:
+    []
+  Name: SpatialImage
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -200.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 0.800000, y: 0.800000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 990fdba7-b078-487a-9e1e-e5b284cb95e5
+    - !<own> 36e8064e-da6a-43d3-831d-0796915a897f
+    - !<own> 87d7d4b2-05c4-46ab-8d3d-4605ce743a14
+    - !<own> 0d2609af-99df-4b35-a511-134928d4ccb7
+- !<ScriptComponent/f6ea770c-c844-4583-ab8c-e8f86040f444>
+  PrefabRemaps:
+    []
+  Name: SpatialAnimationSequence
+  Enabled: true
+  ScriptAsset: !<reference> 3476c94b-d94b-4b07-96d9-abc109203207
+  ScriptInputsDefault:
+    shuffle: true
+    loop: true
+    autoPlay: true
+    startDelay: true
+    frameTimeout: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      image: !<Typename.SpatialImage> 990fdba7-b078-487a-9e1e-e5b284cb95e5
+      gallery: !<reference.Texture[]>
+        - !<reference> d3c51910-c2a2-401e-9158-78be726b57c4
+        - !<reference> 4e90e933-78f0-4fd4-8a59-ce60da23ccf8
+        - !<reference> ee62ccfb-f45a-4e41-a8f3-c8d7cf391b80
+        - !<reference> dc19f2d3-a619-48ff-8711-c99ac60aab96
+        - !<reference> a6199e97-642b-4cf3-bd48-d9d7c9ea8fb3
+        - !<reference> a36d990a-532d-4460-b8b0-291ba8fb9ed2
+        - !<reference> 225fe143-6231-4064-85cd-0befb0a6ba08
+        - !<reference> 33e2f747-0c2c-4454-85cd-2ada186b62e2
+        - !<reference> 69804a1c-4088-401b-8f7b-cfd5eae95694
+        - !<reference> b8f24f0a-74c7-4276-964a-07db13b1eaf4
+        - !<reference> ae5bc3f4-6b5f-4aac-9a45-2008872b2e7a
+        - !<reference> 586d4cf7-f55f-46b5-9d15-508d670594f5
+        - !<reference> db8d0052-b16a-4f2b-9150-ef341a961f0f
+        - !<reference> c22850de-3384-478e-ad0b-3936d00c1eea
+        - !<reference> c31f969e-5c2e-43c4-a961-1b0b017af98f
+        - !<reference> bd41f3dc-40b1-48d9-b8f0-7de9e76fb6cc
+        - !<reference> 1ff3606b-47c4-4777-9cf9-16457c3db52a
+        - !<reference> 32181a4b-4cba-48d6-8cb3-b30693a95753
+        - !<reference> 23bcd4ac-49cd-435c-bdcb-e0133d849d01
+        - !<reference> 4979d714-a0d3-45a9-a5d1-33277cb66c12
+        - !<reference> b439d342-b95f-43aa-aec9-5a058fcddc4a
+        - !<reference> 912dcf4d-53c1-4cde-a996-7a37b6f5afe8
+        - !<reference> 81a942c2-5610-434b-9139-0fc5d016d59f
+        - !<reference> 0d8cb3ae-3c35-4f57-b548-27910eb99554
+        - !<reference> 6b3925ba-0a91-4e47-959c-f6e615e30f9d
+        - !<reference> e19da049-fd93-4d0b-8f58-bd51b01930ad
+        - !<reference> 3c46bfbf-c3b9-42fc-993a-ec6eb932be50
+        - !<reference> 432c6960-86df-48f8-ac1c-56e6a68dae98
+        - !<reference> c42de53e-fabb-4a36-9721-026a5df3d513
+        - !<reference> d5bcda0e-1b19-4cbd-a608-84e137cd07d6
+        - !<reference> 088365d5-191d-4ad3-856e-2d90a8af1993
+      shuffle: false
+      fps: !<float> 30.000000
+      loop: true
+      autoPlay: true
+      startDelay: !<float> 3.000000
+      frameTimeout: !<float> 30.000000
+      enableLogging: true
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      SpatialImage: !<reference.ScriptAsset> e436ba89-4c78-4f4d-bf1d-a2865c4cf8a0

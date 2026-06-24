@@ -1,0 +1,80 @@
+- !<AssetImportMetadata/3d29b4e4-ebf1-4325-bb2d-70a3bc14e6fe>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 04b6b20f-594c-4e0a-9306-e86f930e7fba
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 04b6b20f-594c-4e0a-9306-e86f930e7fba
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> d7b9b2ac-3f75-4622-93a3-6b84b99e2ec4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<BodyComponent/0a24099f-46af-4b4e-47b1-da65ecbd5df4>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: true
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
+- !<SceneObject/a888c583-e536-429a-5106-33c681a2420b>
+  PrefabRemaps:
+    []
+  Name: Pool Ball
+  Enabled: true
+  Layers: 4
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 75.000000, z: -0.000038}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 5.715002, y: 5.715000, z: 5.715002}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c606c4bc-b2db-4a73-5cf6-174a4ce8e7d6
+    - !<own> 0a24099f-46af-4b4e-47b1-da65ecbd5df4
+- !<RenderMeshVisual/c606c4bc-b2db-4a73-5cf6-174a4ce8e7d6>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: Caster
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1c97c8c2-f0ba-4837-8772-8a586c1b68bb
+  Mesh: !<reference> c0ee2918-1e1b-4535-94b6-332f3724c43c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefabAssetData/d7b9b2ac-3f75-4622-93a3-6b84b99e2ec4>
+  Prototype: !<ObjectOwner/31fb90c5-a068-4b9d-9442-0de6698b2c4c>
+    PackagePath: ""
+    objects:
+      - !<own> a888c583-e536-429a-5106-33c681a2420b

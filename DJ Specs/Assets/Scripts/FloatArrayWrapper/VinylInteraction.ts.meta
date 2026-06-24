@@ -1,0 +1,90 @@
+- !<AssetImportMetadata/49e20e88-3fab-084d-914d-011993a2977d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2016dff5-f46b-4df0-9769-83a7b5edfebd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2016dff5-f46b-4df0-9769-83a7b5edfebd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e27886c6-5ecc-44b2-8dca-0469eb5ed06b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e27886c6-5ecc-44b2-8dca-0469eb5ed06b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f64df573-fb93-4d96-8146-ceff7f7657cf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    deckLeft: false
+    deckRight: false
+    defaultDisk: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    firstClipName: false
+    leftRotator: false
+    movableVinyl: false
+    rightRotator: false
+    secondClipName: false
+    thirdClipName: false
+    vinylInteractable: false
+    vinylShow: false
+    vinylShowAsset: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - vinylShow: !<reference.AnimationPlayer> 00000000-0000-0000-0000-000000000000
+      vinylShowAsset: !<reference.AnimationAsset> 00000000-0000-0000-0000-000000000000
+      firstClipName: ""
+      secondClipName: ""
+      thirdClipName: ""
+      movableVinyl: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      defaultDisk: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      deckLeft: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      deckRight: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      vinylInteractable: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      leftRotator: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      rightRotator: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">VinylInteraction – vinyl drag, snap, and deck placement</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Handles vinyl translation onto left/right decks with animation and color feedback.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation</span>"}'
+    - '// @input Component.AnimationPlayer vinylShow {"hint":"Animation player for the vinyl show/hide animation"}'
+    - '// @input Asset.AnimationAsset vinylShowAsset {"hint":"Animation asset containing vinyl show clips"}'
+    - '// @input string firstClipName {"hint":"Name of the first animation clip (idle/base state)"}'
+    - '// @input string secondClipName {"hint":"Name of the second animation clip (pick-up/moving state)"}'
+    - '// @input string thirdClipName {"hint":"Name of the third animation clip"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene Objects</span>"}'
+    - '// @input SceneObject movableVinyl {"hint":"The movable vinyl disc scene object"}'
+    - '// @input SceneObject defaultDisk {"hint":"Default disc scene object used as the origin position reference"}'
+    - '// @input SceneObject deckLeft {"hint":"Left deck scene object"}'
+    - '// @input SceneObject deckRight {"hint":"Right deck scene object"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Script References</span>"}'
+    - '// @input Component.ScriptComponent vinylInteractable {"hint":"InteractableManipulation script on the movable vinyl"}'
+    - '// @input Component.ScriptComponent leftRotator {"hint":"VinylRotator script for the left deck"}'
+    - '// @input Component.ScriptComponent rightRotator {"hint":"VinylRotator script for the right deck"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

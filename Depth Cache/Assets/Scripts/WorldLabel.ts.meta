@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/7fbe4468-e254-49d6-8f9b-8232477af75d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 27286914-7a69-485e-a272-25ef866432e6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 27286914-7a69-485e-a272-25ef866432e6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 858bfaf3-25b6-4f3d-8d0d-978f71df9e25
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/858bfaf3-25b6-4f3d-8d0d-978f71df9e25>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4b5a2296-3b91-4293-beb1-76e920852daf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    frameRend: false
+    textComp: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - frameRend: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      textComp: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WorldLabel – floating label with scale-in animation</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Attach to a scene object to animate it scaling in after a random delay.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.RenderMeshVisual frameRend {"hint":"Render mesh visual for the frame background"}'
+    - '// @input Component.Text textComp {"hint":"Text component displaying the label content"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

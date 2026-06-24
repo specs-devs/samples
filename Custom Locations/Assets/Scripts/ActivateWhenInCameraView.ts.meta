@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/8c3a0f6a-79f5-4810-a01a-f774d308dc7a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 056fc07e-829d-48cc-972f-92a405594666
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 056fc07e-829d-48cc-972f-92a405594666
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 056c594c-29e9-45d0-ad11-3238964a9d08
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/056c594c-29e9-45d0-ad11-3238964a9d08>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f0694e5f-786c-4431-9da6-c017f2d2c211
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    centerReference: false
+    deActivateDistanceMultiplier: false
+    distanceForActivation: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    listenerObjects: false
+    sphereInViewForActivationRadius: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      centerReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      listenerObjects: !<reference.ScriptComponent[]>
+        []
+      sphereInViewForActivationRadius: !<float> 600.000000
+      distanceForActivation: !<float> 1000.000000
+      deActivateDistanceMultiplier: 1.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ActivateWhenInCameraView – Activates objects when in camera view</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Tracks user position and calls activate/deactivate on listeners based on distance and camera visibility.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Camera</span>"}'
+    - '// @input Component.Camera camera {"hint":"Camera used to check sphere visibility and measure distance to the location"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Location Object</span>"}'
+    - '// @input SceneObject centerReference {"hint":"Optional SceneObject to use as center, will use the center of this SceneObject otherwise"}'
+    - '// @input Component.ScriptComponent[] listenerObjects {"hint":"List of LocatedObject listeners to activate or deactivate"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Activation Settings</span>"}'
+    - '// @input float sphereInViewForActivationRadius = 600 {"hint":"Radius of the sphere used to check if the location is in camera view"}'
+    - '// @input float distanceForActivation = 1000 {"hint":"Distance from the location center in cm to trigger activation"}'
+    - '// @input float deActivateDistanceMultiplier = 1.5 {"hint":"Multiplier applied to distanceForActivation to compute the deactivation distance"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

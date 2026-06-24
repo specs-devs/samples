@@ -1,0 +1,20 @@
+input_vec3 u_antenna_color;
+input_float u_pulse_speed;
+input_float u_theme;
+input_float iTime;
+output_vec4 Result;
+
+vec3 spectral(float t) {
+    return 0.5 + 0.5 * cos(6.28318 * (t + vec3(0.0, 0.33, 0.67)));
+}
+
+void main() {
+    int theme = clamp(int(u_theme + 0.1), 0, 6);
+    float gTime = iTime;
+
+    float pulse = (u_pulse_speed < 0.01) ? 1.0 : sin(gTime * u_pulse_speed) * 0.5 + 0.5;
+    vec3 baseCol = (theme == 4) ? vec3(1.0, 0.1, 0.1) : u_antenna_color;
+    vec3 col = baseCol * mix(0.5, 4.0, pulse) + spectral(gTime * 0.1) * 0.15;
+
+    Result = vec4(clamp(col, 0.0, 2.5), 1.0);
+}

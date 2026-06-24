@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/ff509a11-9082-44fc-8913-4a230e532ab2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 682bae4b-823b-46ea-8938-4645322c33af
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 682bae4b-823b-46ea-8938-4645322c33af
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> fc11d7a2-8f5c-4fa1-b452-f762fea4e8dc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/fc11d7a2-8f5c-4fa1-b452-f762fea4e8dc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 26a69b41-4eca-448c-98fe-cdb710c2dbea
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    captionText: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    scaleObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - captionText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      scaleObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CaptionBehavior – displays AI caption text with scale-in animation</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Receives caption text and a world position and rotation, then animates the caption into view.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.Text captionText {"hint":"Text component that displays the caption content"}'
+    - '// @input SceneObject scaleObj {"hint":"Scene object whose scale is animated when the caption appears"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

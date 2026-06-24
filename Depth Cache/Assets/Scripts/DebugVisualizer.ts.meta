@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/2c1e1233-6578-43d3-8b9e-fb474cb8da22>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fa9df31f-6548-4bb2-a496-22988d1f0fac
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fa9df31f-6548-4bb2-a496-22988d1f0fac
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0922c8b7-7790-4845-af0f-1540b847c113
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0922c8b7-7790-4845-af0f-1540b847c113>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 567bec82-f87f-4a66-a782-652a7ae7c1eb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    pointPrefab: false
+    sceneController: false
+    testCamVisualObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sceneController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pointPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      testCamVisualObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DebugVisualizer – debug point visualization overlay</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Plots pixel-space points over a camera frame texture for development testing.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType sceneController {"hint":"Scene controller used to check whether debug visuals are enabled"}'
+    - '// @input Asset.ObjectPrefab pointPrefab {"hint":"Prefab instantiated at each debug point position"}'
+    - '// @input SceneObject testCamVisualObj {"hint":"Scene object that hosts the camera frame texture for debug overlay"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

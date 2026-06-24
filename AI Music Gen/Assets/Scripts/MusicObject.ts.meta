@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/c713eeac-726d-4fd6-badb-ecc064493c02>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 10b752d5-3053-4b6c-8e6c-bcf897cf61bc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 10b752d5-3053-4b6c-8e6c-bcf897cf61bc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c5ea0e6-320d-44f9-8833-196e37d6f7cf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c5ea0e6-320d-44f9-8833-196e37d6f7cf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 39fdb73e-9d1c-43b5-8246-d7223dec96cd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    _closeButton: false
+    _musicPlayer: false
+    _pauseIcon: false
+    _playButton: false
+    _playIcon: false
+    _snap3DObject: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - _snap3DObject: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      _musicPlayer: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      _closeButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      _playButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      _playIcon: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      _pauseIcon: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Music Object – generated track with 3D visualization</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages audio playback, 3D object generation, and play/close controls.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType _snap3DObject {"hint":"Snap3DObject component that shows the generated 3D visualization"}'
+    - '// @input AssignableType_1 _musicPlayer {"hint":"MusicPlayer component responsible for audio playback"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Buttons</span>"}'
+    - '// @input AssignableType_2 _closeButton {"hint":"Button used to close and destroy this music object"}'
+    - '// @input AssignableType_3 _playButton {"hint":"Button used to toggle play and pause"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Icons</span>"}'
+    - '// @input SceneObject _playIcon {"hint":"Scene object shown when audio is paused (play icon)"}'
+    - '// @input SceneObject _pauseIcon {"hint":"Scene object shown when audio is playing (pause icon)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

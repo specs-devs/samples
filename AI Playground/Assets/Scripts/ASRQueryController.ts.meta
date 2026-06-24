@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/5c1e5a17-11b7-45d5-bdf5-8f5c62f32bb4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5ca3b2a2-f223-4b44-817c-bb6e705a8619
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5ca3b2a2-f223-4b44-817c-bb6e705a8619>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e705b658-9969-45c2-a9f1-fcb20021b0d7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    activityRenderMesh: false
+    button: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - button: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      activityRenderMesh: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ASRQueryController – voice query button</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Listens for a single voice query via ASR and fires an event with the transcribed text.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType button {"hint":"Button that the user pinches to start and stop voice recording"}'
+    - '// @input Component.RenderMeshVisual activityRenderMesh {"hint":"RenderMeshVisual used to indicate active recording state"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

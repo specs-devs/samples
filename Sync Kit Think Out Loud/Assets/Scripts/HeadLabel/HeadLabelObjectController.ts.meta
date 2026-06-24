@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/d7999d47-cb0e-446e-8c5f-5c2f3c636e6c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ae9e5fb7-6b8a-404b-aa6f-cdffea0b5a69
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ae9e5fb7-6b8a-404b-aa6f-cdffea0b5a69
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c0428a54-1d44-4e8b-ae9a-d7d86cb15a8f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c0428a54-1d44-4e8b-ae9a-d7d86cb15a8f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8984fa4c-8830-4562-ab44-8002a34f1a1b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cloudStorageModule: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    headLabelManager: false
+    headLabelReferences: false
+    pingMenu: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headLabelManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      headLabelReferences: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      cloudStorageModule: !<reference.CloudStorageModule> 00000000-0000-0000-0000-000000000000
+      pingMenu: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">HeadLabelObjectController – controls data, position and visuals for a single synced head label</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Local label follows head pose; remote labels receive data via StorageProperty callbacks.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType headLabelManager {"hint":"Reference to the HeadLabelObjectManager that owns this controller"}'
+    - '// @input AssignableType_1 headLabelReferences {"hint":"References to the head label UI components"}'
+    - '// @input Asset.CloudStorageModule cloudStorageModule {"hint":"Cloud storage module for persistent data"}'
+    - '// @input AssignableType_2 pingMenu {"hint":"Ping menu for handling ping interactions"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/c15be2aa-f932-4c14-b511-b1e76a75184b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e7ffe463-b3f6-4bbe-b753-1fccb140892f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e7ffe463-b3f6-4bbe-b753-1fccb140892f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    AssetLibraryId: 3kQqaLSKYvA1iY30Jz9FZW
+  AssetDataMap:
+    TypeScriptAsset: !<own> a01e743d-5ba6-4a44-9292-13bf76deff8e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a01e743d-5ba6-4a44-9292-13bf76deff8e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f080e06a-239b-47b8-a299-bb65306ba32c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audio: false
+    calRenderer: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - calRenderer: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CircleAnimation – calibration ring animator</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Drives the loading ring animation during surface detection calibration.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Component.RenderMeshVisual calRenderer {"hint":"RenderMeshVisual whose material parameters are animated during calibration"}'
+    - '// @input Component.AudioComponent audio {"hint":"AudioComponent played when calibration completes successfully"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

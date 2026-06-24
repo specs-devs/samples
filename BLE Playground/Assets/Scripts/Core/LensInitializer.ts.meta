@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/06f9e34c-7fd9-4bd8-b544-ed937d5101eb>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4f7c1ca4-1043-442e-b509-4582d485ab43
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4f7c1ca4-1043-442e-b509-4582d485ab43
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 772589d6-7ba2-474f-8a8b-99c924cd36eb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/772589d6-7ba2-474f-8a8b-99c924cd36eb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 36b28576-1cf6-49ab-aebc-3259f27d542d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bleServiceHandler: false
+    controllerFactory: false
+    isNoBleDebug: false
+    scanResultsManager: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bleServiceHandler: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      scanResultsManager: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      controllerFactory: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      isNoBleDebug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">LensInitializer – lens entry point singleton</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Bootstraps BLE and scan manager. Enable isNoBleDebug to test UI without BLE hardware.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType bleServiceHandler {"hint":"BLE service handler responsible for scan operations"}'
+    - '// @input AssignableType_1 scanResultsManager {"hint":"Manager that spawns and organizes scan result UI elements"}'
+    - '// @input AssignableType_2 controllerFactory {"hint":"Factory that creates peripheral controllers from GATT data"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug</span>"}'
+    - '// @input bool isNoBleDebug {"hint":"Simulate BLE scanning and connections without real hardware"}'

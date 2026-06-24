@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/21670a4e-d5be-41ca-a55f-80652e63ee2c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f04b4909-99c8-4a1a-b7d3-5bac1ab3381e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f04b4909-99c8-4a1a-b7d3-5bac1ab3381e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c903ea25-d00c-4472-9dad-015009cbf99d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c903ea25-d00c-4472-9dad-015009cbf99d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 262085d6-b652-47e6-ae59-ec8ba34e65b6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bounceSound: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    hitSound: false
+    scoreBoard: false
+    tipOffset: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hitSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      bounceSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      tipOffset: -0.660000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DartStick – Stick dart to board on straight hit</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign the dartboard and audio components. Dart sticks when hit angle is within threshold.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject scoreBoard {"hint":"The score board object to stick to"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio</span>"}'
+    - '// @input Component.AudioComponent hitSound {"hint":"Sound to play when dart sticks to board"}'
+    - '// @input Component.AudioComponent bounceSound {"hint":"Sound to play when dart bounces off board"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Stick Settings</span>"}'
+    - '// @input float tipOffset = -0.66 {"hint":"Offset for tip positioning (default: -0.66)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

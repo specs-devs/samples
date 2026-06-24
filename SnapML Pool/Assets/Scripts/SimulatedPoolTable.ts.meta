@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/2ae21415-6f51-4056-bfb7-87d4f55179ef>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 01d412cc-d27f-4403-a691-17601cd5030a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 01d412cc-d27f-4403-a691-17601cd5030a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0142f59f-3e7e-4d52-9c4b-2da9b2e84703
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0142f59f-3e7e-4d52-9c4b-2da9b2e84703>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6519707d-e515-40e4-ab51-89adb8597d33
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    poolBall: false
+    simulatedCamera: false
+    simulatedPoolTable: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - simulatedPoolTable: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      simulatedCamera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      poolBall: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SimulatedChessBoard – editor pool table simulation</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Generates a virtual pool table with physics balls for Editor debugging.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
+    - '// @input SceneObject simulatedPoolTable {"hint":"Root scene object for the simulated pool table geometry"}'
+    - '// @input SceneObject simulatedCamera {"hint":"Camera scene object used in the simulated view"}'
+    - '// @input Asset.ObjectPrefab poolBall {"hint":"Prefab used to instantiate each pool ball in the scene"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

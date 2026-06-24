@@ -1,0 +1,86 @@
+- !<AssetImportMetadata/18bdce87-3a7c-ce57-515e-8672e07aae0a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 66babe7f-a8ca-4614-a865-e1e473524ce4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 66babe7f-a8ca-4614-a865-e1e473524ce4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> bc4be72e-988b-4f87-b431-9c26daf0e97b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/bc4be72e-988b-4f87-b431-9c26daf0e97b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: cf0280e2-539a-49a7-9d3d-2a8d5663cdcd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    enableTimingLogging: false
+    flipX: false
+    flipY: false
+    inputTexture: false
+    invertDepth: false
+    maxDepthValue: false
+    minDepthValue: false
+    model: false
+    normalizeDepth: false
+    outputTexture: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - model: !<reference.MLAsset> 00000000-0000-0000-0000-000000000000
+      inputTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      outputTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      invertDepth: false
+      flipX: false
+      flipY: true
+      normalizeDepth: true
+      minDepthValue: !<float> 0.000000
+      maxDepthValue: !<float> 10.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+      enableTimingLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ML Depth Estimator – FastDepth ONNX inference driver</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs per-frame depth estimation and outputs a grayscale depth texture for stereo rendering.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Model</span>"}'
+    - '// @input Asset.MLAsset model {"hint":"FastDepth ONNX model asset"}'
+    - '// @input Asset.Texture inputTexture {"hint":"Video or camera texture input"}'
+    - '// @input Asset.Texture outputTexture {"hint":"Screen Crop Texture to receive depth output"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Depth Output</span>"}'
+    - '// @input bool invertDepth {"hint":"Invert depth (near=white, far=black)"}'
+    - '// @input bool flipX {"hint":"Flip output horizontally"}'
+    - '// @input bool flipY = true {"hint":"Flip output vertically"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Normalization</span>"}'
+    - '// @input bool normalizeDepth = true {"hint":"On: per-frame min/max (better contrast, ~21ms CPU). Off: fixed range (faster)."}'
+    - '// @input float minDepthValue {"hint":"Minimum depth when Adaptive is off", "showIf":"normalizeDepth", "showIfValue":false}'
+    - '// @input float maxDepthValue = 2.5 {"hint":"Maximum depth when Adaptive is off", "showIf":"normalizeDepth", "showIfValue":false}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'
+    - '// @input bool enableTimingLogging {"hint":"Log per-frame timing for inference and post-processing"}'

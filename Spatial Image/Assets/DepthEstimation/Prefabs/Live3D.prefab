@@ -1,0 +1,226 @@
+- !<ObjectPrefab/878c4bc3-3b7d-4a16-b0e3-73effbfac0ae>
+  PackagePath: ""
+  objects:
+    - !<own> 19766170-be06-42b2-b47c-02e1079f4a60
+  LazyLoading: false
+  RetainAssets: true
+- !<Image/0779b2f7-e02e-4ecf-9e96-eba1f9ed8979>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 865d816f-019a-4df8-ba39-b6d8f5a3869b
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/19766170-be06-42b2-b47c-02e1079f4a60>
+  PrefabRemaps:
+    - 0779b2f7-e02e-4ecf-9e96-eba1f9ed8979: 0779b2f7-e02e-4ecf-6169-145e06127686
+    - 19766170-be06-42b2-b47c-02e1079f4a60: 19766170-be06-42b2-4b83-fd1ef860b59f
+    - 1ae6f727-7d55-4673-af1a-a818caa6234b: 1ae6f727-7d55-4673-50e5-57e73559dcb4
+    - 34db638a-1346-4320-ae61-a8fb93f7e533: 34db638a-1346-4320-519e-57046c081acc
+    - 4773584b-7352-47b4-b6b3-81b00f5e24d7: 4773584b-7352-47b4-494c-7e4ff0a1db28
+    - 5348d90f-3e24-4a0b-9250-81a58ddf23b4: 5348d90f-3e24-4a0b-6daf-7e5a7220dc4b
+    - 7f11c2ae-b7f6-4799-b068-fe1ed19e4ecf: 7f11c2ae-b7f6-4799-4f97-01e12e61b130
+    - 8a6a3764-36cd-4c1a-8e94-52dba557050c: 8a6a3764-36cd-4c1a-716b-ad245aa8faf3
+    - 8add4321-1cec-442c-8b7b-deb6c3818f20: 8add4321-1cec-442c-7484-21493c7e70df
+    - d636f8f7-f14a-4119-b432-e228a35f91ea: d636f8f7-f14a-4119-4bcd-1dd75ca06e15
+    - fef76bcb-b793-43c1-b370-8c5c459e8fc0: fef76bcb-b793-43c1-4c8f-73a3ba61703f
+  Name: Live3D
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5348d90f-3e24-4a0b-9250-81a58ddf23b4
+    - !<own> fef76bcb-b793-43c1-b370-8c5c459e8fc0
+    - !<own> 1ae6f727-7d55-4673-af1a-a818caa6234b
+  Components:
+    []
+- !<SceneObject/1ae6f727-7d55-4673-af1a-a818caa6234b>
+  PrefabRemaps:
+    []
+  Name: Spatial Output
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 44.753113, y: -3.396797, z: -274.616241}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 30.000000, y: 30.000002, z: 30.000002}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d636f8f7-f14a-4119-b432-e228a35f91ea
+    - !<own> 8add4321-1cec-442c-8b7b-deb6c3818f20
+- !<ScriptComponent/34db638a-1346-4320-ae61-a8fb93f7e533>
+  PrefabRemaps:
+    []
+  Name: MLDepthEstimator
+  Enabled: true
+  ScriptAsset: !<reference> 66babe7f-a8ca-4614-a865-e1e473524ce4
+  ScriptInputsDefault:
+    invertDepth: true
+    flipX: true
+    flipY: true
+    minDepthValue: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+    enableTimingLogging: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      model: !<reference.MLAsset> 0c9855f4-bf45-4bad-9b1b-eb75be5ee30e
+      inputTexture: !<reference.Texture> 8fad0f4f-c00a-4d20-a8ee-b764208fafd4
+      outputTexture: !<reference.Texture> a4a7b64a-4f8d-496b-82bf-6ba98e06ece4
+      invertDepth: false
+      flipX: false
+      flipY: true
+      normalizeDepth: false
+      minDepthValue: !<float> 0.000000
+      maxDepthValue: !<float> 1.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+      enableTimingLogging: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/4773584b-7352-47b4-b6b3-81b00f5e24d7>
+  PrefabRemaps:
+    []
+  Name: Video Display
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: -78.055359, y: 0.000000, z: -277.792328}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 99.999992, z: 99.999992}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0779b2f7-e02e-4ecf-9e96-eba1f9ed8979
+- !<SceneObject/5348d90f-3e24-4a0b-9250-81a58ddf23b4>
+  PrefabRemaps:
+    []
+  Name: MLDepthEstimator
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 34db638a-1346-4320-ae61-a8fb93f7e533
+- !<SceneObject/7f11c2ae-b7f6-4799-b068-fe1ed19e4ecf>
+  PrefabRemaps:
+    []
+  Name: Depth Output Display
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 93.933975, z: -277.792328}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 100.000000, z: 99.999992}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8a6a3764-36cd-4c1a-8e94-52dba557050c
+- !<Image/8a6a3764-36cd-4c1a-8e94-52dba557050c>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> cb5b274d-d7ed-458e-b8e9-e58edd72a92b
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<RenderMeshVisual/8add4321-1cec-442c-8b7b-deb6c3818f20>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 196b8567-a6e4-495c-b9d2-9336269f7e9e
+  Mesh: !<reference> 3a24b4fb-e8bf-47bc-ab6c-9e42be51a0f1
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/d636f8f7-f14a-4119-b432-e228a35f91ea>
+  PrefabRemaps:
+    []
+  Name: DepthStereoController
+  Enabled: true
+  ScriptAsset: !<reference> 4cb64546-32f2-4f75-9f93-9803f295d713
+  ScriptInputsDefault:
+    convergence: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      material: !<reference.Material> 196b8567-a6e4-495c-b9d2-9336269f7e9e
+      depthEstimator: !<MappingBased.AssignableType> 34db638a-1346-4320-ae61-a8fb93f7e533
+      colorTexture: !<reference.Texture> 8fad0f4f-c00a-4d20-a8ee-b764208fafd4
+      offsetStrength: 0.020000
+      convergence: 0.500000
+      meshDepthScale: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/fef76bcb-b793-43c1-b370-8c5c459e8fc0>
+  PrefabRemaps:
+    []
+  Name: HelperVisuals
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 4773584b-7352-47b4-b6b3-81b00f5e24d7
+    - !<own> 7f11c2ae-b7f6-4799-b068-fe1ed19e4ecf
+  Components:
+    []

@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/f060772f-b7e8-4a6d-a56d-cb7ca6a7f92e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9cf8948d-171f-4031-9a48-768f7fa26370
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9cf8948d-171f-4031-9a48-768f7fa26370
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6776f584-fefd-471e-8d2b-54d4f4f61338
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6776f584-fefd-471e-8d2b-54d4f4f61338>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: efe41fd1-0559-433f-9b6b-aa19bcf1e705
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    styleIndex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - styleIndex: 0
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UIKitCustomVisualsFrame – gradient overlay for a UIKit Frame</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Spawns a RoundedRectangle panel on top of the Frame glass. Attach to the same SceneObject as Frame.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input int styleIndex {"hint":"Visual style preset applied to the Frame background panel", "widget":"combobox", "values":[{"label":"Candy", "value":0}, {"label":"Ocean", "value":1}, {"label":"Lime", "value":2}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,45 @@
+// Hybrid Stereo Shader - Vertex Stage: "The Macro Displacement"
+// Displaces mesh along local Z based on blurred depth for 6DOF parallax.
+//
+// GRAPH INTEGRATION (Lens Studio Material Editor):
+// 1. Add Custom Code node to vertex stack (nodes feeding Shader World Position).
+// 2. Assign this file. Connect Position output -> Shader World Position (Vertex).
+// 3. Wire DepthTex, Convergence, MeshDepthScale from material parameters.
+// 4. Use subdivided mesh (e.g. Plane512.obj) - basic plane has too few vertices.
+// Uses LOD sampling to prevent tearing at sharp depth edges.
+// Pos_z = Pos_z + (Depth - Convergence) * MeshDepthScale
+
+input_texture_2d DepthTex;
+input_float Convergence;
+input_float MeshDepthScale;
+input_float DepthMin;
+input_float DepthMax;
+input_float InvertDepth;
+input_float DepthFlipX;
+input_float DepthFlipY;
+
+output_vec3 Position;
+
+void main()
+{
+	vec3 posObj = system.getSurfacePositionObjectSpace();
+	vec2 uv = system.getSurfaceUVCoord0();
+	if (DepthFlipX > 0.5) uv.x = 1.0 - uv.x;
+	if (DepthFlipY > 0.5) uv.y = 1.0 - uv.y;
+
+	// LOD 3.0 for smoothed depth - prevents spiky mesh at sharp edges
+	float rawDepth = DepthTex.sampleLod(uv, 3.0).r;
+
+	// Normalize raw depth to [0,1] (done in shader for performance)
+	float range = max(DepthMax - DepthMin, 1e-6);
+	float depth = clamp((rawDepth - DepthMin) / range, 0.0, 1.0);
+	if (InvertDepth > 0.5) depth = 1.0 - depth;
+
+	// Displacement centered around convergence plane (view-space aligned)
+	float disp = (depth - Convergence) * MeshDepthScale;
+	posObj.z += disp;
+
+	// Transform to world space for Shader World Position (Vertex) input
+	vec4 worldPos = system.getMatrixWorld() * vec4(posObj, 1.0);
+	Position = worldPos.xyz;
+}

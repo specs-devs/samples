@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/8c65209a-fa76-4ad6-a9af-398b55b735c2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 036ed17c-dab6-483a-87f6-787dddfd8c7e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 036ed17c-dab6-483a-87f6-787dddfd8c7e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 18ce796c-4bdd-4981-be71-556d9f258ddc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/18ce796c-4bdd-4981-be71-556d9f258ddc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 825a7fa7-94b7-4675-9f67-1a9078e71f35
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    lostFramesThreshold: false
+    matchDetections: false
+    matchThreshold: false
+    maxCount: false
+    objectToCopy: false
+    setObjectPosition: false
+    smoothCoef: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - objectToCopy: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      maxCount: !<float> 30.000000
+      setObjectPosition: false
+      matchDetections: false
+      matchThreshold: 0.500000
+      lostFramesThreshold: !<float> 4.000000
+      smoothCoef: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DetectionController – detection bounding box visualizer</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Instantiates and positions overlays for each detected chess piece.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Object Setup</span>"}'
+    - '// @input SceneObject objectToCopy {"hint":"Object used to copy and place over the detected objects"}'
+    - '// @input float maxCount = 70 {"hint":"Number of instances of the object", "widget":"slider", "min":0, "max":100, "step":1}'
+    - '// @input bool setObjectPosition = true {"hint":"Set object position based on detection screen coordinates"}'
+    - '// @input bool matchDetections {"hint":"Try to match current detections with ones from the previous frame, reuse same scene objects if match"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Match Settings</span>", "showIf":"matchDetections"}'
+    - "// @input float matchThreshold = 0.5 {\"hint\":\"If the detection isn't matched then it will remain active during <lostFrameThreshold> updates\", \"widget\":\"slider\", \"min\":0, \"max\":0.95, \"step\":0.05}"
+    - '// @input float lostFramesThreshold = 4 {"hint":"Number of frames before an unmatched tracklet is deactivated", "widget":"slider", "min":0, "max":10, "step":1}'
+    - '// @input float smoothCoef {"hint":"Smoothing coefficient for tracklet position interpolation (0 = no smoothing)", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

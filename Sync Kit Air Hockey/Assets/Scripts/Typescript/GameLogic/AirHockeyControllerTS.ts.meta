@@ -1,0 +1,103 @@
+- !<AssetImportMetadata/c14b79a6-7ea3-4e57-9639-36e873e2483d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b9e16576-f61c-4cd4-a6a8-26592e0978bc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b9e16576-f61c-4cd4-a6a8-26592e0978bc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 889348ab-1943-435c-b37b-17193fba0303
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/889348ab-1943-435c-b37b-17193fba0303>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5be71fc8-3ab9-41cd-96cd-3a88edd74a32
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    leftGoalCollider: false
+    leftPaddle: false
+    leftPaddleInteractable: false
+    leftPaddleManipulation: false
+    leftScore1: false
+    leftScore2: false
+    playerAvatarManager: false
+    playerSlotManager: false
+    puck: false
+    rightGoalCollider: false
+    rightPaddle: false
+    rightPaddleInteractable: false
+    rightPaddleManipulation: false
+    rightScore1: false
+    rightScore2: false
+    startGameButton: false
+    startGameButtonText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - playerSlotManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      puck: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      leftGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      rightGoalCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      leftPaddle: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      leftPaddleInteractable: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      leftPaddleManipulation: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      rightPaddle: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      rightPaddleInteractable: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      rightPaddleManipulation: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      startGameButton: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      startGameButtonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      leftScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore1: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      leftScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      rightScore2: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      playerAvatarManager: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AirHockeyController – Central game session manager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages scores, paddle ownership, start/restart flow, and player avatar state.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType playerSlotManager {"hint":"PlayerSlotManager component tracking left/right player connection IDs"}'
+    - '// @input AssignableType_1 puck {"hint":"AirHockeyPuck component"}'
+    - '// @input Component.ColliderComponent leftGoalCollider {"hint":"Physics collider that covers the left goal area"}'
+    - '// @input Component.ColliderComponent rightGoalCollider {"hint":"Physics collider that covers the right goal area"}'
+    - '// @input AssignableType_2 leftPaddle {"hint":"Left player paddle component"}'
+    - '// @input AssignableType_3 leftPaddleInteractable {"hint":"Interactable on the left paddle for hover-to-join"}'
+    - '// @input AssignableType_4 leftPaddleManipulation {"hint":"InteractableManipulation on the left paddle"}'
+    - '// @input AssignableType_5 rightPaddle {"hint":"Right player paddle component"}'
+    - '// @input AssignableType_6 rightPaddleInteractable {"hint":"Interactable on the right paddle for hover-to-join"}'
+    - '// @input AssignableType_7 rightPaddleManipulation {"hint":"InteractableManipulation on the right paddle"}'
+    - '// @input AssignableType_8 startGameButton {"hint":"Button that starts or restarts the game"}'
+    - '// @input Component.Text startGameButtonText {"hint":"Text label on the start/restart button"}'
+    - '// @input Component.Text leftScore1 {"hint":"Score display text for the left player (copy 1)"}'
+    - '// @input Component.Text rightScore1 {"hint":"Score display text for the right player (copy 1)"}'
+    - '// @input Component.Text leftScore2 {"hint":"Score display text for the left player (copy 2)"}'
+    - '// @input Component.Text rightScore2 {"hint":"Score display text for the right player (copy 2)"}'
+    - '// @input AssignableType_9 playerAvatarManager {"hint":"AirHockeyBitmojiController component managing player avatars"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

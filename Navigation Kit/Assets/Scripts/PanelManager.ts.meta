@@ -1,0 +1,151 @@
+- !<AssetImportMetadata/0c8510ca-9bd9-4d5b-86a7-403a87288f22>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e647804b-4046-4a2a-b4ea-fd746898935c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e647804b-4046-4a2a-b4ea-fd746898935c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ec90647f-da97-42c7-8d88-dd986ba5f275
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ec90647f-da97-42c7-8d88-dd986ba5f275>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e16f2eb0-51f4-40a3-ae18-4735e4cee25b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    billboard: false
+    camera: false
+    centerMapButton: false
+    clearPinsButton: false
+    frame: false
+    frameInnerSizeDefault: false
+    frameInnerSizeNavigation: false
+    imageDisplay: false
+    mainPanel: false
+    mapComponent: false
+    mapLocalPositionDefault: false
+    mapLocalPositionNavigation: false
+    mapLocalScaleDefault: false
+    mapLocalScaleNavigation: false
+    mapObject: false
+    mapRender: false
+    navigationDataComponent: false
+    scrollRoot: false
+    scrollView: false
+    searchMapButton: false
+    showBarButton: false
+    showCafeButton: false
+    showRestaurantsButton: false
+    spawnPinButton: false
+    tether: false
+    tourButton: false
+    tourButtonLabel: false
+    tourModeOnly: false
+    tourStatusText: false
+    transitionDuration: false
+    zoomInButton: false
+    zoomOutButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mapComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      imageDisplay: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      navigationDataComponent: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      spawnPinButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      clearPinsButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      centerMapButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      searchMapButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      zoomInButton: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      zoomOutButton: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      showRestaurantsButton: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      showCafeButton: !<MappingBased.AssignableType_10> 00000000-0000-0000-0000-000000000000
+      showBarButton: !<MappingBased.AssignableType_11> 00000000-0000-0000-0000-000000000000
+      mapRender: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scrollRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      frame: !<MappingBased.AssignableType_12> 00000000-0000-0000-0000-000000000000
+      tether: !<MappingBased.AssignableType_13> 00000000-0000-0000-0000-000000000000
+      billboard: !<MappingBased.AssignableType_14> 00000000-0000-0000-0000-000000000000
+      mapObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mainPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      frameInnerSizeDefault: !<Vec2> {x: 90.000000, y: 54.000000}
+      frameInnerSizeNavigation: !<Vec2> {x: 50.000000, y: 30.000000}
+      mapLocalPositionDefault: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      mapLocalScaleDefault: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      mapLocalPositionNavigation: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      mapLocalScaleNavigation: !<Vec3> {x: 0.700000, y: 0.700000, z: 0.700000}
+      transitionDuration: 0.400000
+      tourModeOnly: false
+      tourButton: !<MappingBased.AssignableType_15> 00000000-0000-0000-0000-000000000000
+      tourButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      tourStatusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType mapComponent
+    - // @input AssignableType_1 imageDisplay
+    - // @input AssignableType_2 navigationDataComponent
+    - // @input AssignableType_3 spawnPinButton
+    - // @input AssignableType_4 clearPinsButton
+    - // @input AssignableType_5 centerMapButton
+    - // @input AssignableType_6 searchMapButton
+    - // @input AssignableType_7 zoomInButton
+    - // @input AssignableType_8 zoomOutButton
+    - // @input AssignableType_9 showRestaurantsButton
+    - // @input AssignableType_10 showCafeButton
+    - // @input AssignableType_11 showBarButton
+    - // @input SceneObject mapRender
+    - // @input SceneObject scrollRoot
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Navigation Layout"}'
+    - // @input AssignableType_12 frame
+    - // @input AssignableType_13 tether
+    - // @input AssignableType_14 billboard
+    - // @input SceneObject mapObject
+    - // @input SceneObject mainPanel
+    - // @input SceneObject scrollView
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Frame Reset on Navigation Exit"}'
+    - '// @input SceneObject camera {"hint":"Camera / head SceneObject – frame will be repositioned 100 units in front of it when navigation ends"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Frame Inner Size"}'
+    - "// @input vec2 frameInnerSizeDefault = {90,54}"
+    - "// @input vec2 frameInnerSizeNavigation = {50,30}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Map Transform — Default"}'
+    - // @input vec3 mapLocalPositionDefault
+    - // @input vec3 mapLocalScaleDefault
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Map Transform — Navigation"}'
+    - // @input vec3 mapLocalPositionNavigation
+    - "// @input vec3 mapLocalScaleNavigation = {0.7,0.7,0.7}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Transition"}'
+    - // @input float transitionDuration = 0.4
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"Tour Mode"}'
+    - // @input bool tourModeOnly
+    - // @input AssignableType_15 tourButton
+    - // @input Component.Text tourButtonLabel
+    - // @input Component.Text tourStatusText

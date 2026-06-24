@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/95189bcf-4fbb-45e4-87e2-3ff4753f522f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> dbe1d244-10d6-49c4-acda-7dac03f0eb03
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> dbe1d244-10d6-49c4-acda-7dac03f0eb03
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ba2b4911-607a-4883-a616-ff6c80d10141
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ba2b4911-607a-4883-a616-ff6c80d10141>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 27a76c87-06b8-422b-92dc-9eb67b7f8cd8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    scannerPrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - scannerPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">PictureController – spawns crop scanner on dual pinch</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Detects simultaneous close pinch from both hands to instantiate the scanner prefab.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input Asset.ObjectPrefab scannerPrefab {"hint":"Prefab instantiated when both hands pinch close together"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

@@ -1,0 +1,89 @@
+- !<AssetImportMetadata/5dc74eb8-50fb-4bca-b861-991107eb320b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 24096ea6-b439-469a-bce4-16e840e1259f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 24096ea6-b439-469a-bce4-16e840e1259f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8ffd438a-f131-41e2-8629-e64b0ba15d41
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8ffd438a-f131-41e2-8629-e64b0ba15d41>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0314fac5-5f2c-47d8-bdf6-2a7be748d959
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    climateTex: false
+    connectedTex: false
+    connectionImage: false
+    detailsText: false
+    disconnectedTex: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    hrmTex: false
+    lightTex: false
+    logoImage: false
+    nameText: false
+    toggleButton: false
+    unknownTex: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - toggleButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      nameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      detailsText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      logoImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      connectionImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      lightTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      hrmTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      climateTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      unknownTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      connectedTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      disconnectedTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ScanResult – BLE device scan result card</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Instantiated from PrefabScanResult. Wire nameText, detailsText, toggleButton and connection images.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI References</span>"}'
+    - '// @input AssignableType toggleButton {"hint":"Button component on this card (RectangleButton or RoundButton) — toggleable for selection"}'
+    - '// @input Component.Text nameText {"hint":"First Text child of the card — displays the device name"}'
+    - '// @input Component.Text detailsText {"hint":"Second Text child of the card — displays connection status"}'
+    - '// @input Component.Image logoImage {"hint":"Logo image child — updated with peripheral type icon when device type is determined"}'
+    - '// @input Component.Image connectionImage {"hint":"Connection state image — shows connected/disconnected/trying icons"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Type Icons</span>"}'
+    - '// @input Asset.Texture lightTex {"hint":"Icon texture for Hue light peripheral type"}'
+    - '// @input Asset.Texture hrmTex {"hint":"Icon texture for heart rate monitor peripheral type"}'
+    - '// @input Asset.Texture climateTex {"hint":"Icon texture for climate sensor peripheral type"}'
+    - '// @input Asset.Texture unknownTex {"hint":"Icon texture for unknown peripheral type"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Connection Icons</span>"}'
+    - '// @input Asset.Texture connectedTex {"hint":"Texture shown on the connection image when the device is connected"}'
+    - '// @input Asset.Texture disconnectedTex {"hint":"Texture shown on the connection image when the device is disconnected or not yet connected"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

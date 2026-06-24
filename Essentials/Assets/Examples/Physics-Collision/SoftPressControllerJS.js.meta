@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/ff3b7059-e5a8-4a9c-ab6a-dd990fc64fcc>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 4d843ef2-6186-4d5a-973f-299116935ff8
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 4d843ef2-6186-4d5a-973f-299116935ff8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 5de92ef7-71c7-4a14-9ed4-861d7ac7e784
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/5de92ef7-71c7-4a14-9ed4-861d7ac7e784>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ca76bb45-7617-4dbf-881d-9b7213a9b220
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bottomVertex0: false
+    bottomVertex1: false
+    bottomVertex2: false
+    bottomVertex3: false
+    closestPointMarker: false
+    colliderObject: false
+    interactorObject: false
+    next: false
+    pressThreshold: false
+    resetDuration: false
+    topVertex0: false
+    topVertex1: false
+    topVertex2: false
+    topVertex3: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - colliderObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      interactorObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      closestPointMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomVertex3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pressThreshold: 0.700000
+      resetDuration: !<float> 1.000000
+      next: false
+  ScriptTypes:
+    -
+      {}

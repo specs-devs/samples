@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/9775a0cb-2a1d-0e00-8e70-61f8b143e1e8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 27c1eb2d-80a7-4f22-9f87-5ac19ef55eae
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 27c1eb2d-80a7-4f22-9f87-5ac19ef55eae
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9f471734-224d-446e-863c-9b8404f4cc8b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9f471734-224d-446e-863c-9b8404f4cc8b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 57caa9cc-18c0-4b44-935b-04c29030ee6a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    labelsParent: false
+    measureLinePrefab: false
+    responseBubble: false
+    responseText: false
+    worldLabelPrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - responseBubble: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      responseText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      worldLabelPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      measureLinePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      labelsParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ResponseUI – Gemini response display panel</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages the response bubble and world-space labels created from Gemini JSON output.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input SceneObject responseBubble {"hint":"Root container that wraps the response bubble panel"}'
+    - '// @input Component.Text responseText {"hint":"Text component inside the response bubble that shows the Gemini text response"}'
+    - '// @input Asset.ObjectPrefab worldLabelPrefab {"hint":"Prefab instantiated for each labelled point in the scene"}'
+    - '// @input Asset.ObjectPrefab measureLinePrefab {"hint":"Prefab instantiated for each measurement line in the scene"}'
+    - '// @input SceneObject labelsParent {"hint":"Parent scene object under which world labels and measure lines are created"}'

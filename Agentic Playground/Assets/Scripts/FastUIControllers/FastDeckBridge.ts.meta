@@ -1,0 +1,81 @@
+- !<AssetImportMetadata/b6b6e308-7b94-4772-bad8-18d58f5dd04a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 46ec0467-6bba-46a7-9a98-147309d5b236
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 46ec0467-6bba-46a7-9a98-147309d5b236
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6bd9efee-16a2-407b-975b-5ce271a4d592
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6bd9efee-16a2-407b-975b-5ce271a4d592>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 66fe8229-91a0-469c-a81c-a800363e1626
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    aiSummarizer: false
+    asrController: false
+    autoSummaryThreshold: false
+    enableAutoSummary: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    showStoredTranscription: false
+    showSummaryCards: false
+    summaryDisplayText: false
+    summaryLayout: false
+    summaryStorage: false
+    updateInterval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - summaryStorage: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      aiSummarizer: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      summaryLayout: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      summaryDisplayText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      asrController: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      enableAutoSummary: true
+      autoSummaryThreshold: 1000
+      updateInterval: !<float> 3.000000
+      showStoredTranscription: false
+      showSummaryCards: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastDeckBridge</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType summaryStorage {"hint":"Reference to SummaryStorage component"}'
+    - '// @input AssignableType_1 aiSummarizer {"hint":"Reference to AISummarizer component"}'
+    - '// @input AssignableType_2 summaryLayout {"hint":"Reference to FastDeckController for UI display"}'
+    - '// @input Component.Text summaryDisplayText {"hint":"Text component to display summary status"}'
+    - '// @input AssignableType_3 asrController {"hint":"Reference to SummaryASRController for speech input"}'
+    - '// @input bool enableAutoSummary = true {"hint":"Enable automatic summary generation when text exceeds threshold"}'
+    - '// @input int autoSummaryThreshold = "1000" {"hint":"Character threshold to trigger auto-summary"}'
+    - '// @input number updateInterval = "3.0" {"hint":"Seconds between storage checks"}'
+    - '// @input bool showStoredTranscription {"hint":"Log stored transcription text"}'
+    - '// @input bool showSummaryCards {"hint":"Log summary card content"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

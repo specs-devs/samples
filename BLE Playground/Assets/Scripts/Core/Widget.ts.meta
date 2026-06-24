@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/22b0be44-0746-4dde-ad07-2f4d24d6d96d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2212284e-011c-4c5b-8936-9406dd0e8b5f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2212284e-011c-4c5b-8936-9406dd0e8b5f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9817fb45-20fa-427e-8707-8d91af410994
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9817fb45-20fa-427e-8707-8d91af410994>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2f163bfe-f1e5-47f0-aef5-c87447a65b5d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    frame: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Widget – peripheral controller container</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Manages parenting, positioning and billboarding of spawned peripheral controller widgets.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
+    - '// @input AssignableType frame {"hint":"UIKit Frame that controls translation and snapping behaviour"}'
