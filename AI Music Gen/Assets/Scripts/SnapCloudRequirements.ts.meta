@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/0ad87660-85e8-4ac0-afef-602e97bf1ec6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fc436849-cfff-4696-8c3e-5bd4e60cb9fa
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fc436849-cfff-4696-8c3e-5bd4e60cb9fa
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c0dbc681-e8ea-40dd-914e-2fff972b9604
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c0dbc681-e8ea-40dd-914e-2fff972b9604>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: a258dbb6-78da-480f-a885-04a9cff8e281
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    disableWarningsWhenConfigured: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    showSetupInstructions: false
+    supabaseProject: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      disableWarningsWhenConfigured: true
+      showSetupInstructions: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SnapCloudRequirements – Supabase setup validator</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Centralizes Supabase credentials and validates configuration on start.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"SupabaseProject asset from Asset Browser (created via Supabase Plugin)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Warning Settings</span>"}'
+    - '// @input Component.Text text {"hint":"Text component to display warning messages (optional)"}'
+    - '// @input bool disableWarningsWhenConfigured = true {"hint":"Disable warnings when requirements are properly set (auto-detected)"}'
+    - '// @input bool showSetupInstructions = true {"hint":"Show detailed setup instructions in console"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

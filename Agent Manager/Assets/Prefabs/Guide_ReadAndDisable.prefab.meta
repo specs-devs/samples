@@ -1,0 +1,159 @@
+- !<AssetImportMetadata/92b0c965-7dd7-44be-aed6-35cf57928032>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 6a53b779-fc40-443f-abe4-3e454a46ccf1
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 6a53b779-fc40-443f-abe4-3e454a46ccf1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 4bdcd65b-b11c-471f-aaab-7a57b2aea695
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<Text/0327abd6-dfc9-45eb-72ee-9dd6e0076aae>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 999
+  StretchMode: Stretch
+  VerticalAlignment: Top
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Agent Manager
+    
+    Manage AI coding agents in AR on Specs. Chat via
+    text or voice, attach images with hand gestures, and
+    see live agent status as 3D robot avatars pinned in
+    your world.
+    
+    Before you start
+    Complete the red setup warnings shown to the LEFT:
+    - Assign your SupabaseProject asset on the
+      SnapCloudRequirements object (Window > Supabase >
+      Import Credentials, then drag the asset in)
+    - Set your API token on RemoteServiceGatewayCredentials
+    
+    Requirements
+    - Node.js 18+
+    - Git with LFS
+    - Claude CLI, Codex CLI, or OpenClaw
+    
+    Setup
+    
+    1. Supabase backend
+       brew install supabase/tap/supabase
+       supabase login --profile snap
+       cd supabase && ./setup.sh
+    
+    2. Start the Bridge (.env is written by setup.sh)
+       cd ../Bridge && npm install
+       node sync.js
+    
+    3. Open in Lens Studio
+       Open AgentManager.esproj. To test without a backend,
+       set useMockData = true on AgentManagerController.
+    
+    4. Deploy & Pair
+       Push the Lens to your Specs, then enter the 6-digit
+       pairing code from the Bridge terminal (no API key
+       needed for local agents).
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 60.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  FontWeight: 400
+  Italic: false
+  LayoutRect:
+    left: -20.000000
+    bottom: -2.250000
+    right: 20.000000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/330d0451-4512-4a28-7365-6d0899537694>
+  PrefabRemaps:
+    []
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 20.000000, z: -150.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0327abd6-dfc9-45eb-72ee-9dd6e0076aae
+- !<ObjectPrefabAssetData/4bdcd65b-b11c-471f-aaab-7a57b2aea695>
+  Prototype: !<ObjectOwner/24790bc9-6e02-4186-b548-b76972986286>
+    PackagePath: ""
+    objects:
+      - !<own> 330d0451-4512-4a28-7365-6d0899537694

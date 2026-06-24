@@ -1,0 +1,347 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 2.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: AspectRatio
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.009999999776482582
+        Title:
+          String: AspectRatio
+        Tooltip:
+          String: ""
+      PositionX: 257
+      PositionY: -44
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: AspectRatio
+    Node1:
+      DependencyIndex: 1
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.004999999888241291, 1.0, 1.0, 1.0]
+        EnableMax:
+          Variable: true
+        EnableMin:
+          Variable: true
+        Group:
+          String: ""
+        Max:
+          Variable: 0.05000000074505806
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: outlineThickness
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.004999999888241291
+        Title:
+          String: outlineThickness
+        Tooltip:
+          String: ""
+      PositionX: 262
+      PositionY: 62
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: outlineThickness
+    Node2:
+      DependencyIndex: 2
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: boxColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: boxColor
+      PositionX: 253
+      PositionY: 143
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: boxColor
+    Node3:
+      DependencyIndex: 3
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: outlineColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: outlineColor
+      PositionX: 260
+      PositionY: 239
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: outlineColor
+    Node4:
+      DependencyIndex: 4
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Position:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+        Space:
+          ItemIndex: 0
+          ItemList: "Object : World : Camera : Screen ( NDC )"
+      PositionX: 277
+      PositionY: 351
+      TemplateID: node_effect_global_surface_position
+      TemplateVersionMinor: 1
+      Title1: Surface Position
+    Node5:
+      DependencyIndex: 5
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            input_float objectWidth;  
+            input_float objectHeight;
+            input_float outlineThickness; 
+            input_vec4 boxColor;
+            input_vec4 outlineColor;
+            input_vec3 objPos;
+            output_vec4 ResultColor;
+            
+            // SDF for a rounded rectangle:
+            //   p: point in world space (centered at 0)
+            //   b: half-dimensions of the rectangle (in world units)
+            //   r: corner radius (in world units)
+            float sdRoundedRect(vec2 p, vec2 b, float r) {
+                // Compute distance to a rounded rectangle.
+                vec2 d = abs(p) - (b - vec2(r));
+                return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
+            }
+            
+            void main()
+            {
+                // Convert normalized coordinates ([-0.5, 0.5]) to world space.
+                // This makes pos range from -objectWidth/2 to +objectWidth/2 (and similarly for height).
+                vec2 pos = vec2(objPos.x * objectWidth, objPos.y * objectHeight);
+                
+                // Compute half extents of the rectangle.
+                vec2 halfSize = vec2(objectWidth, objectHeight) * 0.5;
+                
+                // Define the corner radius as a fraction of the smaller dimension.
+                float cornerRadius = min(objectWidth, objectHeight) * 0.1; // adjust as desired
+                
+                // Compute the signed distance from pos to the rounded rectangle.
+                // Negative values indicate points inside the rounded shape,
+                // zero is exactly at the edge, positive is outside.
+                float sdf = sdRoundedRect(pos, halfSize, cornerRadius);
+                
+                // Define an outline thickness (in world units) that scales with the object size.
+                float outlineThickness = objectWidth * outlineThickness; // adjust as desired
+            
+                // Clip fragments outside the rounded rectangle.
+                if (sdf > 0.0) {
+                    discard;
+                }
+                // Draw the outline: fragments near the edge (sdf between 0 and -outlineThickness) become white.
+                else if (sdf > -outlineThickness) {
+                    ResultColor = outlineColor;
+                }
+                // Draw the interior: fragments further inside become black.
+                else {
+                    ResultColor = boxColor;
+                }
+            }
+
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 2
+        Locked:
+          Variable: false
+        ResultColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: RoundedRectangle
+        boxColor:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        objPos:
+          Connection0:
+            NodeLevelID: 0
+            PortID: Position
+          Variable: [0.0, 0.0, 0.0]
+        objectHeight:
+          Connection0:
+            NodeLevelID: 1
+            PortID: Output
+          Variable: 0.5
+        objectWidth:
+          Variable: 1.0
+        outlineColor:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        outlineThickness:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+      PositionX: 510
+      PositionY: 47
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: RoundedRectangle
+    Node6:
+      CommentSizeX: 0
+      CommentSizeY: 0
+      DependencyIndex: 6
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 2
+            PortID: ResultColor
+          Variable: [0.14901961386203766, 0.14901961386203766, 0.14901961386203766, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        RayDirection:
+          Variable: [0.0, 1.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 1.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 1.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 743
+      PositionY: 48
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders
