@@ -1,7 +1,7 @@
 - !<Scene/0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99>
   PackagePath: ""
   objects:
-    - !<own> e4d8ac8c-9441-47e0-bb98-dbbd7ab437a3
+    - !<own> b5d29635-f25f-41b9-8842-994457f47ef5
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 97eaf6b0-ea62-44b5-ae62-bf1649660084
@@ -1124,22 +1124,6 @@
     - !<own> 322a682c-fa6d-4458-b53a-1fe10935c7c3
   Components:
     []
-- !<ScriptComponent/2ba542af-fc1c-4637-81c4-c3dd64c3c154>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/2c13ba1f-b047-49b6-b5ca-f037fc121b51>
   PrefabRemaps:
     []
@@ -4777,6 +4761,37 @@
     - !<own> 45041c72-4739-4cd1-ad7a-c0e8dd30bcd1
   Components:
     []
+- !<SceneObject/b5d29635-f25f-41b9-8842-994457f47ef5>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b62e5321-9b39-42fc-a26f-1fd0853e1c5c
+- !<ScriptComponent/b62e5321-9b39-42fc-a26f-1fd0853e1c5c>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/b8a369af-ea73-4802-b69b-4331c2b6cf78>
   PrefabRemaps:
     []
@@ -5888,21 +5903,6 @@
     - !<own> d16cf8f1-8564-448a-81be-48433b019504
   Components:
     []
-- !<SceneObject/e4d8ac8c-9441-47e0-bb98-dbbd7ab437a3>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 2ba542af-fc1c-4637-81c4-c3dd64c3c154
 - !<ScriptComponent/e5433daf-4a3c-4d3e-a5cf-be383fd1931e>
   PrefabRemaps:
     []

@@ -14,25 +14,6 @@
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<ScriptComponent/354ed5f1-1304-4218-b53d-b94a48ca7c2e>
-  PrefabRemaps:
-    []
-  Name: GuideDismissPanel
-  Enabled: true
-  ScriptAsset: !<reference> 82d27f2d-2045-50b8-8a71-2327ecc3b279
-  ScriptInputsDefault:
-    buttonLabel: true
-    hideUntilDismissed: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      buttonLabel: "Ok, I understood"
-      hideUntilDismissed: !<reference.SceneObject[]>
-        []
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/6b47f628-a9be-4058-511b-ba0f4bc369dc>
   PrefabRemaps:
     []
@@ -48,7 +29,7 @@
     []
   Components:
     - !<own> 8be00365-71f9-4216-4071-781fb46b785f
-    - !<own> 354ed5f1-1304-4218-b53d-b94a48ca7c2e
+    - !<own> ab81a332-7d63-4df0-a409-ce7dff0c4644
 - !<Text/8be00365-71f9-4216-4071-781fb46b785f>
   PrefabRemaps:
     []
@@ -141,6 +122,25 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/ab81a332-7d63-4df0-a409-ce7dff0c4644>
+  PrefabRemaps:
+    []
+  Name: GuideDismissPanel
+  Enabled: true
+  ScriptAsset: !<reference> 82d27f2d-2045-50b8-8a71-2327ecc3b279
+  ScriptInputsDefault:
+    buttonLabel: true
+    hideUntilDismissed: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        []
+  ScriptTypes:
+    "":
+      {}
 - !<ObjectPrefabAssetData/e1f32828-1379-4dbf-83f2-386fde2c3468>
   Prototype: !<ObjectOwner/97c34abe-32b9-45b1-b194-5d8c95b5ed6d>
     PackagePath: ""

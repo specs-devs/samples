@@ -6,8 +6,8 @@
 
 **Ready-to-use Lens Studio projects for building on SPECS.**
 
-[![Release](https://img.shields.io/badge/Release-5.24.0-1a1a1a?style=flat&labelColor=1a1a1a)](https://github.com/specs-devs/samples/releases/tag/5.24.0)
-[![Lens Studio](https://img.shields.io/badge/Lens%20Studio-5.24.0-FFFC00?style=flat&labelColor=FFFC00&logo=snapchat&logoColor=black)](https://ar.snap.com/lens-studio)
+[![Release](https://img.shields.io/badge/Release-5.24.1-1a1a1a?style=flat&labelColor=1a1a1a)](https://github.com/specs-devs/samples/releases/tag/5.24.1)
+[![Lens Studio](https://img.shields.io/badge/Lens%20Studio-5.24.1-FFFC00?style=flat&labelColor=FFFC00&logo=snapchat&logoColor=black)](https://ar.snap.com/lens-studio)
 [![Developers](https://img.shields.io/badge/-Developers-1a1a1a?style=flat&labelColor=1a1a1a&logo=readthedocs&logoColor=white)](https://developers.specs.com/)
 [![Reddit](https://img.shields.io/badge/-Reddit-ff4500?style=flat&labelColor=ff4500&logo=reddit&logoColor=white)](https://www.reddit.com/r/Spectacles/)
 [![YouTube](https://img.shields.io/badge/YouTube-ff0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/@specsfordevs)
@@ -23,8 +23,8 @@ Each folder is a complete, working Lens Studio project you can open, run and use
 | Branch | Lens Studio | Device | Release |
 |:--|:--|:--|:--|
 | [`main`](https://github.com/specs-devs/samples/tree/main) | 5.25.0 | SPECS 27 | [5.25.0](https://github.com/specs-devs/samples/releases/tag/5.25.0) |
-| [`5.24.1`](https://github.com/specs-devs/samples/tree/5.24.1) | 5.24.1 | SPECS 27 | [5.24.1](https://github.com/specs-devs/samples/releases/tag/5.24.1) |
-| [`5.24`](https://github.com/specs-devs/samples/tree/5.24) | 5.24.0 | SPECS 27 | [5.24.0](https://github.com/specs-devs/samples/releases/tag/5.24.0) ← you are here |
+| [`5.24.1`](https://github.com/specs-devs/samples/tree/5.24.1) | 5.24.1 | SPECS 27 | [5.24.1](https://github.com/specs-devs/samples/releases/tag/5.24.1) ← you are here |
+| [`5.24`](https://github.com/specs-devs/samples/tree/5.24) | 5.24.0 | SPECS 27 | [5.24.0](https://github.com/specs-devs/samples/releases/tag/5.24.0) |
 | [`5.22`](https://github.com/specs-devs/samples/tree/5.22) | 5.22.0 | SPECS 27 | [5.22.0](https://github.com/specs-devs/samples/releases/tag/5.22.0) |
 | [`5.15.4`](https://github.com/specs-devs/samples/tree/5.15.4) | 5.15.4 | Spectacles (2024) | [5.15.4](https://github.com/specs-devs/samples/releases/tag/5.15.4) |
 
@@ -43,13 +43,13 @@ git lfs install
 Clone everything:
 
 ```bash
-git clone --branch 5.24 https://github.com/specs-devs/samples.git
+git clone --branch 5.24.1 https://github.com/specs-devs/samples.git
 ```
 
 Or clone a single project with sparse checkout:
 
 ```bash
-git clone --branch 5.24 --filter=blob:none --sparse https://github.com/specs-devs/samples.git
+git clone --branch 5.24.1 --filter=blob:none --sparse https://github.com/specs-devs/samples.git
 cd samples && git sparse-checkout add "Essentials"
 ```
 

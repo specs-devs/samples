@@ -1,7 +1,7 @@
 - !<Scene/0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99>
   PackagePath: ""
   objects:
-    - !<own> f5a62c47-a867-4f95-bac2-94abf172a021
+    - !<own> 7f66311a-c5a4-4ce5-a838-8ccef0dae613
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 8e2a0eaf-e83b-4cd2-8984-5b175a40fc20
     - !<own> f4d1a1d3-c0be-404f-a08d-d8f896ea09f5
@@ -1385,6 +1385,22 @@
     - !<own> a7b78d22-214e-4bce-a0e2-a9df20997b64
   Components:
     []
+- !<ScriptComponent/56efce38-2ad6-46d9-8b6e-4058aa3118aa>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/57205c03-05e6-4b5b-8b15-67d51c3092d4>
   PrefabRemaps:
     []
@@ -2220,6 +2236,21 @@
     []
   Components:
     - !<own> d36c9bc9-109e-44cd-91ec-202ba63486c9
+- !<SceneObject/7f66311a-c5a4-4ce5-a838-8ccef0dae613>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 56efce38-2ad6-46d9-8b6e-4058aa3118aa
 - !<SceneObject/8037ca0a-3a43-45a4-b33c-468820a4d9b2>
   PrefabRemaps:
     []
@@ -2870,22 +2901,6 @@
     - !<own> 73b6a788-c944-4b70-a207-4edd302fe9c1
   Components:
     []
-- !<ScriptComponent/a73dd174-0c47-4b99-98d1-32ea1a80b901>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/a7b78d22-214e-4bce-a0e2-a9df20997b64>
   PrefabRemaps:
     []
@@ -4073,21 +4088,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/f5a62c47-a867-4f95-bac2-94abf172a021>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> a73dd174-0c47-4b99-98d1-32ea1a80b901
 - !<SceneObject/f8335f39-0d9c-4709-9c11-063ef591dad2>
   PrefabRemaps:
     []
