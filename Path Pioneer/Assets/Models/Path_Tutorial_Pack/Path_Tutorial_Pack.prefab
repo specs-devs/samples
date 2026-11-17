@@ -265,6 +265,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: FINISH
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -272,8 +273,7 @@
   SizeToFit: true
   FontSize: 48.000000
   FontSource: !<reference> 37603e51-6bf1-4c3c-901b-c9730e126f65
-  FontWeight: 900
-  Italic: false
+  PreferredStyle: Heavy
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -290,7 +290,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -824,6 +824,7 @@
   EnvMapRotation: 0.000000
   DiffuseEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
   SpecularEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  SpecularCubemapTexture: !<reference> 00000000-0000-0000-0000-000000000000
   Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
   DynamicEnvInputTexture: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1145,6 +1146,7 @@
     START
     FINISH
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1152,8 +1154,7 @@
   SizeToFit: true
   FontSize: 48.000000
   FontSource: !<reference> 37603e51-6bf1-4c3c-901b-c9730e126f65
-  FontWeight: 900
-  Italic: false
+  PreferredStyle: Heavy
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1170,7 +1171,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1803,6 +1804,7 @@
   Text: |
     START
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1810,8 +1812,7 @@
   SizeToFit: true
   FontSize: 48.000000
   FontSource: !<reference> 37603e51-6bf1-4c3c-901b-c9730e126f65
-  FontWeight: 900
-  Italic: false
+  PreferredStyle: Heavy
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1828,7 +1829,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>

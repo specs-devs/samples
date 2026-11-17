@@ -8,8 +8,8 @@ import {InteractableManipulation} from "MapComponentModified/MapManipulation"
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"
 import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {makeTween} from "MapComponentModified/Scripts/MapUtils"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {BillboardTS} from "Solvers.lspkg/Scripts/TS/BillboardTS"
 import {TetherTS} from "Solvers.lspkg/Scripts/TS/TetherTS"
 import {CustomLocationPlacesImageDisplay} from "./CustomLocationPlacesImageDisplay"
@@ -232,6 +232,10 @@ export class PanelManager extends BaseScriptComponent {
     collider.fitVisual = false
 
     const interactable = obj.createComponent(Interactable.getTypeName()) as Interactable
+    // All targeting modes (Direct, Indirect and Poke). The default (Direct/Indirect)
+    // ignores a poke, and on device the minimap is close enough to poke; while
+    // minimized the frame's close button is hidden, so this tap is the only way back.
+    interactable.targetingMode = 7
     interactable.onTriggerEnd.add(() => this.expandMap())
 
     obj.enabled = false
@@ -242,7 +246,7 @@ export class PanelManager extends BaseScriptComponent {
     return FRAME_BUTTON_SETTINGS_BY_APPEARANCE[this.frame.appearance] ?? FRAME_BUTTON_SETTINGS_BY_APPEARANCE["Large"]
   }
 
-  // Builds a round "minimize" button directly below the frame's close button
+  // Builds a "minimize" button directly below the frame's close button
   // (top-left corner), mirroring the Frame's own ButtonHandler construction.
   private createMinimizeButton(): void {
     const settings = this.frameButtonSettings
@@ -251,7 +255,7 @@ export class PanelManager extends BaseScriptComponent {
     buttonObject.layer = this.frame.frameObject.layer
 
     const button = buttonObject.createComponent(Button.getTypeName()) as Button
-    button.setVariant({theme: "SnapOS2", shape: "Round", style: "PrimaryNeutral"})
+    button.setVariant({theme: "System 3.0", shape: "Rectangle", style: "Prism"})
     button.size = new vec3(settings.buttonSize, settings.buttonSize, 1)
     button.onTriggerUp.add(() => this.minimizeMap())
     button.initialize()
@@ -285,6 +289,12 @@ export class PanelManager extends BaseScriptComponent {
     if (visible) this.positionMinimizeButton()
   }
 
+  // Undoes minimizeMap's `frame.opacity = 0`: a panel Frame's showVisual() only slides its drawer.
+  private showFrameVisual(): void {
+    this.frame.showVisual()
+    this.frame.opacity = 1
+  }
+
   private minimizeMap(): void {
     if (this.panelState !== "navigation") return
     this.panelState = "minimized"
@@ -299,7 +309,9 @@ export class PanelManager extends BaseScriptComponent {
     // Circular minimap: mask the map tiles to a circle and hide the frame
     // chrome so only the round map remains, parked at the top-right of view.
     this.mapComponent.toggleMiniMap(true)
-    this.frame.hideVisual()
+    // hideVisual() keeps a System 3.0 panel body visible when autoShowHide is off; opacity 0 hides
+    // every frame element (body, buttons, shadow) until showFrameVisual().
+    this.frame.opacity = 0
     this.tether.offset = this.minimizedTetherOffset
 
     this.transitionTo(
@@ -322,7 +334,7 @@ export class PanelManager extends BaseScriptComponent {
     if (!isNull(this.tapCatcher)) this.tapCatcher.enabled = false
 
     this.mapComponent.toggleMiniMap(false)
-    this.frame.showVisual()
+    this.showFrameVisual()
     this.tether.offset = this.navigationTetherOffset
 
     this.transitionTo(
@@ -345,7 +357,7 @@ export class PanelManager extends BaseScriptComponent {
     if (!isNull(this.tapCatcher)) this.tapCatcher.enabled = false
     if (wasMinimized) {
       this.mapComponent.toggleMiniMap(false)
-      this.frame.showVisual()
+      this.showFrameVisual()
     }
     this.tether.offset = this.navigationTetherOffset
     this.scrollView.enabled = false
@@ -372,7 +384,7 @@ export class PanelManager extends BaseScriptComponent {
     if (!isNull(this.tapCatcher)) this.tapCatcher.enabled = false
     if (wasMinimized) {
       this.mapComponent.toggleMiniMap(false)
-      this.frame.showVisual()
+      this.showFrameVisual()
     }
     this.tether.offset = this.navigationTetherOffset
     this.scrollView.enabled = true
@@ -395,7 +407,7 @@ export class PanelManager extends BaseScriptComponent {
       const offset = this.tether.offset
       frameT.setWorldPosition(new vec3(
         camPos.x + flatRight.x * offset.x + flatFwd.x * offset.z,
-        camPos.y,
+        camPos.y + offset.y,
         camPos.z + flatRight.z * offset.x + flatFwd.z * offset.z
       ))
 

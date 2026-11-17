@@ -2,7 +2,7 @@ import {
   InteractionHintController,
   HandMode,
   HandAnimationsLibrary,
-} from "Spectacles3DHandHints.lspkg/Scripts/InteractionHintController";
+} from "HandHints3D.lspkg/Scripts/InteractionHintController";
 import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import animate, {
   CancelSet,
@@ -12,7 +12,7 @@ import { TextSize, TextFont } from "./Shared/TextSizes";
 import { createText } from "./Shared/UIBuilders";
 
 const HAND_HINTS_PREFAB: ObjectPrefab = requireAsset(
-  "Spectacles3DHandHints.lspkg/Specs3DHandHints__PLACE_IN_SCENE.prefab",
+  "HandHints3D.lspkg/HandHints3D__PLACE_IN_SCENE.prefab",
 ) as ObjectPrefab;
 
 const HEADLOCK_DISTANCE = 65;

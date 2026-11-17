@@ -42,6 +42,7 @@
     targetingMode: true
     targetingVisual: true
     ignoreInteractionPlane: true
+    includeCollidersInPhysics: true
     keepHoverOnTrigger: true
     enableInstantDrag: true
     isScrollable: true
@@ -58,6 +59,7 @@
       targetingMode: !<float> 3.000000
       targetingVisual: !<float> 1.000000
       ignoreInteractionPlane: false
+      includeCollidersInPhysics: false
       keepHoverOnTrigger: false
       enableInstantDrag: false
       isScrollable: false
@@ -79,7 +81,7 @@
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: -3.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 7.000000, y: 6.000000, z: 6.000000}
+    Scale: {x: 8.000000, y: 8.000000, z: 8.000000}
     HasSegmentScaleCompensation: false
   Children:
     []

@@ -129,6 +129,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Text
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -136,8 +137,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -154,7 +154,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -255,6 +255,7 @@
     targetingMode: true
     targetingVisual: true
     ignoreInteractionPlane: true
+    includeCollidersInPhysics: true
     keepHoverOnTrigger: true
     enableInstantDrag: true
     isScrollable: true
@@ -271,6 +272,7 @@
       targetingMode: !<float> 3.000000
       targetingVisual: !<float> 1.000000
       ignoreInteractionPlane: false
+      includeCollidersInPhysics: false
       keepHoverOnTrigger: false
       enableInstantDrag: false
       isScrollable: false
@@ -310,6 +312,7 @@
     _yAxisEnabled: true
     _zAxisEnabled: true
     _axisBufferDegrees: true
+    _uprightBandEnabled: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -319,6 +322,7 @@
       _zAxisEnabled: false
       _axisBufferDegrees: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
       _axisEasing: !<Vec3> {x: 1.000000, y: 0.500000, z: 1.000000}
+      _uprightBandEnabled: false
   ScriptTypes:
     "":
       {}

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Internet Availability Pop Up component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Internet Availability Pop Up component for the AI Playground Glasses lens.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

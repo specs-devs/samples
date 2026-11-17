@@ -345,7 +345,7 @@ function showWelcome(agents, statusMessage = null) {
   out(`      ${chalk.cyan("│ │")}${chalk.blackBright("       ▀▀▀▀     ▀▀▀▀ ")}${chalk.cyan("│ │")}`);
   out(`      ${chalk.cyan("╰─┤")}                     ${chalk.cyan("├─╯")}`);
   out(`        ${chalk.cyan("╰─────────────────────╯")}`);
-  out(chalk.bold("\n       Spectacles Agent Bridge\n"));
+  out(chalk.bold("\n       Glasses Agent Bridge\n"));
   lines += 2;
 
   if (agents.length === 0) {
@@ -985,7 +985,7 @@ async function addNewAgent() {
   console.log(chalk.bold("  ┌─────────────────────────────────────┐"));
   console.log(chalk.bold(`  │  Pairing code: ${chalk.green.bold(pairing_code)}              │`));
   console.log(chalk.bold("  │                                     │"));
-  console.log(chalk.bold("  │  Enter this code on your Spectacles │"));
+  console.log(chalk.bold("  │  Enter this code on your Glasses │"));
   console.log(chalk.bold("  └─────────────────────────────────────┘"));
   console.log();
   console.log(chalk.dim("  Waiting for approval... Press 'c' to cancel.\n"));
@@ -1106,7 +1106,7 @@ async function addNewAgent() {
   let enableArtifacts = false;
   if (!isCursorCloud) {
     enableArtifacts = await confirm({
-      message: "Enable screen sharing? (Allows the AI to send screenshots to your Spectacles)",
+      message: "Enable screen sharing? (Allows the AI to send screenshots to your Glasses)",
       default: false,
     });
   }

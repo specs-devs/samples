@@ -1,5 +1,6 @@
+//@component
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines on Awake, on Start, is Entering From Top for the Essentials lens.
  */
 // Import required modules

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Gemini API component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Gemini API component for the Depth Cache Glasses lens.
  */
 import {Gemini} from "RemoteServiceGateway.lspkg/HostedExternal/Gemini"
 import {GeminiTypes} from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes"
@@ -132,7 +132,7 @@ export class GeminiAPI extends BaseScriptComponent {
           callback({
             points: [],
             lines: [],
-            aiMessage: "reponse error..."
+            aiMessage: "Gemini request failed. Check the Remote Service Gateway token and your connection, then try again."
           })
         }
       })

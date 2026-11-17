@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Event, callback for the Fetch lens.
  */
 export type callback<Arg> = (args: Arg) => void

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Instruments Data component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Instruments Data component for the AI Music Gen Glasses lens.
  */
 export class InstrumentsData {
   public instruments = [

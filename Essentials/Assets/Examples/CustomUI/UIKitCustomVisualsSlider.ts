@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * UIKitCustomVisualsSlider – applies a selectable gradient style to a UIKit Slider component.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

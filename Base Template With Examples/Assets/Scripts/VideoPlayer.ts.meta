@@ -1,0 +1,131 @@
+- !<AssetImportMetadata/04281774-994f-4f2c-ad1c-c4c2f64d3e6d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1cbd4e31-551c-414e-8246-ca6d1fd3d095
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1cbd4e31-551c-414e-8246-ca6d1fd3d095
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b104a382-dd11-42cd-bb73-072b3b6642fa
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b104a382-dd11-42cd-bb73-072b3b6642fa>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 74c2cacd-c861-4e46-b9ea-1df65d164691
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    aspectRatio: false
+    autoPlay: false
+    buttonFontSize: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    fontBold: false
+    fontLight: false
+    fontMedium: false
+    fontRegular: false
+    initialPlaybackRate: false
+    initialVolume: false
+    loopCount: false
+    panelWidth: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    seekStepSeconds: false
+    showVolumeSlider: false
+    timeLabelFontSize: false
+    videoCornerRadius: false
+    videoDuration: false
+    videoTexture: false
+    volumeLabelFontSize: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - videoTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      videoDuration: !<float> 60.000000
+      autoPlay: false
+      loopCount: !<float> 0.000000
+      seekStepSeconds: !<float> 5.000000
+      showVolumeSlider: true
+      initialVolume: !<float> 1.000000
+      initialPlaybackRate: !<float> 1.000000
+      panelWidth: !<float> 32.000000
+      aspectRatio: "16:9"
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      videoCornerRadius: 1.500000
+      timeLabelFontSize: !<float> 24.000000
+      buttonFontSize: !<float> 20.000000
+      volumeLabelFontSize: !<float> 22.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+      fontLight: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontRegular: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontMedium: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontBold: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">VideoPlayer – provider-driven video player</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No prefabs. Assign a VideoTexture. Timeline is read from the real VideoTextureProvider. API: play(), pause(), resume(), stop(), seek(t), seekRelative(dt), setVolume(v), setPlaybackRate(r), isPlaying(), getCurrentTime().</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Video"}'
+    - '// @input Asset.Texture videoTexture {"hint":"Video texture asset to display and control (must have VideoTextureProvider)"}'
+    - '// @input number videoDuration = "60.0" {"hint":"Fallback duration shown until the real clip length is read from the provider (onPlaybackReady)"}'
+    - '// @input bool autoPlay {"hint":"Start playing automatically once the provider is ready"}'
+    - '// @input number loopCount = "0" {"hint":"Times to play. 0 or negative = loop forever (mapped to VideoTextureProvider.play(-1); play(0) is rejected by the runtime)."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Controls"}'
+    - '// @input number seekStepSeconds = "5.0" {"hint":"Seconds to seek per forward / rewind button press"}'
+    - '// @input bool showVolumeSlider = true {"hint":"Show the volume slider below the transport controls"}'
+    - '// @input number initialVolume = "1.0" {"hint":"Initial volume (0 – 1)"}'
+    - '// @input number initialPlaybackRate = "1.0" {"hint":"Initial playback rate (0.5 = half speed, 2.0 = double speed). Applied at load; changing it live requires a reload."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Layout"}'
+    - '// @input number panelWidth = "32.0" {"hint":"Panel content area width in cm"}'
+    - '// @input string aspectRatio = "16:9" {"hint":"Video display aspect ratio — determines the height of the video cell", "widget":"combobox", "values":[{"label":"16:9", "value":"16:9"}, {"label":"4:3", "value":"4:3"}, {"label":"1:1", "value":"1:1"}]}'
+    - '// @input number positionX = "0" {"hint":"World X position"}'
+    - '// @input number positionY = "0" {"hint":"World Y position"}'
+    - '// @input number positionZ = "-110" {"hint":"Distance from camera in cm (negative = in front)"}'
+    - '// @input number videoCornerRadius = "1.5" {"hint":"Corner radius of the video display in cm (0 = sharp corners)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Typography"}'
+    - '// @input number timeLabelFontSize = "24" {"hint":"Font size for the current time / duration label"}'
+    - '// @input number buttonFontSize = "20" {"hint":"Font size for the transport buttons (Play, Pause, Seek back/forward)"}'
+    - '// @input number volumeLabelFontSize = "22" {"hint":"Font size for the Volume label and percentage readout"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Logging"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (play, pause, seek events)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, ready, done)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Fonts"}'
+    - '// @input Asset.Font fontLight {"hint":"Light weight (e.g. SpecsSans-Light)"}'
+    - '// @input Asset.Font fontRegular {"hint":"Regular weight (e.g. SpecsSans-Regular)"}'
+    - '// @input Asset.Font fontMedium {"hint":"Medium weight (e.g. SpecsSans-Medium)"}'
+    - '// @input Asset.Font fontBold {"hint":"Bold weight (e.g. SpecsSans-Bold)"}'
+    - '// @ui {"widget":"group_end"}'

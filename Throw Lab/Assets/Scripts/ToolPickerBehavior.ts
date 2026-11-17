@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Tool Picker Behavior component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Tool Picker Behavior component for the Throw Lab Glasses lens.
  */
 import {bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

@@ -299,6 +299,7 @@
   Text: |
     Book with colored geometric cover.
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -306,8 +307,7 @@
   SizeToFit: false
   FontSize: 55.000000
   FontSource: !<reference> 1d37f555-027b-4350-be26-ce8756e24840
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.000000
     bottom: -1.850000
@@ -324,7 +324,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>

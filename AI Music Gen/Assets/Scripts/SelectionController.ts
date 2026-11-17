@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Selection Controller for the AI Music Gen Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Selection Controller for the AI Music Gen Glasses lens experience.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
@@ -116,8 +116,8 @@ export class SelectionController extends BaseScriptComponent {
     this._activeItems.push({prompt, emoji, component: freeComponent})
     this._sortAndLayoutActiveItems()
     this._updateGenerateButtonEnabled()
-    // Auto-scroll to bottom when a new item is added
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1)
+    // Auto-scroll to the newest item at the bottom (1 = bottom in reading order)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
   }
 
   removeFromList(prompt: string, animate: boolean = true) {
@@ -137,7 +137,7 @@ export class SelectionController extends BaseScriptComponent {
     this._activeItems.splice(index, 1)
     this._sortAndLayoutActiveItems()
     this._updateGenerateButtonEnabled()
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
   }
 
   public onPromptHidden(component: PromptObject) {
@@ -155,7 +155,7 @@ export class SelectionController extends BaseScriptComponent {
     // Now compact the list and update button state
     this._sortAndLayoutActiveItems()
     this._updateGenerateButtonEnabled()
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
   }
 
   private createObjectPool() {
@@ -167,7 +167,7 @@ export class SelectionController extends BaseScriptComponent {
       this._promptObjects.push(promptObjectComponent)
       promptObjectComponent.hide(true)
     }
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
     this._updateGenerateButtonEnabled()
   }
 
@@ -186,7 +186,7 @@ export class SelectionController extends BaseScriptComponent {
     // First compute the required vertical scroll height based on active items
     const baseDims = this.scrollWindow.scrollDimensions
     const spacing = 0.5 // Tight spacing between items
-    const bottomMargin = 2 // Match layout bottom offset
+    const bottomMargin = 7 // Keeps the newest item clear of the category grid below the list
     const topMargin = 2 // Small top padding for aesthetics
     // Only count items that are not currently animating out
     const visibleActiveItems = this._activeItems.filter((it) => !this._animatingOut.has(it.component))
@@ -202,9 +202,12 @@ export class SelectionController extends BaseScriptComponent {
     // Update scroll dimensions keeping width unchanged
     this.scrollWindow.scrollDimensions = new vec2(baseDims.x, requiredHeight)
 
-    // Layout from bottom to top, newest at the bottom using updated height
+    // Layout from bottom to top, newest at the bottom using updated height. The ScrollWindow
+    // rests on the authored view and scrolls down from there: a short list sits at the window's
+    // bottom edge, a longer one hangs from its top edge so every item can be scrolled to.
     const scrollHeight = this.scrollWindow.scrollDimensions.y
-    const bottomY = -scrollHeight / 2 + bottomMargin
+    const windowHeight = this.scrollWindow.windowSize.y
+    const bottomY = Math.min(-windowHeight / 2, windowHeight / 2 - scrollHeight) + bottomMargin
     const offscreenY = scrollHeight / 2 + 1000
     let currentY = bottomY
 
@@ -248,7 +251,7 @@ export class SelectionController extends BaseScriptComponent {
     this._activeItems = []
     this._sortAndLayoutActiveItems()
     this._updateGenerateButtonEnabled()
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
   }
 
   private _updateGenerateButtonEnabled() {

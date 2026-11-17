@@ -1,10 +1,10 @@
-# Specs Agent Bridge
+# SPECS Agent Bridge
 
-A local daemon that connects AI coding agents (Claude CLI, Codex CLI, OpenClaw) to the Agent Manager Specs lens via Supabase real-time channels.
+A local daemon that connects AI coding agents (Claude CLI, Codex CLI, OpenClaw) to the Agent Manager SPECS lens via Supabase real-time channels.
 
 ## Overview
 
-The bridge runs on your Mac and acts as a coordinator between the Specs lens and local AI agent processes. When you send a message from the lens, the bridge receives it, routes it to the appropriate agent driver, and broadcasts the response back.
+The bridge runs on your Mac and acts as a coordinator between the SPECS lens and local AI agent processes. When you send a message from the lens, the bridge receives it, routes it to the appropriate agent driver, and broadcasts the response back.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ To install as a global command:
 npm link
 ```
 
-This makes `specs-agent-bridge` available system-wide. You can then run it from anywhere instead of `node sync.js`.
+This makes `glasses-agent-bridge` available system-wide. You can then run it from anywhere instead of `node sync.js`.
 
 ## Configuration
 

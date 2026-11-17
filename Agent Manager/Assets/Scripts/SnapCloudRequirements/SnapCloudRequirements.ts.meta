@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/fcce1c14-970f-4ca7-b645-7763c5d0612c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> adeea377-be4d-418c-b3ff-84a77d850d6c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> adeea377-be4d-418c-b3ff-84a77d850d6c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 41d06575-f1ad-47b2-b392-6d9b43825014
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/41d06575-f1ad-47b2-b392-6d9b43825014>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: b0cd6114-53cc-405e-87d7-087e3b81006f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    disableWarningsWhenConfigured: false
+    enableDebugLogs: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    showSetupInstructions: false
+    supabaseProject: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      disableWarningsWhenConfigured: true
+      showSetupInstructions: true
+      enableDebugLogs: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Supabase Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Centralized Supabase project settings for all Snap Cloud examples</span>"}'
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"SupabaseProject asset from Asset Browser (created via Supabase Plugin)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Warning & Debug Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure warning display and debug logging options</span>"}'
+    - '// @input Component.Text text {"hint":"Text component to display warning messages (optional)"}'
+    - '// @input bool disableWarningsWhenConfigured = true {"hint":"Disable warnings when requirements are properly set (auto-detected)"}'
+    - '// @input bool showSetupInstructions = true {"hint":"Show detailed setup instructions in console"}'
+    - '// @input bool enableDebugLogs = true {"hint":"Enable debug logging"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

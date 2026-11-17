@@ -1,16 +1,18 @@
 # Navigation Kit
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Location AR](https://img.shields.io/badge/Location%20AR-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/location-ar/custom-landmarker?) [![Outdoor Navigation](https://img.shields.io/badge/Outdoor%20Navigation-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatability-list?) [![Map Component](https://img.shields.io/badge/Map%20Component-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/location-ar/map-component?) [![Places](https://img.shields.io/badge/Places-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/remote-apis/snap-places-api?)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Location AR](https://img.shields.io/badge/Location%20AR-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/custom-locations) [![Outdoor Navigation](https://img.shields.io/badge/Outdoor%20Navigation-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Map Component](https://img.shields.io/badge/Map%20Component-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/location-ar/map-component) [![Places](https://img.shields.io/badge/Places-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/remote-apis/snap-places-api)
+<!-- /tags -->
 
 <img src="./README-ref/sample-list-navigation-kit-rounded-edges.gif" alt="Navigation Kit" width="500" />
 
 ## Overview
 
-This project demonstrates how to build guided tour experiences using the [Specs Navigation Kit (SNK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started). The example is set in London but users can build their own tours by simply replacing the places of interest.
+This project demonstrates how to build guided tour experiences using the [SPECS Navigation Kit (SNK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started). The example is set in London but users can build their own tours by simply replacing the places of interest.
 A search button can be used to populate the list with places nearby to the user.
 
 > **NOTE:**
-> This project will only work for the Specs platform.
+> This project will only work for the SPECS platform.
 
 ### Other Useful Projects
 
@@ -20,21 +22,21 @@ The [Custom Location project](https://github.com/Snapchat/Spectacles-Sample/tree
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers opportunities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers opportunities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
@@ -299,7 +301,7 @@ If you want a guided tour experience:
 
 ### 7. Test Your Lens
 
-Once complete, push the lens to your Specs device and walk through the tour.
+Once complete, push the lens to your SPECS device and walk through the tour.
 
 ---
 
@@ -311,7 +313,8 @@ If you have any questions or need assistance please don't hesitate to reach out.
 
 Feel free to provide improvements or suggestions or directly contribute via merge request. By sharing insights you help everyone else build better Lenses.
 
----*Maintained with 👽 by the SPECS Team*
+---
+
  
 
 ​
@@ -323,3 +326,9 @@ Feel free to provide improvements or suggestions or directly contribute via merg
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Gemini Assistant component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Gemini Assistant component for the AI Playground Glasses lens.
  */
 import {Gemini, GeminiLiveWebsocket} from "RemoteServiceGateway.lspkg/HostedExternal/Gemini"
 import {AudioProcessor} from "RemoteServiceGateway.lspkg/Helpers/AudioProcessor"
@@ -113,11 +113,11 @@ export class GeminiAssistant extends BaseScriptComponent {
     this.dynamicAudioOutput.initialize(24000)
     this.microphoneRecorder.setSampleRate(16000)
 
-    let internetStatus = global.deviceInfoSystem.isInternetAvailable() ? "Websocket connected" : "No internet"
+    let internetStatus = global.deviceInfoSystem.isInternetAvailable() ? "Connecting to Gemini Live…" : "No internet"
     this.updateTextEvent.invoke({text: internetStatus, completed: true})
 
     global.deviceInfoSystem.onInternetStatusChanged.add((args) => {
-      internetStatus = args.isInternetAvailable ? "Reconnected to internete" : "No internet"
+      internetStatus = args.isInternetAvailable ? "Reconnected to internet" : "No internet"
       this.updateTextEvent.invoke({text: internetStatus, completed: true})
     })
 
@@ -136,6 +136,7 @@ export class GeminiAssistant extends BaseScriptComponent {
       if (message.setupComplete) {
         message = message as GeminiTypes.Live.SetupCompleteEvent
         PlaygroundLogger.log("Gemini Live: setup complete — ready")
+        this.updateTextEvent.invoke({text: "Ready — activate the orb and start talking", completed: true})
         this.logger.info("Setup complete")
         this.setupInputs()
       }
@@ -196,11 +197,14 @@ export class GeminiAssistant extends BaseScriptComponent {
 
     this.GeminiLive.onError.add((event) => {
       PlaygroundLogger.log(`Gemini error: ${event}`)
+      this.updateTextEvent.invoke({text: "Couldn't connect to Gemini Live. Check the Remote Service Gateway token.", completed: true})
       this.logger.error("" + event)
     })
 
     this.GeminiLive.onClose.add((event) => {
       PlaygroundLogger.log(`Gemini Live: closed (${event.reason})`)
+      const reason = (event.reason || "").replace(/[\s:]+$/, "")
+      this.updateTextEvent.invoke({text: "Connection closed" + (reason ? ": " + reason : ""), completed: true})
       this.logger.info("Connection closed: " + event.reason)
     })
   }
@@ -315,7 +319,7 @@ export class GeminiAssistant extends BaseScriptComponent {
       }
     ]
 
-    const modelUri = `models/gemini-2.0-flash-live-preview-04-09`
+    const modelUri = `models/gemini-live-2.5-flash`
     const sessionSetupMessage = {
       setup: {
         model: modelUri,

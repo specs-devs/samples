@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 7370bc78-2d15-4bf6-8632-d137557b54c3
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -46,7 +47,7 @@
     -
       {}
   InputLines:
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">APIKeyHint – shows hint text when API tokens are not configured</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Checks Snap, OpenAI, and Google tokens on awake and displays an instructional message if any are missing or placeholder.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">APIKeyHint – shows hint text when API tokens are not configured</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Checks the Snap token (used by the hosted OpenAI request) on awake and displays an instructional message if it is missing or a placeholder.</span>"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
     - '// @input Component.Text text {"hint":"Text component that displays the API key setup hint"}'

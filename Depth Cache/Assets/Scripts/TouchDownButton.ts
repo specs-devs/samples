@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Touch Down Button component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Touch Down Button component for the Depth Cache Glasses lens.
  */
 import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"

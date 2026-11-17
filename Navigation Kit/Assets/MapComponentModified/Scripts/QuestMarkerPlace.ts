@@ -1,5 +1,5 @@
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 import {QuestMarker} from "./QuestMarker"
 
 /**

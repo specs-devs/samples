@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Deactivate Location Mesh On Device component for the Custom Locations Spectacles lens.
+ * SPECS Inc. 2027
+ * Deactivate Location Mesh On Device component for the Custom Locations Glasses lens.
  */
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Picture Controller for the Crop Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Picture Controller for the Crop Glasses lens experience.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"

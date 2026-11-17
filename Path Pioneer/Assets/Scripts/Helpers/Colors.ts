@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines violet, indigo, blue for the Path Pioneer lens.
  */
 export namespace Colors {

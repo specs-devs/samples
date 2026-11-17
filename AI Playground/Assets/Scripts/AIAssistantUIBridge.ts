@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * AIAssistant UIBridge component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * AIAssistant UIBridge component for the AI Playground Glasses lens.
  */
 import {GeminiAssistant} from "./GeminiAssistant"
 import {OpenAIAssistant} from "./OpenAIAssistant"

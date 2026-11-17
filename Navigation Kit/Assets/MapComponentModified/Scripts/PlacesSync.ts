@@ -1,5 +1,5 @@
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 
 /**
  * Provides common functionality between classes that wish to sync {@link Place}s

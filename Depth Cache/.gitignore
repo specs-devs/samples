@@ -17,7 +17,7 @@ Workspaces/**
 *.lock
 
 # Shipped by Lens Studio
-# Ignore Cache and Workspaces Spectacles Template .gitignore
+# Ignore Cache and Workspaces Glasses Template .gitignore
 # Ignores both cache and workspaces
 
 Cache/**
@@ -39,4 +39,6 @@ Workspaces/**
 .vscode/mcp.json
 .codex/config.toml
 .claude/settings.local.json
+ls-live-instance.json
+ls-live-instance.json.tmp
 # END Lens Studio managed Agents-Docs block

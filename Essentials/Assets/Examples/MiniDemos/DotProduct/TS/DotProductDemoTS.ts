@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Dot Product Demo TS component for the Essentials Spectacles lens.
+ * SPECS Inc. 2027
+ * Dot Product Demo TS component for the Essentials Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Racket Enabler component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Racket Enabler component for the Throw Lab Glasses lens.
  */
 import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Spatial Image Swapper component for the Spatial Image Gallery Spectacles lens.
+ * SPECS Inc. 2027
+ * Spatial Image Swapper component for the Spatial Image Gallery Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
@@ -57,10 +57,14 @@ export class SpatialImageSwapper extends BaseScriptComponent {
   public setImage(image: Texture): void {
     if (this.flatImage) {
       this.flatImage.mainMaterial.mainPass.baseTex = image
+      // Show the flat photo again while the next one spatializes (setSpatial hid it for the
+      // previous photo). The spatializer stays enabled so it keeps loading.
+      this.flatImage.sceneObject.enabled = true
 
+      // Match the spatialized image: frameHeight tall (the Image quad is 1 unit), same aspect ratio.
       const aspectRatio = image.getWidth() / image.getHeight()
-      const invertedScale = new vec3(1 / aspectRatio, 1, 1)
-      this.flatImage.sceneObject.getTransform().setLocalScale(invertedScale)
+      const height = this.spatializer.frameHeight
+      this.flatImage.sceneObject.getTransform().setLocalScale(new vec3(height * aspectRatio, height, 1))
     }
 
     if (this.spatializer.spatialImage) {

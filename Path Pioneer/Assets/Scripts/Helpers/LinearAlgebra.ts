@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines intersect Line Plane, linearlerp, flat Nor for the Path Pioneer lens.
  */
 export namespace LinearAlgebra {

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * APIKey Hint component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * APIKey Hint component for the AI Music Gen Glasses lens.
  */
 import {
   AvaliableApiTypes,

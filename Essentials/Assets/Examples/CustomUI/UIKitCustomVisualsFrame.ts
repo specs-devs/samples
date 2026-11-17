@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * UIKitCustomVisualsFrame – applies a selectable gradient style to a UIKit Frame component.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
@@ -129,14 +129,15 @@ export class UIKitCustomVisualsFrame extends BaseScriptComponent {
     bgObj.getTransform().setLocalPosition(new vec3(0, 0, 0))
 
     const rr = bgObj.createComponent(RoundedRectangle.getTypeName()) as RoundedRectangle
-    rr.cornerRadius = frame.roundedRectangle.cornerRadius
+    // System 3.0 frames have no roundedRectangle; the Frame's own getters work for both themes.
+    rr.cornerRadius = frame.cornerRadius
     rr.initialize()
     rr.size = frame.totalSize
     rr.setBackgroundGradient(this._preset.gradient)
     rr.borderColor = this._preset.border
 
     // One step above the Frame glass, below all child content
-    const frameOrder = frame.roundedRectangle.renderMeshVisual.getRenderOrder()
+    const frameOrder = frame.renderOrder
     rr.renderMeshVisual.setRenderOrder(frameOrder + 1)
 
     this.logger.debug("GradientBackground panel render order set to " + (frameOrder + 1))

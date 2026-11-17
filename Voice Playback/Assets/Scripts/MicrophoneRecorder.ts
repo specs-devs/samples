@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Microphone Recorder component for the Voice Playback Spectacles lens.
+ * SPECS Inc. 2027
+ * Microphone Recorder component for the Voice Playback Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 

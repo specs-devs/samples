@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Picture Behavior component for the Crop Spectacles lens.
+ * SPECS Inc. 2027
+ * Picture Behavior component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
@@ -104,7 +104,10 @@ export class PictureBehavior extends BaseScriptComponent {
     if (this.isEditor) {
       //place this transform in front of camera for testing
       const trans = this.getSceneObject().getTransform()
-      trans.setWorldPosition(this.camTrans.getWorldPosition().add(this.camTrans.forward.uniformScale(-60)))
+      // Slightly above eye level, so the editor capture clears the example carousel below it.
+      trans.setWorldPosition(
+        this.camTrans.getWorldPosition().add(this.camTrans.forward.uniformScale(-60)).add(this.camTrans.up.uniformScale(8))
+      )
       trans.setWorldRotation(quat.lookAt(this.camTrans.forward, vec3.up()))
       //wait for small delay and capture image
       const delayedEvent = this.createEvent("DelayedCallbackEvent")

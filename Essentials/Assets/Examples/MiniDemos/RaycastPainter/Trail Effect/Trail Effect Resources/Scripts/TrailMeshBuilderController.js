@@ -1,5 +1,6 @@
+//@component
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines initialize, set Mesh Builder, on Update for the Essentials lens.
  */
 // TrailMeshBuilderController.js

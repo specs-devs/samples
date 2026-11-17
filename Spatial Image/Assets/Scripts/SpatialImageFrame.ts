@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Spatial Image Frame component for the Spatial Image Gallery Spectacles lens.
+ * SPECS Inc. 2027
+ * Spatial Image Frame component for the Spatial Image Gallery Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindEnableEvent } from "SnapDecorators.lspkg/decorators";

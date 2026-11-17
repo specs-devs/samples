@@ -1,6 +1,6 @@
-import {UserPosition, UserPositionStatus} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {UserPosition, UserPositionStatus} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {MapController} from "../MapComponentModified/Scripts/MapController"
 
 /**

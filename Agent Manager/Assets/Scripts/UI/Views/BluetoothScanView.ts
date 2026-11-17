@@ -184,7 +184,7 @@ export class BluetoothScanView {
       ? "Scanning..."
       : this.deviceRows.length === 0
         ? "No devices found. Keyboards are HID devices, which the in-lens " +
-          "Bluetooth API can't pair — pair yours in the Specs system " +
+          "Bluetooth API can't pair — pair yours in the Glasses system " +
           "Settings instead; it will type into this Lens automatically."
         : "Select a device to pair.";
     for (const row of this.deviceRows) {

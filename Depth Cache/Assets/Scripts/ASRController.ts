@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * ASRController for the Depth Cache Spectacles lens experience.
+ * SPECS Inc. 2027
+ * ASRController for the Depth Cache Glasses lens experience.
  */
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

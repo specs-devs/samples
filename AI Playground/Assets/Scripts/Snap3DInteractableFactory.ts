@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Snap3 DInteractable Factory component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Snap3 DInteractable Factory component for the AI Playground Glasses lens.
  */
 import {Snap3D} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3D"
 import {Snap3DTypes} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3DTypes"

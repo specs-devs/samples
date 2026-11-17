@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines cm To Feet, feet To Mile, points To Dist for the Path Pioneer lens.
  */
 export namespace Conversions {

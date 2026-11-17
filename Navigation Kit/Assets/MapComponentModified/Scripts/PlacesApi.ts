@@ -1,4 +1,4 @@
-import {getPhysicalDistanceBetweenLocations} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationUtils"
+import {getPhysicalDistanceBetweenLocations} from "NavigationKit.lspkg/NavigationDataComponent/NavigationUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {IPlacesApi} from "./IPlacesApi"
 

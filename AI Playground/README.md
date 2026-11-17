@@ -1,32 +1,34 @@
 # AI Playground
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Remote Service Gateway](https://img.shields.io/badge/Remote%20Service%20Gateway-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/overview) [![Text To Speech](https://img.shields.io/badge/Text%20To%20Speech-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Speech To Text](https://img.shields.io/badge/Speech%20To%20Text-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Camera Access](https://img.shields.io/badge/Camera%20Access-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module?) [![AI Vision](https://img.shields.io/badge/AI%20Vision-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatability-list) [![LLM](https://img.shields.io/badge/LLM-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Fetch](https://img.shields.io/badge/Fetch-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Audio](https://img.shields.io/badge/Audio-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/audio/playing-audio?)
+<!-- tags -->
+[![Remote Service Gateway](https://img.shields.io/badge/Remote%20Service%20Gateway-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/overview) [![AI & LLM](https://img.shields.io/badge/AI%20%26%20LLM-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Text To Speech](https://img.shields.io/badge/Text%20To%20Speech-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Speech To Text](https://img.shields.io/badge/Speech%20To%20Text-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![AI Vision](https://img.shields.io/badge/AI%20Vision-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list)
+<!-- /tags -->
 
 <img src="./README-ref/sample-list-ai-playground-rounded-edges.gif" alt="ai-playground" width="500" />
 
 ## Overview
 
-This sample project shows how to connect to multiple AI APIs — Gemini Live, OpenAI Realtime, Gemini image generation, OpenAI DALL-E, and Snap3D — using the Remote Service Gateway package in Lens Studio. It demonstrates real-time audio and video streaming to large language models, text-to-image generation, and text-to-3D generation with interactive results in the Specs environment. See more at the [Remote Service Gateway documentation](https://developers.snap.com/spectacles/about-spectacles-features/overview).
+This sample project shows how to connect to multiple AI APIs — Gemini Live, OpenAI Realtime, Gemini image generation, OpenAI DALL-E, and Snap3D — using the Remote Service Gateway package in Lens Studio. It demonstrates real-time audio and video streaming to large language models, text-to-image generation, and text-to-3D generation with interactive results in the SPECS environment. See more at the [Remote Service Gateway documentation](https://developers.snap.com/spectacles/about-spectacles-features/overview).
 
-> **NOTE**: This project will only work for the Specs platform. You must set the simulation mode in the Lens Studio Preview panel to `Specs (2024)`. You must also provide your own Remote Service Gateway Key to use the functionality provided by this project.
+> **NOTE**: This project will only work for the SPECS platform. You must set the simulation mode in the Lens Studio Preview panel to `SPECS 27`. You must also provide your own Remote Service Gateway Key to use the functionality provided by this project.
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
@@ -42,7 +44,7 @@ To obtain the project folder, clone the repository.
 
 ## Initial Project Setup
 
-The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [Specs](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
+The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [SPECS](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
 
 To enable AI features, you must provide a Remote Service Gateway token:
 
@@ -52,6 +54,8 @@ To enable AI features, you must provide a Remote Service Gateway token:
 4. Copy and paste the token into the `RemoteServiceGatewayCredentials` object in the Inspector.
 
 <img src="./README-ref/RSGCredentialsObject.png" alt="Remote Service Gateway Credentials object" width="500" />
+
+Until the Snap, OpenAI and Google tokens are set, a red-framed **Credentials needed** panel shows before the guide and lists what is missing. Press **Continue without credentials** to dismiss it; the examples that need those tokens won't work until they are set. The panel comes from the `CredentialsWarning` object, which sits right before the `Guide` in the scene and reads `RemoteServiceGatewayCredentials`. Once every token is set, the panel no longer appears and the guide shows directly.
 
 ## Key Script
 
@@ -79,19 +83,21 @@ To enable AI features, you must provide a Remote Service Gateway token:
 
 [APIKeyHint.ts](./Assets/Scripts/APIKeyHint.ts) - Displays a hint message when any required API key has not been configured in the Remote Service Gateway Credentials component.
 
+[CredentialsWarning.ts](./Assets/Scripts/CredentialsWarning/CredentialsWarning.ts) - Shows the red **Credentials needed** panel before the guide while a required Remote Service Gateway token isn't set.
+
 ## Testing the Lens
 
 ### In Lens Studio Editor
 
-1. Open the Preview panel in Lens Studio and set the simulation mode to `Specs (2024)`.
+1. Open the Preview panel in Lens Studio and set the simulation mode to `SPECS 27`.
 2. Ensure your Remote Service Gateway token is correctly set in the `RemoteServiceGatewayCredentials` object.
 3. Select either the **Gemini Live** or **OpenAI Realtime** button in the preview to start a session.
 4. Use the on-screen orb to activate and deactivate the microphone input to the assistant.
 
-### In Specs Device
+### In SPECS Device
 
-1. Build and deploy the project to your Specs device.
-2. Follow the [Specs guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) for device testing.
+1. Build and deploy the project to your SPECS device.
+2. Follow the [SPECS guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) for device testing.
 3. Look down at your left hand and pinch the orb to activate the AI assistant.
 4. Speak a prompt — the assistant will respond with voice and text output.
 
@@ -105,9 +111,6 @@ Feel free to provide improvements or suggestions or directly contributing via me
 
 ---
 
-*Built with <3 by the Specs team*
-
----
  
 
 ​
@@ -119,3 +122,9 @@ Feel free to provide improvements or suggestions or directly contributing via me
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

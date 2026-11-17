@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Previous Next, Array Navigator for the Essentials lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

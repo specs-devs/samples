@@ -286,7 +286,7 @@ export function createVerticalScrollBar(
   thickness: number = SCROLLBAR_THICKNESS,
   registerHoverControl?: (setHovered: (hovered: boolean) => void) => void,
 ): SceneObject {
-  scrollWindow.hardStopAtEnds = false;
+  scrollWindow.edgeMode = "elastic";
 
   const root = global.scene.createSceneObject("VerticalScrollBar");
   root.setParent(parent);

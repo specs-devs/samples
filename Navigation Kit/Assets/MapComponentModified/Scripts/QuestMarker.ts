@@ -1,4 +1,4 @@
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 
 /**
  * Controls a on screen marker directing the user to a position.

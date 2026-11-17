@@ -4,16 +4,16 @@ import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scrip
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 import {CancelToken, setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 
 const TAG = "[PlacesUIComponentScroll]"
 
 const BUTTON_WIDTH = 14
 const BUTTON_HEIGHT = 5
 const BUTTON_DEPTH = 1
-const BUTTON_STYLE = "PrimaryNeutral"
+const BUTTON_STYLE = "Primary"
 const GRID_SPACING = 0.5
 const TITLE_FONT_SIZE = 36
 const SUBTITLE_FONT_SIZE = 26
@@ -149,6 +149,9 @@ export class PlacesUIComponentScroll extends BaseScriptComponent {
 
     this.flexContainer = global.scene.createSceneObject("PlacesFlex")
     this.flexContainer.setParent(this.scrollWindowObject)
+    // The ScrollWindow's initial view is its authored frame, so align the column's top with the
+    // window's top edge (a centered column would start with its first rows cut off).
+    this.flexContainer.getTransform().setLocalPosition(new vec3(0, (this.windowSize.y - contentHeight) / 2, 0))
 
     this.flexLayout = this.flexContainer.createComponent(
       FlexLayout.getTypeName()
@@ -174,7 +177,8 @@ export class PlacesUIComponentScroll extends BaseScriptComponent {
     this.flexLayout.addItems(flexItems)
 
     this.scrollWindow.initialize()
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
+    // 0 = top in the UIKit ScrollWindow normalized space.
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 0)
     print(TAG + " scrollWindow initialized, window: " + this.windowSize.x + "x" + this.windowSize.y + ", content: " + contentWidth.toFixed(1) + "x" + contentHeight.toFixed(1))
 
     this.applyZOffset()
@@ -202,7 +206,7 @@ export class PlacesUIComponentScroll extends BaseScriptComponent {
       print(TAG + " ERROR: failed to create RectangleButton component for " + (place.name ?? "unknown"))
     }
 
-    ;(button as any)._style = BUTTON_STYLE
+    ;(button as any)._styleSystem3 = BUTTON_STYLE
     button.size = new vec3(BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_DEPTH)
     button.initialize()
     button.hasShadow = true

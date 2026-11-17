@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * UI component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * UI component for the Path Pioneer Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"

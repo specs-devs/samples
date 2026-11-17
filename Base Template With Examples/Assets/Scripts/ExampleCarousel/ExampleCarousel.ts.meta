@@ -1,0 +1,76 @@
+- !<AssetImportMetadata/3b9de706-6a4a-571e-8f5d-89dc809d0ee0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> dce48632-6932-5d3f-89c7-1a63347586cf
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> dce48632-6932-5d3f-89c7-1a63347586cf
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f3920997-2d6f-552d-9b5f-11a872f006bf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f3920997-2d6f-552d-9b5f-11a872f006bf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 973495da-d2f6-5415-92cb-94d5d9763b25
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    anchorExamples: false
+    exampleInfo: false
+    examples: false
+    examplesPushBack: false
+    extraPanelDrop: false
+    nextLabel: false
+    previousLabel: false
+    startIndex: false
+    startMinimized: false
+    steps: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - examples: !<reference.SceneObject[]>
+        []
+      exampleInfo: !<string[]>
+        []
+      steps: !<reference.SceneObject[]>
+        []
+      startIndex: !<float> 0.000000
+      previousLabel: Previous
+      nextLabel: Next
+      examplesPushBack: !<float> 20.000000
+      anchorExamples: true
+      startMinimized: false
+      extraPanelDrop: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject[] examples = {} {"hint":"The examples to step through, in order. Only one is enabled at a time."}'
+    - "// @input string[] exampleInfo = {} {\"hint\":\"What each example shows, in the same order as `examples`. Empty entries fall back to the example's own guide text.\"}"
+    - '// @input SceneObject[] steps = {} {"hint":"Optional sub-examples to step through, in order (e.g. each solver). Each one is shown alone with its parents. Empty: step through `examples`."}'
+    - '// @input float startIndex {"hint":"Example shown first (0-based)"}'
+    - '// @input string previousLabel = "Previous" {"hint":"Label of the button that shows the previous example"}'
+    - '// @input string nextLabel = "Next" {"hint":"Label of the button that shows the next example"}'
+    - '// @input float examplesPushBack = 20 {"hint":"Extra distance (cm) the examples are pushed away from the user, behind the carousel"}'
+    - "// @input bool anchorExamples = true {\"hint\":\"Move the examples in front of the user's head pose. Turn off for world-anchored experiences (surface placement, navigation) that must stay where they are.\"}"
+    - '// @input bool startMinimized {"hint":"Start with the panel collapsed to its title bar (useful when it only carries guidance for a single experience)"}'
+    - '// @input float extraPanelDrop {"hint":"Extra drop (cm) of the panel below its usual spot. Increase it when the examples show their own hints at eye level (e.g. surface placement)."}'

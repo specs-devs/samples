@@ -1,10 +1,11 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Spatial Gallery, shuffle Array for the Spatial Image Gallery lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+import { bindStartEvent, bindEnableEvent, bindDisableEvent } from "SnapDecorators.lspkg/decorators";
+import { setTimeout, clearTimeout, CancelToken } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+import { SpatialImageSwapper } from "./SpatialImageSwapper";
 
 /**
  * Standalone gallery that spatializes images on demand via left/right navigation.
@@ -23,6 +24,11 @@ export class SpatialGallery extends BaseScriptComponent {
   @input("SpatialImage")
   @hint("The SpatialImage custom component used for spatialization")
   image: any
+
+  @input
+  @allowUndefined
+  @hint("Optional swapper that shows each image flat while it is being spatialized")
+  swapper: SpatialImageSwapper
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Gallery</span>')
@@ -89,9 +95,18 @@ export class SpatialGallery extends BaseScriptComponent {
     this.setIndex((this.index + 1) % this.gallery.length)
   }
 
+  // The InteractionKit setTimeout runs on a global dispatcher, not on this
+  // component, so it keeps firing while the gallery is hidden. Track it and
+  // pause the auto-advance whenever this object is disabled (e.g. another
+  // carousel example is shown); otherwise every hidden tick sends one more
+  // photo to the Spatial Image API and builds one more mesh.
+  private advanceTimer: CancelToken | null = null
+  private started: boolean = false
+
   @bindStartEvent
   private initialiseFrame(): void {
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onStart()");
+    this.started = true
 
     if (this.autoAdvance) {
       this.image.onLoaded.add((status: number) => {
@@ -104,10 +119,32 @@ export class SpatialGallery extends BaseScriptComponent {
     this.setIndex(this.index)
   }
 
+  @bindDisableEvent
+  private onDisable(): void {
+    this.cancelAdvance()
+  }
+
+  @bindEnableEvent
+  private onEnable(): void {
+    // The first enable comes before onStart, which sets the first image itself.
+    if (!this.started || !this.autoAdvance) return
+    this.scheduleAdvance()
+  }
+
+  private cancelAdvance(): void {
+    this.advancePending = false
+    if (this.advanceTimer) {
+      clearTimeout(this.advanceTimer)
+      this.advanceTimer = null
+    }
+  }
+
   private scheduleAdvance(): void {
+    this.cancelAdvance()
     this.advancePending = true
-    setTimeout(() => {
-      if (!this.advancePending) return
+    this.advanceTimer = setTimeout(() => {
+      this.advanceTimer = null
+      if (!this.advancePending || !this.getSceneObject().isEnabledInHierarchy) return
       this.advancePending = false
 
       let next = this.index + 1
@@ -129,6 +166,9 @@ export class SpatialGallery extends BaseScriptComponent {
     const aspectRatio = texture.getWidth() / texture.getHeight()
     this.image.sceneObject.getTransform().setLocalScale(new vec3(aspectRatio, 1, 1))
     this.image.setImage(texture)
+    if (this.swapper) {
+      this.swapper.setImage(texture)
+    }
   }
 }
 

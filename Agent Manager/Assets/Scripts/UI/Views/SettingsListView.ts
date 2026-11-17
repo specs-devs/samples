@@ -36,7 +36,7 @@ const SCROLL_WINDOW_HEIGHT = 15;
 
 // In-lens BLE keyboard pairing is hidden: the Lens Bluetooth API is GATT-client
 // only and does not support HID (input) devices, so the scan/pair flow cannot
-// work on current Specs OS — keyboards must be paired in system Settings.
+// work on current Glasses OS — keyboards must be paired in system Settings.
 // The BLE scripts (BLEKeyboardManager, BluetoothScanView) are kept for when
 // the platform supports it; flip this flag to restore the section.
 const SHOW_BLUETOOTH_SECTION = false;
@@ -329,7 +329,7 @@ export class SettingsListView {
 
       itemY = this.buildDescText(
         "BTDesc",
-        "Recommended: pair your keyboard in Specs system Settings — it then " +
+        "Recommended: pair your keyboard in Glasses system Settings — it then " +
           "types here automatically. In-lens Scan is experimental (the Lens " +
           "Bluetooth API does not support HID keyboards).",
         innerWidth,

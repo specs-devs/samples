@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Spatial Image Depth Animator component for the Spatial Image Gallery Spectacles lens.
+ * SPECS Inc. 2027
+ * Spatial Image Depth Animator component for the Spatial Image Gallery Glasses lens.
  */
 import {easingFunctions} from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {SpatialImageAngleValidator} from "./SpatialImageAngleValidator"

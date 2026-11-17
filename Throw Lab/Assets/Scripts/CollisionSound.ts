@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Collision Sound component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Collision Sound component for the Throw Lab Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 

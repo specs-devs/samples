@@ -302,7 +302,7 @@ export class Dashboard {
     }
 
     writeLine(`  ${chalk.cyan("╭─────────────────────────────────────╮")}`);
-    writeLine(`  ${chalk.cyan("│")}  👓  ${chalk.bold("Spectacles Agent Bridge")}        ${chalk.cyan("│")}`);
+    writeLine(`  ${chalk.cyan("│")}  👓  ${chalk.bold("Glasses Agent Bridge")}        ${chalk.cyan("│")}`);
     writeLine(`  ${chalk.cyan("╰─────────────────────────────────────╯")}`);
     writeLine("");
 

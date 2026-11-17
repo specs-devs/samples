@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * APIKey Hint component for the Agentic Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * APIKey Hint component for the Agentic Playground Glasses lens.
  */
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {

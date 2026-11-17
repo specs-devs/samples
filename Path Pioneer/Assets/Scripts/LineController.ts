@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Line Controller for the Path Pioneer Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Line Controller for the Path Pioneer Glasses lens experience.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import {LinearAlgebra} from "./Helpers/LinearAlgebra"

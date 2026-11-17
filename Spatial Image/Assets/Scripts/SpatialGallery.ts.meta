@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 17692ecd-a426-4fdd-ba52-90753238a0d0
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -35,6 +36,7 @@
     image: false
     loop: false
     shuffle: false
+    swapper: false
   ScriptTypesHidden:
     SpatialImage: false
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -45,6 +47,7 @@
     []
   DefaultScriptInputs:
     - image: !<Typename.SpatialImage> 00000000-0000-0000-0000-000000000000
+      swapper: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       gallery: !<reference.Texture[]>
         []
       shuffle: false
@@ -61,6 +64,7 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
     - '// @input SpatialImage image {"hint":"The SpatialImage custom component used for spatialization"}'
+    - '// @input AssignableType_1 swapper {"hint":"Optional swapper that shows each image flat while it is being spatialized"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Gallery</span>"}'
     - '// @input Asset.Texture[] gallery {"hint":"The ordered list of textures that make up the gallery"}'

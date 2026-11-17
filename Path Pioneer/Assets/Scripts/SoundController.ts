@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Sound Event, Sound Controller for the Path Pioneer lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

@@ -1,8 +1,8 @@
 /**
- * Specs Inc. 2026
- * Snap3 DObject component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Snap3 DObject component for the AI Music Gen Glasses lens.
  */
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {clearTimeout, setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component
@@ -105,8 +105,10 @@ export class Snap3DObject extends BaseScriptComponent {
       this.finalModel.destroy()
     }
     this.promptDisplay.text = "Error: " + error
-    setTimeout(() => {
+    const hideError = setTimeout(() => {
       this.destroy()
     }, 5000) // Hide error after 5 seconds
+    // The owning music object may close (and destroy this) first.
+    this.createEvent("OnDestroyEvent").bind(() => clearTimeout(hideError))
   }
 }

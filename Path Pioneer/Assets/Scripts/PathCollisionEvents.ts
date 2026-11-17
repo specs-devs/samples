@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Path Collision Events component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Path Collision Events component for the Path Pioneer Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import {PathWalker} from "./PathWalker"

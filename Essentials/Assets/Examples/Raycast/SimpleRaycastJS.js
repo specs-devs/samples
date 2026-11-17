@@ -1,5 +1,6 @@
+//@component
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines on Awake, on Start, update Object Movement for the Essentials lens.
  */
 // Given an object with a BodyComponent

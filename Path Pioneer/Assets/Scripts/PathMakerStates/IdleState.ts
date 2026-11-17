@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Idle State component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Idle State component for the Path Pioneer Glasses lens.
  */
 import {IPathMakerState} from "./IPathMakerState"
 

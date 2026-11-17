@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap Cloud Edge Function: transcode an MP3 in Storage to WAV, next to the original.
  *
  * Why: Lyria 3 only returns MP3 (audio/mpeg — the generateContent endpoint rejects any

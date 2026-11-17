@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Snap Saber Instantiator component for the Essentials Spectacles lens.
+ * SPECS Inc. 2027
+ * Snap Saber Instantiator component for the Essentials Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators"

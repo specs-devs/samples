@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Debug Visualizer component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Debug Visualizer component for the Depth Cache Glasses lens.
  */
 import {SceneController} from "./SceneController"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

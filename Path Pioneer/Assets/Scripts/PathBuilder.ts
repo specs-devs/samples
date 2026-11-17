@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * build From Points component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * build From Points component for the Path Pioneer Glasses lens.
  */
 export namespace PathBuilder {
   export function buildFromPoints(points: vec3[], width: number): RenderMesh {

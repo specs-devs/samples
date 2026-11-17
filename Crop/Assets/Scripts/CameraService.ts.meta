@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: f7c76ff5-50cb-48b2-bd6e-530a45f3832a
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,9 +32,9 @@
     editorCamera: false
     enableLogging: false
     enableLoggingLifecycle: false
+    glassesLeftCamera: false
+    glassesRightCamera: false
     screenCropTexture: false
-    specsLeftCamera: false
-    specsRightCamera: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -44,8 +45,8 @@
     []
   DefaultScriptInputs:
     - editorCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
-      specsLeftCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
-      specsRightCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      glassesLeftCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      glassesRightCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       deviceCamTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       enableLogging: false
@@ -58,8 +59,8 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Cameras</span>"}'
     - '// @input Component.Camera editorCamera {"hint":"Editor camera used for world-to-screen projection in preview mode"}'
-    - '// @input Component.Camera specsLeftCamera {"hint":"Left eye virtual camera mirroring the Spectacles left tracking camera"}'
-    - '// @input Component.Camera specsRightCamera {"hint":"Right eye virtual camera mirroring the Spectacles right tracking camera"}'
+    - '// @input Component.Camera glassesLeftCamera {"hint":"Left eye virtual camera mirroring the Glasses left tracking camera"}'
+    - '// @input Component.Camera glassesRightCamera {"hint":"Right eye virtual camera mirroring the Glasses right tracking camera"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Textures</span>"}'
     - '// @input Asset.Texture screenCropTexture {"hint":"Crop texture driven by the camera module output"}'

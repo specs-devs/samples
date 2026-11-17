@@ -1,4 +1,4 @@
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {MapComponent} from "./MapComponent"
 import {MapPin} from "./MapPin"
 import {PlacesSync} from "./PlacesSync"

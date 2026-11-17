@@ -92,7 +92,7 @@ const openclawDriver = {
   },
 
   async sendMessage(conversationId, message, targetSession, _workspace = null, _images = null, _model = null) {
-    const sessionKey = targetSession ?? `spectacles:${conversationId}`;
+    const sessionKey = targetSession ?? `glasses:${conversationId}`;
     const controller = new AbortController();
     activeControllers.set(conversationId, controller);
 

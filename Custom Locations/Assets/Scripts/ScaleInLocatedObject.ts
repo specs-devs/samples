@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Scale In Located Object component for the Custom Locations Spectacles lens.
+ * SPECS Inc. 2027
+ * Scale In Located Object component for the Custom Locations Glasses lens.
  */
 import { LocatedObject } from "./LocatedObject"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"

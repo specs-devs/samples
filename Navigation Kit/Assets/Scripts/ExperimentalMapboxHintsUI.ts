@@ -11,7 +11,7 @@ const BUTTON_WIDTH = 14       // grid cell width (controls layout)
 const BUTTON_INNER_W = 20     // button.size x — the inner visual width of the card
 const BUTTON_HEIGHT = 5
 const BUTTON_DEPTH = 1
-const BUTTON_STYLE = "PrimaryNeutral"
+const BUTTON_STYLE = "Primary"
 const GRID_SPACING = 0.5
 const VISIBLE_ROWS = 2
 
@@ -141,8 +141,8 @@ export class ExperimentalMapboxHintsUI extends BaseScriptComponent {
     }
 
     this.scrollWindow.initialize()
-    // Always show the current (first) step at the top
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
+    // Always show the current (first) step at the top (0 = top in normalized space)
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 0)
 
     this.applyZOffset()
 
@@ -168,7 +168,7 @@ export class ExperimentalMapboxHintsUI extends BaseScriptComponent {
     const button = btnObj.createComponent(
       RectangleButton.getTypeName()
     ) as RectangleButton
-    ;(button as any)._style = BUTTON_STYLE
+    ;(button as any)._styleSystem3 = BUTTON_STYLE
     button.size = new vec3(BUTTON_INNER_W, BUTTON_HEIGHT, BUTTON_DEPTH)
     button.initialize()
     button.hasShadow = true

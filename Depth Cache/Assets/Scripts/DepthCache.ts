@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Depth Cache, Color Camera Frame, Depth Color Pair for the Depth Cache lens.
  */
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
@@ -77,7 +77,6 @@ export class DepthCache extends BaseScriptComponent {
   // --- DEBUG: frame delivery instrumentation (remove once verified) ---
   private depthFrameCount = 0
   private camFrameCount = 0
-  private lastDepthLogTimeSec = 0
 
   onAwake() {
     this.logger = new Logger("DepthCache", this.enableLogging || this.enableLoggingLifecycle, true)
@@ -257,14 +256,7 @@ export class DepthCache extends BaseScriptComponent {
   private startDepthUpdate() {
     this.depthFrameSession = this.depthModule.createDepthFrameSession()
     this.depthFrameSession.onNewFrame.add((depthFrameData: DepthFrameData) => {
-      // DEBUG: log first depth frame + ~1 Hz thereafter (remove once verified)
       this.depthFrameCount++
-      const nowSec = getTime()
-      if (this.depthFrameCount === 1 || nowSec - this.lastDepthLogTimeSec >= 1.0) {
-        this.lastDepthLogTimeSec = nowSec
-        const res = depthFrameData.deviceCamera.resolution
-        print(`[DepthCacheDebug] depth frame #${this.depthFrameCount} res=${res.x}x${res.y}, paired=${this.latestCameraDepthPair != null}`)
-      }
       const closestFrame = this.findClosestCameraFrame(depthFrameData)
       if (closestFrame != null) {
         //Deep copy items here

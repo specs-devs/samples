@@ -1,6 +1,6 @@
 import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"
 
 const TAG = "[ExperimentalMapboxHints]"

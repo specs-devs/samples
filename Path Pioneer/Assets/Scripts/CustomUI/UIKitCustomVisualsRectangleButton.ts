@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * UIKitCustomVisualsRectangleButton – applies a selectable gradient style to a UIKit RectangleButton.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

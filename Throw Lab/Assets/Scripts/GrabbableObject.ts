@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Grabbable Object component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Grabbable Object component for the Throw Lab Glasses lens.
  */
 import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand"
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"

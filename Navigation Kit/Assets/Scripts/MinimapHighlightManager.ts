@@ -1,7 +1,7 @@
 import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
 import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
 import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {CustomLocationPlacesImageDisplay} from "./CustomLocationPlacesImageDisplay"
 
 /**

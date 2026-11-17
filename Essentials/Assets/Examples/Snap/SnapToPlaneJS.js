@@ -1,5 +1,6 @@
+//@component
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * SnapToPlane - Snaps an object to the closest point on a plane JavaScript version of the original C#
  * component
  */

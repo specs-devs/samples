@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Look At Floor Behavior component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Look At Floor Behavior component for the Path Pioneer Glasses lens.
  */
 import {LinearAlgebra} from "../Helpers/LinearAlgebra"
 import {LensInitializer} from "../LensInitializer"

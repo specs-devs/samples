@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Paint On Floor Behavior component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Paint On Floor Behavior component for the Path Pioneer Glasses lens.
  */
 export class PaintOnFloorBehavior {
   constructor(

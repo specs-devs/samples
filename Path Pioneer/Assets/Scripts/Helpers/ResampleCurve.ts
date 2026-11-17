@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * resample Curve component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * resample Curve component for the Path Pioneer Glasses lens.
  */
 export namespace ResampleCurve {
   // Computes Euclidean distance between two points (supports 2D & 3D)

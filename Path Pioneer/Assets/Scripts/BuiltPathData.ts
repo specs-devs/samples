@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Base Path Data, Looped Path Data, Sprint Path Data for the Path Pioneer lens.
  */
 export interface BasePathData {

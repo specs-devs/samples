@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Camera Service component for the Crop Spectacles lens.
+ * SPECS Inc. 2027
+ * Camera Service component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
@@ -16,12 +16,12 @@ export class CameraService extends BaseScriptComponent {
   editorCamera: Camera
 
   @input
-  @hint("Left eye virtual camera mirroring the Spectacles left tracking camera")
-  specsLeftCamera: Camera
+  @hint("Left eye virtual camera mirroring the Glasses left tracking camera")
+  glassesLeftCamera: Camera
 
   @input
-  @hint("Right eye virtual camera mirroring the Spectacles right tracking camera")
-  specsRightCamera: Camera
+  @hint("Right eye virtual camera mirroring the Glasses right tracking camera")
+  glassesRightCamera: Camera
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Textures</span>')
@@ -74,8 +74,8 @@ export class CameraService extends BaseScriptComponent {
     }
     const leftTrackingCamera = global.deviceInfoSystem.getTrackingCameraForId(camID)
     const rightTrackingCamera = global.deviceInfoSystem.getTrackingCameraForId(CameraModule.CameraId.Right_Color)
-    this.SetUpVirtualCamera(this.specsLeftCamera, leftTrackingCamera)
-    this.SetUpVirtualCamera(this.specsRightCamera, rightTrackingCamera)
+    this.SetUpVirtualCamera(this.glassesLeftCamera, leftTrackingCamera)
+    this.SetUpVirtualCamera(this.glassesRightCamera, rightTrackingCamera)
   }
 
   SetUpVirtualCamera(camComp, trackingCam) {
@@ -95,11 +95,11 @@ export class CameraService extends BaseScriptComponent {
   }
 
   WorldToTrackingLeftCameraSpace(worldPos) {
-    return this.CameraToScreenSpace(this.specsLeftCamera, worldPos)
+    return this.CameraToScreenSpace(this.glassesLeftCamera, worldPos)
   }
 
   WorldToTrackingRightCameraSpace(worldPos) {
-    return this.CameraToScreenSpace(this.specsRightCamera, worldPos)
+    return this.CameraToScreenSpace(this.glassesRightCamera, worldPos)
   }
 
   CameraToScreenSpace(camComp, worldPos) {

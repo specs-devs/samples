@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Soft Press Controller for the Essentials Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Soft Press Controller for the Essentials Glasses lens experience.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators"

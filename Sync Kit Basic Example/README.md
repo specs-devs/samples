@@ -1,19 +1,21 @@
-# Specs Sync Kit          
+# Sync Kit
 
-[![Sync Kit](https://img.shields.io/badge/Sync%20Kit-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit) [![SpectaclesInteractionKit](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit) [![UIKit](https://img.shields.io/badge/UIKit-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-ui-kit) [![Connected Lenses](https://img.shields.io/badge/Connected%20Lenses-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/connected-lenses) [![Cloud Storage](https://img.shields.io/badge/Cloud%20Storage-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/cloud-storage) [![Hand Tracking](https://img.shields.io/badge/Hand%20Tracking-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/hand-tracking)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Sync Kit](https://img.shields.io/badge/Sync%20Kit-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit) [![Connected Lenses](https://img.shields.io/badge/Connected%20Lenses-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/connected-lenses/overview) [![Networking](https://img.shields.io/badge/Networking-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/connected-lenses/overview) [![Multiplayer](https://img.shields.io/badge/Multiplayer-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview)
+<!-- /tags -->
 
-<img src="./README-ref/sample-list-spectacles-sync-kit-rounded-edges.gif" alt="Specs Sync Kit Overview" width="500" />
+<img src="./README-ref/sample-list-spectacles-sync-kit-rounded-edges.gif" alt="Sync Kit Overview" width="500" />
 
-**A Minimal Example of Specs Sync Kit Transform Synchronization**
+**A Minimal Example of Sync Kit Transform Synchronization**
 
-Experience real-time transform synchronization across Connected Lenses with this minimal example. Watch as objects move and rotate in perfect harmony across multiple Specs devices.
+Experience real-time transform synchronization across Connected Lenses with this minimal example. Watch as objects move and rotate in perfect harmony across multiple SPECS devices.
 
 > **NOTE:**
-> This project is designed for **Connected Lenses** on the **Specs platform**. You must set the simulation mode in Lens Studio Preview to `Specs (2024)` and test with multiple users for full functionality.
+> This project is designed for **Connected Lenses** on the **SPECS platform**. You must set the simulation mode in Lens Studio Preview to `SPECS 27` and test with multiple users for full functionality.
 
 ## Project Overview
 
-Specs Sync Kit Transform Example demonstrates real-time transform synchronization, showcasing how objects can be synchronized across multiple Connected Lenses users. This project focuses on **transform synchronization** - the ability to share position, rotation, and scale data across all participants in real-time.
+Sync Kit Transform Example demonstrates real-time transform synchronization, showcasing how objects can be synchronized across multiple Connected Lenses users. This project focuses on **transform synchronization** - the ability to share position, rotation, and scale data across all participants in real-time.
 
 ### Key Features
 
@@ -27,7 +29,7 @@ Specs Sync Kit Transform Example demonstrates real-time transform synchronizatio
 
 ## Understanding Sync Kit
 
-This system uses **Specs Sync Kit** for real-time multiplayer synchronization. The core concept is **transform synchronization** - when one user moves, rotates, or scales an object, those changes are instantly reflected across all other users' devices.
+This system uses **Sync Kit** for real-time multiplayer synchronization. The core concept is **transform synchronization** - when one user moves, rotates, or scales an object, those changes are instantly reflected across all other users' devices.
 
 ### Key Sync Kit Concepts
 
@@ -125,13 +127,13 @@ this.syncEntity.sendEvent('transform_update', {
 
 ### Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS**: v5.64+
-- **Target Platform**: Snap Specs (required for Connected Lenses)
-- **Testing**: Multiple Specs devices or simulation accounts
+- **SPECS OS**: v5.64+
+- **Target Platform**: Snap SPECS (required for Connected Lenses)
+- **Testing**: Multiple SPECS devices or simulation accounts
 
 ### 1. Project Setup
 
@@ -164,13 +166,13 @@ this.syncEntity.sendEvent('transform_update', {
 
 ### In Lens Studio Editor
 
-1. Set **Device Type Override** to `Specs (2024)`
+1. Set **Device Type Override** to `SPECS 27`
 2. Use **Multi-User Preview** for testing sync functionality 
 3. Test if transform changes sync across users
 
-### On Specs Devices
+### On SPECS Devices
 
-1. Deploy to multiple Specs devices with different Snapchat accounts
+1. Deploy to multiple SPECS devices with different Snapchat accounts
 2. Test the complete transform sync flow:
    - User A moves/rotates the object
    - User B sees the changes in real-time
@@ -226,7 +228,7 @@ Warning: Transform changes not propagating to other users
 
 ## Design Guidelines
 
-Specs Sync Kit Transform Example follows **minimal design principles** for AR synchronization:
+Sync Kit Transform Example follows **minimal design principles** for AR synchronization:
 
 - **Simple Interaction**: Direct touch/gesture manipulation
 - **Clear Feedback**: Visual indication of sync status
@@ -238,14 +240,14 @@ Specs Sync Kit Transform Example follows **minimal design principles** for AR sy
 
 ## Contributing
 
-We welcome contributions to improve the Specs Sync Kit Transform Example! This project demonstrates fundamental synchronization patterns that can benefit the entire Specs community.
+We welcome contributions to improve the Sync Kit Transform Example! This project demonstrates fundamental synchronization patterns that can benefit the entire SPECS community.
 
 ### Development Guidelines
 
 1. **Follow Sync Kit Patterns**: Use established transform synchronization patterns
 2. **Maintain Simplicity**: Keep the example minimal and focused
 3. **Optimize Performance**: Consider multi-user scenarios and network efficiency
-4. **Test Thoroughly**: Verify functionality across multiple Specs devices
+4. **Test Thoroughly**: Verify functionality across multiple SPECS devices
 5. **Document Patterns**: Share reusable sync and transform patterns
 
 ### Code Structure
@@ -261,7 +263,7 @@ Assets/Project/Scripts/
 
 ## External References
 
-- **[Specs Sync Kit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit)**
+- **[Sync Kit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit)**
 - **[Connected Lenses Guide](https://developers.snap.com/spectacles/spectacles-frameworks/connected-lenses)**
 - **[SpectaclesInteractionKit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit)**
 - **[Lens Studio Documentation](https://developers.snap.com/lens-studio)**
@@ -270,17 +272,16 @@ Assets/Project/Scripts/
 
 ## Support & Community
 
-Connect with the Specs developer community:
+Connect with the SPECS developer community:
 
-- **Specs Community**: [Reddit](https://www.reddit.com/r/Spectacles/)
+- **SPECS Community**: [Reddit](https://www.reddit.com/r/Spectacles/)
 - **Developer Forums**: [Snap Developer Forums](https://developers.snap.com/spectacles)
-- **Documentation**: [Specs Developer Portal](https://developers.snap.com/spectacles)
+- **Documentation**: [SPECS Developer Portal](https://developers.snap.com/spectacles)
 
-We're excited to see what you build with Connected Lenses and Specs Sync Kit!
-
----*Maintained with 👽 by the SPECS Team*  
+We're excited to see what you build with Connected Lenses and Sync Kit!
 
 ---
+
  
 
 ​
@@ -290,3 +291,9 @@ We're excited to see what you build with Connected Lenses and Specs Sync Kit!
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

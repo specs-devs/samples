@@ -1,6 +1,6 @@
 import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {easeOutElastic, makeTween} from "./MapUtils"
 
 const pinAvailableID = 0

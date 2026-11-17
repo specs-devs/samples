@@ -1,5 +1,5 @@
-import {ARNavigation} from "SpectaclesNavigationKit.lspkg/ARNavigationComponent/Scripts/ARNavigation"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {ARNavigation} from "NavigationKit.lspkg/ARNavigationComponent/Scripts/ARNavigation"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {CustomLocationPlacesImageDisplay} from "./CustomLocationPlacesImageDisplay"
 import {delayAFrame} from "./DelayAFrame"
 

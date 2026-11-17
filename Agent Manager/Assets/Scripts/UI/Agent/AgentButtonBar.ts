@@ -57,7 +57,6 @@ export class AgentButtonBar extends DirtyComponent {
     this.content = global.scene.createSceneObject("AgentBarContent");
     this.content.setParent(root);
     this.content.getTransform().setLocalPosition(vec3.zero());
-    this.content.enabled = false;
 
     const plateObj = global.scene.createSceneObject("AgentBarBackPlate");
     plateObj.setParent(this.content);
@@ -87,6 +86,8 @@ export class AgentButtonBar extends DirtyComponent {
       defaultHeight,
     );
     initializeScrollWindow(this.scrollWindow);
+    // Let ScrollWindow.onAwake build its engine before hiding the hierarchy.
+    this.content.enabled = false;
   }
 
   syncAgents(agents: Agent[], themeIndexFn: (agentId: string) => number): void {

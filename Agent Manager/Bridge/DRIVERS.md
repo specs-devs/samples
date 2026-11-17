@@ -52,7 +52,7 @@ Routes messages to a locally running OpenClaw gateway over HTTP.
 | Permissions | Not supported (no MCP integration) |
 | Retries | Health check retries up to 5× with 5s delay |
 
-**How it works:** Sends OpenAI-compatible `POST /v1/chat/completions` requests. The `user` field is set to `spectacles:<conversationId>` for session tracking on the gateway side. On setup, it auto-enables the `chatCompletions` endpoint in the OpenClaw config and restarts the gateway if needed. Supports abort via `AbortController`.
+**How it works:** Sends OpenAI-compatible `POST /v1/chat/completions` requests. The `user` field is set to `glasses:<conversationId>` for session tracking on the gateway side. On setup, it auto-enables the `chatCompletions` endpoint in the OpenClaw config and restarts the gateway if needed. Supports abort via `AbortController`.
 
 ---
 

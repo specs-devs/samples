@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Archery Projectile Manager TS handling core logic for the Essentials lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

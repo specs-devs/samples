@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Adder component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Adder component for the AI Music Gen Glasses lens.
  */
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"

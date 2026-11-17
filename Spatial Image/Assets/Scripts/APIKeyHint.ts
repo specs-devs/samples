@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * APIKey Hint component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * APIKey Hint component for the Depth Cache Glasses lens.
  */
 import {
   AvaliableApiTypes,
@@ -37,12 +37,13 @@ export class APIKeyHint extends BaseScriptComponent {
   }
 
   private static readonly HINT_MESSAGE =
-    "Set your API Token in the Remote Service Gateway Credentials component to use the examples"
+    "Set your Snap API Token in the Remote Service Gateway Credentials component to use the Spatial Image API"
 
   onAwake() {
     this.logger = new Logger("APIKeyHint", this.enableLogging || this.enableLoggingLifecycle, true)
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()")
-    const apiTypes = [AvaliableApiTypes.Snap, AvaliableApiTypes.OpenAI, AvaliableApiTypes.Google]
+    // The Spatial Image API only needs the Snap token.
+    const apiTypes = [AvaliableApiTypes.Snap]
 
     const hasInvalidApiKey = apiTypes.some((apiType) => {
       const apiKey = RemoteServiceGatewayCredentials.getApiToken(apiType)

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Grabbable Outline Feedback component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Grabbable Outline Feedback component for the Throw Lab Glasses lens.
  */
 import {GrabbableObject} from "Scripts/GrabbableObject"
 import {bindStartEvent, bindEnableEvent, bindDisableEvent} from "SnapDecorators.lspkg/decorators"

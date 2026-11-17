@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Snap To Line TS component for the Essentials Spectacles lens.
+ * SPECS Inc. 2027
+ * Snap To Line TS component for the Essentials Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"

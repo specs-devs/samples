@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Music Player component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Music Player component for the AI Music Gen Glasses lens.
  */
 import {DynamicAudioOutput} from "RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"

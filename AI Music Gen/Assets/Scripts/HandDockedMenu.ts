@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Hand Docked Menu component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Hand Docked Menu component for the AI Music Gen Glasses lens.
  */
 import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {HandInputData} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandInputData"
@@ -101,7 +101,8 @@ export class HandDockedMenu extends BaseScriptComponent {
     let menuPosition = handPosition.add(handRight.uniformScale(1.5))
 
     if (global.deviceInfoSystem.isEditor()) {
-      menuPosition = this.mCamera.getWorldPosition().add(new vec3(0, -20, -25))
+      // No hands in the editor: keep the menu low and to the right, inside the Preview's view and clear of the synth panel.
+      menuPosition = this.mCamera.getWorldPosition().add(new vec3(3, -14, -35))
     }
 
     const nPosition = vec3.lerp(curPosition, menuPosition, 0.2)

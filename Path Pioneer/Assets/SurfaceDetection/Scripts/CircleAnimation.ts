@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Circle Animation component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Circle Animation component for the Path Pioneer Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 

@@ -41,26 +41,29 @@ Packages/**/*.yaml !filter !diff !merge text eol=lf
 Assets/**/*.meta !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.meta !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 
-Assets/**/*.graphScript !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.graphScript !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.graphShader !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.graphShader !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.graphVfx !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.graphVfx !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.subgraphCommon !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.subgraphCommon !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.subgraphVfxEmit !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.subgraphVfxEmit !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.subgraphVfxOutput !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.subgraphVfxOutput !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.subgraphVfxSpawn !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.subgraphVfxSpawn !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Assets/**/*.subgraphVfxUpdate !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-Packages/**/*.subgraphVfxUpdate !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.graphScript !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.graphScript !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.graphShader !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.graphShader !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.graphVfx !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.graphVfx !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.subgraphCommon !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.subgraphCommon !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.subgraphVfxEmit !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.subgraphVfxEmit !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.subgraphVfxOutput !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.subgraphVfxOutput !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.subgraphVfxSpawn !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.subgraphVfxSpawn !filter !diff !merge text eol=lf linguist-language=yaml
+Assets/**/*.subgraphVfxUpdate !filter !diff !merge text eol=lf linguist-language=yaml
+Packages/**/*.subgraphVfxUpdate !filter !diff !merge text eol=lf linguist-language=yaml
+
 Assets/**/*.SpectaclesMobileKitModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.SpectaclesMobileKitModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.aiPack !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.aiPack !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.anchorModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Packages/**/*.anchorModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.animationAsset !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.animationAsset !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.animationCurveTrack !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
@@ -105,6 +108,8 @@ Assets/**/*.connectedLensModule !filter !diff !merge text eol=lf linguist-langua
 Packages/**/*.connectedLensModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.coreMLModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.coreMLModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.customAsset !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Packages/**/*.customAsset !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.deepLinkModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.deepLinkModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.depthModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
@@ -139,8 +144,14 @@ Assets/**/*.fontCollection !filter !diff !merge text eol=lf linguist-language=ya
 Packages/**/*.fontCollection !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.fontFamily !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.fontFamily !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.gameControllerModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Packages/**/*.gameControllerModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.handMesh !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Packages/**/*.handMesh !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.handTracking3D !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.handTracking3D !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Assets/**/*.handTrackingScope !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
+Packages/**/*.handTrackingScope !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.imagePickerTexture !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.imagePickerTexture !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.imgmarker !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge

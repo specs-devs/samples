@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * PlaygroundLogger – holistic user-action logger for the AI Playground lens.
  *
  * Drop this component on any SceneObject. It scans the scene for every SIK

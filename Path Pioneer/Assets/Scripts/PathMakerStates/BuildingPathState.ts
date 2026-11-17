@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Building Path State component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Building Path State component for the Path Pioneer Glasses lens.
  */
 import {Conversions} from "../Conversions"
 import {EasingFunctions} from "../Helpers/EasingFunctions"

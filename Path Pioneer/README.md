@@ -1,34 +1,36 @@
 # Path Pioneer
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Raycast](https://img.shields.io/badge/Raycast-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.RayCastHit.html) [![Graphics Material Particles](https://img.shields.io/badge/Graphics%20Material%20Particles-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/graphics/materials/overview)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![World & Surfaces](https://img.shields.io/badge/World%20%26%20Surfaces-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/ar-tracking/world/surface-detection) [![Materials & Shaders](https://img.shields.io/badge/Materials%20%26%20Shaders-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/graphics/materials/overview) [![Animation & Tween](https://img.shields.io/badge/Animation%20%26%20Tween-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.AnimationPlayer.html) [![Raycast](https://img.shields.io/badge/Raycast-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.RayCastHit.html)
+<!-- /tags -->
 
 <img src="./README-ref/sample-list-path-pioneer-rounded-edges.gif" alt="path-pioneer" width="500" />
 
 ## Overview
 
-Path Pioneer is a sample project demonstrating path creation and path-walking in a TypeScript codebase. Players place a start line on a detected ground surface, walk a route, place a finish line (or close the path into a loop), and then walk the recorded path with real-time pace, lap count, and progress feedback. The project showcases Specs raycasting, holographic mesh reconstruction, and the Specs Interaction Kit. Learn more about [Specs world interaction](https://developers.snap.com/spectacles/about-spectacles-features/apis/world-query).
+Path Pioneer is a sample project demonstrating path creation and path-walking in a TypeScript codebase. Players place a start line on a detected ground surface, walk a route, place a finish line (or close the path into a loop), and then walk the recorded path with real-time pace, lap count, and progress feedback. The project showcases SPECS raycasting, holographic mesh reconstruction, and the SPECS Interaction Kit. Learn more about [SPECS world interaction](https://developers.snap.com/spectacles/about-spectacles-features/apis/world-query).
 
-> **NOTE:** This project will only work for the Specs platform and Lens Studio.
+> **NOTE:** This project will only work for the SPECS platform and Lens Studio.
 
 > **IMPORTANT:** This project enables you to design and store a walkable path using holographic reconstruction technology. To ensure safety and optimal experience, we recommend choosing an outdoor area that is free from traffic and other potential obstacles. For best results, walking is preferred over running. Stay aware of your surroundings!
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
@@ -42,7 +44,7 @@ To obtain the project folder, clone the repository.
 
 ## Initial Project Setup
 
-The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [Specs](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
+The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [SPECS](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
 
 ## Key Script
 
@@ -64,10 +66,10 @@ The project should be pre-configured to get you started without any additional s
 2. Use Interactive Preview, WASD (+QE for elevation), LMB and RMB to move around the scene.
 3. Follow in-lens UI prompts to place the start line, walk a path, and place the finish line.
 
-### In Specs Device
+### In SPECS Device
 
-1. Build and deploy the project to your Specs device.
-2. Follow the [Specs guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) for device testing.
+1. Build and deploy the project to your SPECS device.
+2. Follow the [SPECS guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) for device testing.
 3. Follow in-lens UI prompts to detect the ground surface, place the start line, walk your path, and place the finish line or close a loop.
 
 ## Support
@@ -80,9 +82,6 @@ Feel free to provide improvements or suggestions or directly contributing via me
 
 ---
 
-*Built with <3 by the Specs team*
-
----
  
 
 ​
@@ -94,3 +93,9 @@ Feel free to provide improvements or suggestions or directly contributing via me
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Snap3 DInteractable component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Snap3 DInteractable component for the AI Playground Glasses lens.
  */
 import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

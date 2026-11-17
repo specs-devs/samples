@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Audio Located Object component for the Custom Locations Spectacles lens.
+ * SPECS Inc. 2027
+ * Audio Located Object component for the Custom Locations Glasses lens.
  */
 import { LocatedObject } from "./LocatedObject"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

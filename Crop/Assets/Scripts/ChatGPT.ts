@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Chat GPT component for the Crop Spectacles lens.
+ * SPECS Inc. 2027
+ * Chat GPT component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import {OpenAI} from "RemoteServiceGateway.lspkg/HostedExternal/OpenAI"
@@ -73,6 +73,8 @@ export class ChatGPT extends BaseScriptComponent {
       })
       .catch((error) => {
         this.logger.error("Error in OpenAI request: " + error)
+        // Show the failure in the caption instead of loading forever.
+        callback("Couldn't reach GPT-4o. Check your token.")
       })
   }
 }

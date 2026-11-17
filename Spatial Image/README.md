@@ -1,32 +1,34 @@
 # Spatial Image Gallery
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Spatial Image](https://img.shields.io/badge/Spatial%20Image-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/spatial-image?)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Materials & Shaders](https://img.shields.io/badge/Materials%20%26%20Shaders-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/graphics/materials/overview) [![3D Rendering & Meshes](https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/graphics/rendering-overview) [![Depth](https://img.shields.io/badge/Depth-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/ar-tracking/world/world-mesh-and-depth-texture) [![Spatial Image](https://img.shields.io/badge/Spatial%20Image-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/spatial-image)
+<!-- /tags -->
 
 <!-- Preview GIF: place sample-list-spatial-image-rounded-edges.gif in README-ref/ -->
 
 ## Overview
 
-Spatial Image Gallery demonstrates how to upload a flat photo and receive a 3D spatialized mesh using the Snap Spatial Image API. The sample showcases depth animation, angle-based depth flattening, and multi-image gallery navigation using the Specs Interaction Kit. Viewing angle is continuously monitored so the image flattens gracefully when observed from extreme perspectives. Learn more about Spatial Images in the [Snap developer docs](https://developers.snap.com/spectacles/about-spectacles-features/apis/spatial-image).
+Spatial Image Gallery demonstrates how to upload a flat photo and receive a 3D spatialized mesh using the Snap Spatial Image API. The sample showcases depth animation, angle-based depth flattening, and an auto-advancing multi-image gallery. Viewing angle is continuously monitored so the image flattens gracefully when observed from extreme perspectives. Learn more about Spatial Images in the [Snap developer docs](https://developers.snap.com/spectacles/about-spectacles-features/apis/spatial-image).
 
-> **NOTE**: This project will only work for the Specs platform.
+> **NOTE**: This project will only work for the SPECS platform.
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
@@ -40,16 +42,18 @@ To obtain the project folder, clone the repository.
 
 ## Initial Project Setup
 
-The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [Specs](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
+The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [SPECS](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
 
 > **Remote Service Gateway**
-> To access the spatialization service, a gateway credential is required. Follow the instructions [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/remoteservice-gateway) to obtain a credential and enter it in the **RemoteServiceGatewayCredentials** SceneObject.
+> To access the spatialization service, a gateway credential is required. Follow the instructions [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/remoteservice-gateway) to obtain a credential and enter it in the **RemoteServiceGatewayCredentials** SceneObject. The Spatial Image API example needs only the **Snap** token; the OpenAI and Google tokens can stay as placeholders.
+>
+> The sample ships without a token, so on Play a red-framed **Credentials needed** panel ([CredentialsWarning.ts](./Assets/Scripts/CredentialsWarning/CredentialsWarning.ts)) appears before the guide and lists what is missing. Pinch **Continue without credentials** to go on to the guide anyway (the Spatial Image API example won't spatialize until the token is set). Once the Snap token is set, the panel no longer appears and the guide shows directly.
 
 ## Key Script
 
-[SpatialGallery.ts](./Assets/Scripts/SpatialGallery.ts) - Drives gallery navigation, wires up the loading indicator, and calls `setImage` on the frame when the user pages through images.
+[SpatialGallery.ts](./Assets/Scripts/SpatialGallery.ts) - Drives the gallery: shuffles the images, calls `setImage` on the spatializer (and the flat placeholder) for each one, and advances to the next image a few seconds after it has spatialized.
 
-[SpatialImageFrame.ts](./Assets/Scripts/SpatialImageFrame.ts) - Acts as the central manager, sizing the SIK ContainerFrame to match each image's aspect ratio and coordinating the spatializer, swapper, and focal-point tracking.
+[SpatialImageFrame.ts](./Assets/Scripts/SpatialImageFrame.ts) - Acts as the central manager, setting each image and its focal point and coordinating the spatializer, swapper, and focal-point tracking.
 
 [SpatialImageSwapper.ts](./Assets/Scripts/SpatialImageSwapper.ts) - Handles the visual swap between the flat placeholder image and the returned spatialized mesh once loading completes.
 
@@ -62,16 +66,16 @@ The project should be pre-configured to get you started without any additional s
 ### In Lens Studio Editor
 
 1. Open the project in Lens Studio and ensure the **RemoteServiceGatewayCredentials** SceneObject has a valid API token.
-2. Select the **Preview** panel and set the device type to Specs.
+2. Select the **Preview** panel and set the device type to SPECS.
 3. Press **Play** — the first image in the gallery will be spatialized and the depth effect will animate in.
-4. Use the left and right pinch buttons in the scene to navigate between gallery images and observe the loading indicator while each image is being processed.
+4. If the red **Credentials needed** panel appears, set the Snap token (or pinch **Continue without credentials**). Pinch **Ok, I understood** on the guide, then use **Previous** / **Next** on the panel to switch between the four examples. In the Spatial Image API example the gallery moves to the next image by itself a few seconds after each one has spatialized; the flat photo is shown until then.
 
-### In Specs Device
+### In SPECS Device
 
-1. Push the Lens to your Specs using the Lens Studio push workflow.
+1. Push the Lens to your SPECS using the Lens Studio push workflow.
 2. Ensure your device has an active internet connection so the spatialization service can be reached.
 3. Launch the Lens and wait for the first image to spatialize — the flat placeholder will be replaced by the 3D mesh.
-4. Pinch the left or right navigation buttons to browse the gallery, and physically move your head to observe the angle-based depth flattening.
+4. Pinch **Previous** / **Next** on the panel to switch examples, let the gallery advance through its images, and physically move your head to observe the angle-based depth flattening.
 
 ## Support
 
@@ -83,9 +87,6 @@ Feel free to provide improvements or suggestions or directly contributing via me
 
 ---
 
-*Built with <3 by the Specs team*
-
----
  
 
 ​
@@ -95,3 +96,9 @@ Feel free to provide improvements or suggestions or directly contributing via me
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

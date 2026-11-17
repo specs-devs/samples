@@ -75,7 +75,7 @@ const SMART_FEATURE_ENTRIES: ToggleEntry[] = [
   {
     label: "Screen Sharing",
     description:
-      "Allow the AI agent to send screenshots and images from your computer to your Spectacles.",
+      "Allow the AI agent to send screenshots and images from your computer to your Glasses.",
     enabled: false,
   },
 ];

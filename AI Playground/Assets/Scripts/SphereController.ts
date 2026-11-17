@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Sphere Controller for the AI Playground Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Sphere Controller for the AI Playground Glasses lens experience.
  */
 import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"

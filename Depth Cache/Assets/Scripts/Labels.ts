@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Labels component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Labels component for the Depth Cache Glasses lens.
  */
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 

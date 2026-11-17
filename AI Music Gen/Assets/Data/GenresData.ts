@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Genres Data component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Genres Data component for the AI Music Gen Glasses lens.
  */
 export class GenresData {
   public genres = [

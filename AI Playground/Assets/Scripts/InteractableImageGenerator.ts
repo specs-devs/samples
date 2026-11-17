@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Interactable Image Generator component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Interactable Image Generator component for the AI Playground Glasses lens.
  */
 import {ASRQueryController} from "./ASRQueryController"
 import {ImageGenerator} from "./ImageGenerator"

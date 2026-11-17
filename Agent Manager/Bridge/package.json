@@ -1,5 +1,5 @@
 {
-  "name": "specs-agent-bridge",
+  "name": "glasses-agent-bridge",
   "type": "module",
   "private": true,
   "dependencies": {
@@ -18,7 +18,7 @@
   "description": "",
   "main": "sync.js",
   "bin": {
-    "specs-agent-bridge": "./sync.js"
+    "glasses-agent-bridge": "./sync.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

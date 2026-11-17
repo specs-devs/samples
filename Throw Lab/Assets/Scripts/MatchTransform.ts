@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Match Transform component for the Throw Lab Spectacles lens.
+ * SPECS Inc. 2027
+ * Match Transform component for the Throw Lab Glasses lens.
  */
 import {bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

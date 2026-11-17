@@ -43,7 +43,7 @@ import {
   isAgentLaunchedBroadcast,
 } from "./Api/Supabase/SupabaseTypes";
 import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import { SnapCloudRequirements } from "./SnapCloudRequirements";
+import { SnapCloudRequirements } from "./SnapCloudRequirements/SnapCloudRequirements";
 
 const EXPLOSION_PREFAB: ObjectPrefab = requireAsset(
   "../Prefabs/ExplosionShaderController.prefab",

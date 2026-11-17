@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines objects or functionality that it bound to a real life location. Designed to be used with
  * {@link LocatedAtComponent} and {@link CustomLocationGroup}.
  */

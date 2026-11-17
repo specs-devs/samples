@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Open AIAssistant component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Open AIAssistant component for the AI Playground Glasses lens.
  */
 import {OpenAI, OpenAIRealtimeWebsocket} from "RemoteServiceGateway.lspkg/HostedExternal/OpenAI"
 import {AudioProcessor} from "RemoteServiceGateway.lspkg/Helpers/AudioProcessor"
@@ -119,7 +119,7 @@ export class OpenAIAssistant extends BaseScriptComponent {
   createOpenAIRealtimeSession(): void {
     PlaygroundLogger.log("OpenAI Realtime: connecting...")
     this.websocketRequirementsObj.enabled = true
-    let internetStatus = global.deviceInfoSystem.isInternetAvailable() ? "Websocket connected" : "No internet"
+    let internetStatus = global.deviceInfoSystem.isInternetAvailable() ? "Connecting to OpenAI Realtime…" : "No internet"
 
     this.updateTextEvent.invoke({text: internetStatus, completed: true})
 
@@ -166,6 +166,9 @@ export class OpenAIAssistant extends BaseScriptComponent {
           })
         }
         completedTextDisplay = false
+      } else if (msgType === "session.updated") {
+        PlaygroundLogger.log("OpenAI Realtime: session ready")
+        this.updateTextEvent.invoke({text: "Ready — activate the orb and start talking", completed: true})
       } else if (msgType === "response.done") {
         PlaygroundLogger.log("OpenAI: response complete")
         completedTextDisplay = true
@@ -211,6 +214,7 @@ export class OpenAIAssistant extends BaseScriptComponent {
 
     this.OAIRealtime.onError.add((event) => {
       PlaygroundLogger.log(`OpenAI websocket error: ${JSON.stringify(event)}`)
+      this.updateTextEvent.invoke({text: "Couldn't connect to OpenAI Realtime. Check the Remote Service Gateway token.", completed: true})
       this.logger.error("" + event)
     })
 

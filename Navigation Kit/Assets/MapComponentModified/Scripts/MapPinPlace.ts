@@ -1,5 +1,5 @@
-import {GeoLocationPlace} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/GeoLocationPlace"
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {GeoLocationPlace} from "NavigationKit.lspkg/NavigationDataComponent/GeoLocationPlace"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 import {MapPin} from "./MapPin"
 
 /**

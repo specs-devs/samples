@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines ease Linear, ease In Quad, ease Out Quad for the Path Pioneer lens.
  */
 export namespace EasingFunctions {

@@ -1,39 +1,41 @@
 # Fetch
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Experimental API](https://img.shields.io/badge/Experimental%20API-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis?) [![Fetch](https://img.shields.io/badge/Fetch-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/fetch?) [![Web View](https://img.shields.io/badge/Web%20View-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/web-view?)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Fetch & HTTP](https://img.shields.io/badge/Fetch%20%26%20HTTP-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/fetch) [![Scripting](https://img.shields.io/badge/Scripting-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/scripting/scripting-overview) [![Experimental API](https://img.shields.io/badge/Experimental%20API-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis) [![Web View](https://img.shields.io/badge/Web%20View-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/web-view)
+<!-- /tags -->
 
 <img src="./README-ref/sample-list-fetch-rounded-edges.gif" alt="fetch" width="500" />
 
 ## Overview
 
-This is a sample project which uses the Specs [Internet Module](https://developers.snap.com/spectacles/about-spectacles-features/apis/internet-access).
+This is a sample project which uses the SPECS [Internet Module](https://developers.snap.com/spectacles/about-spectacles-features/apis/internet-access).
 
 > **NOTE**:
-> This project will only work for the Specs platform.
+> This project will only work for the SPECS platform.
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
 The camera feature requires you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
 
-Extended Permissions mode on device must be enabled for enabling some of the Specs APIs. Please see Extended Permissions for more details [here](https://developers.snap.com/spectacles/permission-privacy/extended-permissions).
+Extended Permissions mode on device must be enabled for enabling some of the SPECS APIs. Please see Extended Permissions for more details [here](https://developers.snap.com/spectacles/permission-privacy/extended-permissions).
 
 ## Getting Started
 
@@ -45,7 +47,7 @@ To obtain the project folder, clone the repository.
 
 ## Initial Project Setup
 
-The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [Specs](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
+The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [SPECS](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
 
 ## Key Script
 
@@ -55,13 +57,13 @@ The project should be pre-configured to get you started without any additional s
 
 ### In Lens Studio Editor
 
-Locate the cat in the Scene using the [Interactive Preview Panel](https://developers.snap.com/lens-studio/lens-studio-workflow/previewing-your-lens#interactive-preview). Click on the cat with the left mouse button to simulate a "Poking" gesture within Lens Studio. Repeat the action to receive a new response from the cat.
+Locate the cat in the Scene using the [Interactive Preview Panel](https://developers.snap.com/lens-studio/lens-studio-workflow/previewing-your-lens#interactive-preview). Pinch the cat by clicking it with the left mouse button, which simulates a pinch within Lens Studio. Repeat the action to receive a new response from the cat.
 
-### In Specs Device
+### In SPECS Device
 
 To install your Lens on your device, refer to the guide provided [here](https://developers.snap.com/spectacles/get-started/start-buiding/test-lens-on-spectacles).
 
-After successfully installing the Lens, locate the cat in the environment and poke it with your index finger. Repeat the action to receive a new response from the cat.
+After successfully installing the Lens, locate the cat in the environment, point at it and pinch. Repeat the action to receive a new response from the cat.
 
 ## Support
 
@@ -73,9 +75,6 @@ Feel free to provide improvements or suggestions or directly contributing via me
 
 ---
 
-*Built with <3 by the Specs team*
-
----
  
 
 ​
@@ -87,3 +86,9 @@ Feel free to provide improvements or suggestions or directly contributing via me
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

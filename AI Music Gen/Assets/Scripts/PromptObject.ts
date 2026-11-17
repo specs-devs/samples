@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Prompt Object component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Prompt Object component for the AI Music Gen Glasses lens.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {RoundButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"

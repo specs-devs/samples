@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Scene Controller for the Depth Cache Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Scene Controller for the Depth Cache Glasses lens experience.
  */
 import {DebugVisualizer} from "./DebugVisualizer"
 import {DepthCache} from "./DepthCache"
@@ -10,6 +10,13 @@ import {ResponseUI} from "./ResponseUI"
 import {SpeechUI} from "./SpeechUI"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
+
+// Editor-only: the preview delivers no depth frames, so labels cannot be
+// anchored to real geometry. These place simulated labels on a plane in front
+// of the camera so they still appear for development. Device is unaffected.
+const SIM_LABEL_DISTANCE = 150 // cm in front of the camera
+const SIM_LABEL_SPREAD_X = 120 // horizontal spread across the simulated frame
+const SIM_LABEL_SPREAD_Y = 75 // vertical spread across the simulated frame
 
 @component
 export class SceneController extends BaseScriptComponent {
@@ -71,25 +78,28 @@ export class SceneController extends BaseScriptComponent {
       this.onSpeechRecieved(text)
     })
 
-    // In the editor there are no depth frames, so the debug quad would only
-    // refresh when a request completes. Drive a continuous live preview of the
-    // latest color frame so the camera feed is always visible while developing.
-    // (Red dots are placed on top and survive these texture-only updates.)
-    if (global.deviceInfoSystem.isEditor() && this.showDebugVisuals) {
-      const previewEvent = this.createEvent("UpdateEvent")
-      previewEvent.bind(() => {
-        this.debugVisualizer.setCameraFrameTexture(this.depthCache.getLatestCamImage())
-      })
-
+    if (global.deviceInfoSystem.isEditor()) {
       // ASR/mic is unreliable in the editor (a final transcription rarely
-      // fires), so the speech -> Gemini chain never starts. Let a Preview tap
-      // fire a request with a default query to verify the Gemini -> red-dot
-      // pipeline without speech.
+      // fires), so the speech -> Gemini chain never starts on its own. Let a
+      // Preview tap fire a request with a default query so the full pipeline —
+      // Gemini, simulated world labels, and (when enabled) red dots — runs
+      // without speech. Not gated on debug visuals: the labels are the feature.
       const tapEvent = this.createEvent("TapEvent")
       tapEvent.bind(() => {
         print('[SceneController] Editor tap — firing test Gemini request ("What objects do you see?")')
         this.onSpeechRecieved("What objects do you see?")
       })
+
+      // Debug-only: the debug quad would otherwise refresh only when a request
+      // completes. Drive a continuous live preview of the latest color frame so
+      // the camera feed is always visible while developing. (Red dots are placed
+      // on top and survive these texture-only updates.)
+      if (this.showDebugVisuals) {
+        const previewEvent = this.createEvent("UpdateEvent")
+        previewEvent.bind(() => {
+          this.debugVisualizer.setCameraFrameTexture(this.depthCache.getLatestCamImage())
+        })
+      }
     }
   }
 
@@ -153,12 +163,41 @@ export class SceneController extends BaseScriptComponent {
         if (this.showDebugVisuals) {
           this.debugVisualizer.visualizeLocalPoint(pointObj.pixelPos, cameraFrame)
         }
-        const worldPosition = depthFrameID < 0 ? null : this.depthCache.getWorldPositionWithID(pointObj.pixelPos, depthFrameID)
+        let worldPosition = depthFrameID < 0 ? null : this.depthCache.getWorldPositionWithID(pointObj.pixelPos, depthFrameID)
+        // No depth (always the case in the editor preview): simulate a position
+        // in front of the camera so the labels still appear, mirroring the
+        // red-dot debug simulation. Device keeps using real depth anchoring.
+        if (worldPosition == null && global.deviceInfoSystem.isEditor()) {
+          worldPosition = this.simulateWorldPosition(pointObj.pixelPos, cameraFrame)
+        }
         if (worldPosition != null) {
           this.responseUI.loadWorldLabel(pointObj.label, worldPosition, pointObj.showArrow)
         }
       }
       this.depthCache.disposeDepthFrame(depthFrameID)
     })
+  }
+
+  /**
+   * Editor-only fallback: estimate a world position for a camera-frame pixel
+   * when no depth is available. Projects the pixel onto a plane a fixed distance
+   * in front of the camera, spreading points across a simulated frustum so the
+   * labels appear roughly where their objects are. Purely for preview.
+   */
+  private simulateWorldPosition(pixelPos: vec2, cameraFrame: Texture): vec3 {
+    const camTrans = this.speechUI.getCameraTransform()
+    if (camTrans == null) {
+      this.logger.warn("No camera transform available for simulated label placement")
+      return null
+    }
+    // Frame pixels are top-down; centre and flip Y so up is positive.
+    const centeredX = pixelPos.x / cameraFrame.getWidth() - 0.5
+    const centeredY = 0.5 - pixelPos.y / cameraFrame.getHeight()
+    const camPos = camTrans.getWorldPosition()
+    // The camera looks down its negative forward axis (see SpeechUI positioning).
+    return camPos
+      .add(camTrans.forward.uniformScale(-SIM_LABEL_DISTANCE))
+      .add(camTrans.right.uniformScale(centeredX * SIM_LABEL_SPREAD_X))
+      .add(camTrans.up.uniformScale(centeredY * SIM_LABEL_SPREAD_Y))
   }
 }

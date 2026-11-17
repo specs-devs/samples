@@ -1,6 +1,6 @@
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 
 /**
  * This script scales the {@link MapComponent} so that both the users pin and the destination pin are visible at the

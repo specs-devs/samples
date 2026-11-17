@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+
+# Lens Studio local state
+**/Cache/
+**/Workspaces/
+**/PluginsUserPreferences/
+**/Support/
+
+# Dependencies and build output
+node_modules/
+__pycache__/
+*.pyc

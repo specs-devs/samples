@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * ASRQuery Controller for the AI Music Gen Spectacles lens experience.
+ * SPECS Inc. 2027
+ * ASRQuery Controller for the AI Music Gen Glasses lens experience.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"

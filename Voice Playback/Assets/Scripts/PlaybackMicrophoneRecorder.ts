@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Playback Activate Microphone Recorder component for the Voice Playback Spectacles lens.
+ * SPECS Inc. 2027
+ * Playback Activate Microphone Recorder component for the Voice Playback Glasses lens.
  */
 import { BaseButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
 import { MicrophoneRecorder } from "./MicrophoneRecorder"

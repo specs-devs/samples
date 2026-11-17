@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * finish Smooth Path component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * finish Smooth Path component for the Path Pioneer Glasses lens.
  */
 import {CatmullRomSpline} from "./CatmullRomSpline"
 import {HermiteSpline} from "./HermiteSpline"

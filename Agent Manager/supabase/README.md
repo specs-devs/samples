@@ -4,7 +4,7 @@ Cloud backend for Agent Manager providing authentication, realtime messaging, an
 
 ## Overview
 
-Supabase acts as the relay between the Specs Lens and the local Bridge daemon. It handles:
+Supabase acts as the relay between the SPECS Lens and the local Bridge daemon. It handles:
 
 - **Auth** — Snapchat identity-based authentication via Snap Cloud
 - **Realtime Broadcast** — Per-agent channels (`bridge:<agent-id>`) for message and state relay

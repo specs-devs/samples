@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Crop Region component for the Crop Spectacles lens.
+ * SPECS Inc. 2027
+ * Crop Region component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators";

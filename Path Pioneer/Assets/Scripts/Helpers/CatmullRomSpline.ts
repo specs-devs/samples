@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines generate Spline, world To Spline Space, spline Space To World for the Path Pioneer lens.
  */
 export namespace CatmullRomSpline {

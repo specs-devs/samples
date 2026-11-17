@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Fetch Cat Facts component for the Fetch Spectacles lens.
+ * SPECS Inc. 2027
+ * Fetch Cat Facts component for the Fetch Glasses lens.
  */
 import Event from "Scripts/Events"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

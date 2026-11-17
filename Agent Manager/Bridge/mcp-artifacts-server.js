@@ -462,7 +462,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_screenshot",
         description:
-          "Capture a screenshot of the desktop and send it to the user's Spectacles glasses. " +
+          "Capture a screenshot of the desktop and send it to the user's Glasses glasses. " +
           "Use this to share visual context of the current screen state with the user.",
         inputSchema: {
           type: "object",
@@ -478,7 +478,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_image",
         description:
-          "Send an image file from the filesystem to the user's Spectacles glasses. " +
+          "Send an image file from the filesystem to the user's Glasses glasses. " +
           "Use this to share diagrams, code screenshots, or other visual artifacts with the user.",
         inputSchema: {
           type: "object",
@@ -498,7 +498,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_window",
         description:
-          "Capture a specific application window by name and send it to the user's Spectacles. " +
+          "Capture a specific application window by name and send it to the user's Glasses. " +
           "Use this when the user asks to see a specific app like Lens Studio, VS Code, Chrome, etc. " +
           "Prefer this over send_screenshot when a specific app is mentioned.",
         inputSchema: {
@@ -519,7 +519,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_terminal",
         description:
-          "Capture the terminal window and send it to the user's Spectacles. " +
+          "Capture the terminal window and send it to the user's Glasses. " +
           "Use this when the user asks to see terminal output, command results, or build logs.",
         inputSchema: {
           type: "object",
@@ -535,7 +535,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_code",
         description:
-          "Render a code snippet or diff as a syntax-highlighted image and send it to the user's Spectacles. " +
+          "Render a code snippet or diff as a syntax-highlighted image and send it to the user's Glasses. " +
           "Use this to show code changes, git diffs, or formatted code. " +
           "Prefer this over send_screenshot when showing code or diffs.",
         inputSchema: {
@@ -564,7 +564,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_file_preview",
         description:
-          "Render a source file (or a range of lines) as a syntax-highlighted image and send it to the user's Spectacles. " +
+          "Render a source file (or a range of lines) as a syntax-highlighted image and send it to the user's Glasses. " +
           "Use this when the user asks to see the current state of a file, or specific lines of a file.",
         inputSchema: {
           type: "object",
@@ -606,7 +606,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: "Screenshot sent to Spectacles." }),
+          text: JSON.stringify({ success: true, artifact: filename, message: "Screenshot sent to Glasses." }),
         }],
       };
     } catch (err) {
@@ -632,7 +632,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: "Image sent to Spectacles." }),
+          text: JSON.stringify({ success: true, artifact: filename, message: "Image sent to Glasses." }),
         }],
       };
     } catch (err) {
@@ -658,7 +658,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: `${appName} window sent to Spectacles.` }),
+          text: JSON.stringify({ success: true, artifact: filename, message: `${appName} window sent to Glasses.` }),
         }],
       };
     } catch (err) {
@@ -677,7 +677,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: "Terminal window sent to Spectacles." }),
+          text: JSON.stringify({ success: true, artifact: filename, message: "Terminal window sent to Glasses." }),
         }],
       };
     } catch (err) {
@@ -703,7 +703,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: "Code preview sent to Spectacles." }),
+          text: JSON.stringify({ success: true, artifact: filename, message: "Code preview sent to Glasses." }),
         }],
       };
     } catch (err) {
@@ -732,7 +732,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [{
           type: "text",
-          text: JSON.stringify({ success: true, artifact: filename, message: "File preview sent to Spectacles." }),
+          text: JSON.stringify({ success: true, artifact: filename, message: "File preview sent to Glasses." }),
         }],
       };
     } catch (err) {

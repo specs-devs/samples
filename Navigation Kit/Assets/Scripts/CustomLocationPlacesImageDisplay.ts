@@ -1,10 +1,10 @@
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
 import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
-import {CustomLocationPlace} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/CustomLocationPlace"
-import {NavigationDataComponent} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
-import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
+import {CustomLocationPlace} from "NavigationKit.lspkg/NavigationDataComponent/CustomLocationPlace"
+import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
+import {UserPosition} from "NavigationKit.lspkg/NavigationDataComponent/UserPosition"
 
 /**
  * This script keeps a binding between {@link CustomLocationPlace} and a {@link Texture} so that when the user is close to a

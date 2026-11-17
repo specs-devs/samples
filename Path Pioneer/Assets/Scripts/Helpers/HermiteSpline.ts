@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines interpolate Hermite, draw Curve for the Path Pioneer lens.
  */
 export namespace HermiteSpline {

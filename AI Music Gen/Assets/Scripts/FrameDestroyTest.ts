@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Frame Destroy Test component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Frame Destroy Test component for the AI Music Gen Glasses lens.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"

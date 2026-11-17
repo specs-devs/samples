@@ -19,7 +19,7 @@ response never reaches the lens.
 loads and "plays", but pushes zero samples into the audio graph (`BufferRingWriter
 write: numSamples 0`) — silence. The editor decodes MP3 fine, which is why the bug only
 shows on device. The same device plays WAV through the identical RemoteMediaModule path
-(DJ Specs ships WAV decks for this reason, and SnapCloudExamples' device-tested storage
+(DJ ships WAV decks for this reason, and SnapCloudExamples' device-tested storage
 flow uploads WAV). Lyria 3 offers no format choice — `generationConfig.audioConfig` and
 `responseMimeType: audio/wav` are both rejected with 400 — so the MP3 is transcoded to
 WAV server-side by the `transcode-to-wav` edge function.

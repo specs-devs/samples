@@ -50,7 +50,7 @@ export class AgentsEmptyView {
     createText({
       parent: this.sceneObject,
       name: "NoAgentsSubtext",
-      text: "Connect an AI agent in Settings to start managing tasks from your Spectacles.",
+      text: "Connect an AI agent in Settings to start managing tasks from your Glasses.",
       size: TextSize.M,
       color: new vec4(1, 1, 1, 0.35),
       position: new vec3(0, cursorY, Z_CONTENT),

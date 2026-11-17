@@ -1,4 +1,4 @@
-import {ARNavigation} from "SpectaclesNavigationKit.lspkg/ARNavigationComponent/Scripts/ARNavigation"
+import {ARNavigation} from "NavigationKit.lspkg/ARNavigationComponent/Scripts/ARNavigation"
 
 /**
  * For indoor experiences, the {@link ARNavigation} component may be confusing before localising against the

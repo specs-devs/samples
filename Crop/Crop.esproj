@@ -1,12 +1,12 @@
 studioVersion:
   major: 5
-  minor: 22
+  minor: 24
   patch: 0
-  build: 26060505
+  build: 26090816
   type: Public
-coreVersion: 364
-clientVersion: 13.94
-updateCheckpoint: 101
+coreVersion: 377
+clientVersion: 14.21
+updateCheckpoint: 107
 sceneId: 0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99
 metaInfo:
   hints:
@@ -15,6 +15,7 @@ metaInfo:
     []
   lensName: Crop
   lensDescriptors:
+    - AI_MUTATED
     - EXPERIMENTAL_API
   lensApplicableContext:
     - live_camera
@@ -28,6 +29,7 @@ metaInfo:
   platformBundlesEnabled: false
   iconHash: ""
   videoPreviewHash: ""
+  localizationsHash: ""
   fromTemplateName: Default
   fromTemplateUrl: Lens Studio 5.4.0.24110404
   activationCamera: Front

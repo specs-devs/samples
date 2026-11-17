@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Activate When In Camera View component for the Custom Locations Spectacles lens.
+ * SPECS Inc. 2027
+ * Activate When In Camera View component for the Custom Locations Glasses lens.
  */
 import { LocatedObject } from "./LocatedObject"
 import { bindUpdateEvent, depends } from "SnapDecorators.lspkg/decorators"

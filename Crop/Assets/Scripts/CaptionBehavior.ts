@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Caption Behavior component for the Crop Spectacles lens.
+ * SPECS Inc. 2027
+ * Caption Behavior component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"

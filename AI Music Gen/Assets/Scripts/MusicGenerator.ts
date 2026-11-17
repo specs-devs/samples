@@ -1,13 +1,13 @@
 /**
- * Specs Inc. 2026
- * Music Generator component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Music Generator component for the AI Music Gen Glasses lens.
  */
 import {GoogleGenAI} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAI"
 import {GoogleGenAITypes} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAITypes"
 import {Lyria} from "RemoteServiceGateway.lspkg/HostedExternal/Lyria"
 import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {MusicObject} from "./MusicObject"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "./SnapCloudRequirements/SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component
@@ -388,7 +388,14 @@ export class MusicGenerator extends BaseScriptComponent {
       }
     }
 
-    const response = await GoogleGenAI.Gemini.models(geminiRequest)
+    let response: GoogleGenAITypes.Gemini.Models.GenerateContentResponse
+    try {
+      response = await GoogleGenAI.Gemini.models(geminiRequest)
+    } catch (error) {
+      // Keep going with the plain selection so the music object still shows the outcome.
+      this.logger.error("Prompt generation failed, using the selection as the prompt: " + error)
+      return {prompt: genres.join(", "), displayTitle: genres.slice(0, 4).join(" ")}
+    }
     const text =
       response?.candidates?.[0]?.content?.parts
         ?.map((p) => p.text)

@@ -93,6 +93,7 @@
   Enabled: true
   ScriptAsset: !<reference> 17bdada1-b595-43e5-bd69-17807688d877
   ScriptInputsDefault:
+    swapper: true
     advanceDelay: true
     loop: true
     enableLogging: true
@@ -102,6 +103,7 @@
   ScriptInputs:
     "":
       image: !<Typename.SpatialImage> 51981096-5be8-4797-79ff-502ff1f8b0f7
+      swapper: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       gallery: !<reference.Texture[]>
         - !<reference> df6ddcc3-9e14-4fe4-8190-b7e727e47582
         - !<reference> 887fbdcd-a66e-425c-bf84-0ed6b49c8a16

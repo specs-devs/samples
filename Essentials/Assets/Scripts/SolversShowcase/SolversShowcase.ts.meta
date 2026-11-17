@@ -1,0 +1,49 @@
+- !<AssetImportMetadata/251b9a58-4861-4a22-b87c-71bcac623054>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fa8b22d3-0491-46ce-a524-8e9bc343084b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fa8b22d3-0491-46ce-a524-8e9bc343084b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2b3d0291-d9e1-45c1-bf91-2d6e1db36323
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2b3d0291-d9e1-45c1-bf91-2d6e1db36323>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: dd1eeaad-8816-4b1a-8e3d-1bbbc6a26cd5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoPlay: false
+    interval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - interval: !<float> 0.000000
+      autoPlay: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float interval {"hint":"Seconds each solver example is shown"}'
+    - '// @input bool autoPlay = true {"hint":"Cycle through the examples automatically. Off: follow whichever example is enabled (e.g. by a carousel)."}'

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Loading component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Loading component for the Depth Cache Glasses lens.
  */
 import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Image Generator component for the AI Playground Spectacles lens.
+ * SPECS Inc. 2027
+ * Image Generator component for the AI Playground Glasses lens.
  */
 import {Gemini} from "RemoteServiceGateway.lspkg/HostedExternal/Gemini"
 import {GeminiTypes} from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes"
@@ -112,7 +112,14 @@ export class ImageGenerator {
                 this.rmm.loadResourceAsImageTexture(
                   resource,
                   (texture) => {
-                    resolve(texture)
+                    // loadResourceAsImageTexture only downloads the texture — its provider is
+                    // still unloaded, and would be loaded synchronously mid-render the first
+                    // time the texture is drawn. ensureLoaded() moves that work off the render
+                    // path. Requires Lens Scripting 370+ (this project is on 372).
+                    texture.control
+                      .ensureLoaded()
+                      .then(() => resolve(texture))
+                      .catch(() => reject("Failure to load texture from URL"))
                   },
                   () => {
                     reject("Failure to download texture from URL")
@@ -124,7 +131,13 @@ export class ImageGenerator {
               Base64.decodeTextureAsync(
                 b64,
                 (texture) => {
-                  resolve(texture)
+                  // Same as the URL branch above: decoding produces the Texture but leaves its
+                  // provider unloaded until first draw. This is the branch gpt-image-2 actually
+                  // takes, since it always returns b64_json.
+                  texture.control
+                    .ensureLoaded()
+                    .then(() => resolve(texture))
+                    .catch(() => reject("Failure to load texture from base64"))
                 },
                 () => {
                   reject("Failure to download texture from base64")

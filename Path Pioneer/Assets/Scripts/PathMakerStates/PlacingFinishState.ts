@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Placing Finish State component for the Path Pioneer Spectacles lens.
+ * SPECS Inc. 2027
+ * Placing Finish State component for the Path Pioneer Glasses lens.
  */
 import {SurfaceDetection} from "../../SurfaceDetection/Scripts/SurfaceDetection"
 import {FinishSmoothPath} from "../Helpers/FinishSmoothPath"

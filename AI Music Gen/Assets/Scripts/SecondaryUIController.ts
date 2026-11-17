@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Secondary UIController for the AI Music Gen Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Secondary UIController for the AI Music Gen Glasses lens experience.
  */
 import {GenresData} from "Data/GenresData"
 import {InstrumentsData} from "Data/InstrumentsData"
@@ -15,6 +15,11 @@ import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MathUtils} from "Utilities.lspkg/Scripts/Utils/MathUtils"
 import {Adder} from "./Adder"
 import {SelectionController} from "./SelectionController"
+
+// Where the summoned panel lands (cm): level in front of the user and low like a desk,
+// below the guidance bar that sits just under eye level.
+const SUMMON_DISTANCE = 100
+const SUMMON_DROP = 48
 
 @component
 export class SecondaryUIController extends BaseScriptComponent {
@@ -109,7 +114,11 @@ export class SecondaryUIController extends BaseScriptComponent {
       // guard onTriggerUp so the lens does not crash (see note below).
       ;(button as any).onTriggerUp?.add((event) => {
         this.logger.debug(button.getSceneObject().name)
-        const title = button.getSceneObject().getChild(0).getComponent("Text").text
+        // UIKit adds its own children (e.g. the Collider) to the button, so look the label up by name.
+        const title = button
+          .getSceneObject()
+          .children.find((child) => child.name === "Label")
+          .getComponent("Text").text
         this.openDetailsPage(title)
       })
     })
@@ -132,7 +141,13 @@ export class SecondaryUIController extends BaseScriptComponent {
           hintTr.setLocalScale(baseScale.uniformScale(Math.max(0, k)))
         }
       })
-      const posInFrontOfUser = WorldCameraFinderProvider.getInstance().getForwardPosition(100)
+      const camera = WorldCameraFinderProvider.getInstance()
+      const back = camera.back()
+      const levelForward = new vec3(back.x, 0, back.z).normalize()
+      const posInFrontOfUser = camera
+        .getWorldPosition()
+        .add(levelForward.uniformScale(SUMMON_DISTANCE))
+        .add(vec3.down().uniformScale(SUMMON_DROP))
       const parentTransform = this._parentObj.getTransform()
       const currPosition = parentTransform.getWorldPosition()
       const distance = posInFrontOfUser.distance(currPosition)
@@ -209,11 +224,9 @@ export class SecondaryUIController extends BaseScriptComponent {
   }
 
   openDetailsPage(title: string) {
-    this._scrollWindow.scrollPositionNormalized = new vec2(-1, 0)
     //this._mainPage.enabled = false;
     this._detailsPage.enabled = true
     this.selectScrollCategory(title)
-    //this._scrollWindow.scrollPositionNormalized = new vec2(-1, 0);
   }
 
   selectScrollCategory(category: string) {
@@ -231,14 +244,17 @@ export class SecondaryUIController extends BaseScriptComponent {
       this._scrollWindow.scrollDimensions = this._instrumentsScrollDimensions
       this._updateAdders(this._instrumentsData, this._instrumentsEmojis, Math.ceil(this._instrumentsData.length / 2))
     }
+    // Start each list at its first item (the scroller's rest position).
+    this._scrollWindow.scrollPositionNormalized = new vec2(0, 0)
   }
 
   private _updateAdders(data: string[], emojis: string[], itemsPerRow: number) {
     // First disable all adders
     this._adders.forEach((adder) => (adder.enabled = false))
 
-    // Get width for this category
-    const width = Math.max(this._scrollWindow.scrollDimensions.x, itemsPerRow * this._itemSpacing + this._initialOffset)
+    // The ScrollWindow rests on the authored view and scrolls right from there,
+    // so the first column starts at the window's left edge.
+    const left = -this._scrollWindow.windowSize.x / 2
 
     // Update and position only the adders we need for this category
     for (let i = 0; i < data.length; i++) {
@@ -253,7 +269,7 @@ export class SecondaryUIController extends BaseScriptComponent {
       adder
         .getTransform()
         .setLocalPosition(
-          new vec3(col * this._itemSpacing - width / 2 + this._initialOffset, -1 - row * this._rowSpacing, 0)
+          new vec3(left + col * this._itemSpacing + this._initialOffset, -1 - row * this._rowSpacing, 0)
         )
 
       const adderComponent = adder.getComponent(Adder.getTypeName())

@@ -1,0 +1,46 @@
+- !<AssetImportMetadata/3bfb5236-39b1-4a40-bf1f-4b1da4047bca>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c273f148-40f1-4958-b4cb-c7f1736df823
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c273f148-40f1-4958-b4cb-c7f1736df823
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1ec5fff8-9665-4ebe-88d5-3ff1ef78eba5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1ec5fff8-9665-4ebe-88d5-3ff1ef78eba5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 10ca15da-81b0-4bf5-ace3-101c7b3d2a37
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    extraDrop: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - extraDrop: !<float> 35.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input float extraDrop = 35 {\"hint\":\"How much lower (cm) than the carousel's default place it appears\"}"

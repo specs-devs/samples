@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap Saber Global Manager handling core logic for the Essentials lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Music Object component for the AI Music Gen Spectacles lens.
+ * SPECS Inc. 2027
+ * Music Object component for the AI Music Gen Glasses lens.
  */
 import {GoogleGenAI} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAI"
 import {GoogleGenAITypes} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAITypes"

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Cat Fact Animator component for the Fetch Spectacles lens.
+ * SPECS Inc. 2027
+ * Cat Fact Animator component for the Fetch Glasses lens.
  */
 import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"

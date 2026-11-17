@@ -1,41 +1,43 @@
 # Essentials
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Physics](https://img.shields.io/badge/Physics-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/physics/physics-overview?) [![Gesture Module](https://img.shields.io/badge/Gesture%20Module-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module?) [![Animation](https://img.shields.io/badge/Animation-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/modules/Packages_LSTween_LSTween.html?) [![Raycast](https://img.shields.io/badge/Raycast-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.RayCastHit.html)
+<!-- tags -->
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Gesture & Hands](https://img.shields.io/badge/Gesture%20%26%20Hands-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module) [![Animation & Tween](https://img.shields.io/badge/Animation%20%26%20Tween-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.AnimationPlayer.html) [![Physics](https://img.shields.io/badge/Physics-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/physics/physics-overview) [![Raycast](https://img.shields.io/badge/Raycast-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.RayCastHit.html)
+<!-- /tags -->
 
 <img src="./README-ref/sample-list-essentials-rounded-edges.gif" alt="essentials" width="500" />
 
 ## Overview 
 
-This project is a comprehensive collection of foundational concepts and examples for creating lenses in Lens Studio and deploying them on Specs using Typescript and Javascript. **We strongly recommend the use of Typescript** as it is easier to debug and more in line with existing game engines patterns. 
+This project is a comprehensive collection of foundational concepts and examples for creating lenses in Lens Studio and deploying them on SPECS using Typescript and Javascript. **We strongly recommend the use of Typescript** as it is easier to debug and more in line with existing game engines patterns. 
 Each folder contains specific examples and demonstrations that showcase various aspects of lens development and AR interaction.
 
 > **NOTE**:
-> This project will only work for the Specs platform.
+> This project will only work for the SPECS platform.
 > This projects include a comprehensive collection of foundational concepts and examples for creating lenses! Take advantage of this project providing it as LLM Context for your personal projects! 
 
 ## Design Guidelines
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
+Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
 Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 
-- **Lens Studio**: v5.15.4+
+- **Lens Studio**: v5.24+
 
-**Note:** Ensure Lens Studio is [compatible with Specs](https://ar.snap.com/download) for your Specs device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
 
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- **SPECS OS Version**: v7.0+
+- **SPECS App iOS**: v1.7+
+- **SPECS App Android**: v1.7+
 
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
 
 You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
 
 The camera feature requires you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
 
-Extended Permissions mode on device must be enabled for enabling some of the Specs APIs. Please see Extended Permissions for more details [here](https://developers.snap.com/spectacles/permission-privacy/extended-permissions).
+Extended Permissions mode on device must be enabled for enabling some of the SPECS APIs. Please see Extended Permissions for more details [here](https://developers.snap.com/spectacles/permission-privacy/extended-permissions).
 
 ## Getting Started
 
@@ -47,7 +49,7 @@ To obtain the project folder, clone the repository.
 
 ## Initial Project Setup
 
-The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [Specs](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
+The project should be pre-configured to get you started without any additional steps. However, if you encounter issues in the Logger Panel, please ensure your Lens Studio environment is set up for [SPECS](https://developers.snap.com/spectacles/get-started/start-buiding/preview-panel).
 
 ## Table of Contents
 - [Project Structure](#project-structure)
@@ -292,7 +294,7 @@ To explore these examples:
 - These examples demonstrate foundational concepts that can be combined and built upon for more complex lenses
 - Each example is designed to focus on a specific concept for clarity
 - The code follows best practices for Lens Studio development
-- The SpectaclesInteractionKit provides reusable components for common interaction patterns on Specs
+- The SpectaclesInteractionKit provides reusable components for common interaction patterns on SPECS
 - Many demos showcase cross-language compatibility between TypeScript and JavaScript
 
 ## Materials and Resources
@@ -410,7 +412,7 @@ private handlePinchDown() {
 
 Check out all of the single SceneObjects 1 by 1 and get what you need.  
 
-### In Specs Device
+### In SPECS Device
 
 To install your Lens on your device, refer to the guide provided [here](https://developers.snap.com/spectacles/get-started/start-buiding/test-lens-on-spectacles).
 
@@ -422,9 +424,8 @@ If you have any questions or need assistance, please don't hesitate to reach out
 
 Feel free to provide improvements or suggestions or directly contributing via merge request. By sharing insights, you help everyone else build better Lenses.
 
----*Maintained with 👽 by the SPECS Team*  
-
 ---
+
  
 
 ​
@@ -438,3 +439,9 @@ Feel free to provide improvements or suggestions or directly contributing via me
 ​
 
 ​
+
+​
+
+---
+
+*Built with 👽 by the SPECS team*

@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Speech UI component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Speech UI component for the Depth Cache Glasses lens.
  */
 import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
@@ -9,7 +9,8 @@ import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 
 const UI_CAM_DISTANCE = 50
-const UI_CAM_HEIGHT = -9
+// Above the ExampleCarousel panel, which sits just below eye level and draws on top of everything.
+const UI_CAM_HEIGHT = 4
 
 @component
 export class SpeechUI extends BaseScriptComponent {
@@ -85,6 +86,14 @@ export class SpeechUI extends BaseScriptComponent {
     })
   }
 
+  /**
+   * Camera transform this UI follows. Exposed so the editor preview can place
+   * simulated world labels in front of the camera when no depth is available.
+   */
+  getCameraTransform(): Transform {
+    return this.mainCamTrans
+  }
+
   @bindStartEvent
   private onStart() {
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onStart()")
@@ -115,7 +124,7 @@ export class SpeechUI extends BaseScriptComponent {
       if (error === "NoInternet") {
         this.speechText.text = "No internet connection on the device — speech recognition needs to be online."
       } else if (error === "Unauthenticated") {
-        this.speechText.text = "Device not authenticated — check the Specs is logged in and paired."
+        this.speechText.text = "Device not authenticated — check the Glasses is logged in and paired."
       } else {
         this.speechText.text = "Speech recognition error (" + error + ") — tap the mic to try again."
       }

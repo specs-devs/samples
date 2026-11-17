@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Target Counter TS component for the Essentials Spectacles lens.
+ * SPECS Inc. 2027
+ * Target Counter TS component for the Essentials Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"

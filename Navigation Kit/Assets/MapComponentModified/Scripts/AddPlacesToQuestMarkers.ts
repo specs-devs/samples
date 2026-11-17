@@ -1,4 +1,4 @@
-import {Place} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/Place"
+import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {PlacesSync} from "./PlacesSync"
 import {QuestMarkerController} from "./QuestMarkerController"
 import {QuestMarkerPlace} from "./QuestMarkerPlace"
