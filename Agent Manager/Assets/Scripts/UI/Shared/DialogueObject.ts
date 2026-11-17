@@ -1,18 +1,14 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { CancelSet } from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { TextSize, TextFont } from "./TextSizes";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { createImage } from "./ImageFactory";
-import { ICON_Z_OFFSET, CLOSE_TEXTURE, TITLE_HEIGHT, PANEL_PADDING as PADDING, Z_CONTENT } from "./UIConstants";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { CancelSet } from "./MotionAnimate";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { TITLE_HEIGHT, PANEL_PADDING as PADDING, Z_CONTENT } from "./UIConstants";
 import { scaleIn, scaleOut } from "./UIAnimations";
 import {
   createIconButton,
-  createTooltip,
   createAudioComponent,
   createText,
 } from "./UIBuilders";
+import { TextStyle, TextColor } from "./UIStyle";
 
 const CONFIRM_DIALOG_SFX: AudioTrackAsset = requireAsset(
   "../../../Audio/confirmDialog.wav",
@@ -21,7 +17,6 @@ const CONFIRM_DIALOG_SFX: AudioTrackAsset = requireAsset(
 const DIALOGUE_WIDTH = 28;
 const OPTION_BTN_HEIGHT = 4;
 const OPTION_GAP = 1.2;
-const CLOSE_BTN_SIZE = 2.8;
 const CONFIRM_BTN_WIDTH = 10;
 const CONFIRM_BTN_GAP = 2.5;
 const ANIM_DURATION = 0.3;
@@ -30,11 +25,13 @@ const ANIM_DURATION = 0.3;
 export class DialogueObject extends BaseScriptComponent {
   private backPlate: BackPlate;
   private titleText: Text;
-  private closeBtn: RoundButton;
-  private closeTooltip: Tooltip;
   private contentContainer: SceneObject;
   private contentObjects: SceneObject[] = [];
   private animCancels = new CancelSet();
+  // Set from the first button press until the next show; buttons stay live
+  // during the close animation, so this stops a double pinch from firing
+  // Confirm (or Cancel then Confirm) twice.
+  private closing = false;
   private fullScale = vec3.one();
   private audioComponent: AudioComponent;
 
@@ -56,35 +53,10 @@ export class DialogueObject extends BaseScriptComponent {
     this.titleText = createText({
       parent: root,
       name: "DialogueTitle",
-      size: TextSize.XL,
-      font: TextFont.SemiBold,
+      style: TextStyle.DialogTitle,
       color: new vec4(1, 1, 1, 1),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
-    });
-
-    const closeBtnObj = global.scene.createSceneObject("DialogueClose");
-    closeBtnObj.setParent(root);
-    this.closeBtn = closeBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.closeBtn.width = CLOSE_BTN_SIZE;
-    this.closeBtn.initialize();
-
-    const closeIconSize = CLOSE_BTN_SIZE * 0.4;
-    createImage(CLOSE_TEXTURE, {
-      parent: closeBtnObj,
-      name: "CloseIcon",
-      position: new vec3(0, 0, ICON_Z_OFFSET),
-      size: closeIconSize,
-    });
-
-    this.closeTooltip = createTooltip(closeBtnObj, "Close", {
-      hoverSource: this.closeBtn,
-    });
-
-    this.closeBtn.onTriggerUp.add(() => {
-      this.close();
     });
 
     this.contentContainer = global.scene.createSceneObject("DialogueContent");
@@ -115,11 +87,11 @@ export class DialogueObject extends BaseScriptComponent {
         toggleable: true,
         toggled: i === selectedIndex,
         position: new vec3(0, relY, 0),
-        fontSize: TextSize.M,
       });
 
       const index = i;
       result.button.onTriggerUp.add(() => {
+        if (this.closing) return;
         this.onOptionSelected.invoke(index);
         this.close();
       });
@@ -162,11 +134,11 @@ export class DialogueObject extends BaseScriptComponent {
         toggleable: true,
         toggled: i === selectedIndex,
         position: new vec3(x, y, 0),
-        fontSize: TextSize.M,
       });
 
       const index = i;
       result.button.onTriggerUp.add(() => {
+        if (this.closing) return;
         this.onOptionSelected.invoke(index);
         this.close();
       });
@@ -193,8 +165,8 @@ export class DialogueObject extends BaseScriptComponent {
       parent: this.contentContainer,
       name: "ConfirmMsg",
       text: message,
-      size: TextSize.L,
-      color: new vec4(1, 1, 1, 0.8),
+      style: TextStyle.Body,
+      color: TextColor.Secondary,
       position: new vec3(0, msgY, 0),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -217,9 +189,12 @@ export class DialogueObject extends BaseScriptComponent {
       height: OPTION_BTN_HEIGHT,
       label: "Cancel",
       position: new vec3(-totalBtnWidth / 2 + CONFIRM_BTN_WIDTH / 2, btnY, 0),
-      fontSize: TextSize.M,
+      style: "Secondary",
     });
-    cancel.button.onTriggerUp.add(() => this.close());
+    cancel.button.onTriggerUp.add(() => {
+      if (this.closing) return;
+      this.close();
+    });
     this.contentObjects.push(cancel.sceneObject);
 
     const confirm = createIconButton({
@@ -229,9 +204,10 @@ export class DialogueObject extends BaseScriptComponent {
       height: OPTION_BTN_HEIGHT,
       label: "Confirm",
       position: new vec3(totalBtnWidth / 2 - CONFIRM_BTN_WIDTH / 2, btnY, 0),
-      fontSize: TextSize.M,
+      style: "Primary",
     });
     confirm.button.onTriggerUp.add(() => {
+      if (this.closing) return;
       this.onConfirmed.invoke();
       this.close();
     });
@@ -241,9 +217,10 @@ export class DialogueObject extends BaseScriptComponent {
   }
 
   close(): void {
-    this.animCancels.cancel();
     const root = this.getSceneObject();
-    if (!root.enabled) return;
+    if (!root.enabled || this.closing) return;
+    this.closing = true;
+    this.animCancels.cancel();
 
     scaleOut(root, {
       duration: ANIM_DURATION * 0.5,
@@ -253,6 +230,7 @@ export class DialogueObject extends BaseScriptComponent {
   }
 
   forceClose(): void {
+    this.closing = false;
     this.animCancels.cancel();
     this.getSceneObject().enabled = false;
   }
@@ -266,6 +244,7 @@ export class DialogueObject extends BaseScriptComponent {
   }
 
   private animateIn(): void {
+    this.closing = false;
     this.animCancels.cancel();
     this.audioComponent.audioTrack = CONFIRM_DIALOG_SFX;
     this.audioComponent.play(1);
@@ -305,13 +284,6 @@ export class DialogueObject extends BaseScriptComponent {
       .getSceneObject()
       .getTransform()
       .setLocalPosition(new vec3(0, titleY, Z_CONTENT));
-
-    const closeBtnX = -DIALOGUE_WIDTH / 2 + CLOSE_BTN_SIZE / 2 + 0.5;
-    const closeBtnY = totalHeight / 2 - CLOSE_BTN_SIZE / 2 - 0.5;
-    this.closeBtn
-      .getSceneObject()
-      .getTransform()
-      .setLocalPosition(new vec3(closeBtnX, closeBtnY, Z_CONTENT));
 
     const contentY = titleY - TITLE_HEIGHT / 2 - contentHeight / 2;
     this.contentContainer

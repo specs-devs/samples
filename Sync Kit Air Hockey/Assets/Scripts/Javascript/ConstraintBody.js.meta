@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/ab535ab8-0cdf-4a36-b418-1611df7c37b1>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 0941a2d1-a2ee-446c-9b85-1e25e3727087
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 0941a2d1-a2ee-446c-9b85-1e25e3727087
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> e6146fe2-a9a7-4ca0-8ad1-c88a93c0284d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/e6146fe2-a9a7-4ca0-8ad1-c88a93c0284d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8a505bc2-6ea1-452f-9a47-5670258b94c3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    meshVisualConstraint: false
+    mode: false
+    rotationConstraint: false
+    target: false
+    xConstraint: false
+    xRange: false
+    yConstraint: false
+    yRange: false
+    zConstraint: false
+    zRange: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mode: Local
+      meshVisualConstraint: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      xConstraint: None
+      xRange: !<Vec2> {x: 0.000000, y: 0.000000}
+      yConstraint: None
+      yRange: !<Vec2> {x: 0.000000, y: 0.000000}
+      zConstraint: None
+      zRange: !<Vec2> {x: 0.000000, y: 0.000000}
+      rotationConstraint: None
+  ScriptTypes:
+    -
+      {}

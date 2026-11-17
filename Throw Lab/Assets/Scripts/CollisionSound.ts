@@ -20,7 +20,7 @@ export class CollisionSound extends BaseScriptComponent {
 
   @input
   @hint("Minimum velocity magnitude to play sound (prevents tiny bumps from making noise)")
-  minVelocityThreshold: number = 5.0
+  minVelocityThreshold: number = 30.0
 
   @input
   @hint("Volume multiplier based on impact speed (0-1)")
@@ -39,6 +39,9 @@ export class CollisionSound extends BaseScriptComponent {
   private logger: Logger
 
   private bodyComponent: BodyComponent | null = null
+  private lastPlayTime = -1
+  // Shortest time (s) between two impact sounds from this object.
+  private readonly minInterval = 0.12
 
   onAwake() {
     this.logger = new Logger("CollisionSound", this.enableLogging || this.enableLoggingLifecycle, true)
@@ -71,10 +74,23 @@ export class CollisionSound extends BaseScriptComponent {
       return
     }
 
+    // A ball that rolls or rests reports a stream of tiny contacts: one sound per real bounce.
+    const now = getTime()
+    if (now - this.lastPlayTime < this.minInterval) {
+      return
+    }
+    this.lastPlayTime = now
+
     const volume = Math.min(1.0, speed * this.velocityToVolume)
 
     this.logger.debug(`Playing impact sound at volume ${volume.toFixed(2)} (speed: ${speed.toFixed(1)})`)
 
-    this.collisionSound.play(volume)
+    // play() takes a loop count, not a volume: the volume used to be passed here, so a full-speed hit
+    // asked for one loop and a softer one for a fraction of a loop.
+    if (this.collisionSound.isPlaying()) {
+      this.collisionSound.stop(false)
+    }
+    this.collisionSound.volume = volume
+    this.collisionSound.play(1)
   }
 }

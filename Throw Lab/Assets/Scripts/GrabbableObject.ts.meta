@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 96aee094-050f-465d-a652-6f0cfd44458d
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -33,9 +34,14 @@
     destroyDelay: false
     enableLogging: false
     enableLoggingLifecycle: false
+    grabZoneMinMargin: false
+    grabZoneScale: false
     handVelocityMultiplier: false
     matchTransform: false
+    minThrowSpeed: false
     objectType: false
+    racketFacesBallLauncher: false
+    racketHint: false
     scoreBoard: false
   ScriptTypesHidden:
     {}
@@ -51,8 +57,13 @@
       destroyDelay: 4.500000
       scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       dartThrowForce: !<float> 800.000000
-      ballThrowForce: !<float> 150.000000
-      handVelocityMultiplier: 0.300000
+      ballThrowForce: !<float> 100.000000
+      handVelocityMultiplier: !<float> 1.600000
+      minThrowSpeed: !<float> 300.000000
+      racketFacesBallLauncher: true
+      racketHint: Look left and hit the ball coming at you
+      grabZoneScale: 1.800000
+      grabZoneMinMargin: !<float> 3.000000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -71,8 +82,17 @@
     - '// @input float dartThrowForce = 800 {"hint":"For Darts: Force applied when releasing (throw strength)", "showIf":"objectType", "showIfValue":"Darts"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Throw Settings</span>"}'
-    - '// @input float ballThrowForce = 150 {"hint":"For Ball/Racket: Force applied when releasing (throw strength)"}'
-    - '// @input float handVelocityMultiplier = 0.3 {"hint":"For Ball/Racket: Multiplier for hand velocity (higher = more responsive to hand movement)"}'
+    - '// @input float ballThrowForce = 100 {"hint":"For Balls: extra speed (cm/s) added along the throw direction on release"}'
+    - '// @input float handVelocityMultiplier = 1.6 {"hint":"Balls: throw speed = peak hand speed x this. Darts: hand speed x this is added to the dart force."}'
+    - '// @input float minThrowSpeed = 300 {"hint":"For Balls: minimum release speed (cm/s), so even a gentle flick flies"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Racket Settings</span>"}'
+    - '// @input bool racketFacesBallLauncher = true {"hint":"For Racket: while held, keep the racket upright and turned (around Y only) toward the ball launcher", "showIf":"objectType", "showIfValue":"Racket"}'
+    - '// @input string racketHint = "Look left and hit the ball coming at you" {"hint":"For Racket: small hint shown above the racket (empty = none)", "showIf":"objectType", "showIfValue":"Racket"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Grab Zone</span>"}'
+    - '// @input float grabZoneScale = 1.8 {"hint":"Size of the invisible grab zone relative to the physics collider (1 = same size). It is intangible: only the hands use it, throwing and collisions keep the real collider."}'
+    - '// @input float grabZoneMinMargin = 3 {"hint":"Minimum extra margin (cm) the grab zone adds around the physics collider, so even small objects are easy to pinch"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging"}'

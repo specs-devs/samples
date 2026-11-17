@@ -1,5 +1,5 @@
-import { Frame } from 'SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame';
-import { RoundedRectangle, GradientParameters } from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
+import { Frame } from 'UIKit.lspkg/Scripts/Components/Frame/Frame';
+import { RoundedRectangle, GradientParameters } from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
 
 // Same palette as UIKitCustomVisualsRectangleButton
 const PINK  = new vec4(1.00, 0.42, 0.71, 1.0);
@@ -85,10 +85,7 @@ export class UIKitCustomVisualsFrame extends BaseScriptComponent {
 
     // Render one step above the Frame's glass so the gradient covers it cleanly,
     // while remaining below the Frame's child content (buttons, labels).
-    const frameRR = frame.roundedRectangle;
-    const frameOrder = frameRR
-      ? frameRR.renderMeshVisual.getRenderOrder()
-      : (frame.sceneObject.getComponent('Component.RenderMeshVisual')?.getRenderOrder() ?? 0);
+    const frameOrder = frame.renderOrder;
     rr.renderMeshVisual.setRenderOrder(frameOrder + 1);
 
     return rr;

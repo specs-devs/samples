@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: f0694e5f-786c-4431-9da6-c017f2d2c211
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -33,8 +34,8 @@
     deActivateDistanceMultiplier: false
     distanceForActivation: false
     enableLogging: false
-    enableLoggingLifecycle: false
     listenerObjects: false
+    simulateLocalizedInEditor: false
     sphereInViewForActivationRadius: false
   ScriptTypesHidden:
     {}
@@ -52,24 +53,24 @@
       sphereInViewForActivationRadius: !<float> 600.000000
       distanceForActivation: !<float> 1000.000000
       deActivateDistanceMultiplier: 1.500000
+      simulateLocalizedInEditor: true
       enableLogging: false
-      enableLoggingLifecycle: false
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ActivateWhenInCameraView – Activates objects when in camera view</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Tracks user position and calls activate/deactivate on listeners based on distance and camera visibility.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #60A5FA;\\\">ActivateWhenInCameraView – Activates objects when in camera view</span><br/><span style=\\\"color: #94A3B8; font-size: 11px;\\\">Tracks the wearer's position and calls activate/deactivate on listeners based on distance and camera visibility.</span>\"}"
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Camera</span>"}'
     - '// @input Component.Camera camera {"hint":"Camera used to check sphere visibility and measure distance to the location"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Location Object</span>"}'
-    - '// @input SceneObject centerReference {"hint":"Optional SceneObject to use as center, will use the center of this SceneObject otherwise"}'
-    - '// @input Component.ScriptComponent[] listenerObjects {"hint":"List of LocatedObject listeners to activate or deactivate"}'
+    - '// @input SceneObject centerReference {"hint":"Optional SceneObject used as the location center; defaults to this SceneObject"}'
+    - '// @input Component.ScriptComponent[] listenerObjects {"hint":"LocatedObject listeners (ScaleInLocatedObject, AudioLocatedObject, ...) to activate or deactivate"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Activation Settings</span>"}'
-    - '// @input float sphereInViewForActivationRadius = 600 {"hint":"Radius of the sphere used to check if the location is in camera view"}'
-    - '// @input float distanceForActivation = 1000 {"hint":"Distance from the location center in cm to trigger activation"}'
+    - '// @input float sphereInViewForActivationRadius = 600 {"hint":"Radius (cm) of the sphere used to check if the location is in camera view"}'
+    - '// @input float distanceForActivation = 1000 {"hint":"Distance (cm) from the location center that triggers activation"}'
     - '// @input float deActivateDistanceMultiplier = 1.5 {"hint":"Multiplier applied to distanceForActivation to compute the deactivation distance"}'
+    - '// @input bool simulateLocalizedInEditor = true {"hint":"In Lens Studio the location is treated as already localized so the flow can be tested in Preview"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging"}'
-    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)"}'

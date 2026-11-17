@@ -1,10 +1,11 @@
-import { RoundedRectangle } from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { RoundedRectangle } from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { createText, createTooltip } from "../Shared/UIBuilders";
 import { createImage } from "../Shared/ImageFactory";
 import { ICON_Z_OFFSET } from "../Shared/UIConstants";
+import { TextStyle } from "../Shared/UIStyle";
 
 const VERTICAL_PADDING = 1;
 const HORIZONTAL_PADDING = 2;
@@ -83,7 +84,7 @@ export class ChatMessageBubble extends BaseScriptComponent {
     this.messageText = createText({
       parent: root,
       name: "BubbleMessage",
-      size: TextSize.M,
+      style: TextStyle.Body,
       color: TEXT_COLOR,
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -93,8 +94,7 @@ export class ChatMessageBubble extends BaseScriptComponent {
     this.footerText = createText({
       parent: root,
       name: "BubbleFooter",
-      size: TextSize.XS,
-      font: TextFont.Light,
+      style: TextStyle.Caption,
       color: FOOTER_TEXT_COLOR,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -185,6 +185,11 @@ export class ChatMessageBubble extends BaseScriptComponent {
     }
   }
 
+  /** Re-measure text bounds (they can be stale right after setMessage). */
+  refreshLayout(): void {
+    this.updateLayout();
+  }
+
   getHeight(): number {
     return this.totalHeight;
   }
@@ -273,8 +278,8 @@ export class ChatMessageBubble extends BaseScriptComponent {
         btnObj.enabled = true;
 
         const btn = btnObj.getComponent(
-          RectangleButton.getTypeName(),
-        ) as RectangleButton;
+          Button.getTypeName(),
+        ) as Button;
         btn.size = new vec3(cellWidth, imgHeight, 0.5);
 
         for (let c = 0; c < btnObj.getChildrenCount(); c++) {
@@ -307,9 +312,7 @@ export class ChatMessageBubble extends BaseScriptComponent {
     const btnObj = global.scene.createSceneObject(`ImgBtn_${index}`);
     btnObj.setParent(this.imageContainer);
 
-    const btn = btnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const btn = createSystemButton(btnObj, "Ghost");
     btn.size = new vec3(width, height, 0.5);
     btn.initialize();
 

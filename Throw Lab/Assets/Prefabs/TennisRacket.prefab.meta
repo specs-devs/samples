@@ -43,7 +43,7 @@
       scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       dartThrowForce: !<float> 800.000000
       ballThrowForce: !<float> 150.000000
-      handVelocityMultiplier: 0.300000
+      handVelocityMultiplier: 0.600000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -123,6 +123,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
 - !<RenderMeshVisual/7c25aa68-0c7e-4c6c-b55b-d9b1e544ab26>
@@ -202,6 +203,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
   Dynamic: false
@@ -228,7 +230,7 @@
   PrefabRemaps:
     []
   Name: Look At
-  Enabled: true
+  Enabled: false
   LookAtMode: LookAtPoint
   AimVectors: NegativeZAimYUp
   WorldUpVector: ObjectY

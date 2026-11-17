@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 77b5ccd8-486d-43eb-a901-5531c932b89f
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,7 +32,9 @@
     animationDuration: false
     enableLogging: false
     enableLoggingLifecycle: false
+    exitDelay: false
     expandedScale: false
+    hoverRadius: false
     normalScale: false
     rayEnd: false
     rayStart: false
@@ -50,6 +53,8 @@
       rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       targetPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       targetCollider: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hoverRadius: !<float> 3.000000
+      exitDelay: 0.250000
       animationDuration: !<float> 300.000000
       normalScale: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
       expandedScale: !<Vec3> {x: 1.200000, y: 1.200000, z: 1.200000}
@@ -65,6 +70,8 @@
     - '// @input SceneObject rayEnd {"hint":"The destination SceneObject of the ray"}'
     - '// @input SceneObject targetPanel {"hint":"The panel SceneObject to scale on hover"}'
     - '// @input SceneObject targetCollider {"hint":"The collider SceneObject to test the ray against"}'
+    - '// @input float hoverRadius = 3 {"hint":"Hover tolerance (cm): the ray is swept as a sphere of this radius, so near misses still count. 0 = exact ray."}'
+    - '// @input float exitDelay = 0.25 {"hint":"Seconds the ray must stay off the target before the hover ends (stops flicker at the edges)"}'
     - '// @input float animationDuration = 500 {"hint":"Duration of the scale animation in milliseconds"}'
     - '// @input vec3 normalScale = {1,1,1} {"hint":"Default scale of the panel when not hovered"}'
     - '// @input vec3 expandedScale = {1.2,1.2,1.2} {"hint":"Expanded scale of the panel when hovered"}'

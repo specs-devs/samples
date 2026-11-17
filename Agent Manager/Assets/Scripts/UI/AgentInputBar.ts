@@ -1,4 +1,4 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { AgentStatus } from "../Types";
 import { AgentStore } from "../State/AgentStore";
 import { VoiceInputController } from "../Input/VoiceInputController";
@@ -7,11 +7,10 @@ import { AgentWorldView } from "./Agent/AgentWorldView";
 import { AgentObject } from "./Agent/AgentObject";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "./Shared/MotionAnimate";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { MIN_SCALE, ANIM_DURATION } from "./Shared/UIConstants";
 import { createAudioComponent } from "./Shared/UIBuilders";
-import { BLEKeyboardManager } from "../Bluetooth/BLEKeyboardManager";
 
 const INPUT_BAR_PREFAB: ObjectPrefab = requireAsset(
   "../../Prefabs/InputBar.prefab",
@@ -157,16 +156,22 @@ export class AgentInputBar {
           this.stopRecording();
           this.resetCamera();
           this.controller.clearPendingImages();
-          this.controller.setBleFocus(false);
           this.animateHide();
           this.controller.setText("");
           return;
         }
 
+        if (agent.id !== this.currentAgentId) {
+          // Switching agents: drop the previous agent's in-progress input.
+          // stopRecording() runs before currentAgentId changes so it clears
+          // setAgentListening on the previous agent.
+          this.stopRecording();
+          this.resetCamera();
+          this.controller.clearPendingImages();
+        }
         this.currentAgentId = agent.id;
         this.textBuffer = "";
         this.controller.setStopMode(this.isActiveTopicWorking());
-        this.controller.setBleFocus(true);
         this.refresh();
         this.attachToAgent(agent.id);
         this.animateShow();
@@ -176,7 +181,6 @@ export class AgentInputBar {
         this.stopRecording();
         this.resetCamera();
         this.controller.clearPendingImages();
-        this.controller.setBleFocus(false);
         this.animateHide();
         this.controller.setText("");
       }
@@ -198,6 +202,7 @@ export class AgentInputBar {
       this.textBuffer = text;
       this.controller.setText(text);
       this.controller.setTextColor(PARTIAL_TEXT_COLOR);
+      this.controller.setSendEnabled(false);
     });
 
     VoiceInputController.getInstance().onError.add((code) => {
@@ -210,9 +215,8 @@ export class AgentInputBar {
         code === AsrModule.AsrStatusCode.NoInternet
           ? "Voice input needs internet"
           : "Voice input unavailable — enable Extended Permissions";
-      this.controller.setText(hint);
+      this.controller.showStatusText(hint);
       this.controller.setTextColor(PARTIAL_TEXT_COLOR);
-      this.controller.setSendEnabled(false);
     });
 
     this.controller.onEditModeChanged.add((editing: boolean) => {
@@ -241,6 +245,7 @@ export class AgentInputBar {
 
   submitText(text: string): void {
     if (!this.currentAgentId) return;
+    this.stopRecording();
     this.textBuffer = text;
     this.controller.setText(text);
     this.submit();
@@ -253,10 +258,6 @@ export class AgentInputBar {
     this.textBuffer = text;
     this.controller.setText(text);
     this.controller.setTextColor(FINAL_TEXT_COLOR);
-  }
-
-  connectBLEKeyboard(manager: BLEKeyboardManager): void {
-    this.controller.connectBLEKeyboard(manager);
   }
 
   get isTextInputActive(): boolean {
@@ -325,7 +326,15 @@ export class AgentInputBar {
 
   private submit(): void {
     const prompt = this.controller.getText().trim();
-    if (!prompt || prompt === DEFAULT_PROMPT || !this.currentAgentId) return;
+    // Block while recording: the field holds partials / "Listening..." status.
+    if (
+      this.isRecording ||
+      !prompt ||
+      prompt === DEFAULT_PROMPT ||
+      !this.currentAgentId
+    ) {
+      return;
+    }
 
     this.playSfx(INPUT_RECEIVED_SFX);
 
@@ -559,6 +568,7 @@ export class AgentInputBar {
     if (this.isRecording) {
       this.controller.startListeningAnimation();
       this.controller.setTextColor(PARTIAL_TEXT_COLOR);
+      this.controller.setSendEnabled(false);
       return;
     }
     this.controller.stopListeningAnimation();

@@ -29,7 +29,7 @@ for Specs.
 - TypeScript examples follow one style: `Logger` from Utilities with `enableLogging` toggles, `@bindStartEvent` /
   `@bindUpdateEvent` from SnapDecorators, and `@ui.label` / `@hint` inspector annotations.
 - `SolversShowcase` turns first-person solver behaviour into a readable third-person diagram with labels.
-- `UIKitCustomVisuals*` scripts restyle UI Kit buttons, sliders, switches and frames with custom gradient states.
+- `CustomVisualsGallery` builds six UI Kit buttons, each with its own `RoundedRectangleVisual` style per state (glass, accent, outline, gradient, lift, toggle).
 
 ## Core scripts
 | Script | What it does |
@@ -40,7 +40,6 @@ for Specs.
 | `Examples/Raycast/SimpleRaycastTS.ts` | Casts a ray, reads hits and attaches an object to the hit position. |
 | `Examples/Snap/SnapToPlaneTS.ts` | Snaps an object onto a plane when it comes within a distance. |
 | `Examples/Physics-Collision/SoftPressControllerTS.ts` | Collision-driven soft press interaction. |
-| `Examples/CustomUI/UIKitCustomVisualsSlider.ts` | Applies custom gradient visuals to a UI Kit `Slider`. |
 | `Examples/MiniDemos/DragAndDrop/DragAndDrop.ts` | Drag and drop built on Interactable manipulation events. |
 | `Examples/MiniDemos/Archery/TS/ArcheryProjectileManagerTS.ts` | Arrow projectile physics for the archery demo. |
 | `Examples/MiniDemos/SnapSaber/TS/SnapSaberGlobalManager.ts` | Game state and scoring for the SnapSaber demo. |

@@ -177,7 +177,6 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _spawnOnStart: true
-    _appearance: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -228,9 +227,7 @@
   ScriptInputs:
     "":
       _themeOverride: System3
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: Large
       _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -389,9 +386,7 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _shapeSystem2: true
     _shapeSystem3: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -416,9 +411,7 @@
       onFinishedCallbacks:
         []
       _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
-      _shapeSystem2: Rectangle
       _shapeSystem3: Rectangle
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:

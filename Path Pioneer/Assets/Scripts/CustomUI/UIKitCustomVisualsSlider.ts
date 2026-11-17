@@ -4,13 +4,13 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
-import { Slider } from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider"
+import { Slider } from "UIKit.lspkg/Scripts/Components/Slider/Slider"
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element"
-import { GradientParameters } from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element"
+import { GradientParameters } from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
 
 // ─── Style: Candy ─────────────────────────────────────────────────────────────
 // Track: deep purple-black pill so the gradient fill pops

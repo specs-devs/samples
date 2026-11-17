@@ -2,9 +2,9 @@
  * SPECS Inc. 2027
  * ASRQuery Controller for the AI Music Gen Glasses lens experience.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {RoundButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import {RoundButton} from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
@@ -52,7 +52,7 @@ export class ASRQueryController extends BaseScriptComponent {
     this.activityRenderMesh.clearMaterials()
     this.activityRenderMesh.mainMaterial = this.activityMaterial
     this.activityMaterial.mainPass.in_out = 0
-    // RoundButton/RectangleButton are deprecated in the updated SpectaclesUIKit
+    // RoundButton/RectangleButton are deprecated in the updated UIKit
     // and no longer instantiate at runtime, so initialize()/onTriggerUp may be
     // undefined. Guard so the lens does not crash; replace this with the new
     // Button component in the scene to restore interactivity.

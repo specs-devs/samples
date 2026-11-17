@@ -2,15 +2,15 @@
  * SPECS Inc. 2027
  * Speech UI component for the Depth Cache Glasses lens.
  */
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {ASRController} from "./ASRController"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 
-const UI_CAM_DISTANCE = 50
+const UI_CAM_DISTANCE = 60
 // Above the ExampleCarousel panel, which sits just below eye level and draws on top of everything.
-const UI_CAM_HEIGHT = 4
+const UI_CAM_HEIGHT = 4.8
 
 @component
 export class SpeechUI extends BaseScriptComponent {

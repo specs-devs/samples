@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Response UI component for the Depth Cache Glasses lens.
  */
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
 import {WorldLabel} from "./WorldLabel"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 

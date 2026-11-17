@@ -4,40 +4,46 @@ import {
   LAYOUT_DIRTY,
   STATE_DIRTY,
 } from "../Shared/DirtyComponent";
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import {
   setTimeout,
   clearTimeout,
   CancelToken,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import animate, { CancelSet } from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import animate, { CancelSet } from "../Shared/MotionAnimate";
 import { createImage } from "../Shared/ImageFactory";
 import { LoadingSpinner } from "../../../Visuals/LoadingSpinner/LoadingSpinner";
-import { ICON_Z_OFFSET } from "../Shared/UIConstants";
+import { ICON_Z_OFFSET, CLOSE_TEXTURE } from "../Shared/UIConstants";
 import { createTooltip, createText, initializeScrollWindow } from "../Shared/UIBuilders";
 import { TAB_BAR_WIDTH } from "../Elements/TabBar";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 
 const ADD_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Add.png",
+  "Icons.lspkg/Iconography/System/add.png",
 ) as Texture;
 const BELL_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Bell.png",
+  "Icons.lspkg/Iconography/Alerts-notifications/bell.png",
 ) as Texture;
 const QUESTION_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Question-mark-circle.png",
+  "Icons.lspkg/Iconography/Alerts-notifications/question-badge.png",
 ) as Texture;
 const MINIMIZE_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Arrows-minimize.png",
+  "Icons.lspkg/Iconography/Arrows/arrows-minimize.png",
 ) as Texture;
 
 const BUTTON_WIDTH = 8;
 const BUTTON_HEIGHT = TAB_BAR_WIDTH / 2;
 const BUTTON_SPACING = 0.5;
-const NEW_CHAT_WIDTH = 4;
+const NEW_CHAT_WIDTH = BUTTON_HEIGHT; // square
+// Prism buttons have real depth (button z = 0.5) and extrude forward by up to
+// 0.3 on hover, so content must clear front face + hover extrusion, and draw
+// after the glass body, or the icon vanishes when hovered.
+const PRISM_ICON_Z = 0.5 / 2 + 0.3 + 0.15;
+const PRISM_ICON_RENDER_ORDER = 1;
 const NEW_CHAT_GAP = 1;
 const SCROLL_WINDOW_WIDTH = 20;
 const TOTAL_CONTENT_WIDTH = NEW_CHAT_WIDTH + NEW_CHAT_GAP + SCROLL_WINDOW_WIDTH;
@@ -47,6 +53,13 @@ const COLLAPSED_GAP = 1;
 const CLONE_TOPIC_WIDTH =
   NEW_CHAT_WIDTH + COLLAPSED_GAP + COLLAPSED_TOPIC_WIDTH;
 const PADDING_ABOVE_VISUAL = 1.5;
+// Clone title-bar close button: fills the bar height (minus a margin), sits in
+// the bar's right padding, and floats in front of the backplate so it's pinchable.
+const CLONE_CLOSE_SIZE = BUTTON_HEIGHT + PADDING.y * 2 - 0.8;
+const CLONE_CLOSE_MARGIN = 0.4;
+const CLONE_CLOSE_X =
+  CLONE_TOPIC_WIDTH / 2 + PADDING.x - CLONE_CLOSE_MARGIN - CLONE_CLOSE_SIZE / 2;
+const CLONE_CLOSE_Z = 1.0;
 const Z_CONTENT = 0.15;
 const NEW_CHAT_ICON_SIZE = BUTTON_HEIGHT * 0.375;
 const BELL_ICON_SIZE = BUTTON_HEIGHT * 0.3;
@@ -59,14 +72,14 @@ const LOADING_FADE_DURATION = 0.5;
 const CONTENT_SLIDE_DURATION = 0.5;
 const CONTENT_SLIDE_DELAY_MS = 250;
 const CONTENT_SLIDE_Y = -1.0;
-const MINIMIZE_BTN_SIZE = 3;
+const MINIMIZE_BTN_SIZE = 3.2;
 const MINIMIZE_BTN_ICON_SIZE = 1.5;
 const MINIMIZE_BTN_OUTSET = 1.5;
 
 interface TrackedTopicButton {
   topicId: string;
   sceneObject: SceneObject;
-  button: RectangleButton;
+  button: Button;
   label: Text;
   bellObj: SceneObject;
   spinnerObj: SceneObject;
@@ -80,7 +93,7 @@ export class ChatSelectorObject extends DirtyComponent {
   private collapsedContainer: SceneObject;
   private collapsedNewChatObj: SceneObject;
   private collapsedTopicObj: SceneObject;
-  private collapsedTopicBtn: RectangleButton;
+  private collapsedTopicBtn: Button;
   private collapsedTopicText: Text;
   private collapsedBellObj: SceneObject;
   private collapsedSpinnerObj: SceneObject;
@@ -103,6 +116,7 @@ export class ChatSelectorObject extends DirtyComponent {
   private _cloneMode = false;
 
   private cloneTitleObj: SceneObject;
+  private cloneCloseObj: SceneObject;
   private cloneTitleText: Text;
   private cloneBellObj: SceneObject;
   private cloneSpinnerObj: SceneObject;
@@ -122,6 +136,8 @@ export class ChatSelectorObject extends DirtyComponent {
   private _animatedPlateWidth: number | null = null;
   private readonly _plateAnimCancels = new CancelSet();
   private readonly _loadingTransitionCancels = new CancelSet();
+  // CancelSet can't stop animateLoadingOut's setTimeout; it checks this.
+  private _loadingOutGen = 0;
   private _backPlateHoverHooked = false;
 
   private trackTarget: Transform | null = null;
@@ -141,6 +157,9 @@ export class ChatSelectorObject extends DirtyComponent {
   }
 
   public readonly onTopicClicked = new Event<string>();
+  /** Clone (pulled-out) agents: X on the title bar. */
+  public readonly onCloseRequested = new Event<void>();
+  public readonly onCloseHoverChanged = new Event<boolean>();
   public readonly onNewChatRequested = new Event<void>();
   readonly onMinimizeRequested = new Event<void>();
   private minimizeBtnObj: SceneObject;
@@ -175,20 +194,21 @@ export class ChatSelectorObject extends DirtyComponent {
       .getTransform()
       .setLocalPosition(new vec3(collNewX, 0, 0.3));
 
-    const collNewBtn = this.collapsedNewChatObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const collNewBtn = createSystemButton(this.collapsedNewChatObj, "Prism");
     collNewBtn.size = new vec3(NEW_CHAT_WIDTH, BUTTON_HEIGHT, 0.5);
     collNewBtn.initialize();
 
-    createImage(ADD_TEXTURE, {
+    const collNewIcon = createImage(ADD_TEXTURE, {
       parent: this.collapsedNewChatObj,
       name: "CollNewIcon",
-      position: new vec3(0, 0, ICON_Z_OFFSET),
+      position: new vec3(0, 0, PRISM_ICON_Z),
       size: NEW_CHAT_ICON_SIZE,
     });
+    collNewIcon.renderOrder = PRISM_ICON_RENDER_ORDER;
 
     const collNewTooltip = createTooltip(this.collapsedNewChatObj, "New Chat", {
+      placement: "left",
+      targetSize: new vec2(NEW_CHAT_WIDTH, BUTTON_HEIGHT),
       hoverSource: collNewBtn,
     });
 
@@ -216,9 +236,7 @@ export class ChatSelectorObject extends DirtyComponent {
       .getTransform()
       .setLocalPosition(new vec3(collTopicX, 0, 0));
 
-    this.collapsedTopicBtn = this.collapsedTopicObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    this.collapsedTopicBtn = createSystemButton(this.collapsedTopicObj, "Secondary");
     this.collapsedTopicBtn.size = new vec3(
       COLLAPSED_TOPIC_WIDTH,
       BUTTON_HEIGHT,
@@ -232,8 +250,7 @@ export class ChatSelectorObject extends DirtyComponent {
       parent: this.collapsedTopicObj,
       name: "CollTopicLabel",
       text: "No Chats",
-      size: TextSize.L,
-      font: TextFont.Medium,
+      style: TextStyle.Button,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -323,8 +340,7 @@ export class ChatSelectorObject extends DirtyComponent {
       parent: this.cloneTitleObj,
       name: "CloneTitleLabel",
       text: "",
-      size: TextSize.L,
-      font: TextFont.Medium,
+      style: TextStyle.ItemTitle,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
     });
@@ -382,15 +398,45 @@ export class ChatSelectorObject extends DirtyComponent {
     });
     this.cloneQuestionObj.enabled = false;
 
+    // Close (X) lives at the right end of the clone title bar.
+    this.cloneCloseObj = global.scene.createSceneObject("CloneClose");
+    this.cloneCloseObj.setParent(this.cloneTitleObj);
+    this.cloneCloseObj
+      .getTransform()
+      .setLocalPosition(
+        new vec3(CLONE_CLOSE_X, 0, CLONE_CLOSE_Z),
+      );
+    const cloneCloseBtn = createSystemButton(this.cloneCloseObj, "Primary");
+    cloneCloseBtn.size = new vec3(CLONE_CLOSE_SIZE, CLONE_CLOSE_SIZE, 0.5);
+    cloneCloseBtn.initialize();
+    createImage(CLOSE_TEXTURE, {
+      parent: this.cloneCloseObj,
+      name: "CloneCloseIcon",
+      position: new vec3(0, 0, ICON_Z_OFFSET),
+      size: CLONE_CLOSE_SIZE * 0.45,
+    });
+    const cloneCloseTooltip = createTooltip(this.cloneCloseObj, "Close", {
+      placement: "above",
+      targetSize: new vec2(CLONE_CLOSE_SIZE, CLONE_CLOSE_SIZE),
+      hoverSource: cloneCloseBtn,
+    });
+    void cloneCloseTooltip;
+    cloneCloseBtn.onTriggerUp.add(() => this.onCloseRequested.invoke());
+    cloneCloseBtn.interactable.onHoverEnter.add(() =>
+      this.onCloseHoverChanged.invoke(true),
+    );
+    cloneCloseBtn.interactable.onHoverExit.add(() =>
+      this.onCloseHoverChanged.invoke(false),
+    );
+
     this.cloneTitleObj.enabled = false;
 
     const offlineText = createText({
       parent: root,
       name: "OfflineLabel",
       text: "Agent Unavailable",
-      size: TextSize.M,
-      font: TextFont.Medium,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Label,
+      color: TextColor.Muted,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
     });
@@ -401,8 +447,8 @@ export class ChatSelectorObject extends DirtyComponent {
       parent: root,
       name: "OfflineSubtext",
       text: "Waiting for connection",
-      size: TextSize.XS,
-      color: new vec4(1, 1, 1, 0.35),
+      style: TextStyle.Caption,
+      color: TextColor.Muted,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
     });
@@ -413,9 +459,8 @@ export class ChatSelectorObject extends DirtyComponent {
       parent: root,
       name: "LoadingLabel",
       text: "Fetching Conversations",
-      size: TextSize.M,
-      font: TextFont.Medium,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Label,
+      color: TextColor.Muted,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
     });
@@ -435,9 +480,7 @@ export class ChatSelectorObject extends DirtyComponent {
 
     this.minimizeBtnObj = global.scene.createSceneObject("MinimizeBtn");
     this.minimizeBtnObj.setParent(root);
-    const minimizeBtn = this.minimizeBtnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const minimizeBtn = createSystemButton(this.minimizeBtnObj, "Secondary");
     minimizeBtn.size = new vec3(MINIMIZE_BTN_SIZE, MINIMIZE_BTN_SIZE, 0.5);
     minimizeBtn.initialize();
     createImage(MINIMIZE_TEXTURE, {
@@ -447,6 +490,8 @@ export class ChatSelectorObject extends DirtyComponent {
       size: MINIMIZE_BTN_ICON_SIZE,
     });
     createTooltip(this.minimizeBtnObj, "Minimize", {
+      placement: "left",
+      targetSize: new vec2(MINIMIZE_BTN_SIZE, MINIMIZE_BTN_SIZE),
       hoverSource: minimizeBtn,
     });
     minimizeBtn.onTriggerUp.add(() => this.onMinimizeRequested.invoke());
@@ -485,20 +530,21 @@ export class ChatSelectorObject extends DirtyComponent {
     const newChatX = -TOTAL_CONTENT_WIDTH / 2 + NEW_CHAT_WIDTH / 2;
     newChatObj.getTransform().setLocalPosition(new vec3(newChatX, 0, 0.3));
 
-    const newChatBtn = newChatObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const newChatBtn = createSystemButton(newChatObj, "Prism");
     newChatBtn.size = new vec3(NEW_CHAT_WIDTH, BUTTON_HEIGHT, 0.5);
     newChatBtn.initialize();
 
-    createImage(ADD_TEXTURE, {
+    const newChatIcon = createImage(ADD_TEXTURE, {
       parent: newChatObj,
       name: "NewChatIcon",
-      position: new vec3(0, 0, ICON_Z_OFFSET),
+      position: new vec3(0, 0, PRISM_ICON_Z),
       size: NEW_CHAT_ICON_SIZE,
     });
+    newChatIcon.renderOrder = PRISM_ICON_RENDER_ORDER;
 
     const newChatTooltip = createTooltip(newChatObj, "New Chat", {
+      placement: "left",
+      targetSize: new vec2(NEW_CHAT_WIDTH, BUTTON_HEIGHT),
       hoverSource: newChatBtn,
     });
 
@@ -522,7 +568,7 @@ export class ChatSelectorObject extends DirtyComponent {
 
     const scrollAnchor = global.scene.createSceneObject("ScrollAnchor");
     scrollAnchor.setParent(this.scrollContainer);
-    scrollAnchor.getTransform().setLocalPosition(new vec3(scrollOffsetX, 0, 0));
+    scrollAnchor.getTransform().setLocalPosition(new vec3(scrollOffsetX, 0, 0.3));
 
     const scrollObj = global.scene.createSceneObject("TopicScrollWindow");
     scrollObj.setParent(scrollAnchor);
@@ -551,9 +597,7 @@ export class ChatSelectorObject extends DirtyComponent {
     const btnObj = global.scene.createSceneObject(`Topic_Slot_${index}`);
     this.scrollWindow!.addObject(btnObj);
 
-    const btn = btnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const btn = createSystemButton(btnObj, "Secondary");
     btn.size = new vec3(BUTTON_WIDTH, BUTTON_HEIGHT, 0.5);
     btn.setIsToggleable(true);
     btn.initialize();
@@ -596,8 +640,7 @@ export class ChatSelectorObject extends DirtyComponent {
       parent: btnObj,
       name: "BtnLabel",
       text: "",
-      size: TextSize.M,
-      font: TextFont.Medium,
+      style: TextStyle.Button,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -771,6 +814,7 @@ export class ChatSelectorObject extends DirtyComponent {
     if (offline) {
       this._loading = false;
       this._loadingTransitionCancels.cancel();
+      this._loadingOutGen++;
       this.loadingLabelObj.enabled = false;
       this.loadingSpinnerObj.enabled = false;
       this.collapsedContainer.enabled = false;
@@ -792,6 +836,7 @@ export class ChatSelectorObject extends DirtyComponent {
     this._loading = loading;
     if (this._offline) return;
     this._loadingTransitionCancels.cancel();
+    this._loadingOutGen++;
     if (loading) {
       this.collapsedContainer.enabled = false;
       this.cloneTitleObj.enabled = false;
@@ -816,7 +861,7 @@ export class ChatSelectorObject extends DirtyComponent {
       easing: "ease-in-cubic",
       cancelSet: this._loadingTransitionCancels,
       update: (t: number) => {
-        this.loadingLabelText.textFill.color = new vec4(1, 1, 1, 0.5 * (1 - t));
+        this.loadingLabelText.textFill.color = new vec4(1, 1, 1, TextColor.Muted.w * (1 - t));
       },
       ended: () => {
         this.loadingLabelObj.enabled = false;
@@ -825,8 +870,18 @@ export class ChatSelectorObject extends DirtyComponent {
     });
 
     // 2. After a short overlap, build the real layout and slide it in
+    const gen = this._loadingOutGen;
     setTimeout(() => {
+      if (gen !== this._loadingOutGen) return;
       if (this._loading || this._offline) return;
+      // A previously cancelled slide-in can leave a container offset/scaled;
+      // restore resting transforms so finalPos below isn't stale.
+      // (scrollContainer's position is re-set by refreshExpanded.)
+      this.collapsedContainer.getTransform().setLocalPosition(vec3.zero());
+      this.collapsedContainer.getTransform().setLocalScale(vec3.one());
+      this.cloneTitleObj.getTransform().setLocalPosition(vec3.zero());
+      this.cloneTitleObj.getTransform().setLocalScale(vec3.one());
+      this.scrollContainer?.getTransform().setLocalScale(vec3.one());
       this.clearDirty();
       this.applyLayout(true);
 
@@ -942,12 +997,14 @@ export class ChatSelectorObject extends DirtyComponent {
       sorted.length * BUTTON_WIDTH + (sorted.length - 1) * BUTTON_SPACING;
     const scrollDimWidth = Math.max(totalContentWidth, SCROLL_WINDOW_WIDTH);
 
+    // UIKit ScrollWindow is top-left anchored: at scrollPosition.x = 0 the
+    // viewport spans content x ∈ [−W/2, W/2] ("Center" content origin), and
+    // scrolling right moves x toward −(D−W). Lay buttons out from the
+    // viewport's left edge, not centered across the full span D (which put
+    // the first button at −D/2, outside the reachable range).
     for (let i = 0; i < sorted.length; i++) {
       const topic = sorted[i];
-      const x =
-        -(scrollDimWidth / 2) +
-        i * (BUTTON_WIDTH + BUTTON_SPACING) +
-        BUTTON_WIDTH / 2;
+      const x = this.topicButtonX(i);
 
       if (i < this.trackedButtons.length) {
         // Reuse existing button — update its topic binding and position
@@ -991,15 +1048,22 @@ export class ChatSelectorObject extends DirtyComponent {
     this.lastScrolledTopicId = this.activeTopicId;
 
     const scrollDimWidth = this.scrollWindow.scrollDimensions.x;
-    const buttonX =
-      -(scrollDimWidth / 2) +
-      activeIndex * (BUTTON_WIDTH + BUTTON_SPACING) +
-      BUTTON_WIDTH / 2;
+    const buttonX = this.topicButtonX(activeIndex);
 
-    const maxScroll = Math.max(0, (scrollDimWidth - SCROLL_WINDOW_WIDTH) / 2);
-    const targetX = Math.max(-maxScroll, Math.min(maxScroll, -buttonX));
+    // Center the active button; valid range is [−(D−W), 0] (top-left frame).
+    const maxScroll = Math.max(0, scrollDimWidth - SCROLL_WINDOW_WIDTH);
+    const targetX = Math.max(-maxScroll, Math.min(0, -buttonX));
 
     this.scrollWindow.scrollPosition = new vec2(targetX, 0);
+  }
+
+  /** Content-space X of topic button `index` (left-aligned to the viewport). */
+  private topicButtonX(index: number): number {
+    return (
+      -SCROLL_WINDOW_WIDTH / 2 +
+      index * (BUTTON_WIDTH + BUTTON_SPACING) +
+      BUTTON_WIDTH / 2
+    );
   }
 
   private updateExpandedButtonStates(): void {
@@ -1067,7 +1131,7 @@ export class ChatSelectorObject extends DirtyComponent {
       this.cloneTitleText.text = activeTopic ? activeTopic.title : "No Chat";
       this.cloneTitleText.layoutRect = Rect.create(
         -CLONE_TOPIC_WIDTH / 2 + 0.3 + textInset,
-        CLONE_TOPIC_WIDTH / 2 - 0.3,
+        CLONE_CLOSE_X - CLONE_CLOSE_SIZE / 2 - 0.3,
         -BUTTON_HEIGHT / 2,
         BUTTON_HEIGHT / 2,
       );
@@ -1186,7 +1250,14 @@ export class ChatSelectorObject extends DirtyComponent {
     }
     if (this.expanded) {
       this.ensureScrollView();
-      if (topicsChanged || this.lastSortedTopicIds.length === 0) {
+      // setTopics flushed while collapsed doesn't update lastSortedTopicIds,
+      // so compare against the current sort instead of trusting the flag.
+      const sortedIds = this.sortTopics(this.topics).map((t) => t.id);
+      if (
+        topicsChanged ||
+        this.lastSortedTopicIds.length === 0 ||
+        !this.idsMatch(sortedIds, this.lastSortedTopicIds)
+      ) {
         this.rebuildButtons();
       } else {
         this.updateExpandedButtonStates();

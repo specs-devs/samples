@@ -25,7 +25,7 @@ import {
 import {
   setTimeout,
   clearTimeout,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 
 const TAG = "[BridgeAgentProvider]";
 const PAIR_FUNCTION_NAME = "pair_bridge";
@@ -175,6 +175,8 @@ export class BridgeAgentProvider implements AgentProvider {
     PendingRequest<{ messages: BridgeMessage[]; seq: number }>
   >();
   private gapFetchInProgress = new Set<string>();
+  /** conversationId → owning bridge agent id (from list results, events, subscriptions). */
+  private conversationOwners = new Map<string, string>();
   private _pairedAgentsCache: PairedAgentEntry[] | null = null;
 
   constructor(supabase: SupabaseService) {
@@ -228,7 +230,7 @@ export class BridgeAgentProvider implements AgentProvider {
         {
           event: "agent_message",
           callback: withLiveSignal((payload: Record<string, unknown>) => {
-            this.handleAgentMessage(payload);
+            this.handleAgentMessage(agentId, payload);
             // Ack delivery so bridge can clear its pending-delivery tracking
             const messageId = payload.message_id as string | undefined;
             if (messageId) {
@@ -241,7 +243,7 @@ export class BridgeAgentProvider implements AgentProvider {
         {
           event: "activity_state",
           callback: withLiveSignal((payload: Record<string, unknown>) => {
-            this.handleActivityState(payload);
+            this.handleActivityState(agentId, payload);
           }),
         },
         {
@@ -307,7 +309,7 @@ export class BridgeAgentProvider implements AgentProvider {
         {
           event: "artifact",
           callback: withLiveSignal((payload: Record<string, unknown>) => {
-            this.handleArtifact(payload);
+            this.handleArtifact(agentId, payload);
           }),
         },
         {
@@ -432,10 +434,23 @@ export class BridgeAgentProvider implements AgentProvider {
     }
   }
 
-  private handleAgentMessage(payload: Record<string, unknown>): void {
+  private rememberConversationOwner(
+    conversationId: string | undefined,
+    agentId: string | undefined,
+  ): void {
+    if (conversationId && agentId) {
+      this.conversationOwners.set(conversationId, agentId);
+    }
+  }
+
+  private handleAgentMessage(
+    channelAgentId: string,
+    payload: Record<string, unknown>,
+  ): void {
     const conversationId = payload.conversation_id as string;
     const messageId = payload.message_id as string;
     const content = payload.content as string;
+    this.rememberConversationOwner(conversationId, channelAgentId);
 
     print(`[DBG BridgeAgentProvider] handleAgentMessage: convId=${conversationId} msgId=${messageId ?? "none"} contentLen=${content?.length ?? 0} images=${(payload.images as unknown[] | undefined)?.length ?? 0} hasCallback=${this.messageCallbacks.has(conversationId)}`);
     if (!conversationId || !content) return;
@@ -489,9 +504,13 @@ export class BridgeAgentProvider implements AgentProvider {
     }
   }
 
-  private handleArtifact(payload: Record<string, unknown>): void {
+  private handleArtifact(
+    channelAgentId: string,
+    payload: Record<string, unknown>,
+  ): void {
     const conversationId = payload.conversation_id as string;
     if (!conversationId) return;
+    this.rememberConversationOwner(conversationId, channelAgentId);
 
     const rawImages = payload.images as BridgeImagePayload[] | undefined;
     const label = (payload.label as string) ?? null;
@@ -544,13 +563,15 @@ export class BridgeAgentProvider implements AgentProvider {
     if (this.gapFetchInProgress.has(conversationId)) return;
     this.gapFetchInProgress.add(conversationId);
 
-    // Find which agent owns this conversation by checking bridge channels
-    let agentId: string | null = null;
-    for (const id of this.bridgeChannels.keys()) {
-      agentId = id;
-      break;
+    // Target the bridge that owns this conversation. Only fall back to the
+    // sole open channel when ownership is unknown and there's no ambiguity.
+    let agentId: string | null =
+      this.conversationOwners.get(conversationId) ?? null;
+    if (!agentId && this.bridgeChannels.size === 1) {
+      agentId = this.bridgeChannels.keys().next().value ?? null;
     }
     if (!agentId) {
+      print(`${TAG} Gap fetch skipped for ${conversationId}: owner unknown`);
       this.gapFetchInProgress.delete(conversationId);
       return;
     }
@@ -639,9 +660,13 @@ export class BridgeAgentProvider implements AgentProvider {
     pending.resolve({ messages, seq });
   }
 
-  private handleActivityState(payload: Record<string, unknown>): void {
+  private handleActivityState(
+    channelAgentId: string,
+    payload: Record<string, unknown>,
+  ): void {
     const conversationId = payload.conversation_id as string;
     const state = payload.state as BridgeActivityState;
+    this.rememberConversationOwner(conversationId, channelAgentId);
 
     print(`[DBG BridgeAgentProvider] handleActivityState: convId=${conversationId} state=${state} hasCallback=${this.statusCallbacks.has(conversationId)}`);
     if (!conversationId || !state) return;
@@ -742,6 +767,7 @@ export class BridgeAgentProvider implements AgentProvider {
   ): void {
     const requestId = payload.request_id as string;
     const conversationId = payload.conversation_id as string;
+    this.rememberConversationOwner(conversationId, channelAgentId);
 
     const conv: BridgeConversation = {
       id: conversationId ?? "",
@@ -1069,13 +1095,18 @@ export class BridgeAgentProvider implements AgentProvider {
   }
 
   async unpairAgent(agentId: string): Promise<void> {
-    await this.supabase.invokeFunction(UNPAIR_FUNCTION_NAME, {
-      agent_id: agentId,
-    });
-    this.unsubscribeAgent(agentId);
-    const entries = this.getPairedAgents().filter((e) => e.id !== agentId);
-    this.savePairedEntries(entries);
-    print(`${TAG} Unpaired agent ${agentId}`);
+    try {
+      await this.supabase.invokeFunction(UNPAIR_FUNCTION_NAME, {
+        agent_id: agentId,
+      });
+      print(`${TAG} Unpaired agent ${agentId}`);
+    } finally {
+      // Always tear down locally so a failed server call doesn't leave
+      // orphaned channels/subscriptions for an agent the UI has removed.
+      this.unsubscribeAgent(agentId);
+      const entries = this.getPairedAgents().filter((e) => e.id !== agentId);
+      this.savePairedEntries(entries);
+    }
   }
 
   async unpairAll(): Promise<void> {
@@ -1240,6 +1271,9 @@ export class BridgeAgentProvider implements AgentProvider {
     }
 
     const conversations = await conversationsPromise;
+    for (const row of conversations) {
+      this.rememberConversationOwner(row.id, agentId);
+    }
 
     return conversations.slice(0, limit).map((row) => ({
       id: row.id,
@@ -1495,6 +1529,7 @@ export class BridgeAgentProvider implements AgentProvider {
     bridgeAgentId?: string,
   ): void {
     this.messageCallbacks.set(conversationId, callback);
+    this.rememberConversationOwner(conversationId, bridgeAgentId);
 
     const agentId = bridgeAgentId ?? this.getFirstPairedAgentId();
     if (agentId) {
@@ -1508,6 +1543,7 @@ export class BridgeAgentProvider implements AgentProvider {
     bridgeAgentId?: string,
   ): void {
     this.statusCallbacks.set(conversationId, callback);
+    this.rememberConversationOwner(conversationId, bridgeAgentId);
 
     const agentId = bridgeAgentId ?? this.getFirstPairedAgentId();
     if (agentId) {
@@ -1749,9 +1785,15 @@ export class BridgeAgentProvider implements AgentProvider {
     this.unsubscribeAgentDeletionChannel(agentId);
     this.bridgeLivenessCallbacks.delete(agentId);
     this.unsubscribeBridgeChannel(agentId);
-    // Clear any buffered data for this agent's conversations
-    this.bufferedMessages.clear();
-    this.bufferedActivityStates.clear();
+    // Clear buffered data only for this agent's conversations
+    for (const [conversationId, owner] of Array.from(
+      this.conversationOwners.entries(),
+    )) {
+      if (owner !== agentId) continue;
+      this.bufferedMessages.delete(conversationId);
+      this.bufferedActivityStates.delete(conversationId);
+      this.conversationOwners.delete(conversationId);
+    }
   }
 
   unsubscribeAll(): void {
@@ -1761,6 +1803,7 @@ export class BridgeAgentProvider implements AgentProvider {
     this.bridgeLivenessCallbacks.clear();
     this.bufferedMessages.clear();
     this.bufferedActivityStates.clear();
+    this.conversationOwners.clear();
     for (const id of Array.from(this.bridgeReconnectTimers.keys())) {
       this.clearBridgeReconnect(id);
     }

@@ -44,7 +44,7 @@ want to see a full generate → store → play audio pipeline built on Remote Se
 
 ## Extra info
 - **Requires:** bundled packages `[Prefab Preview Environment]`, `AiPreviewAgentInspect`, `AiPreviewAgentInteract`,
-  `Icons`, `SpectaclesInteractionKit`, `Leaf`, `Motion`, `RemoteServiceGateway`, `SnapDecorators`, `SupabaseClient`, `SpectaclesUIKit`,
+  `Icons`, `InteractionKit`, `Leaf`, `Motion`, `RemoteServiceGateway`, `SnapDecorators`, `SupabaseClient`, `UIKit`,
   `Utilities`. Needs your own Remote Service Gateway tokens (Snap for Snap3D, Google for Gemini and Lyria) set on
   `RemoteServiceGatewayCredentials`, and a Snap Cloud project assigned to `SnapCloudRequirements` with a public
   `generated-music` bucket, an insert policy for authenticated users and the `transcode-to-wav` Edge Function

@@ -1,6 +1,6 @@
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {TWEEN_DURATION} from "../MapUIController"
 import {makeTween} from "./MapUtils"
 

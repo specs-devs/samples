@@ -1,0 +1,119 @@
+- !<AssetImportMetadata/0e05fd96-8dc0-4741-9d12-c93a2390900c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e3722d94-58b3-4787-94b0-5960af131256
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e3722d94-58b3-4787-94b0-5960af131256
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 80ce5205-5e87-40ca-b4c0-1669c2fe9fb4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/80ce5205-5e87-40ca-b4c0-1669c2fe9fb4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 086e0ab9-83f5-485a-89f1-9493e72e945e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buildingMaterial: false
+    defaultBuildingHeight: false
+    edgeMaterial: false
+    enableLogging: false
+    flipGroundV: false
+    groundMaterial: false
+    heightScale: false
+    labelSize: false
+    landmarkCount: false
+    latitude: false
+    loadOnStart: false
+    longitude: false
+    mapSizeCm: false
+    mapStyle: false
+    mapboxToken: false
+    markerMaterial: false
+    panRangeMeters: false
+    pinMaterial: false
+    placeName: false
+    radiusMeters: false
+    statusText: false
+    zoom: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mapboxToken: ""
+      mapStyle: mapbox/dark-v11
+      latitude: 51.507900
+      longitude: -0.128100
+      placeName: Trafalgar Square
+      loadOnStart: true
+      zoom: !<float> 15.000000
+      radiusMeters: !<float> 300.000000
+      panRangeMeters: !<float> 300.000000
+      mapSizeCm: !<float> 40.000000
+      heightScale: 1.500000
+      defaultBuildingHeight: !<float> 10.000000
+      landmarkCount: !<float> 8.000000
+      groundMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      buildingMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      pinMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      markerMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      edgeMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      flipGroundV: false
+      labelSize: !<float> 36.000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Map3D [BETA]</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Standalone 3D city map (Mapbox). Drag to explore; content is clipped to the disc.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Mapbox</span>"}'
+    - '// @input string mapboxToken {"hint":"Your PERSONAL Mapbox public token (pk.…) for local testing. Never commit it — leave empty in the repo."}'
+    - '// @input string mapStyle = "mapbox/dark-v11" {"hint":"Mapbox style for the ground texture, e.g. mapbox/dark-v11, mapbox/light-v11, mapbox/streets-v12"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Location of interest</span>"}'
+    - // @input float latitude = 51.5079
+    - // @input float longitude = -0.1281
+    - '// @input string placeName = "Trafalgar Square" {"hint":"Label shown on the centre marker (empty = no label)"}'
+    - '// @input bool loadOnStart = true {"hint":"Load the map automatically on start"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Area & scale</span>"}'
+    - '// @input float zoom = 15 {"hint":"Vector tile zoom for buildings (13–16). 15 = good default, 16 = more detail but more tiles", "widget":"slider", "min":13, "max":16, "step":1}'
+    - '// @input float radiusMeters = 300 {"hint":"Ground radius (meters) visible inside the disc"}'
+    - '// @input float panRangeMeters = 300 {"hint":"How far (meters) you can drag away from the location of interest"}'
+    - '// @input float mapSizeCm = 40 {"hint":"Diameter of the map disc in cm"}'
+    - '// @input float heightScale = 1.5 {"hint":"Vertical exaggeration for buildings (1 = true scale)"}'
+    - '// @input float defaultBuildingHeight = 10 {"hint":"Height (m) used when a building has no height data"}'
+    - '// @input float landmarkCount = 8 {"hint":"Number of POI landmarks to show"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Look</span>"}'
+    - '// @input Asset.Material groundMaterial {"hint":"Material for the ground disc; its mainPass.baseTex receives the Mapbox image (an Unlit material works)"}'
+    - '// @input Asset.Material buildingMaterial {"hint":"Material for extruded buildings (a lit PBR material reads best)"}'
+    - '// @input Asset.Material pinMaterial {"hint":"Material for landmark pins"}'
+    - '// @input Asset.Material markerMaterial {"hint":"Optional material for the centre marker (defaults to the pin material)"}'
+    - '// @input Asset.Material edgeMaterial {"hint":"Optional material for the thin rim around the disc"}'
+    - '// @input bool flipGroundV {"hint":"Flip the ground texture vertically if north/south appear mirrored"}'
+    - '// @input float labelSize = 36 {"hint":"Text size for landmark labels"}'
+    - '// @input Component.Text statusText {"hint":"Optional Text for status messages (one is created above the map if empty)"}'
+    - // @input bool enableLogging

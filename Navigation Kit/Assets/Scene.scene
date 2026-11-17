@@ -1,7 +1,7 @@
 - !<Scene/0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99>
   PackagePath: ""
   objects:
-    - !<own> b17cc4ab-fa8c-43f9-bf5b-18434ed6320a
+    - !<own> 2137e06a-c6bb-41e0-a4a8-7c486b816b11
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 7756bac6-8d64-44f2-b8f7-aa23e8de8baa
@@ -16,6 +16,8 @@
     - !<own> 38042284-00a9-49c7-b601-f2692196453a
     - !<own> 9854938b-7aab-4b5f-a2c6-800f6900cd1c
     - !<own> 69fb5cd3-e1aa-4494-a2cf-0eaa7ebacb68
+    - !<own> 229c90af-d473-4124-a299-902c6091b70c
+    - !<own> 6e695731-99fc-4a36-8d33-cc3618fc8fa6
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -1045,7 +1047,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> f2937562-a9a2-42f0-bf12-210ef47d5e21
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 6b7bd000-e1eb-47e3-8f2d-4b011d98a192
   Skin: !<reference> f522b79f-f106-4e8e-b2f6-98886a468b34
   BlendShapesEnabled: true
@@ -1315,7 +1317,7 @@
 - !<ScriptComponent/0e27af71-21e1-4863-b850-85fcc75c2c00>
   PrefabRemaps:
     []
-  Name: SIKLogLevelConfiguration
+  Name: IKLogLevelConfiguration
   Enabled: true
   ScriptAsset: !<reference> ff7d0aa1-32aa-4b47-84b7-340260da1ef0
   ScriptInputsDefault:
@@ -2088,6 +2090,26 @@
     []
   Components:
     - !<own> 22a0bc3d-a445-45ee-884f-1a2068fb545d
+- !<ScriptComponent/181d9be6-c1a1-4ee4-811e-c54741ccb6d6>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  ScriptAsset: !<reference> b2c88b87-9943-4e87-9b58-596bee0d7caa
+  ScriptInputsDefault:
+    runOnAwake: true
+    summaryText: true
+    timeout: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/183ca30f-6119-4901-82c4-077dcb39680d>
   PrefabRemaps:
     []
@@ -2903,6 +2925,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/2137e06a-c6bb-41e0-a4a8-7c486b816b11>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f0a1ee6b-27fb-470e-8819-654d835feff8
 - !<LocatedAtComponent/214a359d-32d9-4536-858f-590c3ce6a36f>
   PrefabRemaps:
     []
@@ -3056,6 +3093,21 @@
   Components:
     - !<own> 53ed8c78-4e0c-4c84-ae4e-79c13ea50ca3
     - !<own> 0e27af71-21e1-4863-b850-85fcc75c2c00
+- !<SceneObject/229c90af-d473-4124-a299-902c6091b70c>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 181d9be6-c1a1-4ee4-811e-c54741ccb6d6
 - !<Text/22a0bc3d-a445-45ee-884f-1a2068fb545d>
   PrefabRemaps:
     []
@@ -4119,7 +4171,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -4143,7 +4194,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -4579,7 +4629,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -4604,7 +4653,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -4744,6 +4792,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
 - !<SceneObject/367ea8c9-b895-4e78-96d2-9c3c6e2f1488>
@@ -4842,7 +4891,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -4866,7 +4914,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -4942,7 +4989,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -4966,7 +5012,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -5382,7 +5427,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 64bdf844-8131-4c35-99e2-1c4a94e2cdc3
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 15e33d09-bf02-4bd8-8863-09f13f29d338
   Skin: !<reference> db83d377-b727-48aa-aba6-73dbde1b865d
   BlendShapesEnabled: true
@@ -5724,10 +5769,8 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
-      _innerSize: !<Vec2> {x: 60.000000, y: 25.000000}
+      _innerSize: !<Vec2> {x: 64.000000, y: 29.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: false
       allowNonUniformScaling: false
@@ -6278,9 +6321,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 32.000000, y: 32.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -7161,7 +7202,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -7186,7 +7226,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -7368,7 +7407,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -7393,7 +7431,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -8192,22 +8229,6 @@
     []
   Components:
     []
-- !<ScriptComponent/5aad3a4f-2f50-4e61-affb-b710f78d8059>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/5b989dd1-95e7-4b9f-85a4-47fd99e52b7f>
   PrefabRemaps:
     []
@@ -8228,7 +8249,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -8252,7 +8272,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -8867,7 +8886,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -8892,7 +8910,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -9092,7 +9109,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 0e669962-7854-441d-9111-bdfe6fdc9e60
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> df5f8a01-18a4-4b59-a841-436f5800cd18
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
@@ -9307,7 +9324,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -9331,7 +9347,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -9507,6 +9522,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
 - !<SceneObject/68b1e5cb-e21f-489c-be69-b3794f34d622>
@@ -9716,7 +9732,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -9741,7 +9756,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -9935,6 +9949,22 @@
     - !<own> af9e47b3-232b-4bf7-8f0d-5426fe73e7f1
   Components:
     - !<own> ff9a70b7-9b5d-43ed-bbd1-a2d49b3b3ddd
+- !<SceneObject/6e695731-99fc-4a36-8d33-cc3618fc8fa6>
+  PrefabRemaps:
+    - 6e695731-99fc-4a36-8d33-cc3618fc8fa6: cc6790dc-87b8-4070-7b73-b20115057774
+    - ae0b2fea-e34a-4e8e-ba20-4b7900176e5e: 766cdc35-47c5-4742-5c98-98d7a7b4971e
+  Name: "Map3D [BETA]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -25.000000, z: -70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ae0b2fea-e34a-4e8e-ba20-4b7900176e5e
 - !<SceneObject/6ebe84c4-b51b-4ca2-aebd-6739a3e68c48>
   PrefabRemaps:
     []
@@ -10055,7 +10085,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -10080,7 +10109,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -10214,7 +10242,6 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _spawnOnStart: true
-    _appearance: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -10265,9 +10292,7 @@
   ScriptInputs:
     "":
       _themeOverride: System3
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: Large
       _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -11398,7 +11423,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -11422,7 +11446,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -12434,9 +12457,9 @@
   Enabled: true
   Layers: 1048576
   LocalTransform: !<TransformEntity>
-    Position: {x: -15.000000, y: -30.827566, z: -100.000000}
+    Position: {x: -11.000000, y: -22.606882, z: -73.333336}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.600000, y: 0.600000, z: 0.600000}
+    Scale: {x: 0.440000, y: 0.440000, z: 0.440000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> e8bd9fe0-a38a-46f1-96b7-08b266d4d00e
@@ -14128,7 +14151,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -14152,7 +14174,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -14273,7 +14294,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -14298,7 +14318,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -14566,7 +14585,7 @@
     - ea27d7ee-93cb-4cd2-8107-d536ce663f8c: 70290c16-3e1e-4ebd-77be-11f99a7f536a
     - f2941173-52bb-465d-b861-4f7333758182: b7be8856-93cb-4049-76c3-e4a435b4d049
     - ff9a70b7-9b5d-43ed-bbd1-a2d49b3b3ddd: d4da8107-4c33-4f45-469e-e20df6a6ac7e
-  Name: SpectaclesInteractionKit
+  Name: InteractionKit
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -15611,6 +15630,61 @@
     - !<own> da60a5e8-bc4b-4684-b38f-ac203f383a3f
   Components:
     []
+- !<ScriptComponent/ae0b2fea-e34a-4e8e-ba20-4b7900176e5e>
+  PrefabRemaps:
+    []
+  Name: Map3D
+  Enabled: true
+  ScriptAsset: !<reference> e3722d94-58b3-4787-94b0-5960af131256
+  ScriptInputsDefault:
+    mapboxToken: true
+    mapStyle: true
+    latitude: true
+    longitude: true
+    placeName: true
+    loadOnStart: true
+    zoom: true
+    radiusMeters: true
+    panRangeMeters: true
+    mapSizeCm: true
+    heightScale: true
+    defaultBuildingHeight: true
+    landmarkCount: true
+    markerMaterial: true
+    edgeMaterial: true
+    flipGroundV: true
+    labelSize: true
+    statusText: true
+    enableLogging: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mapboxToken: ""
+      mapStyle: mapbox/dark-v11
+      latitude: 51.507900
+      longitude: -0.128100
+      placeName: Trafalgar Square
+      loadOnStart: true
+      zoom: !<float> 15.000000
+      radiusMeters: !<float> 300.000000
+      panRangeMeters: !<float> 300.000000
+      mapSizeCm: !<float> 40.000000
+      heightScale: 1.500000
+      defaultBuildingHeight: !<float> 10.000000
+      landmarkCount: !<float> 8.000000
+      groundMaterial: !<reference.Material> 39262017-06a1-45ee-9bb2-80f463734688
+      buildingMaterial: !<reference.Material> a11233ef-cd39-478f-bcf7-46cbb31d5268
+      pinMaterial: !<reference.Material> e985f12a-9a73-4212-842f-6f2c6c1bb422
+      markerMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      edgeMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      flipGroundV: false
+      labelSize: !<float> 36.000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/ae3d7d10-ed69-44d8-9e3b-2509c7292df5>
   PrefabRemaps:
     []
@@ -15764,21 +15838,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/b17cc4ab-fa8c-43f9-bf5b-18434ed6320a>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 5aad3a4f-2f50-4e61-affb-b710f78d8059
 - !<SceneObject/b18f13a2-ccba-47cc-b5d5-db8258a63add>
   PrefabRemaps:
     []
@@ -15957,9 +16016,9 @@
   Enabled: true
   Layers: 1048576
   LocalTransform: !<TransformEntity>
-    Position: {x: 16.000000, y: 25.000000, z: -100.000000}
+    Position: {x: 11.733333, y: 18.333332, z: -73.333336}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Scale: {x: 0.733333, y: 0.733333, z: 0.733333}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -17442,7 +17501,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -17467,7 +17525,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -17589,7 +17646,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -17614,7 +17670,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -17697,7 +17752,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -17722,7 +17776,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -17923,7 +17976,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -17947,7 +17999,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -18501,7 +18552,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -18525,7 +18575,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -19358,15 +19407,15 @@
       mapComponent: !<MappingBased.AssignableType_1> b9c184ae-b76d-4e3f-be9f-0dca2504f6af
       imageDisplay: !<MappingBased.AssignableType_2> d861d0b8-be1c-4f5f-aff6-942ed592c663
       navigationDataComponent: !<MappingBased.AssignableType_3> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
-      spawnPinButton: !<MappingBased.AssignableType_4> 6ecdca01-17db-4135-8f5b-5fea2c5e4aa1
-      clearPinsButton: !<MappingBased.AssignableType_5> f9fdb57a-24f4-40bc-bf37-39f66beb6493
-      centerMapButton: !<MappingBased.AssignableType_6> 9ff50efa-b625-4b76-8308-c20e01aa8bc4
-      searchMapButton: !<MappingBased.AssignableType_7> 401bfce8-f586-418f-a1b5-544f36608ee7
-      zoomInButton: !<MappingBased.AssignableType_8> 99534b28-14c3-401b-b91e-7c9d70e2b809
-      zoomOutButton: !<MappingBased.AssignableType_9> 6d532ad6-5e02-4615-a69c-329e715ab7e7
-      showRestaurantsButton: !<MappingBased.AssignableType_10> bb19cecd-2439-4abc-92b9-4df5c3f98220
-      showCafeButton: !<MappingBased.AssignableType_11> 916bc2ed-cdd6-4876-b439-20121276da29
-      showBarButton: !<MappingBased.AssignableType_12> 4839b961-b033-4c87-bd7c-7a42f89aff9c
+      spawnPinButton: !<MappingBased.AssignableType_4> 810667ad-876f-4251-93fa-eae377b8393d
+      clearPinsButton: !<MappingBased.AssignableType_5> c3e33def-7105-4c00-9288-b87ea92f6ffd
+      centerMapButton: !<MappingBased.AssignableType_6> 3773628e-35b8-4ebd-8338-8be866a77e2b
+      searchMapButton: !<MappingBased.AssignableType_7> 9ec9a19e-c078-4b56-9932-1235b4865920
+      zoomInButton: !<MappingBased.AssignableType_8> 371de201-74fa-4433-ab0a-229f49bcdba1
+      zoomOutButton: !<MappingBased.AssignableType_9> 675413ba-8511-4d43-93e2-84ab791557d0
+      showRestaurantsButton: !<MappingBased.AssignableType_10> 5b989dd1-95e7-4b9f-85a4-47fd99e52b7f
+      showCafeButton: !<MappingBased.AssignableType_11> cbc853d8-d327-4be4-a48b-a9c9207bcd1d
+      showBarButton: !<MappingBased.AssignableType_12> 314c8c99-13ff-4df8-aafd-19b9d4859bc8
       mapRender: !<reference.SceneObject> fab113ee-e560-44d7-95a6-6f1954edce9b
       scrollRoot: !<reference.SceneObject> 32df01d7-53f7-4e6c-b54f-069045d79d3d
       frame: !<MappingBased.AssignableType_13> 3f44ccde-3c90-4b50-ad6f-c971a25b2812
@@ -19376,8 +19425,8 @@
       mainPanel: !<reference.SceneObject> adb6a44a-22c7-438c-8ed7-4ce66907f9fc
       scrollView: !<reference.SceneObject> 32df01d7-53f7-4e6c-b54f-069045d79d3d
       camera: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
-      frameInnerSizeDefault: !<Vec2> {x: 60.000000, y: 25.000000}
-      frameInnerSizeNavigation: !<Vec2> {x: 35.000000, y: 10.000000}
+      frameInnerSizeDefault: !<Vec2> {x: 64.000000, y: 29.000000}
+      frameInnerSizeNavigation: !<Vec2> {x: 38.000000, y: 13.000000}
       frameInnerSizeMinimized: !<Vec2> {x: 16.000000, y: 16.000000}
       minimizedTetherOffset: !<Vec3> {x: 32.000000, y: 24.000000, z: -110.000000}
       mapLocalPositionDefault: !<Vec3> {x: -7.907300, y: -0.327200, z: 0.000000}
@@ -21242,9 +21291,7 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _shapeSystem2: true
     _shapeSystem3: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -21269,9 +21316,7 @@
       onFinishedCallbacks:
         []
       _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
-      _shapeSystem2: Rectangle
       _shapeSystem3: Rectangle
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -21307,6 +21352,22 @@
     []
   Components:
     []
+- !<ScriptComponent/f0a1ee6b-27fb-470e-8819-654d835feff8>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/f12f02d5-3d74-4f76-ac71-ebd32a74bd1b>
   PrefabRemaps:
     []

@@ -1,8 +1,8 @@
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {RoundedRectangle, RoundedRectBlendMode} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {RoundedRectangle, RoundedRectBlendMode} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {GuideDismissPanel} from "../GuideDismissPanel/GuideDismissPanel"
 
 const FRAME_PADDING = 2
@@ -17,7 +17,7 @@ const LABEL_SIZE = 56
 const BORDER_SIZE = 0.6
 const CONTENT_RENDER_ORDER = 20
 // In front of the guide, so the warning is always read first.
-const WARNING_DISTANCE = 100
+const WARNING_DISTANCE = 110
 const RED = new vec4(0.94, 0.27, 0.27, 1)
 const UNSET_TOKEN = /^\s*$|^\[INSERT/i
 // The guide comes back after the pinch that closed the warning is over, so that pinch can't also press its button.

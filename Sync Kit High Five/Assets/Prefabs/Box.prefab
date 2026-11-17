@@ -1,0 +1,43 @@
+- !<ObjectPrefab/bf04911f-5479-43e0-b800-54b742eaab60>
+  PackagePath: ""
+  objects:
+    - !<own> 9e24e8b2-f169-46d7-b17e-a0d75ff0cb46
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/9e24e8b2-f169-46d7-b17e-a0d75ff0cb46>
+  PrefabRemaps:
+    - 9e24e8b2-f169-46d7-b17e-a0d75ff0cb46: 9e24e8b2-f169-46d7-4e81-5f28a00f34b9
+    - c5c7fd2e-4e2c-4fd6-9254-6a1583fc96e2: c5c7fd2e-4e2c-4fd6-6dab-95ea7c03691d
+  Name: Box
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 0.100000, y: 0.100000, z: 0.100000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c5c7fd2e-4e2c-4fd6-9254-6a1583fc96e2
+- !<RenderMeshVisual/c5c7fd2e-4e2c-4fd6-9254-6a1583fc96e2>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> a10c8e4d-6acc-4a31-984d-119b9c31a52f
+  Mesh: !<reference> 885af5a8-88cd-4dfd-b6a6-33352d6d2cc7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

@@ -1,15 +1,15 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { Agent, AgentStatus, ChatMessage, ChatTopic } from "../../Types";
 import { AgentStore, RepoEntry } from "../../State/AgentStore";
 import { AgentObject } from "./AgentObject";
 import { AgentChatPanel } from "../Chat/AgentChatPanel";
 import { AgentManagerPanel } from "../AgentManagerPanel";
-import { TranslateEventArg } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { TranslateEventArg } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
 import {
   setTimeout,
   clearTimeout,
   CancelToken,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { THEME_KEYS } from "../Shared/UIConstants";
 import { createAudioComponent } from "../Shared/UIBuilders";
 import { AgentButtonBar } from "./AgentButtonBar";
@@ -65,6 +65,7 @@ export class AgentWorldView {
   }>();
   public readonly onPermissionDecision = new Event<{
     agentId: string;
+    topicId: string | null;
     decision: "allow" | "allow_session" | "deny";
   }>();
   public readonly onSmartFeatureChanged = new Event<{
@@ -212,10 +213,11 @@ export class AgentWorldView {
     });
 
     this.chatPanel.onPermissionDecision.add(
-      (decision: "allow" | "allow_session" | "deny") => {
-        const agentId = this.store.getSelectedAgentId();
+      ({ decision, agentId: boundAgentId, topicId }) => {
+        // Route to the agent/topic the card was bound to, not the selection.
+        const agentId = boundAgentId ?? this.store.getSelectedAgentId();
         if (agentId) {
-          this.onPermissionDecision.invoke({ agentId, decision });
+          this.onPermissionDecision.invoke({ agentId, topicId, decision });
         }
       },
     );
@@ -408,6 +410,9 @@ export class AgentWorldView {
     let removed = false;
     for (const [id, node] of this.dockedNodes) {
       if (!incoming.has(id)) {
+        if (this.lastTappedNode?.agentObject === node.agentObject) {
+          this.lastTappedNode = null;
+        }
         node.agentObject.destroy();
         this.dockedNodes.delete(id);
         this.removeWorldClonesForAgent(id);
@@ -667,8 +672,13 @@ export class AgentWorldView {
     let isPinchHeld = false;
     let pinchHoldTimer: CancelToken | null = null;
     let restoreAgent: AgentObject | null = null;
+    // Each drag gets exactly one end. Guards against the end handler running
+    // again for the same drag (e.g. the kit re-firing after a throw), which
+    // used to spawn a clone per call.
+    let translationActive = false;
 
     manipulation.onTranslationStart.add(() => {
+      translationActive = true;
       dockedLocalPos = agentObject
         .getSceneObject()
         .getTransform()
@@ -678,6 +688,7 @@ export class AgentWorldView {
       totalDistance = 0;
       isDragging = false;
       isPinchHeld = false;
+      restoreAgent = null;
 
       agentObject.showDragHoldTooltip(true);
 
@@ -721,6 +732,8 @@ export class AgentWorldView {
     });
 
     manipulation.onTranslationEnd.add(() => {
+      if (!translationActive) return;
+      translationActive = false;
       if (pinchHoldTimer !== null) {
         clearTimeout(pinchHoldTimer);
         pinchHoldTimer = null;
@@ -733,18 +746,27 @@ export class AgentWorldView {
       }
       if (this.panel && totalDistance > DETACH_THRESHOLD) {
         const agent = agentObject.getAgent();
-        if (agent) {
-          this.audioComponent.audioTrack = DETACH_DOCK_SFX;
-          this.audioComponent.play(1);
-          this.openNewChatForDraggedAgent(agent, agentObject, lastPosition);
+        try {
+          if (agent) {
+            this.audioComponent.audioTrack = DETACH_DOCK_SFX;
+            this.audioComponent.play(1);
+            this.openNewChatForDraggedAgent(agent, agentObject, lastPosition);
+          }
+        } catch (e) {
+          // Never leave the docked agent stranded at the drag point.
+          print(
+            `[AgentWorldView] detach failed: ${e}\n${(e as Error)?.stack ?? ""}`,
+          );
+        } finally {
+          agentObject.snapToDockedPosition(dockedLocalPos);
         }
-        agentObject.snapToDockedPosition(dockedLocalPos);
       } else {
         if (restoreAgent) {
           this.chatPanel.show(restoreAgent);
         }
         agentObject.lerpToDockedPosition(dockedLocalPos);
       }
+      restoreAgent = null;
     });
   }
 
@@ -1167,8 +1189,12 @@ export class AgentWorldView {
     }
   }
 
-  showPermissionRequest(payload: PermissionPayload): void {
-    this.chatPanel.showPermissionRequest(payload);
+  showPermissionRequest(
+    payload: PermissionPayload,
+    agentId?: string,
+    topicId?: string,
+  ): void {
+    this.chatPanel.showPermissionRequest(payload, agentId, topicId);
   }
 
   hidePermissionRequest(): void {

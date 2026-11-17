@@ -1,10 +1,11 @@
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
 import { RobotMeshController } from "../../../Visuals/Scripts/RobotMeshController";
-import { TextSize, TextFont } from "../Shared/TextSizes";
 import { ICON_Z_OFFSET } from "../Shared/UIConstants";
 import { createText } from "../Shared/UIBuilders";
 import { RobotState, RobotTheme } from "../Shared/RobotTypes";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { TextStyle } from "../Shared/UIStyle";
 
 const MESH_PREFAB: ObjectPrefab = requireAsset(
   "../../../Prefabs/AgentMesh.prefab",
@@ -17,7 +18,7 @@ const TEXT_PADDING_BOTTOM = -1.65;
 
 @component
 export class AgentButton extends BaseScriptComponent {
-  private button: RectangleButton;
+  private button: Button;
   private btnObj: SceneObject;
   private robotController: RobotMeshController;
   private labelText: Text;
@@ -41,9 +42,7 @@ export class AgentButton extends BaseScriptComponent {
     this.btnObj = global.scene.createSceneObject("AgentButtonRect");
     this.btnObj.setParent(root);
 
-    this.button = this.btnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    this.button = createSystemButton(this.btnObj, "Ghost");
 
     const btnRecord = this.button as unknown as Record<string, string>;
     this.button.style;
@@ -77,8 +76,7 @@ export class AgentButton extends BaseScriptComponent {
       parent: this.btnObj,
       name: "AgentButtonLabel",
       text: "Agent",
-      size: TextSize.S,
-      font: TextFont.Medium,
+      style: TextStyle.ButtonCompact,
       color: new vec4(1, 1, 1, 1),
       position: new vec3(0, TEXT_PADDING_BOTTOM, ICON_Z_OFFSET * 2),
       horizontalAlignment: HorizontalAlignment.Center,
@@ -179,7 +177,7 @@ export class AgentButton extends BaseScriptComponent {
     return this._agentId;
   }
 
-  getButton(): RectangleButton {
+  getButton(): Button {
     return this.button;
   }
 

@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/b380fda9-944f-4eeb-b6b2-93510c89d6c8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1919d992-57e1-4e2b-a042-55974521c018
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1919d992-57e1-4e2b-a042-55974521c018
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1e618882-da88-4b22-8e90-4390e9cfc3fc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1e618882-da88-4b22-8e90-4390e9cfc3fc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: f7d1f2ae-e53d-4ff3-a056-c90e1fe8ee54
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxMesh: false
+    color: false
+    endObject: false
+    material: false
+    startObject: false
+    thickness: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - startObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      material: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      color: !<Vec4> {x: 0.200000, y: 0.800000, z: 1.000000, w: 1.000000}
+      thickness: 0.400000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GuideLine – a visible bar between two objects</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Follows both ends every frame. Purely visual: it has no collider.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject startObject {"hint":"One end of the bar"}'
+    - '// @input SceneObject endObject {"hint":"The other end of the bar"}'
+    - '// @input Asset.RenderMesh boxMesh {"hint":"A unit (1 cm) box mesh, stretched between the ends"}'
+    - '// @input Asset.Material material {"hint":"Material with a baseColor (an unlit one reads well in any lighting); it is cloned, so other objects keep their color"}'
+    - '// @input vec4 color = {0.2,0.8,1,1} {"hint":"Bar color", "widget":"color"}'
+    - '// @input float thickness = 0.4 {"hint":"Bar thickness (cm)"}'

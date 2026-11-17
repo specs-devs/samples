@@ -1,64 +1,64 @@
 //@component
 /**
  * SPECS Inc. 2027
- * Defines on Awake, on Start, update Object Movement for the Essentials lens.
+ * Simple raycast for the Essentials lens: casts a ray from rayStart to rayEnd every frame,
+ * moves endPointAttachment to the hit position and (optionally) writes what was hit to a Text.
  */
-// Given an object with a BodyComponent
-// If the object intersects with the ray described
-// by rayStart and rayEnd, print a message.
 
-//@input SceneObject rayStart
-//@input SceneObject rayEnd
-//@input SceneObject endPointAttachment {"allowUndefined": true}
+//@input SceneObject rayStart {"hint":"The starting point of the raycast"}
+//@input SceneObject rayEnd {"hint":"The ending point of the raycast"}
+//@input SceneObject endPointAttachment {"hint":"Scene object to place at the raycast hit position", "allowUndefined": true}
+//@input bool hideMarkerWhenNoHit = true {"hint":"Hide endPointAttachment while the ray hits nothing"}
+//@input SceneObject hitsUnder {"hint":"Optional: only colliders under this object count (UI panels and other content in front are ignored)", "allowUndefined": true}
+//@input Component.Text statusText {"hint":"Optional Text that shows what the ray hits and how far away", "allowUndefined": true}
 
-function onAwake() {
-  // Check if endPointAttachment is defined
-  print("EndPointAttachment object defined: " + (script.endPointAttachment !== undefined));
+var probe = null;
+var lastStatus = "";
 
-  script.createEvent("OnStartEvent").bind(() => {
-    onStart();
-  });
-
-  script.createEvent("UpdateEvent").bind(() => {
-    updateObjectMovement();
-  });
-}
-
-function onStart() {
-  // Check if endPointAttachment is defined at start
-  print("EndPointAttachment object at start: " + (script.endPointAttachment !== undefined));
-  if (script.endPointAttachment) {
-    print("EndPointAttachment object name: " + script.endPointAttachment.name);
+function setStatus(value) {
+  if (script.statusText && value !== lastStatus) {
+    script.statusText.text = value;
+    lastStatus = value;
   }
 }
 
-function updateObjectMovement() {
-  // Create a probe to raycast through all worlds.
-  var globalProbe = Physics.createGlobalProbe();
-
-  // Check if endPointAttachment is defined before raycasting
-  print("EndPointAttachment object before raycast: " + (script.endPointAttachment !== undefined));
-
-  globalProbe.rayCast(
-    script.rayStart.getTransform().getWorldPosition(),
-    script.rayEnd.getTransform().getWorldPosition(),
-    function (hit) {
-      if (hit) {
-        var position = hit.position;
-
-        print("Raycast hit: " + hit.collider.getSceneObject().name);
-
-        // Add safety check for endPointAttachment
-        if (script.endPointAttachment) {
-          print("EndPointAttachment exists in callback, setting position");
-          script.endPointAttachment.getTransform().setWorldPosition(position);
-        } else {
-          print("ERROR: EndPointAttachment is undefined in callback");
-        }
-      }
+function updateRaycast() {
+  if (!script.rayStart || !script.rayEnd) {
+    return;
+  }
+  if (!probe) {
+    probe = Physics.createGlobalProbe();
+  }
+  var start = script.rayStart.getTransform().getWorldPosition();
+  var end = script.rayEnd.getTransform().getWorldPosition();
+  probe.rayCastAll(start, end, function (hits) {
+    var hit = null;
+    for (var i = 0; i < hits.length && !hit; i++) {
+      if (counts(hits[i].collider.getSceneObject())) hit = hits[i];
     }
-  );
+    if (hit) {
+      if (script.endPointAttachment) {
+        script.endPointAttachment.enabled = true;
+        script.endPointAttachment.getTransform().setWorldPosition(hit.position);
+      }
+      setStatus("Ray hits " + hit.collider.getSceneObject().name + " at " + Math.round(hit.position.distance(start)) + " cm");
+    } else {
+      if (script.endPointAttachment && script.hideMarkerWhenNoHit) {
+        script.endPointAttachment.enabled = false;
+      }
+      setStatus("Ray hits nothing: look at the box");
+    }
+  });
 }
 
-// Start the script
-onAwake();
+function counts(object) {
+  if (!script.hitsUnder) return true;
+  var current = object;
+  while (current) {
+    if (current === script.hitsUnder) return true;
+    current = current.getParent();
+  }
+  return false;
+}
+
+script.createEvent("UpdateEvent").bind(updateRaycast);

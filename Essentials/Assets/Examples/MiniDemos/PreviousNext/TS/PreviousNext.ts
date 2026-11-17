@@ -4,8 +4,8 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {InteractorEvent} from "InteractionKit.lspkg/Core/Interactor/InteractorEvent"
 
 @component
 export class PreviousNext extends BaseScriptComponent {

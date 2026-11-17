@@ -6,8 +6,8 @@ import {GeminiAssistant} from "./GeminiAssistant"
 import {OpenAIAssistant} from "./OpenAIAssistant"
 import {Snap3DInteractableFactory} from "./Snap3DInteractableFactory"
 import {SphereController} from "./SphereController"
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import {BaseButton} from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MathUtils} from "Utilities.lspkg/Scripts/Utils/MathUtils"
@@ -102,7 +102,7 @@ export class AIAssistantUIBridge extends BaseScriptComponent {
     this.sphereController.onCloseButtonEvent.add(() => {
       this.closeAssistantAndShowButtons()
     })
-    // SpectaclesUIKit buttons whose script reference can come through
+    // UIKit buttons whose script reference can come through
     // unresolved after the package update (initialize()/onTriggerUp undefined)
     // until reattached in the scene. Guard so the lens does not crash; once
     // reattached these wire up automatically.

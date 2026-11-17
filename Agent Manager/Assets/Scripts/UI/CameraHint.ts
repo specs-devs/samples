@@ -1,39 +1,33 @@
-import {
-  InteractionHintController,
-  HandMode,
-  HandAnimationsLibrary,
-} from "HandHints3D.lspkg/Scripts/InteractionHintController";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import animate, {
-  CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { DropShadow } from "SpectaclesUIKit.lspkg/Scripts/DropShadow";
-import { TextSize, TextFont } from "./Shared/TextSizes";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import animate, { CancelSet } from "./Shared/MotionAnimate";
+import { DropShadow } from "UIKit.lspkg/Scripts/DropShadow";
 import { createText } from "./Shared/UIBuilders";
-
-const HAND_HINTS_PREFAB: ObjectPrefab = requireAsset(
-  "HandHints3D.lspkg/HandHints3D__PLACE_IN_SCENE.prefab",
-) as ObjectPrefab;
+import { TextStyle } from "./Shared/UIStyle";
 
 const HEADLOCK_DISTANCE = 65;
-const Z_TILT_DEG = 25;
-const HINT_SCALE = 0.5;
-const EASING = 0.2;
-const TEXT_FADE_DURATION = 0.5;
-const HINT_TEXT = "Pinch and drag your fingers\napart to take a picture";
-const TEXT_Y_OFFSET = -8;
-const SHADOW_SIZE = new vec2(30, 25);
-const SHADOW_CORNER_RADIUS = 4;
-const SHADOW_Z_OFFSET = -5;
-const SHADOW_COLOR = new vec4(0, 0, 0, 0.4);
-const Z_HINT = 5;
+const HEADLOCK_EASING = 0.2;
+const TEXT_Y_OFFSET = -6;
+const HINT_TEXT = "Pinch with both hands and drag\napart to take a picture";
+const FADE_IN_DURATION = 0.35;
+const FADE_OUT_DURATION = 0.5;
+const VISIBLE_SECONDS = 6;
+const SHADOW_SIZE = new vec2(26, 7);
+const SHADOW_CORNER_RADIUS = 3.5;
+const SHADOW_Z_OFFSET = -1;
+const SHADOW_COLOR = new vec4(0, 0, 0, 1);
+const SHADOW_OPACITY = 0.45;
+
+/**
+ * Head-locked text hint shown when the camera is toggled on. Fades in, stays
+ * for a few seconds (or until a capture starts / the camera is toggled off),
+ * then fades out and destroys itself.
+ */
 export class CameraHint {
   private root: SceneObject | null = null;
-  private hintObj: SceneObject | null = null;
-  private textObj: SceneObject | null = null;
-  private shadowObj: SceneObject | null = null;
-  private hintController: InteractionHintController | null = null;
+  private text: Text | null = null;
+  private shadow: DropShadow | null = null;
   private updateEvent: SceneEvent | null = null;
+  private hideTimer: DelayedCallbackEvent | null = null;
   private animCancels = new CancelSet();
   private currentRot: quat = quat.quatIdentity();
   private isShowing = false;
@@ -46,59 +40,86 @@ export class CameraHint {
     this.root.setParent(parent);
     this.snapToCamera();
 
-    this.hintObj = HAND_HINTS_PREFAB.instantiate(this.root);
-    const hintTrans = this.hintObj.getTransform();
-    hintTrans.setLocalRotation(
-      quat.fromEulerAngles(0, 0, MathUtils.DegToRad * Z_TILT_DEG),
-    );
-    hintTrans.setLocalScale(new vec3(HINT_SCALE, HINT_SCALE, HINT_SCALE));
-    hintTrans.setLocalPosition(new vec3(0, 0, Z_HINT));
-
-    this.disableChild(this.hintObj, "GUIDE_ReadAndDisable");
-
-    this.hintController = this.hintObj.getComponent(
-      InteractionHintController.getTypeName(),
-    ) as InteractionHintController;
-
-    const animPlayer = this.hintController.handHints.getComponent(
-      "AnimationPlayer",
-    ) as AnimationPlayer;
-    if (this.hintController.animationPlayerClipEndEvent) {
-      animPlayer.onEvent.remove(
-        this.hintController.animationPlayerClipEndEvent,
-      );
-    }
-
-    this.hintController.playHintAnimation(
-      HandMode.Both,
-      HandAnimationsLibrary.Both.TwoHandsPinchScale,
-      200,
-      0.35,
-    );
-
-    this.buildHintText();
-    this.createShadow();
-
-    this.hintController.animationEndEvent.bind(() => {
-      this.fadeOutAndDestroy();
+    this.text = createText({
+      parent: this.root,
+      name: "HintText",
+      text: HINT_TEXT,
+      style: TextStyle.Label,
+      color: new vec4(1, 1, 1, 0),
+      position: new vec3(0, TEXT_Y_OFFSET, 0),
+      horizontalAlignment: HorizontalAlignment.Center,
+      verticalAlignment: VerticalAlignment.Center,
     });
 
-    this.updateEvent = this.hintController.createEvent("UpdateEvent");
+    const shadowObj = global.scene.createSceneObject("HintShadow");
+    shadowObj.setParent(this.root);
+    shadowObj
+      .getTransform()
+      .setLocalPosition(new vec3(0, TEXT_Y_OFFSET, SHADOW_Z_OFFSET));
+    this.shadow = shadowObj.createComponent(
+      DropShadow.getTypeName(),
+    ) as DropShadow;
+    this.shadow.size = SHADOW_SIZE;
+    this.shadow.cornerRadius = SHADOW_CORNER_RADIUS;
+    this.shadow.color = SHADOW_COLOR;
+    this.shadow.spread = 0.6;
+    this.setAlpha(0);
+
+    // Host the per-frame and timer events on a bare script on the root (not
+    // the shadow, which gets disabled while invisible) so they die with it.
+    const host = this.root.createComponent(
+      "Component.ScriptComponent",
+    ) as ScriptComponent;
+    this.updateEvent = host.createEvent("UpdateEvent");
     this.updateEvent.bind(() => this.updateHeadlock());
+
+    this.hideTimer = host.createEvent("DelayedCallbackEvent");
+    this.hideTimer.bind(() => this.fadeOut());
+    this.hideTimer.reset(VISIBLE_SECONDS);
+
+    animate({
+      duration: FADE_IN_DURATION,
+      easing: "ease-out-quad",
+      cancelSet: this.animCancels,
+      update: (t: number) => this.setAlpha(t),
+    });
   }
 
   hide(): void {
-    if (!this.isShowing) return;
-    this.isShowing = false;
-    this.animCancels.cancel();
+    if (!this.isShowing && !this.root) return;
     this.cleanup();
+  }
+
+  private setAlpha(alpha: number): void {
+    if (this.text && !isNull(this.text)) {
+      this.text.textFill.color = new vec4(1, 1, 1, alpha);
+    }
+    if (this.shadow && !isNull(this.shadow)) {
+      // The shadow material doesn't reliably honor opacityFactor, so fade the
+      // color alpha too, and switch it off entirely once invisible.
+      const a = SHADOW_OPACITY * alpha;
+      this.shadow.opacity = a;
+      this.shadow.color = new vec4(SHADOW_COLOR.x, SHADOW_COLOR.y, SHADOW_COLOR.z, a);
+      this.shadow.getSceneObject().enabled = alpha > 0.01;
+    }
+  }
+
+  private fadeOut(): void {
+    if (!this.isShowing) return;
+    this.animCancels.cancel();
+    animate({
+      duration: FADE_OUT_DURATION,
+      easing: "ease-in-quad",
+      cancelSet: this.animCancels,
+      update: (t: number) => this.setAlpha(1 - t),
+      ended: () => this.cleanup(),
+    });
   }
 
   private snapToCamera(): void {
     const camTrans = WorldCameraFinderProvider.getInstance().getTransform();
     const camPos = camTrans.getWorldPosition();
-    const camFwd = camTrans.forward;
-    const pos = camPos.add(camFwd.uniformScale(-HEADLOCK_DISTANCE));
+    const pos = camPos.add(camTrans.forward.uniformScale(-HEADLOCK_DISTANCE));
     this.root.getTransform().setWorldPosition(pos);
 
     const dir = camPos.sub(pos);
@@ -109,102 +130,36 @@ export class CameraHint {
   }
 
   private updateHeadlock(): void {
-    if (!this.root) return;
-
+    if (!this.root || isNull(this.root)) return;
     const camTrans = WorldCameraFinderProvider.getInstance().getTransform();
     const camPos = camTrans.getWorldPosition();
-    const camFwd = camTrans.forward;
-
-    const targetPos = camPos.add(camFwd.uniformScale(-HEADLOCK_DISTANCE));
+    const targetPos = camPos.add(
+      camTrans.forward.uniformScale(-HEADLOCK_DISTANCE),
+    );
     this.root.getTransform().setWorldPosition(targetPos);
 
     const dir = camPos.sub(targetPos);
     if (dir.length > 0.001) {
       const targetRot = quat.lookAt(dir.normalize(), vec3.up());
-      this.currentRot = quat.slerp(this.currentRot, targetRot, EASING);
+      this.currentRot = quat.slerp(this.currentRot, targetRot, HEADLOCK_EASING);
       this.root.getTransform().setWorldRotation(this.currentRot);
-    }
-  }
-
-  private buildHintText(): void {
-    const hintText = createText({
-      parent: this.root,
-      name: "HintText",
-      text: HINT_TEXT,
-      size: TextSize.M,
-      font: TextFont.Medium,
-      color: new vec4(1, 1, 1, 1),
-      position: new vec3(0, TEXT_Y_OFFSET, 0),
-      horizontalAlignment: HorizontalAlignment.Center,
-      verticalAlignment: VerticalAlignment.Center,
-    });
-    this.textObj = hintText.getSceneObject();
-  }
-
-  private createShadow(): void {
-    this.shadowObj = global.scene.createSceneObject("HintShadow");
-    this.shadowObj.setParent(this.root);
-    this.shadowObj
-      .getTransform()
-      .setLocalPosition(new vec3(0, 0, SHADOW_Z_OFFSET));
-    const shadow = this.shadowObj.createComponent(
-      DropShadow.getTypeName(),
-    ) as DropShadow;
-    shadow.size = SHADOW_SIZE;
-    shadow.cornerRadius = SHADOW_CORNER_RADIUS;
-    shadow.color = SHADOW_COLOR;
-    shadow.spread = 0.6;
-  }
-
-  private fadeOutAndDestroy(): void {
-    if (!this.textObj) {
-      this.cleanup();
-      return;
-    }
-
-    const textComp = this.textObj.getComponent("Text") as Text;
-    if (!textComp) {
-      this.cleanup();
-      return;
-    }
-
-    animate({
-      duration: TEXT_FADE_DURATION,
-      easing: "ease-out-quad",
-      cancelSet: this.animCancels,
-      update: (t: number) => {
-        textComp.textFill.color = new vec4(1, 1, 1, 1 - t);
-      },
-      ended: () => {
-        this.cleanup();
-      },
-    });
-  }
-
-  private disableChild(parent: SceneObject, name: string): void {
-    for (let i = 0; i < parent.getChildrenCount(); i++) {
-      const child = parent.getChild(i);
-      if (child.name === name) {
-        child.enabled = false;
-        return;
-      }
-      this.disableChild(child, name);
     }
   }
 
   private cleanup(): void {
     this.isShowing = false;
+    this.animCancels.cancel();
     if (this.updateEvent) {
       this.updateEvent.enabled = false;
       this.updateEvent = null;
     }
-    if (this.root) {
-      this.root.destroy();
-      this.root = null;
+    if (this.hideTimer) {
+      this.hideTimer.enabled = false;
+      this.hideTimer = null;
     }
-    this.hintObj = null;
-    this.textObj = null;
-    this.shadowObj = null;
-    this.hintController = null;
+    if (this.root && !isNull(this.root)) this.root.destroy();
+    this.root = null;
+    this.text = null;
+    this.shadow = null;
   }
 }

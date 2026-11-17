@@ -1,7 +1,7 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
 import { createText } from "../Shared/UIBuilders";
 import { PANEL_WIDTH, TITLE_HEIGHT, PANEL_PADDING as PADDING, Z_CONTENT } from "../Shared/UIConstants";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 
 export class AgentsEmptyView {
   readonly sceneObject: SceneObject;
@@ -31,9 +31,8 @@ export class AgentsEmptyView {
       parent: this.sceneObject,
       name: "NoAgentsText",
       text: "No Agents Connected",
-      size: TextSize.XXL,
-      font: TextFont.SemiBold,
-      color: new vec4(1, 1, 1, 0.75),
+      style: TextStyle.PanelTitle,
+      color: TextColor.Secondary,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,
@@ -51,8 +50,8 @@ export class AgentsEmptyView {
       parent: this.sceneObject,
       name: "NoAgentsSubtext",
       text: "Connect an AI agent in Settings to start managing tasks from your Glasses.",
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.35),
+      style: TextStyle.Body,
+      color: TextColor.Muted,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Center,

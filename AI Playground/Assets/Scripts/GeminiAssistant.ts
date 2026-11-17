@@ -8,7 +8,7 @@ import {DynamicAudioOutput} from "RemoteServiceGateway.lspkg/Helpers/DynamicAudi
 import {MicrophoneRecorder} from "RemoteServiceGateway.lspkg/Helpers/MicrophoneRecorder"
 import {VideoController} from "RemoteServiceGateway.lspkg/Helpers/VideoController"
 import {GeminiTypes} from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {PlaygroundLogger} from "./PlaygroundLogger"
 

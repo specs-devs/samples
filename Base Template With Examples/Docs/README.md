@@ -32,8 +32,8 @@ Specs Lens who want working references next to their own content.
 | `Scripts/VideoPlayer.ts` | Runtime-built video player with transport controls, timeline and volume slider. |
 
 ## Extra info
-- **Requires:** bundled packages `Icons`, `SpectaclesInteractionKit`, `InteractionKitExamples`, `Motion`, `SnapDecorators`,
-  `SpectaclesUIKit`, `Utilities`. Built for Specs; the examples can be explored in the Lens Studio Interactive Preview.
+- **Requires:** bundled packages `Icons`, `InteractionKit`, `InteractionKitExamples`, `Motion`, `SnapDecorators`,
+  `UIKit`, `Utilities`. Built for Specs; the examples can be explored in the Lens Studio Interactive Preview.
 - **Get started:** open `BaseTemplateWithExamples.esproj` and the `Assets/Scene.scene`; add your own content next
   to the `[EXAMPLES]` groups, or remove the groups you don't need.
 - **More docs:** [../README.md](../README.md) — project overview, setup and testing.

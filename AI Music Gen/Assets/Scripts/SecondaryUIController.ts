@@ -5,11 +5,11 @@
 import {GenresData} from "Data/GenresData"
 import {InstrumentsData} from "Data/InstrumentsData"
 import {VibesData} from "Data/VibesData"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {RoundButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {RoundButton} from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MathUtils} from "Utilities.lspkg/Scripts/Utils/MathUtils"
@@ -18,8 +18,8 @@ import {SelectionController} from "./SelectionController"
 
 // Where the summoned panel lands (cm): level in front of the user and low like a desk,
 // below the guidance bar that sits just under eye level.
-const SUMMON_DISTANCE = 100
-const SUMMON_DROP = 48
+const SUMMON_DISTANCE = 110
+const SUMMON_DROP = 53
 
 @component
 export class SecondaryUIController extends BaseScriptComponent {
@@ -126,7 +126,7 @@ export class SecondaryUIController extends BaseScriptComponent {
     this.selectScrollCategory("Genres")
     // Deprecated RoundButton/RectangleButton may not instantiate at runtime;
     // guard initialize()/onTriggerUp so the lens does not crash. Replace with
-    // the new SpectaclesUIKit Button component in the scene to restore clicks.
+    // the new UIKit Button component in the scene to restore clicks.
     const summonBtn = this._summonButton as any
     if (typeof summonBtn.initialize === "function") summonBtn.initialize()
     summonBtn.onTriggerUp?.add(() => {

@@ -1,15 +1,16 @@
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import { Billboard } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "./Shared/SystemButton";
+import { Billboard } from "InteractionKit.lspkg/Components/Interaction/Billboard/Billboard";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import { TextSize, TextFont } from "./Shared/TextSizes";
+} from "./Shared/MotionAnimate";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import { createText } from "./Shared/UIBuilders";
 import { RobotState, RobotTheme } from "./Shared/RobotTypes";
 import { RobotMeshController } from "../../Visuals/Scripts/RobotMeshController";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { TextStyle } from "./Shared/UIStyle";
 
 const MESH_PREFAB: ObjectPrefab = requireAsset(
   "../../Prefabs/AgentMesh.prefab",
@@ -52,7 +53,7 @@ const CAM_DOWN = new vec3(0, -1, 0);
 
 @component
 export class AgentResponseNotification extends BaseScriptComponent {
-  private button: RectangleButton;
+  private button: Button;
   private iconHolder: SceneObject;
   private robotController: RobotMeshController;
   private titleObj: SceneObject;
@@ -63,6 +64,7 @@ export class AgentResponseNotification extends BaseScriptComponent {
   private dismissCancels = new CancelSet();
 
   private isDestroyed = false;
+  private isDismissing = false;
   private slideOffset = 0; // camera-space vertical offset in cm (positive = down)
   private cameraTransform: Transform;
   private readonly _scratchWorldPos = new vec3(0, 0, 0);
@@ -92,13 +94,12 @@ export class AgentResponseNotification extends BaseScriptComponent {
     // Click button covering full notification
     const btnObj = global.scene.createSceneObject("NotifBtn");
     btnObj.setParent(root);
-    this.button = btnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    this.button = createSystemButton(btnObj, "Ghost");
     this.button.size = new vec3(NOTIF_W, NOTIF_H, 0.5);
     this.button.initialize();
     this.button.onTriggerUp.add(() => {
-      if (!this.isDestroyed) {
+      // Ignore taps once the dismiss animation has started.
+      if (!this.isDestroyed && !this.isDismissing) {
         this.onTapped.invoke();
         this.dismiss();
       }
@@ -126,8 +127,7 @@ export class AgentResponseNotification extends BaseScriptComponent {
       parent: btnObj,
       name: "NotifTitle",
       text: "",
-      size: TextSize.M,
-      font: TextFont.SemiBold,
+      style: TextStyle.Label,
       color: new vec4(1, 1, 1, 1),
       position: new vec3(TEXT_CENTER_X, LINE_HALF_H, Z_CONTENT),
       horizontalAlignment: HorizontalAlignment.Left,
@@ -141,7 +141,7 @@ export class AgentResponseNotification extends BaseScriptComponent {
       parent: btnObj,
       name: "NotifBody",
       text: "",
-      size: TextSize.S,
+      style: TextStyle.Secondary,
       color: new vec4(0.78, 0.78, 0.78, 1),
       position: new vec3(TEXT_CENTER_X, -LINE_HALF_H, Z_CONTENT),
       horizontalAlignment: HorizontalAlignment.Left,
@@ -247,7 +247,7 @@ export class AgentResponseNotification extends BaseScriptComponent {
   }
 
   dismiss(): void {
-    if (this.isDestroyed) return;
+    if (this.isDestroyed || this.isDismissing) return;
     this.cancels.cancel();
     this.shrinkCancels.cancel();
     this.titleObj.enabled = false;
@@ -256,7 +256,8 @@ export class AgentResponseNotification extends BaseScriptComponent {
   }
 
   private startDismiss(): void {
-    if (this.isDestroyed) return;
+    if (this.isDestroyed || this.isDismissing) return;
+    this.isDismissing = true;
 
     const root = this.getSceneObject();
     const startScale = root.getTransform().getLocalScale();

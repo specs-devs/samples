@@ -1,12 +1,13 @@
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+} from "../Shared/MotionAnimate";
 import { createImage } from "../Shared/ImageFactory";
 import {
   ICON_Z_OFFSET,
@@ -110,7 +111,7 @@ export class HorizontalFrame extends BaseScriptComponent {
     const frameRecord = this.frame as unknown as Record<string, boolean>;
     frameRecord["useBillboarding"] = false;
     // The Frame's auto-created InteractionPlane lies in the plate's plane —
-    // pitched CONTENT_TILT_DEG (-75°), nearly horizontal. SIK projects the
+    // pitched CONTENT_TILT_DEG (-75°), nearly horizontal. IK projects the
     // far-field cursor onto that plane during drags over the panel, so scroll
     // drags read as depth (z) motion. The plane only aids the frame's own
     // buttons (hidden here), so disable it; vertical content keeps its own
@@ -361,10 +362,8 @@ export class HorizontalFrame extends BaseScriptComponent {
       new vec3(framePosX, framePosY, framePosZ),
     );
     closeObj.getTransform().setLocalPosition(localPos);
-    const btn = closeObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    btn.width = CLOSE_BUTTON_WIDTH;
+    const btn = createSystemButton(closeObj, "Ghost");
+    btn.size = new vec3(CLOSE_BUTTON_WIDTH, CLOSE_BUTTON_WIDTH, 1);
     btn.initialize();
 
     const iconSize = CLOSE_BUTTON_WIDTH / 2;
@@ -376,6 +375,8 @@ export class HorizontalFrame extends BaseScriptComponent {
     });
 
     const closeTooltip = createTooltip(closeObj, "Close", {
+      placement: "above",
+      targetSize: new vec2(CLOSE_BUTTON_WIDTH, CLOSE_BUTTON_WIDTH),
       hoverSource: btn,
     });
 

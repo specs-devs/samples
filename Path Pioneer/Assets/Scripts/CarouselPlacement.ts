@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Carousel placement for the Path Pioneer lens.
  */
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
 /**
  * Lowers the ExampleCarousel on this SceneObject below the Path Pioneer panels, so its

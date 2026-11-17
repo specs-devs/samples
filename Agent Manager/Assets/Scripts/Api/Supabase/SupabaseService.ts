@@ -12,8 +12,8 @@ import {
 import {
   setTimeout,
   clearTimeout,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { BroadcastEnvelope } from "./SupabaseTypes";
 
 const TAG = "[SupabaseService]";
@@ -407,7 +407,13 @@ export class SupabaseService {
       this.subscribeToInserts<T>(channelName, table, filter, callback),
     );
 
+    this.tableChannelsByName.set(channelName, ch);
+    this.tableChannelNames.set(ch, channelName);
+
     ch.subscribe((status: REALTIME_SUBSCRIBE_STATES) => {
+      // Ignore status from a superseded/removed channel (e.g. the CLOSED fired
+      // when it was replaced) so it can't schedule a reconnect loop.
+      if (this.tableChannelsByName.get(channelName) !== ch) return;
       if (status === REALTIME_SUBSCRIBE_STATES.SUBSCRIBED) {
         print(`${TAG} Table channel subscribed: ${channelName}`);
         this.tableReconnectAttempts.delete(channelName);
@@ -420,8 +426,6 @@ export class SupabaseService {
       }
     });
 
-    this.tableChannelsByName.set(channelName, ch);
-    this.tableChannelNames.set(ch, channelName);
     return ch;
   }
 
@@ -463,7 +467,13 @@ export class SupabaseService {
       this.subscribeToUpdates<T>(channelName, table, filter, callback),
     );
 
+    this.tableChannelsByName.set(channelName, ch);
+    this.tableChannelNames.set(ch, channelName);
+
     ch.subscribe((status: REALTIME_SUBSCRIBE_STATES) => {
+      // Ignore status from a superseded/removed channel (e.g. the CLOSED fired
+      // when it was replaced) so it can't schedule a reconnect loop.
+      if (this.tableChannelsByName.get(channelName) !== ch) return;
       if (status === REALTIME_SUBSCRIBE_STATES.SUBSCRIBED) {
         print(`${TAG} Table channel subscribed: ${channelName}`);
         this.tableReconnectAttempts.delete(channelName);
@@ -476,8 +486,6 @@ export class SupabaseService {
       }
     });
 
-    this.tableChannelsByName.set(channelName, ch);
-    this.tableChannelNames.set(ch, channelName);
     return ch;
   }
 
@@ -519,7 +527,13 @@ export class SupabaseService {
       this.subscribeToDeletes<T>(channelName, table, filter, callback),
     );
 
+    this.tableChannelsByName.set(channelName, ch);
+    this.tableChannelNames.set(ch, channelName);
+
     ch.subscribe((status: REALTIME_SUBSCRIBE_STATES) => {
+      // Ignore status from a superseded/removed channel (e.g. the CLOSED fired
+      // when it was replaced) so it can't schedule a reconnect loop.
+      if (this.tableChannelsByName.get(channelName) !== ch) return;
       if (status === REALTIME_SUBSCRIBE_STATES.SUBSCRIBED) {
         print(`${TAG} Table channel subscribed: ${channelName}`);
         this.tableReconnectAttempts.delete(channelName);
@@ -532,8 +546,6 @@ export class SupabaseService {
       }
     });
 
-    this.tableChannelsByName.set(channelName, ch);
-    this.tableChannelNames.set(ch, channelName);
     return ch;
   }
 

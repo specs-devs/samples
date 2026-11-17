@@ -1,7 +1,7 @@
 import {MapToggledNotification} from "MapComponentModified/Scripts/MapComponent"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {MapComponent} from "./Scripts/MapComponent"
@@ -11,7 +11,7 @@ import {TWEEN_DURATION} from "./MapUIController"
 
 const CONTAINER_SIZE_MINI = new vec2(10, 10)
 const CONTAINER_SIZE_FULL = new vec2(90.0, 54.0)
-const CONTAINER_DISTANCE_MINI = 130
+const CONTAINER_DISTANCE_MINI = 110
 const CONTAINER_DISTANCE_FULL = 160
 
 @component
@@ -36,7 +36,7 @@ export class MapContainerController extends BaseScriptComponent {
 
   private logger: Logger
   private containerTransform: Transform
-  // ContainerFrame → SpectaclesUIKit Frame (re-add the Frame component in scene).
+  // ContainerFrame → UIKit Frame (re-add the Frame component in scene).
   private container: Frame
   private cameraTransform: Transform
   private tweenCancelFunction: CancelFunction

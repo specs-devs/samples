@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Frame Destroy Test component for the AI Music Gen Glasses lens.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate from "InteractionKit.lspkg/Utils/animate"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 

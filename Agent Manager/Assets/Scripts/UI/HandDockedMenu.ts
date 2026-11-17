@@ -1,12 +1,13 @@
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
-import { HandInputData } from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandInputData";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "./Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
+import { IK } from "InteractionKit.lspkg/IK";
+import { HandInputData } from "InteractionKit.lspkg/Providers/HandInputData/HandInputData";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+} from "./Shared/MotionAnimate";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { createImage } from "./Shared/ImageFactory";
 import {
   BOT_GROUP_TEXTURE,
@@ -29,7 +30,7 @@ const EDITOR_DOWN_OFFSET = 0.25;
 export class HandDockedMenu extends BaseScriptComponent {
   public readonly onMenuButtonTapped = new Event<void>();
 
-  private handProvider: HandInputData = SIK.HandInputData;
+  private handProvider: HandInputData = IK.HandInputData;
   private leftHand = this.handProvider.getHand("left");
   private rightHand = this.handProvider.getHand("right");
   private menuHand = this.leftHand;
@@ -40,7 +41,7 @@ export class HandDockedMenu extends BaseScriptComponent {
   private panelActive = false;
   private animCancel = new CancelSet();
   private buttonObj: SceneObject;
-  private button: RoundButton;
+  private button: Button;
   private menuTooltip: Tooltip;
   private phoneInLeftHand = false;
   private phoneInRightHand = false;
@@ -50,9 +51,7 @@ export class HandDockedMenu extends BaseScriptComponent {
     this.buttonObj.setParent(this.getSceneObject());
     this.buttonObj.getTransform().setLocalPosition(vec3.zero());
 
-    this.button = this.buttonObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
+    this.button = createSystemButton(this.buttonObj, "Primary");
 
     createImage(BOT_GROUP_TEXTURE, {
       parent: this.buttonObj,
@@ -106,7 +105,7 @@ export class HandDockedMenu extends BaseScriptComponent {
     btnRecord["_style"] = "Ghost";
     this.button.initialize();
     this.button.toggle(this.panelActive);
-    this.button.width = BTN_SIZE;
+    this.button.size = new vec3(BTN_SIZE, BTN_SIZE, 1);
 
     this.menuTooltip = createTooltip(this.buttonObj, "Menu", {
       offset: TOOLTIP_OFFSET.uniformScale(0.75),

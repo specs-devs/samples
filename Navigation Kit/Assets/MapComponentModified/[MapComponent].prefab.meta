@@ -184,6 +184,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<ScriptComponent/70c95a74-3bc9-4c82-65ef-5cc646c63f5b>
@@ -315,6 +316,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<ObjectPrefabAssetData/e11fb75b-555d-4e1f-b806-3dbf11578d9b>
@@ -417,9 +419,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 32.000000, y: 32.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true

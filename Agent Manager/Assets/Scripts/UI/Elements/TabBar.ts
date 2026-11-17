@@ -1,7 +1,8 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { createImage } from "../Shared/ImageFactory";
 import {
   ICON_Z_OFFSET,
@@ -11,15 +12,15 @@ import {
 } from "../Shared/UIConstants";
 import { createTooltip } from "../Shared/UIBuilders";
 
-export const TAB_BAR_WIDTH = 5;
-const TAB_BTN_SIZE = 2.8;
+export const TAB_BAR_WIDTH = 5.2;
+const TAB_BTN_SIZE = 3.2;
 const TAB_GAP = 1.5;
 const TAB_BAR_PADDING_Y = 1;
 
 export class TabBar {
   private tabBarObj: SceneObject;
-  private agentsTabBtn: RoundButton;
-  private settingsTabBtn: RoundButton;
+  private agentsTabBtn: Button;
+  private settingsTabBtn: Button;
   private agentsTooltip: Tooltip;
   private settingsTooltip: Tooltip;
   private _activeTab: "agents" | "settings" = "agents";
@@ -57,10 +58,8 @@ export class TabBar {
     agentsBtnObj
       .getTransform()
       .setLocalPosition(new vec3(0, topBtnY, Z_CONTENT));
-    this.agentsTabBtn = agentsBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.agentsTabBtn.width = TAB_BTN_SIZE;
+    this.agentsTabBtn = createSystemButton(agentsBtnObj, "Primary");
+    this.agentsTabBtn.size = new vec3(TAB_BTN_SIZE, TAB_BTN_SIZE, 1);
 
     const botIconSize = TAB_BTN_SIZE * 0.45;
     createImage(BOT_GROUP_TEXTURE, {
@@ -75,10 +74,8 @@ export class TabBar {
     settingsBtnObj
       .getTransform()
       .setLocalPosition(new vec3(0, bottomBtnY, Z_CONTENT));
-    this.settingsTabBtn = settingsBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.settingsTabBtn.width = TAB_BTN_SIZE;
+    this.settingsTabBtn = createSystemButton(settingsBtnObj, "Primary");
+    this.settingsTabBtn.size = new vec3(TAB_BTN_SIZE, TAB_BTN_SIZE, 1);
 
     const settingsIconSize = TAB_BTN_SIZE * 0.45;
     createImage(SETTINGS_TEXTURE, {
@@ -88,8 +85,14 @@ export class TabBar {
       size: settingsIconSize,
     });
 
-    this.agentsTooltip = createTooltip(agentsBtnObj, "Agents");
-    this.settingsTooltip = createTooltip(settingsBtnObj, "Settings");
+    this.agentsTooltip = createTooltip(agentsBtnObj, "Agents", {
+      placement: "left",
+      targetSize: new vec2(TAB_BTN_SIZE, TAB_BTN_SIZE),
+    });
+    this.settingsTooltip = createTooltip(settingsBtnObj, "Settings", {
+      placement: "left",
+      targetSize: new vec2(TAB_BTN_SIZE, TAB_BTN_SIZE),
+    });
   }
 
   initialize(): void {

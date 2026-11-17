@@ -4,8 +4,8 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {lerp} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {lerp} from "InteractionKit.lspkg/Utils/mathUtils"
 
 @component
 export class CustomPinchButton extends BaseScriptComponent {

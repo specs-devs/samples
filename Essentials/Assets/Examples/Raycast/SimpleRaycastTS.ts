@@ -22,6 +22,20 @@ export class SimpleRaycastTS extends BaseScriptComponent {
   @hint("Scene object to place at the raycast hit position")
   endPointAttachment: SceneObject
 
+  @input
+  @hint("Hide endPointAttachment while the ray hits nothing")
+  hideMarkerWhenNoHit: boolean = true
+
+  @input
+  @allowUndefined
+  @hint("Optional Text that shows what the ray hits and how far away")
+  statusText: Text
+
+  @input
+  @allowUndefined
+  @hint("Optional: only colliders under this object count (UI panels and other content in front are ignored)")
+  hitsUnder: SceneObject
+
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging</span>')
   @input
@@ -49,30 +63,57 @@ export class SimpleRaycastTS extends BaseScriptComponent {
     }
   }
 
+  private probe: Probe | null = null
+  private lastStatus = ""
+
   @bindUpdateEvent
   updateObjectMovement() {
-    const globalProbe = Physics.createGlobalProbe()
-
-    this.logger.debug("EndPointAttachment object before raycast: " + (this.endPointAttachment !== undefined))
-
-    const self = this
-
-    globalProbe.rayCast(
-      this.rayStart.getTransform().getWorldPosition(),
-      this.rayEnd.getTransform().getWorldPosition(),
-      function (hit) {
-        if (hit) {
-          const position = hit.position
-          self.logger.info("Raycast hit: " + hit.collider.getSceneObject().name)
-
-          if (self.endPointAttachment) {
-            self.logger.debug("EndPointAttachment exists in callback, setting position")
-            self.endPointAttachment.getTransform().setWorldPosition(position)
-          } else {
-            self.logger.error("EndPointAttachment is undefined in callback")
-          }
+    if (!this.rayStart || !this.rayEnd) {
+      return
+    }
+    if (!this.probe) {
+      this.probe = Physics.createGlobalProbe()
+    }
+    const start = this.rayStart.getTransform().getWorldPosition()
+    const end = this.rayEnd.getTransform().getWorldPosition()
+    this.probe.rayCastAll(start, end, (hits) => {
+      const hit = hits.filter((h) => this.counts(h.collider.getSceneObject()))[0]
+      if (hit) {
+        if (this.endPointAttachment) {
+          this.endPointAttachment.enabled = true
+          this.endPointAttachment.getTransform().setWorldPosition(hit.position)
         }
+        this.setStatus(`Ray hits ${hit.collider.getSceneObject().name} at ${Math.round(hit.position.distance(start))} cm`)
+      } else {
+        if (this.endPointAttachment && this.hideMarkerWhenNoHit) {
+          this.endPointAttachment.enabled = false
+        }
+        this.setStatus("Ray hits nothing: look at the box")
       }
-    )
+    })
   }
+
+  /** Whether a hit object counts: anything, or only objects under hitsUnder when it is set. */
+  private counts(object: SceneObject): boolean {
+    if (!this.hitsUnder) return true
+    let current: SceneObject | null = object
+    while (current) {
+      if (current === this.hitsUnder) return true
+      current = current.getParent()
+    }
+    return false
+  }
+
+  private setStatus(value: string) {
+    if (this.statusText && value !== this.lastStatus) {
+      this.statusText.text = value
+      this.lastStatus = value
+    }
+    if (value !== this.lastLogged) {
+      this.logger.info(value)
+      this.lastLogged = value
+    }
+  }
+
+  private lastLogged = ""
 }

@@ -1,12 +1,12 @@
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
 import { ChatMessageBubble } from "./ChatMessageBubble";
 import { ChatMessage } from "../../Types";
 import { createVerticalScrollBar, initializeScrollWindow } from "../Shared/UIBuilders";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "../Shared/MotionAnimate";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { SCROLLBAR_GAP } from "../Shared/UIConstants";
 
 const BUBBLE_PADDING = 0.5;
@@ -30,6 +30,11 @@ export class ChatMessageList extends BaseScriptComponent {
     srcHeight: number;
   }>();
 
+  /** Fired when a deferred re-measure changed the content height. */
+  public readonly onLayoutChanged = new Event<void>();
+
+  private relayoutEvent: DelayedCallbackEvent;
+  private pendingScrollToBottom = false;
   private scrollWindow: ScrollWindow;
   private scrollObj: SceneObject;
   private scrollRoot: SceneObject;
@@ -39,12 +44,15 @@ export class ChatMessageList extends BaseScriptComponent {
   private effectiveHeight = MIN_WINDOW_HEIGHT;
 
   private scrollBarObj: SceneObject;
-  private scrollBarSetHovered: ((hovered: boolean) => void) | null = null;
   private bubblePool: ChatMessageBubble[] = [];
   private activeBubbles: ChatMessageBubble[] = [];
   private loadedMessageIds: string[] = [];
   private cachedTotalHeight = 0;
   private animGeneration = 0;
+  // Latest laid-out position per bubble. Staggered entrance animations read
+  // this when they start/run, so a relayoutDeferred() re-measure that lands
+  // mid-stagger isn't overwritten by a stale captured position.
+  private layoutTargets = new Map<ChatMessageBubble, vec3>();
   private readonly _scratchAnimPos = new vec3(0, 0, 0);
   private readonly _scratchAnimScale = new vec3(1, 1, 1);
 
@@ -63,7 +71,7 @@ export class ChatMessageList extends BaseScriptComponent {
     this.scrollRoot.getTransform().setLocalPosition(new vec3(0, 0, 0.1));
 
     // Intermediate parent for bubbles. Its Y position absorbs the coordinate
-    // conversion (scrollHeight/2) so individual bubble local positions are
+    // conversion (effectiveHeight/2) so individual bubble local positions are
     // stable "offset from top" values that never need to be updated.
     this.bubbleContainer = global.scene.createSceneObject("BubbleContainer");
     this.bubbleContainer.setParent(this.scrollRoot);
@@ -86,8 +94,6 @@ export class ChatMessageList extends BaseScriptComponent {
       root,
       this.scrollWindow,
       new vec3(this.windowWidth / 2 + SCROLLBAR_GAP, 0, 0),
-      undefined,
-      (setHovered) => { this.scrollBarSetHovered = setHovered; },
     );
   }
 
@@ -100,6 +106,36 @@ export class ChatMessageList extends BaseScriptComponent {
     const t = this.getSceneObject().getTransform();
     const pos = t.getLocalPosition();
     t.setLocalPosition(new vec3(pos.x, offset, pos.z));
+  }
+
+  // Text bounds are only accurate a frame after the text is set, so heights
+  // read in loadThread/addMessage can be stale. Re-measure shortly after and
+  // fix up layout, scroll range and bottom alignment.
+  private scheduleRelayout(scrollToBottom: boolean): void {
+    if (!this.relayoutEvent) {
+      this.relayoutEvent = this.createEvent("DelayedCallbackEvent");
+      this.relayoutEvent.bind(() => this.relayoutDeferred());
+    }
+    this.pendingScrollToBottom = this.pendingScrollToBottom || scrollToBottom;
+    this.relayoutEvent.reset(0.05);
+  }
+
+  private relayoutDeferred(): void {
+    if (this.activeBubbles.length === 0) {
+      this.pendingScrollToBottom = false;
+      return;
+    }
+    const prevTotal = this.cachedTotalHeight;
+    for (const bubble of this.activeBubbles) {
+      bubble.refreshLayout();
+    }
+    this.rebuildLayout();
+    const changed = Math.abs(this.cachedTotalHeight - prevTotal) > 0.01;
+    if (changed || this.pendingScrollToBottom) {
+      this.scrollToBottom();
+    }
+    this.pendingScrollToBottom = false;
+    if (changed) this.onLayoutChanged.invoke();
   }
 
   getBottomOffset(): number {
@@ -125,11 +161,13 @@ export class ChatMessageList extends BaseScriptComponent {
     return this.activeBubbles.length;
   }
 
-  setScrollBarHovered(hovered: boolean): void {
-    this.scrollBarSetHovered?.(hovered);
+  /** Invalidates pending staggered entrance timeouts. */
+  cancelAnimations(): void {
+    this.animGeneration++;
   }
 
   loadThread(agentName: string, messages: ChatMessage[]): boolean {
+    this.cancelAnimations();
     const nextMessageIds = messages.map((msg) => msg.id);
     const threadChanged = !this.idsMatch(nextMessageIds, this.loadedMessageIds);
     const bubbleWidth = (this.windowWidth - 2) * BUBBLE_WIDTH_RATIO;
@@ -165,6 +203,7 @@ export class ChatMessageList extends BaseScriptComponent {
       }
     }
     this.loadedMessageIds = nextMessageIds;
+    this.scheduleRelayout(threadChanged);
     return threadChanged;
   }
 
@@ -179,9 +218,11 @@ export class ChatMessageList extends BaseScriptComponent {
     this.loadedMessageIds.push(msg.id);
     this.appendIncrementalLayout();
     this.scrollToBottom();
+    this.scheduleRelayout(true);
   }
 
   clear(): void {
+    this.cancelAnimations();
     for (const bubble of this.activeBubbles) {
       this.returnBubbleToPool(bubble);
     }
@@ -239,6 +280,7 @@ export class ChatMessageList extends BaseScriptComponent {
   }
 
   private returnBubbleToPool(bubble: ChatMessageBubble): void {
+    this.layoutTargets.delete(bubble);
     bubble.getSceneObject().enabled = false;
     if (this.bubblePool.length < MAX_POOL_SIZE) {
       this.bubblePool.push(bubble);
@@ -285,16 +327,15 @@ export class ChatMessageList extends BaseScriptComponent {
       : bubble.getIsAgent()
         ? -maxOffset
         : maxOffset;
-    bubble
-      .getSceneObject()
-      .getTransform()
-      .setLocalPosition(new vec3(x, -offsetFromTop, 0));
+    const target = new vec3(x, -offsetFromTop, 0);
+    this.layoutTargets.set(bubble, target);
+    bubble.getSceneObject().getTransform().setLocalPosition(target);
 
     // Single O(1) update: move the container anchor to match the new scroll
     // content size. Existing bubble local positions are untouched.
     this.bubbleContainer
       .getTransform()
-      .setLocalPosition(new vec3(0, scrollHeight / 2, 0.1));
+      .setLocalPosition(new vec3(0, this.effectiveHeight / 2, 0.1));
 
     if (this.cachedTotalHeight < this.effectiveHeight) {
       const offset = -(this.effectiveHeight - this.cachedTotalHeight) / 2;
@@ -331,7 +372,9 @@ export class ChatMessageList extends BaseScriptComponent {
     const maxOffset = (this.windowWidth - 2 - bubbleWidth) / 2 - SIDE_MARGIN;
 
     // Position each bubble as −offsetFromTop in bubbleContainer space.
-    // bubbleContainer.y = scrollHeight/2 converts this to the correct absolute Y.
+    // bubbleContainer.y = effectiveHeight/2 pins content top to the viewport top
+    // (UIKit's "Center" content origin is relative to the initial viewport, not
+    // the full scroll span).
     let currentOffset = 0;
     for (let i = 0; i < this.activeBubbles.length; i++) {
       const bubble = this.activeBubbles[i];
@@ -343,16 +386,15 @@ export class ChatMessageList extends BaseScriptComponent {
         : bubble.getIsAgent()
           ? -maxOffset
           : maxOffset;
-      bubble
-        .getSceneObject()
-        .getTransform()
-        .setLocalPosition(new vec3(x, -offsetFromTop, 0));
+      const target = new vec3(x, -offsetFromTop, 0);
+      this.layoutTargets.set(bubble, target);
+      bubble.getSceneObject().getTransform().setLocalPosition(target);
       currentOffset += h;
     }
 
     this.bubbleContainer
       .getTransform()
-      .setLocalPosition(new vec3(0, scrollHeight / 2, 0.1));
+      .setLocalPosition(new vec3(0, this.effectiveHeight / 2, 0.1));
 
     if (totalHeight < this.effectiveHeight) {
       const offset = -(this.effectiveHeight - totalHeight) / 2;
@@ -365,7 +407,8 @@ export class ChatMessageList extends BaseScriptComponent {
   private scrollToBottom(): void {
     this.scrollWindow.setVelocity(vec2.zero());
     if (this.cachedTotalHeight <= this.effectiveHeight) return;
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, -1);
+    // UIKit normalized scroll: y 0 = top, 1 = bottom.
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1);
   }
 
   animateMessagesIn(cancelSet: CancelSet): void {
@@ -380,8 +423,9 @@ export class ChatMessageList extends BaseScriptComponent {
     }
 
     const scrollHeight = Math.max(this.cachedTotalHeight, this.effectiveHeight);
-    const visibleTopY = this.effectiveHeight - scrollHeight / 2;
-    const visibleBottomY = -scrollHeight / 2;
+    // Viewport is scrolled to the bottom: content appears shifted up by (D - W).
+    const visibleTopY = this.effectiveHeight * 1.5 - scrollHeight;
+    const visibleBottomY = this.effectiveHeight / 2 - scrollHeight;
 
     // Bubble local positions are in bubbleContainer space (−offsetFromTop).
     // Add the container's Y to get scroll-root-space Y for the visibility check.
@@ -429,7 +473,7 @@ export class ChatMessageList extends BaseScriptComponent {
     for (let i = 0; i < visibleIndices.length; i++) {
       const delay = INITIAL_DELAY_MS + i * STAGGER_DELAY_MS;
       const bubbleIndex = visibleIndices[i];
-      const finalPos = finalPositions[i];
+      const fallbackPos = finalPositions[i];
 
       setTimeout(() => {
         if (gen !== this.animGeneration) return;
@@ -437,8 +481,7 @@ export class ChatMessageList extends BaseScriptComponent {
         if (!bubble) return;
 
         const transform = bubble.getSceneObject().getTransform();
-        const finalX = finalPos.x;
-        const finalY = finalPos.y;
+        const targetOf = () => this.layoutTargets.get(bubble) ?? fallbackPos;
         const slideX = bubble.getIsSystem()
           ? 0
           : SLIDE_OFFSET_X * (bubble.getIsAgent() ? -1 : 1);
@@ -450,8 +493,9 @@ export class ChatMessageList extends BaseScriptComponent {
           easing: "ease-out-cubic",
           cancelSet,
           update: (t: number) => {
-            animPos.x = finalX + slideX * (1 - t);
-            animPos.y = finalY + SLIDE_OFFSET_Y * (1 - t);
+            const finalPos = targetOf();
+            animPos.x = finalPos.x + slideX * (1 - t);
+            animPos.y = finalPos.y + SLIDE_OFFSET_Y * (1 - t);
             animPos.z = finalPos.z;
             transform.setLocalPosition(animPos);
 
@@ -464,7 +508,7 @@ export class ChatMessageList extends BaseScriptComponent {
             bubble.setOpacity(t);
           },
           ended: () => {
-            transform.setLocalPosition(finalPos);
+            transform.setLocalPosition(targetOf());
             transform.setLocalScale(vec3.one());
             bubble.setOpacity(1);
           },

@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/be422721-135a-408d-b882-81c5c709f9be>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a3632ea2-5ef9-4c8c-a2a8-a52b77e65acb
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a3632ea2-5ef9-4c8c-a2a8-a52b77e65acb
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b4e8e171-fdf5-4632-868f-7ed42d6ee904
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b4e8e171-fdf5-4632-868f-7ed42d6ee904>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 123c0fef-4fc8-4674-a17e-c9e3b43a6326
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugLogging: false
+    enableCollaboration: false
+    pbrMaterial: false
+    restoreAutosave: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - pbrMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      restoreAutosave: true
+      enableCollaboration: true
+      debugLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Industrial Sketch</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Builds the whole app at runtime. Assign a lit (PBR) and an unlit material; everything else is created by script.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Asset.Material pbrMaterial {"hint":"Lit material cloned for sketch geometry. Needs baseColor, metallic and roughness parameters."}'
+    - "// @input Asset.Material unlitMaterial {\"hint\":\"Unlit material cloned for guides, handles and the 'Flat' finish. Needs a baseColor parameter.\"}"
+    - '// @input bool restoreAutosave = true {"hint":"Restore the autosaved sketch when the lens starts"}'
+    - '// @input bool enableCollaboration = true {"hint":"Optional SessionController-based collaboration (Sync Kit). Leave off for single-user use."}'
+    - '// @input bool debugLogging {"hint":"Log hand routing and tool events to the Logger (for debugging)"}'

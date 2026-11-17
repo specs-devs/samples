@@ -1,4 +1,4 @@
-import Event, {callback, PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event, {callback, PublicApi} from "InteractionKit.lspkg/Utils/Event"
 import {calculateZoomOffset, findScriptComponent, MapParameter} from "./MapUtils"
 
 import {GeoLocationPlace} from "NavigationKit.lspkg/NavigationDataComponent/GeoLocationPlace"

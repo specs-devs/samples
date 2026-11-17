@@ -1,11 +1,24 @@
 import animate, {
   CancelSet,
   easingFunctions,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "./MotionAnimate";
+import {
+  clearTimeout,
+  setTimeout,
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { MIN_SCALE } from "./UIConstants";
+import { BeveledPrism } from "UIKit.lspkg/Scripts/Visuals/BeveledPrism/BeveledPrism";
 
 type EasingName = keyof typeof easingFunctions;
+
+/**
+ * Prism-style buttons render with a shader that reads `mainPass.opacity`, not
+ * `opacityFactor`, so writing opacityFactor on their RenderMeshVisual does
+ * nothing. Fade them through the BeveledPrism shape instead.
+ */
+function getPrism(obj: SceneObject): BeveledPrism | null {
+  return obj.getComponent(BeveledPrism.getTypeName()) as BeveledPrism | null;
+}
 
 const TINY_SCALE = new vec3(MIN_SCALE, MIN_SCALE, MIN_SCALE);
 
@@ -212,8 +225,13 @@ export interface WipeTransitionOptions {
  * (e.g. tooltips with opacityFactor=0) are not accidentally revealed.
  */
 export function setSubtreeOpacity(obj: SceneObject, alpha: number): void {
-  const rmv = obj.getComponent("RenderMeshVisual") as RenderMeshVisual | null;
-  if (rmv) rmv.mainPass.opacityFactor = alpha;
+  const prism = getPrism(obj);
+  if (prism) {
+    prism.opacity = alpha;
+  } else {
+    const rmv = obj.getComponent("RenderMeshVisual") as RenderMeshVisual | null;
+    if (rmv) rmv.mainPass.opacityFactor = alpha;
+  }
 
   const text = obj.getComponent("Text") as Text | null;
   if (text) {
@@ -231,20 +249,61 @@ export interface OpacitySurface {
   rmv: RenderMeshVisual | null;
   text: Text | null;
   baseAlpha: number;
+  /** Prism buttons: their shader ignores opacityFactor, so fade via the shape. */
+  prism?: BeveledPrism;
+  /** Set only when collected with includeImages: icon fade via a temp clone. */
+  image?: Image;
+  originalMaterial?: Material;
 }
 
+/**
+ * Gathers fadeable surfaces under `obj`. With `includeImages`, each Image gets
+ * a temporary material clone (icons normally share one material per texture,
+ * so fading it in place would fade every copy) — pair with
+ * `releaseOpacitySurfaces` to restore the shared materials.
+ */
 export function collectOpacitySurfaces(
   obj: SceneObject,
   out: OpacitySurface[],
+  includeImages = false,
 ): void {
-  const rmv = obj.getComponent("RenderMeshVisual") as RenderMeshVisual | null;
-  if (rmv && rmv.mainPass) out.push({ rmv, text: null, baseAlpha: rmv.mainPass.opacityFactor });
+  const prism = getPrism(obj);
+  if (prism) {
+    out.push({ rmv: null, text: null, prism, baseAlpha: prism.opacity });
+  } else {
+    const rmv = obj.getComponent("RenderMeshVisual") as RenderMeshVisual | null;
+    if (rmv && rmv.mainPass) out.push({ rmv, text: null, baseAlpha: rmv.mainPass.opacityFactor });
+  }
 
   const text = obj.getComponent("Text") as Text | null;
   if (text) out.push({ rmv: null, text, baseAlpha: text.textFill.color.w });
 
+  if (includeImages) {
+    const image = obj.getComponent("Image") as Image | null;
+    if (image && image.mainMaterial) {
+      const originalMaterial = image.mainMaterial;
+      image.mainMaterial = originalMaterial.clone();
+      out.push({
+        rmv: null,
+        text: null,
+        image,
+        originalMaterial,
+        baseAlpha: image.mainPass.baseColor.w,
+      });
+    }
+  }
+
   for (let i = 0; i < obj.getChildrenCount(); i++) {
-    collectOpacitySurfaces(obj.getChild(i), out);
+    collectOpacitySurfaces(obj.getChild(i), out, includeImages);
+  }
+}
+
+/** Restores shared image materials swapped out by collectOpacitySurfaces. */
+export function releaseOpacitySurfaces(surfaces: OpacitySurface[]): void {
+  for (const s of surfaces) {
+    if (s.image && s.originalMaterial && !isNull(s.image)) {
+      s.image.mainMaterial = s.originalMaterial;
+    }
   }
 }
 
@@ -253,7 +312,13 @@ export function applyOpacityMultiplier(
   multiplier: number,
 ): void {
   for (const s of surfaces) {
-    if (s.rmv && s.rmv.mainPass) {
+    if (s.prism) {
+      if (!isNull(s.prism)) s.prism.opacity = s.baseAlpha * multiplier;
+    } else if (s.image) {
+      if (isNull(s.image)) continue;
+      const c = s.image.mainPass.baseColor;
+      s.image.mainPass.baseColor = new vec4(c.x, c.y, c.z, s.baseAlpha * multiplier);
+    } else if (s.rmv && s.rmv.mainPass) {
       s.rmv.mainPass.opacityFactor = s.baseAlpha * multiplier;
     } else if (s.text) {
       const c = s.text.textFill.color;
@@ -274,12 +339,22 @@ export function wipeOut(opts: WipeOutOptions): void {
   const endPos = new vec3(opts.slideOffset, 0, 0);
 
   const surfaces: OpacitySurface[] = [];
-  collectOpacitySurfaces(opts.sceneObject, surfaces);
+  collectOpacitySurfaces(opts.sceneObject, surfaces, true);
 
   animate({
     duration: opts.duration,
     easing: opts.easing ?? "ease-in-cubic",
     cancelSet: opts.cancelSet,
+    cancelled: () => {
+      // Interrupted mid-fade: put alphas and shared materials back, and
+      // finish the exit (rest position, hidden) so the object isn't left
+      // half-slid and visible.
+      applyOpacityMultiplier(surfaces, 1);
+      releaseOpacitySurfaces(surfaces);
+      if (isNull(opts.sceneObject)) return;
+      transform.setLocalPosition(startPos);
+      opts.sceneObject.enabled = false;
+    },
     update: (t: number) => {
       if (isNull(opts.sceneObject)) return;
       transform.setLocalPosition(vec3.lerp(startPos, endPos, t));
@@ -290,6 +365,7 @@ export function wipeOut(opts: WipeOutOptions): void {
       opts.sceneObject.enabled = false;
       transform.setLocalPosition(startPos);
       applyOpacityMultiplier(surfaces, 1); // restore base alphas
+      releaseOpacitySurfaces(surfaces);
       opts.ended?.();
     },
   });
@@ -306,7 +382,7 @@ export function wipeIn(opts: WipeInOptions): void {
   const endPos = vec3.zero();
 
   const surfaces: OpacitySurface[] = [];
-  collectOpacitySurfaces(opts.sceneObject, surfaces);
+  collectOpacitySurfaces(opts.sceneObject, surfaces, true);
   applyOpacityMultiplier(surfaces, 0); // hide before enabling
 
   opts.sceneObject.enabled = true;
@@ -316,6 +392,11 @@ export function wipeIn(opts: WipeInOptions): void {
     duration: opts.duration,
     easing: opts.easing ?? "ease-out-cubic",
     cancelSet: opts.cancelSet,
+    cancelled: () => {
+      // Interrupted mid-fade: put alphas and shared materials back.
+      applyOpacityMultiplier(surfaces, 1);
+      releaseOpacitySurfaces(surfaces);
+    },
     update: (t: number) => {
       if (isNull(opts.sceneObject)) return;
       transform.setLocalPosition(vec3.lerp(startPos, endPos, t));
@@ -325,6 +406,7 @@ export function wipeIn(opts: WipeInOptions): void {
       if (isNull(opts.sceneObject)) return;
       transform.setLocalPosition(endPos);
       applyOpacityMultiplier(surfaces, 1); // restore base alphas
+      releaseOpacitySurfaces(surfaces);
       opts.ended?.();
     },
   });
@@ -350,7 +432,7 @@ export function wipeTransition(
     duration: opts.duration * 0.6,
     cancelSet: opts.cancelSet,
     ended: () => {
-      setTimeout(() => {
+      const staggerTimer = setTimeout(() => {
         opts.beforeWipeIn?.();
         wipeIn({
           sceneObject: inObj,
@@ -360,6 +442,9 @@ export function wipeTransition(
           ended: () => opts.ended?.(),
         });
       }, opts.staggerMs);
+      // Cancelling the transition during the stagger must also drop the
+      // pending wipe-in, or a newer transition ends up with two views shown.
+      opts.cancelSet?.add(() => clearTimeout(staggerTimer));
     },
   });
 }

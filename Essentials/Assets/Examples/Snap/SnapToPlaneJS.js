@@ -8,11 +8,31 @@
 //@input SceneObject snappingObject {"hint":"The object that will snap to the plane", "allowUndefined": true}
 //@input SceneObject distanceObject {"hint":"The object used to measure distance to the plane for snap detection", "allowUndefined": true}
 //@input float snapDistance = 1.0 {"hint":"How close the object needs to be to snap to the plane"}
+//@input bool followWhenFar = true {"hint":"When the distance object is farther than snapDistance, the snapping object follows it, so you see where it is before it snaps"}
+//@input vec3 followOffset = {0,0,0} {"hint":"World offset (cm) from the distance object while following, so the snapping object stays visible next to it"}
+//@input Component.RenderMeshVisual snapColorVisual {"hint":"Optional visual that changes color when snapped (its material is cloned)", "allowUndefined": true}
+//@input vec4 freeColor = {1,1,1,1} {"widget":"color", "hint":"Color while free"}
+//@input vec4 snappedColor = {0.2,0.9,0.4,1} {"widget":"color", "hint":"Color while snapped to the plane"}
 
 // Store the closest point for visualization
 let closestPointOnPlane;
 
+let snapped = null;
+let colorMaterial = null;
+
+function setSnapped(value) {
+  if (value === snapped) return;
+  snapped = value;
+  if (colorMaterial) {
+    colorMaterial.mainPass.baseColor = value ? script.snappedColor : script.freeColor;
+  }
+}
+
 function onAwake() {
+  if (script.snapColorVisual && script.snapColorVisual.mainMaterial) {
+    colorMaterial = script.snapColorVisual.mainMaterial.clone();
+    script.snapColorVisual.mainMaterial = colorMaterial;
+  }
   script.createEvent("UpdateEvent").bind(() => {
     update();
   });
@@ -52,7 +72,13 @@ function update() {
 
   if (distance <= script.snapDistance) {
     // Snap the snapping object to the closest point on the plane
+    setSnapped(true);
     objectToSnap.getTransform().setWorldPosition(closestPointOnPlane);
+  } else {
+    setSnapped(false);
+    if (script.followWhenFar && objectForDistance !== objectToSnap) {
+      objectToSnap.getTransform().setWorldPosition(distanceObjectPosition.add(script.followOffset));
+    }
   }
 }
 

@@ -2,9 +2,9 @@
  * SPECS Inc. 2027
  * ASRQuery Controller for the AI Playground Glasses lens experience.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import {BaseButton} from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {PlaygroundLogger} from "./PlaygroundLogger"
@@ -51,7 +51,7 @@ export class ASRQueryController extends BaseScriptComponent {
     this.activityRenderMesh.clearMaterials()
     this.activityRenderMesh.mainMaterial = this.activityMaterial
     this.activityMaterial.mainPass.in_out = 0
-    // The button is a SpectaclesUIKit button whose script reference can come
+    // The button is a UIKit button whose script reference can come
     // through unresolved after the package update (initialize()/onTriggerUp
     // undefined) until the component is reattached in the scene. Guard so the
     // lens does not crash; once reattached these wire up automatically.

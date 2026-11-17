@@ -1,10 +1,10 @@
-import { RectangleButton } from 'SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton';
+import { RectangleButton } from 'UIKit.lspkg/Scripts/Components/Button/RectangleButton';
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual';
-import { StateName } from 'SpectaclesUIKit.lspkg/Scripts/Components/Element';
-import { GradientParameters } from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
+} from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual';
+import { StateName } from 'UIKit.lspkg/Scripts/Components/Element';
+import { GradientParameters } from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
 
 // Same palette as UIKitCustomVisualsFrame
 const PINK  = new vec4(1.00, 0.42, 0.71, 1.0);

@@ -4,8 +4,8 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
-import {mix} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {clamp} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
+import {mix} from "InteractionKit.lspkg/Utils/animate"
+import {clamp} from "InteractionKit.lspkg/Utils/mathUtils"
 
 @component
 export class SoftPressController extends BaseScriptComponent {

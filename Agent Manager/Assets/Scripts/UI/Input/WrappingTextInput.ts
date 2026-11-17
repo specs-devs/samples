@@ -1,22 +1,18 @@
 require("LensStudio:TextInputModule"); // eslint-disable-line @typescript-eslint/no-require-imports
 
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
-import { TargetingMode } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import { TargetingMode } from "InteractionKit.lspkg/Core/Interactor/Interactor";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+} from "../Shared/MotionAnimate";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import {
   GradientParameters,
   RoundedRectangle,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
-import { TextSize } from "../Shared/TextSizes";
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
 import { createText } from "../Shared/UIBuilders";
-import {
-  BLEKeyboardManager,
-  BLEKeyboardEvent,
-} from "../../Bluetooth/BLEKeyboardManager";
 import { DirtyComponent } from "../Shared/DirtyComponent";
+import { TextStyle } from "../Shared/UIStyle";
 
 const PLACEHOLDER_COLOR = new vec4(0.6, 0.6, 0.6, 1);
 const TEXT_COLOR = new vec4(1, 1, 1, 1);
@@ -99,13 +95,7 @@ export class WrappingTextInput extends DirtyComponent {
   private borderCancelSet = new CancelSet();
   private currentBorderGradient: GradientParameters = BORDER_GRADIENT_DEFAULT;
 
-  @input
-  @allowUndefined
-  @hint("Optional BLE keyboard manager for Bluetooth keyboard input")
-  bleKeyboardManager: BLEKeyboardManager;
-
   private keyboardOptions: TextInputSystem.KeyboardOptions;
-  private _bleCallback: ((event: BLEKeyboardEvent) => void) | null = null;
 
   public onTextChanged: Event<string>;
   public onEditMode: Event<boolean>;
@@ -113,18 +103,6 @@ export class WrappingTextInput extends DirtyComponent {
   public onSubmitRequested: Event<void>;
 
   private _textOffset: vec2 = new vec2(0, 0);
-
-  private _bleFocused = false;
-
-  public setBleFocus(focused: boolean): void {
-    this._bleFocused = focused;
-  }
-
-  public connectBLEKeyboard(manager: BLEKeyboardManager): void {
-    if (this._bleCallback) return; // already registered
-    this.bleKeyboardManager = manager;
-    this.setupBLEKeyboard();
-  }
 
   onAwake(): void {
     super.onAwake();
@@ -140,7 +118,6 @@ export class WrappingTextInput extends DirtyComponent {
     this.createTextComponent(root);
     this.createCollider(root);
     this.setupKeyboard();
-    this.setupBLEKeyboard();
   }
 
   initialize(): void {
@@ -177,7 +154,7 @@ export class WrappingTextInput extends DirtyComponent {
       parent,
       name: "WTI_Text",
       text: this.placeholderText,
-      size: TextSize.M,
+      style: TextStyle.Body,
       color: PLACEHOLDER_COLOR,
       position: new vec3(0, 0, Z_TEXT),
       horizontalOverflow: HorizontalOverflow.Wrap,
@@ -248,49 +225,6 @@ export class WrappingTextInput extends DirtyComponent {
     };
   }
 
-  private setupBLEKeyboard(): void {
-    if (!this.bleKeyboardManager) return;
-    this._bleCallback = (event: BLEKeyboardEvent) => {
-      if (!this._isEditing && !this._bleFocused) return;
-      if (
-        event.modifiers?.ctrl ||
-        event.modifiers?.alt ||
-        event.modifiers?.meta
-      )
-        return;
-
-      if (event.isSpecialKey) {
-        switch (event.key) {
-          case "Backspace":
-          case "Delete":
-            this.text = this.textCache.slice(0, -1);
-            break;
-          case "Enter":
-            if (this._bleFocused && !this._isEditing) {
-              this.onSubmitRequested.invoke();
-            } else {
-              this.editMode(false);
-            }
-            break;
-          case "Escape":
-            this.editMode(false);
-            break;
-          default:
-            break;
-        }
-      } else {
-        if (this.isPlaceholder) {
-          this.isPlaceholder = false;
-          this.textCache = "";
-          this.textComponent.text = "";
-          this.textComponent.textFill.color = TEXT_COLOR;
-        }
-        this.text = this.textCache + event.key;
-      }
-    };
-    this.bleKeyboardManager.onKeyboardInput.add(this._bleCallback);
-  }
-
   public editMode(editing: boolean): void {
     this.onEditMode.invoke(editing);
     if (editing && !this._isEditing) {
@@ -320,6 +254,19 @@ export class WrappingTextInput extends DirtyComponent {
     this.textComponent.text = text;
     this.textComponent.textFill.color = PLACEHOLDER_COLOR;
     this.markDirty();
+  }
+
+  /**
+   * Shows non-value status text (keeps current color). Like a placeholder, it
+   * is not part of `text`, so it can never be submitted.
+   */
+  public showStatusText(text: string): void {
+    const hadValue = this.textCache !== "";
+    this.isPlaceholder = true;
+    this.textCache = "";
+    this.textComponent.text = text;
+    this.markDirty();
+    if (hadValue) this.onTextChanged.invoke("");
   }
 
   public get text(): string {
@@ -358,7 +305,7 @@ export class WrappingTextInput extends DirtyComponent {
   }
 
   public get isActive(): boolean {
-    return this._isEditing || this._bleFocused;
+    return this._isEditing;
   }
 
   public getSize(): vec3 {

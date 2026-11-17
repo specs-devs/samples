@@ -1,17 +1,17 @@
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK";
+import {IK} from "InteractionKit.lspkg/IK";
 import {CornerController} from "../Controllers/CornerController";
 import {InteractionController} from "../Controllers/InteractionController";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import {HandInteractor} from "SpectaclesInteractionKit.lspkg/Core/HandInteractor/HandInteractor";
-import {InteractionManager} from "SpectaclesInteractionKit.lspkg/Core/InteractionManager/InteractionManager";
-import {Interactor, InteractorInputType} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import {HandInteractor} from "InteractionKit.lspkg/Core/HandInteractor/HandInteractor";
+import {InteractionManager} from "InteractionKit.lspkg/Core/InteractionManager/InteractionManager";
+import {Interactor, InteractorInputType} from "InteractionKit.lspkg/Core/Interactor/Interactor";
 // Capture coordination now handled by InteractionController
 
 @component
 export class BaseHandCapture extends BaseScriptComponent {
-  protected rightHand = SIK.HandInputData.getHand("right");
-  protected leftHand = SIK.HandInputData.getHand("left");
+  protected rightHand = IK.HandInputData.getHand("right");
+  protected leftHand = IK.HandInputData.getHand("left");
 
   protected leftDown = false;
   protected rightDown = false;

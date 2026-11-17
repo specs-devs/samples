@@ -3,7 +3,7 @@
  * UI component for the Path Pioneer Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {Conversions} from "./Conversions"
 import {LoopController} from "./LoopController"
 

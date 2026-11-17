@@ -30,7 +30,7 @@ thought bubble. It is for developers who want a minimal, readable starting point
 | `Scripts/Events.ts` | Minimal typed event class used to broadcast fetch results. |
 
 ## Extra info
-- **Requires:** bundled packages `Icons`, `SpectaclesInteractionKit`, `Motion`, `SnapDecorators`, `SpectaclesUIKit`, `Utilities`.
+- **Requires:** bundled packages `Icons`, `InteractionKit`, `Motion`, `SnapDecorators`, `UIKit`, `Utilities`.
   Needs internet access. Works in the Lens Studio Preview (click the cat to simulate a pinch) and on Specs.
 - **Get started:** open `Assets/Scene.scene`; the logic sits on the `FetchCatFacts` and `CatFactAnimator`
   objects next to the `Kitty` model.

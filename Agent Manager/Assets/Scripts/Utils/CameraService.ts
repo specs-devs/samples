@@ -1,7 +1,7 @@
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import { Singleton } from "SpectaclesInteractionKit.lspkg/Decorators/Singleton";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import { Singleton } from "InteractionKit.lspkg/Decorators/Singleton";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import Event from "InteractionKit.lspkg/Utils/Event";
 
 @Singleton
 export class CameraService {

@@ -1,6 +1,6 @@
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+} from "../../../UI/Shared/MotionAnimate";
 
 @component
 export class UIElement extends BaseScriptComponent {

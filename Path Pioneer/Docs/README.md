@@ -39,7 +39,7 @@ detection, world raycasting, procedural meshes and state-machine driven gameplay
 | `Scripts/WarningController.ts` | Shows the pace-limit warning overlay. |
 
 ## Extra info
-- **Requires:** bundled packages `Icons`, `SpectaclesInteractionKit`, `Motion`, `SnapDecorators`, `SpectaclesUIKit`, `Utilities`.
+- **Requires:** bundled packages `Icons`, `InteractionKit`, `Motion`, `SnapDecorators`, `UIKit`, `Utilities`.
   Built for Specs; the flow can be followed in the Lens Studio Interactive Preview (WASD / QE to move). Use an
   open area free of traffic and obstacles, and walk rather than run.
 - **Get started:** open `Assets/Scene.scene` and start from the `LensInitializer` component.

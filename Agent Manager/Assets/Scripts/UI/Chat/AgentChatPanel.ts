@@ -1,17 +1,17 @@
 import { DirtyComponent } from "../Shared/DirtyComponent";
-import { RoundedRectangle } from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
-import { CapsuleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/CapsuleButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
+import { RoundedRectangle } from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+} from "../Shared/MotionAnimate";
 import {
   setTimeout,
   clearTimeout,
   CancelToken,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { ChatMessageList } from "./ChatMessageList";
 import { ChatSettingsPanel } from "./ChatSettingsPanel";
 import { PermissionRequestView } from "./PermissionRequestView";
@@ -19,7 +19,7 @@ import { ChatMessage } from "../../Types";
 import { AgentStore } from "../../State/AgentStore";
 import { AgentObject } from "../Agent/AgentObject";
 import { DialogueObject } from "../Shared/DialogueObject";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { MIN_SCALE, ICON_Z_OFFSET, TRASH_TEXTURE, CHEVRON_LEFT_TEXTURE, ANIM_DURATION } from "../Shared/UIConstants";
 import {
   createTooltip,
@@ -28,26 +28,27 @@ import {
 } from "../Shared/UIBuilders";
 import { createImage } from "../Shared/ImageFactory";
 import { PermissionPayload } from "../../Api/Supabase/Bridge/BridgeTypes";
-import { TextSize, TextFont } from "../Shared/TextSizes";
 import { SuggestionBar } from "../Input/SuggestionBar";
 import {
   InteractableManipulation,
   TranslateEventArg,
-} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import HoverBehavior from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/modules/HoverBehavior";
-import { Billboard } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard";
+} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
+import HoverBehavior from "UIKit.lspkg/Scripts/Components/Frame/modules/HoverBehavior";
+import { Billboard } from "InteractionKit.lspkg/Components/Interaction/Billboard/Billboard";
 import { spawnDetachedImageFrame } from "./DetachedImageFrame";
 import { LoadingSpinner } from "../../../Visuals/LoadingSpinner/LoadingSpinner";
+import { TextStyle, TextColor, Layout } from "../Shared/UIStyle";
 
 const FOLDER_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Folder.png",
+  "Icons.lspkg/Iconography/Files/folder.png",
 ) as Texture;
 const TERMINAL_TEXTURE: Texture = requireAsset(
   "../../../Visuals/Textures/Terminal.png",
 ) as Texture;
 
 const PANEL_INNER_SIZE = new vec2(30, 35);
+const OPEN_SETTINGS_INTENT_MS = 1000;
 const PADDING_ABOVE_VISUAL = 4;
 const PADDING_BACK = 6;
 const CONTENT_Z_OFFSET = 0.3;
@@ -56,7 +57,7 @@ const VIEWER_PADDING = 2;
 const POSITION_LERP_SPEED = 8;
 const POSITION_THRESHOLD = 0.05;
 
-const FOOTER_BTN_SIZE = 3;
+const FOOTER_BTN_SIZE = 3.2;
 const FOOTER_BTN_ICON_SIZE = 1.5;
 const FOOTER_EMPTY_HEADER_HEIGHT = 2.5;
 const FOOTER_EMPTY_SUB_HEIGHT = 1.5;
@@ -97,6 +98,8 @@ type PanelMode = "chat" | "settings";
 @component
 export class AgentChatPanel extends DirtyComponent {
   private panelBg: RoundedRectangle;
+  // Set when settings was requested before show(); see toggleSettings().
+  private openSettingsOnShowUntil = 0;
   private contentObj: SceneObject;
   private _innerSize: vec2 = new vec2(PANEL_INNER_SIZE.x, PANEL_INNER_SIZE.y);
   private trashBtnObj: SceneObject;
@@ -107,6 +110,9 @@ export class AgentChatPanel extends DirtyComponent {
   private messageCancels = new CancelSet();
   private modeCancels = new CancelSet();
   private emptyCancels = new CancelSet();
+  // Bumped whenever emptyCancels is cancelled; CancelSet can't stop the
+  // staggered setTimeouts in animateEmptyStateIn, so they check this.
+  private emptyAnimGen = 0;
   private imageViewerCancels = new CancelSet();
   private fullScale = vec3.one();
   private lastRobotLocalPos: vec3 | null = null;
@@ -126,8 +132,18 @@ export class AgentChatPanel extends DirtyComponent {
     | null = null;
   private deleteTooltip: Tooltip;
   private pendingShowAnimation = false;
+  private isHiding = false;
   private permissionView: PermissionRequestView;
-  private pendingPermissionPayload: PermissionPayload | null = null;
+  // Permission requests are bound to the agent/topic they came from. Requests
+  // for agents not currently shown are stashed and restored on show(agent).
+  private permissionByAgent = new Map<
+    string,
+    { payload: PermissionPayload; topicId: string | null }
+  >();
+  private shownPermission: {
+    agentId: string | null;
+    topicId: string | null;
+  } | null = null;
   private audioComponent: AudioComponent;
   private folderRowObj: SceneObject;
   private workspaceLabel: Text;
@@ -180,9 +196,11 @@ export class AgentChatPanel extends DirtyComponent {
   private _msgOffsetCancels = new CancelSet();
 
   public readonly onCloseRequested = new Event<void>();
-  public readonly onPermissionDecision = new Event<
-    "allow" | "allow_session" | "deny"
-  >();
+  public readonly onPermissionDecision = new Event<{
+    decision: "allow" | "allow_session" | "deny";
+    agentId: string | null;
+    topicId: string | null;
+  }>();
   public readonly onModeChanged = new Event<{
     mode: PanelMode;
     highlightSettings: boolean;
@@ -310,9 +328,7 @@ export class AgentChatPanel extends DirtyComponent {
     // Trash button — bottom-right footer corner
     this.trashBtnObj = global.scene.createSceneObject("TrashBtn");
     this.trashBtnObj.setParent(panelObj);
-    const trashBtn = this.trashBtnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const trashBtn = createSystemButton(this.trashBtnObj, "Secondary");
     trashBtn.size = new vec3(FOOTER_BTN_SIZE, FOOTER_BTN_SIZE, 0.5);
     trashBtn.initialize();
     createImage(TRASH_TEXTURE, {
@@ -325,6 +341,8 @@ export class AgentChatPanel extends DirtyComponent {
       this.trashBtnObj,
       "Delete Conversation",
       {
+        placement: "left",
+        targetSize: new vec2(FOOTER_BTN_SIZE, FOOTER_BTN_SIZE),
         hoverSource: trashBtn,
       },
     );
@@ -347,8 +365,7 @@ export class AgentChatPanel extends DirtyComponent {
       parent: panelObj,
       name: "TopicTitle",
       text: "New Chat",
-      size: TextSize.M,
-      font: TextFont.Medium,
+      style: TextStyle.Label,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,
       verticalAlignment: VerticalAlignment.Center,
@@ -359,8 +376,7 @@ export class AgentChatPanel extends DirtyComponent {
       parent: panelObj,
       name: "SettingsTitle",
       text: "Settings",
-      size: TextSize.XXL,
-      font: TextFont.SemiBold,
+      style: TextStyle.PanelTitle,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,
@@ -378,8 +394,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: panelObj,
       name: "SettingsSubtitle",
       text: "",
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.55),
+      style: TextStyle.Body,
+      color: TextColor.Muted,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,
@@ -402,6 +418,9 @@ export class AgentChatPanel extends DirtyComponent {
       ChatMessageList.getTypeName(),
     ) as ChatMessageList;
     this.messageList.configure(PANEL_INNER_SIZE.x - 4, PANEL_INNER_SIZE.y);
+    this.messageList.onLayoutChanged.add(() => {
+      if (this.mode === "chat") this.markPanelDirty();
+    });
     this.messageList.onImageTapped.add(
       ({ texture, sourceObj, srcWidth, srcHeight }) => {
         this.showImageViewer(texture, sourceObj, srcWidth, srcHeight);
@@ -415,9 +434,7 @@ export class AgentChatPanel extends DirtyComponent {
     this.workspaceBtnObj.setParent(this.chatContentObj);
     this.workspaceBtnObj.getTransform().setLocalPosition(new vec3(0, 0, 0.5));
 
-    const wsBtn = this.workspaceBtnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const wsBtn = createSystemButton(this.workspaceBtnObj, "Secondary");
     wsBtn.size = new vec3(WS_BTN_WIDTH, WS_BTN_HEIGHT, 0.5);
     wsBtn.initialize();
 
@@ -443,8 +460,7 @@ export class AgentChatPanel extends DirtyComponent {
       parent: this.workspaceBtnObj,
       name: "WsBtnHeader",
       text: "Workspace",
-      size: TextSize.M,
-      font: TextFont.Medium,
+      style: TextStyle.Label,
       position: new vec3(wsBtnTextCenterX, headerY, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -461,8 +477,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: this.workspaceBtnObj,
       name: "WsBtnPath",
       text: "No workspace",
-      size: TextSize.XS,
-      color: new vec4(1, 1, 1, 0.55),
+      style: TextStyle.Caption,
+      color: TextColor.Muted,
       position: new vec3(wsBtnTextCenterX, pathY, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -486,8 +502,7 @@ export class AgentChatPanel extends DirtyComponent {
       parent: panelObj,
       name: "EmptyHeader",
       text: "New Chat",
-      size: TextSize.M,
-      font: TextFont.Medium,
+      style: TextStyle.Label,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalAlignment: HorizontalAlignment.Left,
       verticalAlignment: VerticalAlignment.Center,
@@ -503,8 +518,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: panelObj,
       name: "EmptySubtext",
       text: "Send a message to get started",
-      size: TextSize.S,
-      color: new vec4(1, 1, 1, 0.55),
+      style: TextStyle.Secondary,
+      color: TextColor.Muted,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalAlignment: HorizontalAlignment.Left,
       verticalAlignment: VerticalAlignment.Center,
@@ -572,8 +587,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: this.threadLoadingObj,
       name: "ThreadLoadingText",
       text: "Loading conversation...",
-      size: TextSize.S,
-      color: new vec4(1, 1, 1, 0.6),
+      style: TextStyle.Secondary,
+      color: TextColor.Muted,
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,
       layoutRect: Rect.create(
@@ -627,8 +642,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: this.folderRowObj,
       name: "WorkspaceLabel",
       text: "No workspace",
-      size: TextSize.S,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Secondary,
+      color: TextColor.Muted,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,
       verticalAlignment: VerticalAlignment.Center,
@@ -651,9 +666,7 @@ export class AgentChatPanel extends DirtyComponent {
     this.cliButtonObj = global.scene.createSceneObject("OpenInCliBtn");
     this.cliButtonObj.setParent(panelObj);
 
-    const cliBtn = this.cliButtonObj.createComponent(
-      CapsuleButton.getTypeName(),
-    ) as CapsuleButton;
+    const cliBtn = createSystemButton(this.cliButtonObj, "Secondary");
     cliBtn.size = new vec3(CLI_BTN_WIDTH, CLI_BTN_HEIGHT, CLI_BTN_DEPTH);
     cliBtn.initialize();
 
@@ -675,9 +688,8 @@ export class AgentChatPanel extends DirtyComponent {
       parent: this.cliButtonObj,
       name: "CliBtnLabel",
       text: "Open in CLI",
-      size: TextSize.M,
-      font: TextFont.Medium,
-      color: new vec4(1, 1, 1, 0.9),
+      style: TextStyle.ButtonCompact,
+      color: TextColor.Primary,
       position: new vec3(cliTextCenterX, 0, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -704,7 +716,14 @@ export class AgentChatPanel extends DirtyComponent {
       this,
     );
     this.permissionView.onDecision.add((decision) => {
-      this.onPermissionDecision.invoke(decision);
+      const ctx = this.shownPermission;
+      this.shownPermission = null;
+      if (ctx?.agentId != null) this.permissionByAgent.delete(ctx.agentId);
+      this.onPermissionDecision.invoke({
+        decision,
+        agentId: ctx?.agentId ?? null,
+        topicId: ctx?.topicId ?? null,
+      });
       this.onPermissionHidden();
     });
     this.permissionView.onLayoutReady.add(() => {
@@ -779,7 +798,8 @@ export class AgentChatPanel extends DirtyComponent {
     });
     this.settingsPanel.onSubtitleChanged.add((subtitle: string | null) => {
       this.settingsSubtitleText.text = subtitle ?? "";
-      this.settingsSubtitleObj.enabled = subtitle !== null;
+      this.settingsSubtitleObj.enabled =
+        subtitle !== null && this.mode === "settings";
       this.repositionSettingsTitle();
     });
     this.settingsPanel.onContentHeightChanged.add((height: number) => {
@@ -810,8 +830,29 @@ export class AgentChatPanel extends DirtyComponent {
   show(agent: AgentObject): void {
     // If the panel is already open in settings, stay there — don't auto-switch to chat
     // (e.g. bridge reconnected while user was viewing settings)
-    const wasShowingInSettings =
-      this.trackAgent !== null && this.mode === "settings";
+    const sameAgent = this.trackAgent === agent;
+    const wasShowingInSettings = sameAgent && this.mode === "settings";
+    // Open in settings for another agent: stay in settings but rebuild for it.
+    const wasInSettingsOtherAgent =
+      !sameAgent &&
+      !this.isHiding &&
+      this.trackAgent !== null &&
+      this.mode === "settings";
+    // Reopened while hide()'s close animation was running: animCancels.cancel()
+    // below kills hide's ended callback, so snap back to full instead of
+    // leaving the panel stuck mid-scale.
+    const reopeningSamePanel = sameAgent && this.isHiding;
+    this.isHiding = false;
+
+    const newAgentId = agent.getAgent()?.id ?? null;
+    if (
+      this.shownPermission !== null &&
+      this.shownPermission.agentId !== newAgentId
+    ) {
+      // Card belongs to another agent; keep it stashed for that agent.
+      this.permissionView.hide();
+      this.shownPermission = null;
+    }
 
     this.trackAgent = agent;
     this.positionSettled = false;
@@ -824,13 +865,20 @@ export class AgentChatPanel extends DirtyComponent {
     this.settingsPanel.setAgentId(agent.getAgent()?.id ?? null);
     this.animCancels.cancel();
     this.messageCancels.cancel();
+    this.messageList.cancelAnimations();
     this.loadedTopicId = null;
     this.pendingShowAnimation = true;
     this.lastRobotLocalPos = agent.getRobotTransform().getLocalPosition();
     this.lastContentTopY = agent.getContentTopLocalY();
     this.updateWorkspaceLabel();
-    if (!wasShowingInSettings) {
+    const openInSettings = Date.now() < this.openSettingsOnShowUntil;
+    this.openSettingsOnShowUntil = 0;
+    if (wasInSettingsOtherAgent) {
+      // setMode re-runs resetDialogue()/showContent() and retitles for this agent.
+      this.setMode("settings");
+    } else if (!wasShowingInSettings) {
       this.setMode("chat");
+      if (openInSettings) this.setMode("settings", true);
     }
 
     this._minimizeUnsub?.();
@@ -845,13 +893,17 @@ export class AgentChatPanel extends DirtyComponent {
     root.setParent(agent.getSceneObject());
     root.enabled = true;
 
-    if (this.pendingPermissionPayload !== null) {
-      const payload = this.pendingPermissionPayload;
-      this.pendingPermissionPayload = null;
-      this.showPermissionRequest(payload);
+    const stashed =
+      newAgentId != null ? this.permissionByAgent.get(newAgentId) : undefined;
+    if (stashed && this.shownPermission === null) {
+      this.showPermissionRequest(stashed.payload, newAgentId, stashed.topicId);
     }
 
-    if (wasShowingInSettings) return;
+    if (wasShowingInSettings || reopeningSamePanel) {
+      this.rootTransform.setLocalScale(this.fullScale);
+      this.rootTransform.setLocalPosition(this.targetLocalPos);
+      return;
+    }
 
     const startPos = new vec3(
       this.targetLocalPos.x,
@@ -889,10 +941,13 @@ export class AgentChatPanel extends DirtyComponent {
     if (this.trackAgent) {
       this.trackAgent.getChatSelector().setMinimizeBtnVisible(false);
     }
+    this.isHiding = true;
     this.animCancels.cancel();
     this.messageCancels.cancel();
+    this.messageList.cancelAnimations();
     this.modeCancels.cancel();
     this.emptyCancels.cancel();
+    this.emptyAnimGen++;
     this.hideThreadLoading();
 
     const root = this.getSceneObject();
@@ -915,6 +970,7 @@ export class AgentChatPanel extends DirtyComponent {
         this.rootTransform.setLocalPosition(vec3.lerp(startPos, endPos, t));
       },
       ended: () => {
+        this.isHiding = false;
         if (isNull(root)) {
           this._contentTopChangedUnsub?.();
           this._contentTopChangedUnsub = null;
@@ -924,7 +980,7 @@ export class AgentChatPanel extends DirtyComponent {
           this.lastRobotLocalPos = null;
           this.lastContentTopY = null;
           this.loadedTopicId = null;
-          this.mode = "chat";
+          this.resetToChatMode();
           this.messageList.setScrollEnabled(false);
           this._scrollEnabled = false;
           return;
@@ -942,7 +998,7 @@ export class AgentChatPanel extends DirtyComponent {
         this.messageList.setScrollEnabled(false);
         this._scrollEnabled = false;
         root.enabled = false;
-        this.mode = "chat";
+        this.resetToChatMode();
       },
     });
   }
@@ -955,11 +1011,41 @@ export class AgentChatPanel extends DirtyComponent {
     return this.trackAgent;
   }
 
+  // Fully revert settings visuals; setting this.mode alone leaves the settings
+  // title/panel enabled and they render over chat on the next show().
+  private resetToChatMode(): void {
+    this.mode = "chat";
+    this.settingsPanel.cancelPending();
+    // The panel root is parented under the agent; if that agent was destroyed
+    // (e.g. a closed clone) these objects are gone too — nothing left to reset.
+    if (
+      isNull(this.settingsTitleObj) ||
+      isNull(this.settingsSubtitleObj) ||
+      isNull(this.chatContentObj) ||
+      isNull(this.trashBtnObj) ||
+      isNull(this.settingsPanel.sceneObject)
+    ) {
+      return;
+    }
+    this.settingsTitleObj.enabled = false;
+    this.settingsSubtitleObj.enabled = false;
+    this.settingsPanel.sceneObject.enabled = false;
+    this.chatContentObj.enabled = true;
+    this.trashBtnObj.getTransform().setLocalScale(vec3.one());
+  }
+
   getMode(): PanelMode {
     return this.mode;
   }
 
   toggleSettings(): void {
+    // First press: the panel isn't showing/tracking an agent yet (selectAgent
+    // -> show() lands after this call). Remember the intent so show() opens
+    // straight into settings instead of resetting to chat over it.
+    if (this.trackAgent === null) {
+      this.openSettingsOnShowUntil = Date.now() + OPEN_SETTINGS_INTENT_MS;
+      return;
+    }
     this.setMode(this.mode === "chat" ? "settings" : "chat", true);
   }
 
@@ -968,8 +1054,10 @@ export class AgentChatPanel extends DirtyComponent {
     highlightSettings = false,
     skipSettingsContent = false,
   ): void {
+    this.hideImageViewer();
     this.modeCancels.cancel();
     this.emptyCancels.cancel();
+    this.emptyAnimGen++;
     const prevMode = this.mode;
     this.mode = mode;
 
@@ -986,6 +1074,7 @@ export class AgentChatPanel extends DirtyComponent {
     this.dialogue.forceClose();
     this.dialogueObj.enabled = false;
     this.settingsPanel.resetDialogue();
+    if (mode === "chat") this.settingsPanel.cancelPending();
 
     const deleteScale = mode === "chat" ? vec3.one() : vec3.zero();
     this.trashBtnObj.getTransform().setLocalScale(deleteScale);
@@ -1004,7 +1093,7 @@ export class AgentChatPanel extends DirtyComponent {
       this.emptySubText.getSceneObject().enabled = false;
       // Reset opacity so they look correct when returning to an empty chat
       this.emptyHeaderText.textFill.color = new vec4(1, 1, 1, 1);
-      this.emptySubText.textFill.color = new vec4(1, 1, 1, 0.55);
+      this.emptySubText.textFill.color = TextColor.Muted;
     } else if (!this.hasMessages) {
       this.emptyHeaderText.getSceneObject().enabled = true;
       this.emptySubText.getSceneObject().enabled = true;
@@ -1121,6 +1210,7 @@ export class AgentChatPanel extends DirtyComponent {
     }
     this.pendingShowAnimation = false;
     this.messageCancels.cancel();
+    this.messageList.cancelAnimations();
     if (topicChanged || threadChanged) {
       this.messageList.animateMessagesIn(this.messageCancels);
     }
@@ -1136,20 +1226,31 @@ export class AgentChatPanel extends DirtyComponent {
     }
   }
 
-  showPermissionRequest(payload: PermissionPayload): void {
-    // If the panel isn't open, the UpdateEvent that drives permission-view text
-    // measurement won't fire (it's owned by this disabled scene object).
-    // Store the payload and show it lazily in show() once the panel opens.
-    if (!this.getSceneObject().enabled) {
-      this.pendingPermissionPayload = payload;
+  showPermissionRequest(
+    payload: PermissionPayload,
+    forAgentId?: string | null,
+    forTopicId?: string | null,
+  ): void {
+    // Bind the request to its agent/topic (callers that don't pass one mean
+    // the agent currently shown / selected).
+    const agentId =
+      forAgentId ?? this.getAgentId() ?? this.store?.getSelectedAgentId() ?? null;
+    const topicId =
+      forTopicId ??
+      (agentId != null ? this.store.getActiveTopicId(agentId) : null);
+    if (agentId != null) {
+      this.permissionByAgent.set(agentId, { payload, topicId });
+    }
+    // If the panel isn't open (the UpdateEvent that drives permission-view text
+    // measurement won't fire) or is showing another agent, keep it stashed and
+    // show it lazily in show() once that agent's panel opens.
+    if (!this.getSceneObject().enabled || agentId !== this.getAgentId()) {
       return;
     }
-    const agentId = this.getAgentId();
     const explainerEnabled =
       agentId != null && this.store.isPermissionExplainerEnabled(agentId);
     const agentName = this.trackAgent?.getAgent()?.name ?? "Agent";
-    const topicId =
-      agentId != null ? this.store.getActiveTopicId(agentId) : null;
+    this.shownPermission = { agentId, topicId };
     const recentMessages =
       topicId != null ? this.store.getMessagesForTopic(topicId) : [];
     this.permissionView.show(
@@ -1168,10 +1269,19 @@ export class AgentChatPanel extends DirtyComponent {
     }
   }
 
-  hidePermissionRequest(): void {
-    this.pendingPermissionPayload = null;
-    this.permissionView.hide();
-    this.onPermissionHidden();
+  hidePermissionRequest(forAgentId?: string | null): void {
+    const agentId =
+      forAgentId ??
+      this.shownPermission?.agentId ??
+      this.getAgentId() ??
+      this.store?.getSelectedAgentId() ??
+      null;
+    if (agentId != null) this.permissionByAgent.delete(agentId);
+    if (this.shownPermission === null || this.shownPermission.agentId === agentId) {
+      this.shownPermission = null;
+      this.permissionView.hide();
+      this.onPermissionHidden();
+    }
   }
 
   private onPermissionHidden(): void {
@@ -1342,15 +1452,17 @@ export class AgentChatPanel extends DirtyComponent {
     const label = repo ?? "No workspace";
     this.workspaceLabel.text = label;
     this.workspaceBtnLabel.text = label;
-    this.workspaceBtnLabel.textFill.color = new vec4(1, 1, 1, 0.55);
+    this.workspaceBtnLabel.textFill.color = TextColor.Muted;
   }
 
   private updateEmptyState(): void {
     const empty = this.messageList.getMessageCount() === 0;
     this.hasMessages = !empty;
     this.workspaceBtnObj.enabled = empty;
-    this.emptyHeaderText.getSceneObject().enabled = empty;
-    this.emptySubText.getSceneObject().enabled = empty;
+    // These live outside chatContentObj, so they must not show in settings mode.
+    const showEmptyText = empty && this.mode === "chat";
+    this.emptyHeaderText.getSceneObject().enabled = showEmptyText;
+    this.emptySubText.getSceneObject().enabled = showEmptyText;
     this.folderRowObj.enabled = !empty && this.mode === "chat";
     const isNewChat = this.topicTitleText.text === "New Chat";
     this.topicTitleObj.enabled = !isNewChat && !empty && this.mode === "chat";
@@ -1365,6 +1477,7 @@ export class AgentChatPanel extends DirtyComponent {
 
   private animateEmptyStateIn(): void {
     this.emptyCancels.cancel();
+    this.emptyAnimGen++;
 
     const SLIDE_Y = -2;
     const START_SCALE = 0.88;
@@ -1372,9 +1485,15 @@ export class AgentChatPanel extends DirtyComponent {
     const STAGGER_MS = 80;
     const INITIAL_DELAY_MS = 100;
 
+    const gen = this.emptyAnimGen;
     const headerObj = this.emptyHeaderText.getSceneObject();
     const subObj = this.emptySubText.getSceneObject();
     const wsObj = this.workspaceBtnObj;
+
+    // Snap header/sub back to their resting layout first — a previously
+    // cancelled run (rapid double load) leaves them at the slid-down offset,
+    // which would otherwise be read as the final position.
+    this.repositionFooterButtons();
 
     const headerFinalPos = headerObj.getTransform().getLocalPosition();
     const subFinalPos = subObj.getTransform().getLocalPosition();
@@ -1426,7 +1545,7 @@ export class AgentChatPanel extends DirtyComponent {
       {
         obj: subObj,
         finalPos: subFinalPos,
-        textOpacity: { text: this.emptySubText, alpha: 0.55 },
+        textOpacity: { text: this.emptySubText, alpha: TextColor.Muted.w },
       },
       {
         obj: headerObj,
@@ -1443,6 +1562,7 @@ export class AgentChatPanel extends DirtyComponent {
       const textOpacity = el.textOpacity;
 
       setTimeout(() => {
+        if (gen !== this.emptyAnimGen) return;
         const obj = el.obj;
         if (!obj) return;
         const transform = obj.getTransform();
@@ -1806,8 +1926,8 @@ export class AgentChatPanel extends DirtyComponent {
   }
 
   private createImageViewer(): void {
-    const BACK_BTN_SIZE = 3;
-    const BACK_BTN_MARGIN = 1;
+    const BACK_BTN_SIZE = Layout.ICON_BUTTON_SIZE;
+    const BACK_BTN_MARGIN = Layout.BACK_BUTTON_MARGIN;
     const BACK_ICON_SIZE = 1.4;
 
 
@@ -1930,9 +2050,7 @@ export class AgentChatPanel extends DirtyComponent {
       global.scene.createSceneObject("ViewerBackBtn");
     this.imageViewerBackBtnObj.setParent(this.imageViewerObj);
     const backBtnObj = this.imageViewerBackBtnObj;
-    const backBtn = backBtnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    const backBtn = createSystemButton(backBtnObj, "Ghost");
     backBtn.size = new vec3(BACK_BTN_SIZE, BACK_BTN_SIZE, 0.3);
     backBtn.initialize();
 
@@ -2008,8 +2126,8 @@ export class AgentChatPanel extends DirtyComponent {
     );
 
     // Position back button just above the image
-    const BACK_BTN_SIZE = 3;
-    const BACK_BTN_MARGIN = 1;
+    const BACK_BTN_SIZE = Layout.ICON_BUTTON_SIZE;
+    const BACK_BTN_MARGIN = Layout.BACK_BUTTON_MARGIN;
     this.imageViewerBackBtnObj
       .getTransform()
       .setLocalPosition(
@@ -2059,15 +2177,21 @@ export class AgentChatPanel extends DirtyComponent {
   private dismissImageViewer(): void {
     this.imageViewerCancels.cancel();
     this.imageViewerHoverCancels.cancel();
+    // Stop billboarding so rotation isn't fighting the animation.
+    this.imageViewerBillboard.enabled = false;
     const viewerTransform = this.imageViewerObj.getTransform();
+    // Start from wherever the viewer actually is (it may have been dragged,
+    // scaled or rotated), never from an assumed rest pose.
     const startPos = viewerTransform.getLocalPosition();
+    const startScale = viewerTransform.getLocalScale();
+    const startRot = viewerTransform.getLocalRotation();
     const endPos = this.imageViewerSourceLocalPos;
-    const startScale = vec3.one();
     const endScale = new vec3(
       this.imageViewerSourceScale,
       this.imageViewerSourceScale,
       1,
     );
+    const endRot = quat.quatIdentity();
     animate({
       duration: ANIM_DURATION,
       easing: "ease-in-cubic",
@@ -2075,9 +2199,14 @@ export class AgentChatPanel extends DirtyComponent {
       update: (t: number) => {
         viewerTransform.setLocalPosition(vec3.lerp(startPos, endPos, t));
         viewerTransform.setLocalScale(vec3.lerp(startScale, endScale, t));
+        viewerTransform.setLocalRotation(quat.slerp(startRot, endRot, t));
+        // Fade out as it shrinks, fully transparent by the last frame.
         this.imageViewerImage.mainPass.baseColor = new vec4(1, 1, 1, 1 - t);
       },
-      ended: () => this.hideImageViewer(),
+      ended: () => {
+        this.imageViewerImage.mainPass.baseColor = new vec4(1, 1, 1, 0);
+        this.hideImageViewer();
+      },
     });
   }
 
@@ -2085,12 +2214,13 @@ export class AgentChatPanel extends DirtyComponent {
     this.imageViewerCancels.cancel();
     this.imageViewerHoverCancels.cancel();
     this.imageViewerBillboard.enabled = false;
+    // Disable first so the reset to rest pose below is never rendered.
+    this.imageViewerObj.enabled = false;
     const viewerTransform = this.imageViewerObj.getTransform();
     viewerTransform.setLocalPosition(new vec3(0, 0, VIEWER_Z));
     viewerTransform.setLocalScale(vec3.one());
     viewerTransform.setLocalRotation(quat.quatIdentity());
     this.imageViewerImage.mainPass.baseColor = new vec4(1, 1, 1, 1);
-    this.imageViewerObj.enabled = false;
     if (this.mode === "chat") {
       this.chatContentObj.enabled = true;
     }

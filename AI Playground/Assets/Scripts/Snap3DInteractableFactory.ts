@@ -4,7 +4,7 @@
  */
 import {Snap3D} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3D"
 import {Snap3DTypes} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3DTypes"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {Snap3DInteractable} from "./Snap3DInteractable"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {PlaygroundLogger} from "./PlaygroundLogger"
@@ -80,7 +80,7 @@ export class Snap3DInteractableFactory extends BaseScriptComponent {
       if (overridePosition) {
         outputObj.getTransform().setWorldPosition(overridePosition)
       } else {
-        const newPos = this.wcfmp.getForwardPosition(80)
+        const newPos = this.wcfmp.getForwardPosition(110)
         outputObj.getTransform().setWorldPosition(newPos)
       }
 

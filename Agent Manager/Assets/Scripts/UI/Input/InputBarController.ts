@@ -1,7 +1,9 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { RoundButton } from "UIKit.lspkg/Scripts/Components/Button/RoundButton";
+import { replaceWithSystemButton } from "../Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
 import { createTooltip } from "../Shared/UIBuilders";
 import { ActivityIndicatorController } from "../../../Visuals/Scripts/ActivityIndicatorController";
 import { CaptureController } from "../../CaptureGesture/Scripts/Controllers/CaptureController";
@@ -9,7 +11,10 @@ import { createImage } from "../Shared/ImageFactory";
 import { ICON_Z_OFFSET, MICROPHONE_TEXTURE, SEND_TEXTURE } from "../Shared/UIConstants";
 import { ImagePreviewBar } from "./ImagePreviewBar";
 import { WrappingTextInput } from "./WrappingTextInput";
-import { BLEKeyboardManager } from "../../Bluetooth/BLEKeyboardManager";
+
+// The InputBar prefab still carries deprecated RoundButtons; imported only to
+// locate and replace them.
+const ROUND_BUTTON_TYPE = RoundButton.getTypeName();
 
 const TOOLTIP_Y_OFFSET = -3;
 const TOOLTIP_Z_OFFSET = 0.25;
@@ -28,10 +33,10 @@ const PREVIEW_WIDTH_RATIO = 0.75;
 const PREVIEW_ABOVE_OFFSET = 6;
 
 const CAMERA_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Camera.png",
+  "Icons.lspkg/Iconography/Media/camera.png",
 ) as Texture;
 const STOP_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Stop.png",
+  "Icons.lspkg/Iconography/Media/stop.png",
 ) as Texture;
 
 const CAPTURE_CONTROLLER_PREFAB: ObjectPrefab = requireAsset(
@@ -56,8 +61,8 @@ export class InputBarController extends BaseScriptComponent {
   @input
   private sendButton: SceneObject;
 
-  private micRoundButton: RoundButton;
-  private cameraRoundButton: RoundButton;
+  private micRoundButton: Button;
+  private cameraRoundButton: Button;
   private micTooltip: Tooltip;
   private cameraTooltip: Tooltip;
   private sendTooltip: Tooltip;
@@ -65,7 +70,7 @@ export class InputBarController extends BaseScriptComponent {
   private listeningAnimActive = false;
   private dotCount = 0;
   private dotElapsed = 0;
-  private sendRoundButton: RoundButton;
+  private sendRoundButton: Button;
   private sendIconImage: Image;
   private isStopMode = false;
   private captureControllerObj: SceneObject | null = null;
@@ -95,17 +100,28 @@ export class InputBarController extends BaseScriptComponent {
   }
 
   private initializeComponents(): void {
-    this.micRoundButton = this.micButton.getComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.cameraRoundButton = this.cameraButton.getComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.sendRoundButton = this.sendButton.getComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
+    // The prefab ships deprecated circular RoundButtons; swap them for square
+    // System 3.0 buttons. Send is the one Primary action, mic/camera are
+    // Secondary toggles.
+    this.micRoundButton = replaceWithSystemButton(
+      this.micButton,
+      ROUND_BUTTON_TYPE,
+      "Secondary",
+    );
+    this.cameraRoundButton = replaceWithSystemButton(
+      this.cameraButton,
+      ROUND_BUTTON_TYPE,
+      "Secondary",
+    );
+    this.sendRoundButton = replaceWithSystemButton(
+      this.sendButton,
+      ROUND_BUTTON_TYPE,
+      "Primary",
+    );
 
-    this.micRoundButton.setIsToggleable(true);
+    // Mic is not toggleable: the UIKit toggled state paints a yellow fill
+    // behind the icon while recording. Listening is shown by the activity
+    // indicator and the "Listening..." hint instead.
     this.micRoundButton.initialize();
     this.cameraRoundButton.setIsToggleable(true);
     this.cameraRoundButton.initialize();
@@ -171,14 +187,6 @@ export class InputBarController extends BaseScriptComponent {
     this.textInputField.onTextChanged.add((text: string) => {
       this.setSendEnabled(text.trim().length > 0);
     });
-  }
-
-  setBleFocus(focused: boolean): void {
-    this.textInputField.setBleFocus(focused);
-  }
-
-  connectBLEKeyboard(manager: BLEKeyboardManager): void {
-    this.textInputField.connectBLEKeyboard(manager);
   }
 
   private enableTick(): void {
@@ -264,9 +272,8 @@ export class InputBarController extends BaseScriptComponent {
     texture: Texture,
     shared?: boolean,
   ): Image {
-    const buttonWidth = (
-      button.getComponent(RoundButton.getTypeName()) as RoundButton
-    ).width;
+    const buttonWidth = (button.getComponent(Button.getTypeName()) as Button)
+      .size.x;
     return createImage(texture, {
       parent: button,
       position: new vec3(0, 0, ICON_Z_OFFSET),
@@ -294,7 +301,7 @@ export class InputBarController extends BaseScriptComponent {
 
   private layoutButtons(): void {
     const fieldHalfWidth = this.textInputField.getSize().x / 2;
-    const buttonSize = this.micRoundButton.width;
+    const buttonSize = this.micRoundButton.size.x;
     const buttonRadius = buttonSize / 2;
     const micInset = buttonSize * MIC_INSET_RATIO;
 
@@ -334,6 +341,12 @@ export class InputBarController extends BaseScriptComponent {
     this.textInputField.showPlaceholderText(text);
   }
 
+  /** Display-only status text (e.g. "Listening...", errors) — never submittable. */
+  showStatusText(text: string): void {
+    this.textInputField.showStatusText(text);
+    this.setSendEnabled(false);
+  }
+
   setTextColor(color: vec4): void {
     this.textInputField.textComponent.textFill.color = color;
   }
@@ -343,7 +356,6 @@ export class InputBarController extends BaseScriptComponent {
   }
 
   setMicActive(active: boolean): void {
-    this.micRoundButton.toggle(active);
     this.micActivityIndicator.setVisible(active);
   }
 
@@ -462,7 +474,7 @@ export class InputBarController extends BaseScriptComponent {
     this.listeningAnimActive = true;
     this.dotCount = 0;
     this.dotElapsed = 0;
-    this.textInputField.text = "Listening.";
+    this.showStatusText("Listening.");
     this.enableTick();
   }
 
@@ -476,7 +488,9 @@ export class InputBarController extends BaseScriptComponent {
     if (this.dotElapsed >= DOT_CYCLE_INTERVAL) {
       this.dotElapsed -= DOT_CYCLE_INTERVAL;
       this.dotCount = (this.dotCount + 1) % MAX_DOTS;
-      this.textInputField.text = "Listening" + ".".repeat(this.dotCount + 1);
+      this.textInputField.showStatusText(
+        "Listening" + ".".repeat(this.dotCount + 1),
+      );
     }
   }
 

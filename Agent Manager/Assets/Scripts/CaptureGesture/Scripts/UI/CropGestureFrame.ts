@@ -1,9 +1,10 @@
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../../../UI/Shared/SystemButton";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
 import { createImage } from "../../../UI/Shared/ImageFactory";
 import {
   TRASH_TEXTURE,
@@ -40,13 +41,16 @@ export class CropGestureFrame extends BaseScriptComponent {
 
   private overlayContainer: SceneObject;
   private backPlate: BackPlate;
-  private deleteBtn: RoundButton;
-  private attachBtn: RoundButton;
+  private deleteBtn: Button;
+  private attachBtn: Button;
   private deleteTooltip: Tooltip;
   private attachTooltip: Tooltip;
 
   private readonly _scratchInnerSize = new vec2(0, 0);
   private readonly _scratchOverlaySize = new vec2(0, 0);
+  /** While closing, stop the frame tracking the shrinking picture so its
+   *  innerSize never drops below the border/corner radius (which flips it). */
+  private sizeFrozen = false;
   private _lastPicScaleX = -1;
   private _lastPicScaleY = -1;
 
@@ -63,7 +67,7 @@ export class CropGestureFrame extends BaseScriptComponent {
 
     this.buildOverlayButtons();
 
-    // The Frame self-initializes on its OnStartEvent (the new SpectaclesUIKit
+    // The Frame self-initializes on its OnStartEvent (the new UIKit
     // dropped the manual initialize()). Gate all Frame access on onInitialized
     // (a ReplayEvent), and bind LateUpdate here too since it reads
     // frame.innerSize.
@@ -107,10 +111,8 @@ export class CropGestureFrame extends BaseScriptComponent {
 
     const deleteBtnObj = global.scene.createSceneObject("DeleteButton");
     deleteBtnObj.setParent(plateObj);
-    this.deleteBtn = deleteBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.deleteBtn.width = BUTTON_WIDTH;
+    this.deleteBtn = createSystemButton(deleteBtnObj, "Secondary");
+    this.deleteBtn.size = new vec3(BUTTON_WIDTH, BUTTON_WIDTH, 1);
     this.deleteBtn.initialize();
 
     createImage(TRASH_TEXTURE, {
@@ -126,10 +128,8 @@ export class CropGestureFrame extends BaseScriptComponent {
 
     const attachBtnObj = global.scene.createSceneObject("AttachButton");
     attachBtnObj.setParent(plateObj);
-    this.attachBtn = attachBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.attachBtn.width = BUTTON_WIDTH;
+    this.attachBtn = createSystemButton(attachBtnObj, "Primary");
+    this.attachBtn.size = new vec3(BUTTON_WIDTH, BUTTON_WIDTH, 1);
     this.attachBtn.initialize();
 
     createImage(ATTACH_TEXTURE, {
@@ -183,15 +183,24 @@ export class CropGestureFrame extends BaseScriptComponent {
   }
 
   public openFrame() {
+    this.sizeFrozen = false;
+    this._lastPicScaleX = -1;
+    this._lastPicScaleY = -1;
     this.showFrame(true);
   }
 
   public async closeFrame() {
-    this.showFrame(false);
+    this.sizeFrozen = true;
+    this.overlayContainer.enabled = false;
+    await this.showFrame(false);
   }
 
   private async showFrame(show: boolean) {
+    // Frame.tweenOpacity only fades the body when autoShowHide is on, so it
+    // must be set before showVisual (it was left false by the last close).
+    // On hide it is still true from the open, so the body fades out.
     if (show) {
+      this.frame.autoShowHide = true;
       await this.frame.showVisual();
     } else {
       await this.frame.hideVisual();
@@ -221,7 +230,7 @@ export class CropGestureFrame extends BaseScriptComponent {
         Math.abs(picScale.x - this._lastPicScaleX) > 0.0001 ||
         Math.abs(picScale.y - this._lastPicScaleY) > 0.0001;
 
-      if (scaleChanged) {
+      if (scaleChanged && !this.sizeFrozen) {
         this._lastPicScaleX = picScale.x;
         this._lastPicScaleY = picScale.y;
         this._scratchInnerSize.x = picScale.x;

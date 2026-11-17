@@ -1,7 +1,7 @@
 import { LoadingSpinner } from "../../../Visuals/LoadingSpinner/LoadingSpinner";
-import { TextSize } from "../Shared/TextSizes";
 import { createText } from "../Shared/UIBuilders";
 import { PANEL_WIDTH, PANEL_PADDING as PADDING, Z_CONTENT } from "../Shared/UIConstants";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 const SPINNER_SIZE = 3;
 const SPINNER_HEIGHT = 4;
 const TEXT_HEIGHT = 2;
@@ -40,8 +40,8 @@ export class AgentsLoadingView {
       parent: this.sceneObject,
       name: "ConnectingText",
       text: "Connecting to Bridge...",
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Body,
+      color: TextColor.Muted,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,

@@ -89,7 +89,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -113,7 +112,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: !<float> 6.000000
@@ -524,6 +522,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
 - !<Text/a9fe89e6-c126-46d3-9af8-951fda5bca8d>
@@ -968,7 +967,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -992,7 +990,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 4.500000

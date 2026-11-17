@@ -1,4 +1,4 @@
-import StateMachine from "SpectaclesInteractionKit.lspkg/Utils/StateMachine";
+import StateMachine from "InteractionKit.lspkg/Utils/StateMachine";
 
 export type CaptureSignals =
   | "TRIGGER_GESTURE"

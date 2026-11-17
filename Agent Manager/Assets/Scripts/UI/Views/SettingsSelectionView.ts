@@ -1,9 +1,9 @@
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
 import { DEBUG_DISABLE_SCROLL_WINDOWS, ICON_Z_OFFSET, CHEVRON_LEFT_TEXTURE, SCROLLBAR_GAP } from "../Shared/UIConstants";
-import { Switch } from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { Switch } from "UIKit.lspkg/Scripts/Components/Switch/Switch";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
 import { createImage } from "../Shared/ImageFactory";
 import {
   createIconButton,
@@ -11,21 +11,23 @@ import {
   createText,
   createVerticalScrollBar,
 } from "../Shared/UIBuilders";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { TextStyle, TextColor, Layout } from "../Shared/UIStyle";
 
 const HEADER_HEIGHT = 4;
 const OPTION_BTN_HEIGHT = 4;
 const OPTION_GAP = 1.2;
 const SIDE_PADDING = 2.5;
-const BACK_BTN_SIZE = 3.2;
-const BACK_BTN_MARGIN = 0.6;
+const BACK_BTN_SIZE = Layout.ICON_BUTTON_SIZE;
+const BACK_BTN_MARGIN = Layout.BACK_BUTTON_MARGIN;
 const MAX_SCROLL_HEIGHT = 20;
 const HEADER_CONTENT_GAP = 1.5;
 const TOGGLE_SECTION_HEADER_HEIGHT = 2;
 const TOGGLE_ROW_HEIGHT = 3;
 const TOGGLE_GAP = 1.5;
 const TOGGLE_SWITCH_WIDTH = 5;
-const TOGGLE_DESC_HEIGHT = 2;
+// Two lines of Secondary text — descriptions run ~85 chars.
+const TOGGLE_DESC_HEIGHT = 2.8;
 const BULK_BTN_HEIGHT = 3;
 const BULK_BTN_GAP = 1;
 const GRID_BTN_HEIGHT = 5.5;
@@ -54,7 +56,7 @@ export class SettingsSelectionView {
   private contentContainer: SceneObject;
   private contentObjects: SceneObject[] = [];
   private currentTitle = "";
-  private backBtn: RoundButton;
+  private backBtn: Button;
   private backTooltip: Tooltip;
   private initialized = false;
   private panelWidth: number;
@@ -83,19 +85,20 @@ export class SettingsSelectionView {
 
     const backBtnObj = global.scene.createSceneObject("SelectionBackBtn");
     backBtnObj.setParent(this.sceneObject);
-    this.backBtn = backBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.backBtn.width = BACK_BTN_SIZE;
+    this.backBtn = createSystemButton(backBtnObj, "Ghost");
+    this.backBtn.size = new vec3(BACK_BTN_SIZE, BACK_BTN_SIZE, 1);
 
     createImage(CHEVRON_LEFT_TEXTURE, {
       parent: backBtnObj,
       name: "BackIcon",
       position: new vec3(0, 0, ICON_Z_OFFSET),
-      size: BACK_BTN_SIZE * 0.45,
+      size: BACK_BTN_SIZE * Layout.ICON_RATIO,
     });
 
-    this.backTooltip = createTooltip(backBtnObj, "Back");
+    this.backTooltip = createTooltip(backBtnObj, "Back", {
+      placement: "above",
+      targetSize: new vec2(BACK_BTN_SIZE, BACK_BTN_SIZE),
+    });
 
     this.contentContainer = global.scene.createSceneObject("SelectionOptions");
     this.contentContainer.setParent(this.sceneObject);
@@ -152,7 +155,6 @@ export class SettingsSelectionView {
         toggleable: !isAction,
         toggled: !isAction && i === selectedIndex,
         position: new vec3(0, relY, 0),
-        fontSize: TextSize.M,
       });
 
       const index = i;
@@ -204,7 +206,6 @@ export class SettingsSelectionView {
         toggleable: true,
         toggled: i === selectedIndex,
         position: new vec3(x, y, 0),
-        fontSize: TextSize.M,
       });
 
       const index = i;
@@ -255,7 +256,7 @@ export class SettingsSelectionView {
 
     const colGap = GRID_GAP;
     const colWidth = (innerWidth - (columns - 1) * colGap) / columns;
-    const topY = fullContentHeight / 2 - GRID_BTN_HEIGHT / 2;
+    const topY = visibleHeight / 2 - GRID_BTN_HEIGHT / 2;
 
     for (let i = 0; i < options.length; i++) {
       const col = i % columns;
@@ -276,7 +277,6 @@ export class SettingsSelectionView {
         toggleable: true,
         toggled: i === selectedIndex,
         position: vec3.zero(),
-        fontSize: TextSize.L,
       });
 
       const index = i;
@@ -286,11 +286,8 @@ export class SettingsSelectionView {
       this.contentObjects.push(btnObj);
     }
 
-    if (!DEBUG_DISABLE_SCROLL_WINDOWS && !this._scrollWindowInitialized) {
-      this.scrollWindow!.initialize();
-      this._scrollWindowInitialized = true;
-    }
-    this.scrollWindow!.scrollPositionNormalized = new vec2(0, 1);
+    this.initScrollWindowEnabled();
+    this.scrollWindow!.scrollPositionNormalized = new vec2(0, 0);
 
     if (!this.scrollBarObj) {
       this.scrollBarObj = createVerticalScrollBar(
@@ -343,7 +340,7 @@ export class SettingsSelectionView {
     );
     this.scrollWindowObj.enabled = !DEBUG_DISABLE_SCROLL_WINDOWS;
 
-    const topY = fullContentHeight / 2 - OPTION_BTN_HEIGHT / 2;
+    const topY = visibleHeight / 2 - OPTION_BTN_HEIGHT / 2;
 
     for (let i = 0; i < options.length; i++) {
       const relY = topY - i * (OPTION_BTN_HEIGHT + OPTION_GAP);
@@ -360,7 +357,6 @@ export class SettingsSelectionView {
         toggleable: true,
         toggled: i === selectedIndex,
         position: vec3.zero(),
-        fontSize: TextSize.M,
       });
 
       const index = i;
@@ -370,11 +366,8 @@ export class SettingsSelectionView {
       this.contentObjects.push(btnObj);
     }
 
-    if (!DEBUG_DISABLE_SCROLL_WINDOWS && !this._scrollWindowInitialized) {
-      this.scrollWindow!.initialize();
-      this._scrollWindowInitialized = true;
-    }
-    this.scrollWindow!.scrollPositionNormalized = new vec2(0, 1);
+    this.initScrollWindowEnabled();
+    this.scrollWindow!.scrollPositionNormalized = new vec2(0, 0);
 
     if (!this.scrollBarObj) {
       this.scrollBarObj = createVerticalScrollBar(
@@ -406,8 +399,8 @@ export class SettingsSelectionView {
       parent: this.sceneObject,
       name: "SmartFeaturesDisclaimer",
       text: DISCLAIMER_TEXT,
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Body,
+      color: TextColor.Muted,
       position: vec3.zero(),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -461,7 +454,8 @@ export class SettingsSelectionView {
       this.scrollWindowObj.enabled = !DEBUG_DISABLE_SCROLL_WINDOWS;
     }
 
-    let cursorY = fullContentHeight / 2;
+    // "Center" content origin is viewport-relative: content top = window top.
+    let cursorY = visibleHeight / 2;
 
     cursorY -= BULK_BTN_HEIGHT / 2;
     const bulkRowObj = global.scene.createSceneObject("BulkToggleRow");
@@ -481,8 +475,6 @@ export class SettingsSelectionView {
       height: BULK_BTN_HEIGHT,
       label: "Enable All",
       position: new vec3(-innerWidth / 2 + bulkBtnWidth / 2, 0, 0),
-      fontSize: TextSize.M,
-      fontWeight: TextFont.SemiBold,
     });
     enableAllBtn.button.onTriggerUp.add(() => this.bulkSetAll(true));
 
@@ -493,8 +485,6 @@ export class SettingsSelectionView {
       height: BULK_BTN_HEIGHT,
       label: "Disable All",
       position: new vec3(innerWidth / 2 - bulkBtnWidth / 2, 0, 0),
-      fontSize: TextSize.M,
-      fontWeight: TextFont.SemiBold,
     });
     disableAllBtn.button.onTriggerUp.add(() => this.bulkSetAll(false));
 
@@ -520,8 +510,7 @@ export class SettingsSelectionView {
         parent: rowObj,
         name: `ToggleTitle_${i}`,
         text: entry.label,
-        size: TextSize.L,
-        font: TextFont.SemiBold,
+        style: TextStyle.ItemTitle,
         color: new vec4(1, 1, 1, 1),
         position: new vec3(labelX, 0, 0),
         horizontalAlignment: HorizontalAlignment.Left,
@@ -569,8 +558,8 @@ export class SettingsSelectionView {
         parent: descRowObj,
         name: `ToggleDesc_${i}`,
         text: entry.description,
-        size: TextSize.S,
-        color: new vec4(1, 1, 1, 0.4),
+        style: TextStyle.Secondary,
+        color: TextColor.Muted,
         position: vec3.zero(),
         horizontalOverflow: HorizontalOverflow.Wrap,
         horizontalAlignment: HorizontalAlignment.Left,
@@ -591,11 +580,8 @@ export class SettingsSelectionView {
     }
 
     if (useScroll) {
-      if (!DEBUG_DISABLE_SCROLL_WINDOWS && !this._scrollWindowInitialized) {
-        this.scrollWindow!.initialize();
-        this._scrollWindowInitialized = true;
-      }
-      this.scrollWindow!.scrollPositionNormalized = new vec2(0, 1);
+      this.initScrollWindowEnabled();
+      this.scrollWindow!.scrollPositionNormalized = new vec2(0, 0);
 
       if (!this.scrollBarObj) {
         this.scrollBarObj = createVerticalScrollBar(
@@ -612,6 +598,33 @@ export class SettingsSelectionView {
     }
 
     this.onLayoutReady.invoke();
+  }
+
+  /**
+   * ScrollWindow builds its scroll engine in onAwake, which the engine defers
+   * while the object is under a disabled parent; initialize() then throws on a
+   * null scroller. This view starts disabled, so enable it for the init call.
+   */
+  private initScrollWindowEnabled(): void {
+    if (DEBUG_DISABLE_SCROLL_WINDOWS || this._scrollWindowInitialized) return;
+    // ScrollWindow.initialize() throws unless the whole chain is enabled, and
+    // a parent (e.g. ChatSettingsPanel) may be closed when content arrives.
+    // Temporarily enable every disabled ancestor, then restore them.
+    const reenabled: SceneObject[] = [];
+    let obj: SceneObject | null = this.scrollWindow!.getSceneObject();
+    while (obj) {
+      if (!obj.enabled) {
+        obj.enabled = true;
+        reenabled.push(obj);
+      }
+      obj = obj.getParent();
+    }
+    try {
+      this.scrollWindow!.initialize();
+      this._scrollWindowInitialized = true;
+    } finally {
+      for (const o of reenabled) o.enabled = false;
+    }
   }
 
   getTotalHeight(): number {
@@ -659,7 +672,7 @@ export class SettingsSelectionView {
       parent: probe,
       name: "DisclaimerProbeText",
       text: DISCLAIMER_TEXT,
-      size: TextSize.M,
+      style: TextStyle.Body,
       position: vec3.zero(),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,

@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Activate Microphone Recorder component for the Voice Playback Glasses lens.
  */
-import { BaseButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
+import { BaseButton } from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
 import { MicrophoneRecorder } from "./MicrophoneRecorder"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 
@@ -37,7 +37,7 @@ export class ActivateMicrophoneRecorder extends BaseScriptComponent {
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()")
 
     if (this.button) {
-      // The button is a SpectaclesUIKit button that can come through unresolved
+      // The button is a UIKit button that can come through unresolved
       // after the package update (events undefined) until reattached in the
       // scene. Guard so it doesn't crash; it wires up once reattached.
       this.button.onTriggerDown?.add(() => {

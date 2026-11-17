@@ -3,7 +3,7 @@
  * APIKey Hint component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {
   AvaliableApiTypes,
   RemoteServiceGatewayCredentials
@@ -34,7 +34,7 @@ export class APIKeyHint extends BaseScriptComponent {
   private static readonly SNAP_PLACEHOLDER = "[INSERT SNAP TOKEN HERE]"
 
   // Placed in front of the user, just below the example carousel's panel (90 cm ahead, 6.5 cm down), also when it is expanded.
-  private static readonly HINT_DISTANCE = 100
+  private static readonly HINT_DISTANCE = 110
   private static readonly HINT_DROP = 22
 
   private static readonly HINT_MESSAGE =

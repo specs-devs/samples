@@ -1344,7 +1344,7 @@
     },
     {
       "id": "a4e1c5a9-c00a-4e27-ae0b-e662b0a1dfa1",
-      "name": "SpectaclesInteractionKit",
+      "name": "InteractionKit",
       "enabled": true,
       "parentId": null,
       "transform": {
@@ -1422,7 +1422,7 @@
           "name": "ConfigurationValidator",
           "enabled": true,
           "properties": {
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/ConfigurationValidator/ConfigurationValidator.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/ConfigurationValidator/ConfigurationValidator.ts",
             "name": "ConfigurationValidator",
             "enabled": true,
             "sceneObject": "@sceneObject:Configuration",
@@ -1451,7 +1451,7 @@
               "type": "bool",
               "uiInfo": "{\"label\":\"Debug Mode Enabled\", \"hint\":\"When enabled, activates debug mode for all SIK Interactors and Interactables, drawing visual gizmos to help visualize raycasts, colliders, and interaction geometry in the scene. Useful for troubleshooting interaction issues during development.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/LogLevelConfiguration/SIKLogLevelConfiguration.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/LogLevelConfiguration/SIKLogLevelConfiguration.ts",
             "inputNames.0": "_debugModeEnabled",
             "inputNames.1": "logLevelFilter",
             "name": "SIKLogLevelConfiguration",
@@ -1542,7 +1542,7 @@
               "type": "bool",
               "uiInfo": "{\"label\":\"Draw Debug\", \"hint\":\"When enabled, draws debug gizmos in the scene to visualize raycasts, colliders, and other interactor geometry. Useful for troubleshooting targeting issues during development.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/HandInteractor/HandInteractor.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/HandInteractor/HandInteractor.ts",
             "inputNames.0": "_drawDebug",
             "inputNames.1": "directColliderEnterRadius",
             "inputNames.2": "directColliderExitRadius",
@@ -1638,7 +1638,7 @@
               "type": "bool",
               "uiInfo": "{\"label\":\"Draw Debug\", \"hint\":\"When enabled, draws debug gizmos in the scene to visualize raycasts, colliders, and other interactor geometry. Useful for troubleshooting targeting issues during development.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/HandInteractor/HandInteractor.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/HandInteractor/HandInteractor.ts",
             "inputNames.0": "_drawDebug",
             "inputNames.1": "directColliderEnterRadius",
             "inputNames.2": "directColliderExitRadius",
@@ -1720,7 +1720,7 @@
               "type": "bool",
               "uiInfo": "{\"label\":\"Draw Debug\", \"hint\":\"When enabled, draws debug gizmos in the scene to visualize raycasts, colliders, and other interactor geometry. Useful for troubleshooting targeting issues during development.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/MouseInteractor/MouseInteractor.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/MouseInteractor/MouseInteractor.ts",
             "inputNames.0": "_drawDebug",
             "inputNames.1": "indirectDragThreshold",
             "inputNames.2": "mouseTargetingMode",
@@ -1801,7 +1801,7 @@
               "type": "bool",
               "uiInfo": "{\"label\":\"Draw Debug\", \"hint\":\"When enabled, draws debug gizmos in the scene to visualize raycasts, colliders, and other interactor geometry. Useful for troubleshooting targeting issues during development.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Core/MobileInteractor/MobileInteractor.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Core/MobileInteractor/MobileInteractor.ts",
             "inputNames.0": "_drawDebug",
             "inputNames.1": "_touchpadScrollSpeed",
             "inputNames.2": "indirectDragThreshold",
@@ -1917,7 +1917,7 @@
               "type": "Asset.Material",
               "uiInfo": "{\"label\":\"Full Hand Material\", \"hint\":\"Optional material override for the Full hand mesh. Leave empty to use the bundled hand-occluder material. Applied as a per-hand clone; the source material asset is never modified.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual.ts",
             "inputNames.0": "_fullHandMaterial",
             "inputNames.1": "_meshType",
             "inputNames.2": "handType",
@@ -3275,11 +3275,11 @@
           "name": "component_0",
           "enabled": true,
           "properties": {
-            "mesh": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Meshes/LeftHandMeshFull.mesh",
+            "mesh": "@asset:Packages/InteractionKit.lspkg/Assets/Meshes/LeftHandMeshFull.mesh",
             "blendShapesEnabled": true,
             "blendNormals": false,
-            "materials.0": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
-            "mainMaterial": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
+            "materials.0": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
+            "mainMaterial": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
             "stretchMode": {
               "value": "Stretch",
               "type": "enum",
@@ -3375,8 +3375,8 @@
             "mesh": null,
             "blendShapesEnabled": true,
             "blendNormals": false,
-            "materials.0": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
-            "mainMaterial": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
+            "materials.0": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
+            "mainMaterial": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
             "stretchMode": {
               "value": "Stretch",
               "type": "enum",
@@ -3488,7 +3488,7 @@
               "type": "Asset.Material",
               "uiInfo": "{\"label\":\"Full Hand Material\", \"hint\":\"Optional material override for the Full hand mesh. Leave empty to use the bundled hand-occluder material. Applied as a per-hand clone; the source material asset is never modified.\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual.ts",
             "inputNames.0": "_fullHandMaterial",
             "inputNames.1": "_meshType",
             "inputNames.2": "handType",
@@ -4846,11 +4846,11 @@
           "name": "component_0",
           "enabled": true,
           "properties": {
-            "mesh": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Meshes/RightHandMeshFull.mesh",
+            "mesh": "@asset:Packages/InteractionKit.lspkg/Assets/Meshes/RightHandMeshFull.mesh",
             "blendShapesEnabled": true,
             "blendNormals": false,
-            "materials.0": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
-            "mainMaterial": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
+            "materials.0": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
+            "mainMaterial": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
             "stretchMode": {
               "value": "Stretch",
               "type": "enum",
@@ -4946,8 +4946,8 @@
             "mesh": null,
             "blendShapesEnabled": true,
             "blendNormals": false,
-            "materials.0": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
-            "mainMaterial": "@asset:Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
+            "materials.0": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
+            "mainMaterial": "@asset:Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
             "stretchMode": {
               "value": "Stretch",
               "type": "enum",
@@ -5046,7 +5046,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Enable debug rendering for cursors (cone collider, center ray, and closest-point helpers)\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorCursor/CursorController.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/InteractorCursor/CursorController.ts",
             "inputNames.0": "drawDebug",
             "name": "CursorController",
             "enabled": true,
@@ -8869,7 +8869,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -11736,7 +11736,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -14819,7 +14819,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -18203,7 +18203,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -21070,7 +21070,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -24438,7 +24438,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -27264,7 +27264,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -30090,7 +30090,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -33433,7 +33433,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -34766,7 +34766,7 @@
               "uiInfo": "{\"label\":\"Maximum Depth (cm)\", \"hint\":\"Far endpoint of the depth scaling curve, in centimeters.\", \"showIf\":\"_useDepthScaling\"}",
               "defaultValue": "110"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Frame/Frame.ts",
             "inputNames.0": "_allowScaling",
             "inputNames.1": "_appearance",
             "inputNames.2": "_cutOutCenter",
@@ -35772,7 +35772,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RectangleButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -36377,7 +36377,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -37058,7 +37058,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -37739,7 +37739,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -38420,7 +38420,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -38720,7 +38720,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -39300,7 +39300,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -39880,7 +39880,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -40561,7 +40561,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -41242,7 +41242,7 @@
               "type": "bool",
               "uiInfo": "{\"hint\":\"Inactive Mode: set the element to ignore inputs\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Button/RoundButton.ts",
             "inputNames.0": "_defaultToOn",
             "inputNames.1": "_hasShadow",
             "inputNames.2": "_inactive",
@@ -42490,7 +42490,7 @@
               "uiInfo": "{\"label\":\"Maximum Depth (cm)\", \"hint\":\"Far endpoint of the depth scaling curve, in centimeters.\", \"showIf\":\"_useDepthScaling\"}",
               "defaultValue": "110"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame.ts",
+            "scriptAsset": "@asset:Packages/UIKit.lspkg/Scripts/Components/Frame/Frame.ts",
             "inputNames.0": "_allowScaling",
             "inputNames.1": "_appearance",
             "inputNames.2": "_cutOutCenter",
@@ -42810,7 +42810,7 @@
               "type": "float",
               "uiInfo": "{\"label\":\"Y\", \"hint\":\"Controls from which directions a poke interaction can trigger this Interactable along the Y-axis:\\n- None: Disables Y-axis poke detection.\\n- Top: Finger must approach from +Y direction.\\n- Bottom: Finger must approach from -Y direction.\\n- All: Accepts both directions.\", \"widget\":\"combobox\", \"values\":[{\"label\":\"None\", \"value\":0}, {\"label\":\"Top\", \"value\":1}, {\"label\":\"Bottom\", \"value\":2}, {\"label\":\"All\", \"value\":3}], \"showIf\":\"enablePokeDirectionality\"}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/Interactable/Interactable.ts",
             "inputNames.0": "acceptableXDirections",
             "inputNames.1": "acceptableYDirections",
             "inputNames.2": "acceptableZDirections",
@@ -43561,7 +43561,7 @@
               "uiInfo": "{\"label\":\"Axis Buffer Degrees\", \"hint\":\"Defines a threshold in degrees before rotation is applied for each axis. The object only rotates when the angle between its orientation and the camera exceeds this buffer, preventing small unwanted movements. Larger values create more stable objects that rotate less frequently.\"}",
               "defaultValue": "{0,0,0}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/Billboard/Billboard.ts",
             "inputNames.0": "_axisBufferDegrees",
             "inputNames.1": "_axisEasing",
             "inputNames.2": "_uprightBandEnabled",
@@ -44126,7 +44126,7 @@
               "uiInfo": "{\"label\":\"Axis Buffer Degrees\", \"hint\":\"Defines a threshold in degrees before rotation is applied for each axis. The object only rotates when the angle between its orientation and the camera exceeds this buffer, preventing small unwanted movements. Larger values create more stable objects that rotate less frequently.\"}",
               "defaultValue": "{0,0,0}"
             },
-            "scriptAsset": "@asset:Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard.ts",
+            "scriptAsset": "@asset:Packages/InteractionKit.lspkg/Components/Interaction/Billboard/Billboard.ts",
             "inputNames.0": "_axisBufferDegrees",
             "inputNames.1": "_axisEasing",
             "inputNames.2": "_uprightBandEnabled",
@@ -45009,7 +45009,7 @@
       "id": "3dae0781-d80a-446b-ac7f-072a8f3fb111",
       "name": "ImageButton_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/ImageButton_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/ImageButton_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:83695f28-fe87-4390-b78f-cc9c784ce60e (ImageButton_DEPRECATED)",
         "lazyLoading": false,
@@ -45027,7 +45027,7 @@
       "id": "be28450b-9eda-4f04-ac93-fd128995ed53",
       "name": "ExampleInterface_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/ExampleInterface_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/ExampleInterface_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:94e00120-7636-4e56-91bb-13d7c9310c4b (ExampleInterface_DEPRECATED)",
         "lazyLoading": false,
@@ -45120,7 +45120,7 @@
       "id": "7a5453d7-c979-4590-8dab-f74ec8f7d2ff",
       "name": "DropShadow_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/DropShadow_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/DropShadow_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:8c2d4051-2951-4561-a737-ec7d13074eed (DropShadow_DEPRECATED)",
         "lazyLoading": false,
@@ -45137,7 +45137,7 @@
       "id": "31fed1e1-27ac-44bf-bcac-228ae8516437",
       "name": "TextInputComponents_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/TextInputComponents_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/TextInputComponents_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:1d56063b-d8a7-46cb-847a-2f1bfa3283aa (TextInputComponents_DEPRECATED)",
         "lazyLoading": false,
@@ -45165,7 +45165,7 @@
       "id": "18d71b74-f4f2-44cb-bf97-1a7c94f66097",
       "name": "Tag",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/Tag.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/Tag.prefab",
       "properties": {
         "prefabInstances.0": "@id:0a82d100-5099-4299-b952-d0754ab2cebc (Tag)",
         "lazyLoading": false,
@@ -45183,7 +45183,7 @@
       "id": "2cc2243d-e17a-42a2-b908-a584df766052",
       "name": "LabelledToggle_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/LabelledToggle_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/LabelledToggle_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:a8136e18-fd82-42f8-a85a-5f644aa527d7 (LabelledToggle_DEPRECATED)",
         "lazyLoading": false,
@@ -45201,7 +45201,7 @@
       "id": "efe5fe5d-ffc9-4c5b-b142-58c2d7a10676",
       "name": "NumberPickerFadeMask",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/NumberPickerFadeMask.mat",
+      "path": "Packages/UIKit.lspkg/Materials/NumberPickerFadeMask.mat",
       "properties": {
         "passInfos.0.fadeColor.value": {
           "x": 0.1490200012922287,
@@ -45332,7 +45332,7 @@
       "id": "d356c8dd-ab12-4fbf-a3d3-01a3fd4ae006",
       "name": "FramePanel",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/FramePanel.mat",
+      "path": "Packages/UIKit.lspkg/Materials/FramePanel.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 1,
@@ -45633,7 +45633,7 @@
       "id": "75dc328a-b07e-4a2d-bac3-b30dd0a51d13",
       "name": "StencilMask",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/StencilMask.mat",
+      "path": "Packages/UIKit.lspkg/Materials/StencilMask.mat",
       "properties": {
         "passInfos.0.alphaTestThreshold.value": null,
         "passInfos.0.alphaTestThreshold.hidden": true,
@@ -45753,7 +45753,7 @@
       "id": "f16bcd48-a7b8-4010-9800-03adf144b5fa",
       "name": "Spinner",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/Spinner.mat",
+      "path": "Packages/UIKit.lspkg/Materials/Spinner.mat",
       "properties": {
         "passInfos.0.arcRot.value": {
           "x": 1,
@@ -45907,7 +45907,7 @@
       "id": "0bd0ac06-9889-4939-a0fc-5bd5e7989a71",
       "name": "Frame",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/Frame.mat",
+      "path": "Packages/UIKit.lspkg/Materials/Frame.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 1,
@@ -46326,7 +46326,7 @@
       "id": "b9ff5db6-be0f-4b2d-a283-d1f6d1b49247",
       "name": "DefaultRadioButtonCheck",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/DefaultRadioButtonCheck.mat",
+      "path": "Packages/UIKit.lspkg/Materials/DefaultRadioButtonCheck.mat",
       "properties": {
         "passInfos.0.depthWrite": true,
         "passInfos.0.depthTest": true,
@@ -46434,7 +46434,7 @@
       "id": "d35adfcf-7905-4710-b96b-4b4c6ad9dc12",
       "name": "ScrollWindowFadeMask",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/ScrollWindowFadeMask.mat",
+      "path": "Packages/UIKit.lspkg/Materials/ScrollWindowFadeMask.mat",
       "properties": {
         "passInfos.0.fadeColor.value": {
           "x": 0,
@@ -46571,7 +46571,7 @@
       "id": "9be5aaa1-1582-4d80-ab7d-6a3afac6b6e3",
       "name": "CollapsedSquircleFill",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/CollapsedSquircleFill.mat",
+      "path": "Packages/UIKit.lspkg/Materials/CollapsedSquircleFill.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 42,
@@ -46792,7 +46792,7 @@
       "id": "37158f80-142b-46e7-a128-2049767f5e85",
       "name": "HighlightMat",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/HighlightMat.mat",
+      "path": "Packages/UIKit.lspkg/Materials/HighlightMat.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 0.3179979920387268,
@@ -47011,7 +47011,7 @@
       "id": "48d2b7f6-1e93-4a05-bc68-72f0a3591ce7",
       "name": "LoadingBar",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/LoadingBar.mat",
+      "path": "Packages/UIKit.lspkg/Materials/LoadingBar.mat",
       "properties": {
         "passInfos.0.barSize.value": {
           "x": 6,
@@ -47160,7 +47160,7 @@
       "id": "04c6ca25-091c-4be4-a7da-a3aada12a8f2",
       "name": "CollapsedSquircle",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/CollapsedSquircle.mat",
+      "path": "Packages/UIKit.lspkg/Materials/CollapsedSquircle.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 42,
@@ -47456,7 +47456,7 @@
       "id": "c1c593ca-e463-49ab-8614-6696132c8ba3",
       "name": "Triangle",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/Triangle.mat",
+      "path": "Packages/UIKit.lspkg/Materials/Triangle.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 1,
@@ -47675,7 +47675,7 @@
       "id": "978fbbe0-6501-4206-b9d0-8a4ec7e5d511",
       "name": "BeveledPrism",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/BeveledPrism.mat",
+      "path": "Packages/UIKit.lspkg/Materials/BeveledPrism.mat",
       "properties": {
         "passInfos.0.targetSize.value": {
           "x": 1,
@@ -47867,7 +47867,7 @@
       "id": "2ef38034-22bc-496c-89fd-4029d909aadb",
       "name": "System-3.0-Example",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/System-3.0-Example.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/System-3.0-Example.prefab",
       "properties": {
         "prefabInstances.0": "@id:0ccae4de-8481-4d4b-8211-b62d448f8406 (System-3.0-Example)",
         "lazyLoading": false,
@@ -47976,7 +47976,7 @@
       "id": "123b7604-7cbc-4e79-8c2e-5cbf5dc6c43f",
       "name": "GrabHandleMat",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/GrabHandleMat.mat",
+      "path": "Packages/UIKit.lspkg/Materials/GrabHandleMat.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 0.33333298563957214,
@@ -48464,7 +48464,7 @@
       "id": "9420968c-65b9-4363-a351-76ec8055f22e",
       "name": "ImageMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Meshes/ImageMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Meshes/ImageMaterial.mat",
       "properties": {
         "passInfos.0.depthWrite": true,
         "passInfos.0.depthTest": true,
@@ -48572,7 +48572,7 @@
       "id": "99f3ffb5-2d0e-4867-b3f9-a73b15f29744",
       "name": "RayMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/RayMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/RayMaterial.mat",
       "properties": {
         "passInfos.0.GradientColorA.value": {
           "x": 0.549019992351532,
@@ -48730,7 +48730,7 @@
       "id": "5d5c762b-f0dd-4c06-b76f-bcb8f8fb525f",
       "name": "HandOccluder",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/HandOccluder.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/HandOccluder.mat",
       "properties": {
         "passInfos.0.Tweak_N0.value": {
           "x": 0,
@@ -48851,7 +48851,7 @@
       "id": "c72f8b22-b510-4487-9fd2-7506cd1440ce",
       "name": "NoDraw",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/NoDraw.mat",
       "properties": {
         "passInfos.0.alphaTestThreshold.value": null,
         "passInfos.0.alphaTestThreshold.hidden": true,
@@ -48971,7 +48971,7 @@
       "id": "fefa0256-03d4-444c-b107-8880ccd2ad8f",
       "name": "ScaleBasedTargetOutline",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/ScaleBasedTargetOutline.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/ScaleBasedTargetOutline.mat",
       "properties": {
         "passInfos.0.lineColor.value": {
           "x": 1,
@@ -49095,7 +49095,7 @@
       "id": "7ac80b6c-979a-4a00-a694-099f296be161",
       "name": "TargetOutlineMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/TargetOutlineMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/TargetOutlineMaterial.mat",
       "properties": {
         "passInfos.0.lineColor.value": {
           "x": 1,
@@ -49233,7 +49233,7 @@
       "id": "44f80935-7be1-4e73-96fc-d17c068249a1",
       "name": "ManipulateLineMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorCursor/ManipulateLineMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Components/Interaction/InteractorCursor/ManipulateLineMaterial.mat",
       "properties": {
         "passInfos.0.startWidth.value": 0.10000000149011612,
         "passInfos.0.startWidth.label": "Start Width",
@@ -49395,7 +49395,7 @@
       "id": "cbbf134e-4c13-4d4d-a81d-6acf0e4d1996",
       "name": "Cursor",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorCursor/Cursor.mat",
+      "path": "Packages/InteractionKit.lspkg/Components/Interaction/InteractorCursor/Cursor.mat",
       "properties": {
         "passInfos.0.pressProgress.value": 1,
         "passInfos.0.pressProgress.label": "pressProgress",
@@ -49578,7 +49578,7 @@
       "id": "a94c1f68-3e07-4d2b-92e5-7c58b1a6d403",
       "name": "RightHandMeshFull",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Prefabs/RightHandMeshFull.prefab",
+      "path": "Packages/InteractionKit.lspkg/Prefabs/RightHandMeshFull.prefab",
       "properties": {
         "prefabInstances.0": "@id:05243f1b-f8a9-4eee-b12a-418bd365fa45 (RightHandMeshFull)",
         "lazyLoading": true,
@@ -49595,7 +49595,7 @@
       "id": "3c1a9d5e-7b42-4f18-9a6d-215e8c0f4b71",
       "name": "LeftHandRig",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Prefabs/LeftHandRig.prefab",
+      "path": "Packages/InteractionKit.lspkg/Prefabs/LeftHandRig.prefab",
       "properties": {
         "prefabInstances.0": "@id:66a8dd87-df9a-4166-bc02-99d45a2caff6 (LeftHandRig)",
         "lazyLoading": true,
@@ -49660,7 +49660,7 @@
       "id": "5e7d3a91-c264-48b5-a1f9-84b26d0c3e17",
       "name": "LeftHandMeshFull",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Prefabs/LeftHandMeshFull.prefab",
+      "path": "Packages/InteractionKit.lspkg/Prefabs/LeftHandMeshFull.prefab",
       "properties": {
         "prefabInstances.0": "@id:5c910008-d09a-4cf8-b0cb-12e5e0e0cffd (LeftHandMeshFull)",
         "lazyLoading": true,
@@ -49675,15 +49675,15 @@
     },
     {
       "id": "f99407ce-416a-43f3-baf8-668a42712de9",
-      "name": "SpectaclesInteractionKit",
+      "name": "InteractionKit",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Prefabs/SpectaclesInteractionKit.prefab",
+      "path": "Packages/InteractionKit.lspkg/Prefabs/InteractionKit.prefab",
       "properties": {
-        "prefabInstances.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (SpectaclesInteractionKit)",
-        "prefabInstances.1": "@sceneObject:SpectaclesInteractionKit",
+        "prefabInstances.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (InteractionKit)",
+        "prefabInstances.1": "@sceneObject:InteractionKit",
         "lazyLoading": false,
         "retainAssets": true,
-        "sceneObjects.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (SpectaclesInteractionKit)",
+        "sceneObjects.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (InteractionKit)",
         "sceneObjects.1": "@id:70290c16-3e1e-4ebd-8841-ee066580ac95 ([REQUIRED] Core)",
         "sceneObjects.2": "@id:31059286-43ff-450e-8473-4be6a35e2271 (Configuration)",
         "sceneObjects.3": "@id:815b6ca2-77e6-4e1c-8ffd-a39df8483042 (LeftHandInteractor)",
@@ -49694,8 +49694,8 @@
         "sceneObjects.8": "@id:f24eade7-4784-4f7b-8f89-10cd7e47127e (LeftHandVisual)",
         "sceneObjects.9": "@id:2fb017cb-455d-49d8-8112-5a05da7b338e (RightHandVisual)",
         "sceneObjects.10": "@id:3bc29fda-0d40-4a4c-a1d1-ef088f23beb6 (InteractorCursors)",
-        "rootSceneObjects.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (SpectaclesInteractionKit)",
-        "name": "SpectaclesInteractionKit",
+        "rootSceneObjects.0": "@id:ac190d7f-8f8a-427c-b328-fcb2c71a54e3 (InteractionKit)",
+        "name": "InteractionKit",
         "fileMeta.id": "be7b847e-1904-4258-a219-ef6e3c1595b0",
         "id": "f99407ce-416a-43f3-baf8-668a42712de9",
         "type": "ObjectPrefab"
@@ -49705,7 +49705,7 @@
       "id": "8f2b6c4a-1d93-45e7-b8c2-6a90d3e17f52",
       "name": "RightHandRig",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Prefabs/RightHandRig.prefab",
+      "path": "Packages/InteractionKit.lspkg/Prefabs/RightHandRig.prefab",
       "properties": {
         "prefabInstances.0": "@id:88104fa0-ad2d-43a1-8271-80188b594b11 (RightHandRig)",
         "lazyLoading": true,
@@ -50019,7 +50019,7 @@
       "id": "b7768f04-ce8d-4cc0-ad8e-e42117ca5223",
       "name": "Text3DDefault",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/Text3DDefault.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/Text3DDefault.mat",
       "properties": {
         "passInfos.0.frontCapTex.value": null,
         "passInfos.0.frontCapTex.hidden": true,
@@ -51023,7 +51023,7 @@
       "id": "43cde67a-7dd6-4f67-b6e2-23dce0d651c2",
       "name": "CaretMat",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/CaretMat.mat",
+      "path": "Packages/UIKit.lspkg/Materials/CaretMat.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 0.31700599193573,
@@ -51242,7 +51242,7 @@
       "id": "57f5ab49-8702-45d2-a1b7-052455397bfa",
       "name": "DefaultSphereSimple",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/DefaultSphereSimple.mat",
+      "path": "Packages/UIKit.lspkg/Materials/DefaultSphereSimple.mat",
       "properties": {
         "passInfos.0.hasIcon.value": 0,
         "passInfos.0.hasIcon.label": "Has Icon",
@@ -53509,7 +53509,7 @@
       "id": "6a0089ba-f1e1-4007-8f33-27e564f26724",
       "name": "ViewingPlane",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Scripts/Utility/DebugCamera/ViewingPlane.mat",
+      "path": "Packages/UIKit.lspkg/Scripts/Utility/DebugCamera/ViewingPlane.mat",
       "properties": {
         "passInfos.0.baseTex.value.id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
         "passInfos.0.baseTex.label": "baseTex",
@@ -53873,7 +53873,7 @@
       "id": "e3ffa18f-bda1-4530-a113-f1b068c1a1e1",
       "name": "CollapsedSquircleSolid",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/CollapsedSquircleSolid.mat",
+      "path": "Packages/UIKit.lspkg/Materials/CollapsedSquircleSolid.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 42,
@@ -54357,7 +54357,7 @@
       "id": "513d5187-8ca3-4e2a-b2a9-5ea434a16879",
       "name": "ChevronRight",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/ChevronRight.mat",
+      "path": "Packages/UIKit.lspkg/Materials/ChevronRight.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 1,
@@ -56902,7 +56902,7 @@
       "id": "c6634e37-b185-4112-aecd-b47a832c89d1",
       "name": "LabelledButton_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/LabelledButton_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/LabelledButton_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:60d82add-1f3a-47cb-98da-68fe0502c202 (LabelledButton_DEPRECATED)",
         "lazyLoading": false,
@@ -59731,7 +59731,7 @@
       "id": "a90c47e5-b613-4d28-8f9a-25e08b71d3c6",
       "name": "SkeletonBlock",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/SkeletonBlock.mat",
+      "path": "Packages/UIKit.lspkg/Materials/SkeletonBlock.mat",
       "properties": {
         "passInfos.0.blockSize.value": {
           "x": 4,
@@ -60410,7 +60410,7 @@
       "id": "e644cd8d-225f-445c-9529-8ed7135a376b",
       "name": "CaretDragMat",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/CaretDragMat.mat",
+      "path": "Packages/UIKit.lspkg/Materials/CaretDragMat.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 0.9994199872016907,
@@ -61385,7 +61385,7 @@
       "id": "0d405c40-2e3e-4b71-9640-0d7721a6681b",
       "name": "ConfirmationSlider",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/ConfirmationSlider.mat",
+      "path": "Packages/UIKit.lspkg/Materials/ConfirmationSlider.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 42,
@@ -62839,7 +62839,7 @@
       "id": "c71dde88-df6c-46a6-8426-d07b956a747e",
       "name": "SimplePBRMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 1,
@@ -64534,7 +64534,7 @@
       "id": "81a45c53-591d-4e4f-8a47-9ce435d729b3",
       "name": "ToolbarVertical_DEPRECATED",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/ToolbarVertical_DEPRECATED.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/ToolbarVertical_DEPRECATED.prefab",
       "properties": {
         "prefabInstances.0": "@id:02239d0b-2f92-4aef-92aa-bf07e447bc6e (ToolbarVertical_DEPRECATED)",
         "lazyLoading": false,
@@ -65300,7 +65300,7 @@
       "id": "515adedb-808a-4b69-af91-2565a9dc2a21",
       "name": "InteractorLineMaterial",
       "type": "Material",
-      "path": "Packages/SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat",
+      "path": "Packages/InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat",
       "properties": {
         "passInfos.0.startWidth.value": 0.10000000149011612,
         "passInfos.0.startWidth.label": "Start Width",
@@ -66022,7 +66022,7 @@
       "id": "39262017-06a1-45ee-9bb2-80f463734688",
       "name": "Image",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/Image.mat",
+      "path": "Packages/UIKit.lspkg/Materials/Image.mat",
       "properties": {
         "passInfos.0.baseColor.value": {
           "x": 1,
@@ -67800,7 +67800,7 @@
       "id": "a8cc7fca-7bec-4c59-84ef-243a49c95107",
       "name": "DropShadow",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/DropShadow.mat",
+      "path": "Packages/UIKit.lspkg/Materials/DropShadow.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 3,
@@ -68707,7 +68707,7 @@
       "id": "0b709f6f-9f2c-448d-8cb8-40651a995333",
       "name": "DefaultCapsule",
       "type": "Material",
-      "path": "Packages/SpectaclesUIKit.lspkg/Materials/DefaultCapsule.mat",
+      "path": "Packages/UIKit.lspkg/Materials/DefaultCapsule.mat",
       "properties": {
         "passInfos.0.size.value": {
           "x": 1,
@@ -69731,7 +69731,7 @@
       "id": "8c7d7ea4-ed37-4da8-a1cb-c75248e7ddbf",
       "name": "Chip",
       "type": "ObjectPrefab",
-      "path": "Packages/SpectaclesUIKit.lspkg/Prefabs/Chip.prefab",
+      "path": "Packages/UIKit.lspkg/Prefabs/Chip.prefab",
       "properties": {
         "prefabInstances.0": "@id:af87a1f8-abcd-44b5-b1c0-8d03e19ee65a (Chip)",
         "lazyLoading": false,

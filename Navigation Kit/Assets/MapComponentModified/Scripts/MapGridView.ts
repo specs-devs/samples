@@ -1,4 +1,4 @@
-import {clamp} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
+import {clamp} from "InteractionKit.lspkg/Utils/mathUtils"
 import {Cell} from "./Cell"
 import MapConfig from "./MapConfig"
 import {MapController} from "./MapController"

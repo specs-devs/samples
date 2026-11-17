@@ -1,4 +1,4 @@
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 
 /**
@@ -6,7 +6,7 @@ import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataCompone
  */
 @component
 export class MoveOnButton extends BaseScriptComponent {
-  // PinchButton was removed from SIK 2.0; this object now has a SpectaclesUIKit
+  // PinchButton was removed from SIK 2.0; this object now has a UIKit
   // RectangleButton — grab it and use its onTriggerUp.
   @input private navigation: NavigationDataComponent
 

@@ -4,7 +4,7 @@
 [![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Remote Service Gateway](https://img.shields.io/badge/Remote%20Service%20Gateway-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/overview) [![AI & LLM](https://img.shields.io/badge/AI%20%26%20LLM-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Text To Speech](https://img.shields.io/badge/Text%20To%20Speech-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list) [![Speech To Text](https://img.shields.io/badge/Speech%20To%20Text-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list)
 <!-- /tags -->
 
-<img src="README-ref/agent-park-desk.gif" alt="Agent Manager" width="500" />
+<img src="README-ref/sample-list-agent-manager-rounded-edges.gif" alt="Agent Manager" width="500" />
 
 ## Overview
 
@@ -30,14 +30,14 @@ Before you begin, make sure you have the following installed and ready:
 
 | Requirement | Version | Notes |
 |---|---|---|
-| [Lens Studio](https://ar.snap.com/download?lang=en-US) | v5.15.1+ | Required to open and build the Lens |
+| [Lens Studio](https://lensstudio.com) | v5.25+ | Required to open and build the Lens |
 | SPECS OS | v5.64+ | Update via the SPECS companion app |
 | SPECS App (iOS / Android) | v0.64+ | Needed to push Lenses to the device |
 | [Node.js](https://nodejs.org/) | v18+ | Required to run the Bridge daemon |
 | [Git LFS](https://git-lfs.github.com/) | Any | Required to clone — large binaries will be missing without it |
 | AI CLI | — | At least one of: `claude` (Claude CLI), `codex` (Codex CLI), or a running OpenClaw gateway |
 
-To update your SPECS device and mobile app, refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, refer to this [guide](https://developers.specs.com).
 
 ## Getting Started
 
@@ -91,7 +91,7 @@ Use the interactive menu to **add agents**, **configure workspaces** (local proj
 
 ### Step 4 — Open the Lens in Lens Studio
 
-1. Open **Lens Studio** (v5.15.1 or later).
+1. Open **Lens Studio** (v5.25 or later).
 2. Open the project file: `AgentManager.esproj`.
 3. Ensure your Lens Studio environment is set up for SPECS — see the [SPECS preview guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) if you see errors in the Logger Panel.
 4. Connect the Lens to your Supabase project from Step 2:
@@ -105,7 +105,7 @@ Until both are set, a red-framed **Credentials needed** panel (the **Credentials
 
 ### Step 5 — Deploy to SPECS and Pair
 
-> **IMPORTANT — Enable Extended Permissions for voice input.** This Lens uses the camera and the internet, and the OS disables the **microphone** in camera + internet lenses unless Extended Permissions is enabled. Without it, voice input (ASR) silently produces no transcription, and Bluetooth keyboard pairing won't work either. Enable **Experimental APIs** in Lens Studio (Project Settings) and **Extended Permissions** for your device in the SPECS mobile app.
+> **IMPORTANT — Enable Extended Permissions for voice input.** This Lens uses the camera and the internet, and the OS disables the **microphone** in camera + internet lenses unless Extended Permissions is enabled. Without it, voice input (ASR) silently produces no transcription. Enable **Experimental APIs** in Lens Studio (Project Settings) and **Extended Permissions** for your device in the SPECS mobile app.
 
 1. Connect your SPECS device and push the Lens from Lens Studio.
 2. Launch the Lens on your SPECS.
@@ -152,8 +152,6 @@ Each agent appears in AR as an animated robot avatar with real-time status indic
 
 Send prompts to agents through a text input bar or by using built-in Automatic Speech Recognition (ASR) for hands-free voice input. Conversations are organized into topics with full message history and markdown rendering.
 
-<img src="README-ref/agent-note-beach.gif" alt="Voice note at the beach" width="500" />
-
 ### Smart Replies
 
 AI-powered prompt suggestions appear in the input bar, offering contextual follow-up actions based on the current conversation. Tap a suggestion to send it instantly.
@@ -168,7 +166,7 @@ Frame a subject with a single- or double-hand gesture to capture and crop a phot
 
 ### Spatial Agent Avatars
 
-Agents are represented as 3D robot avatars with customizable themes (cat, owl, ghost, axolotl, crt, robot). Drag to reposition or dock them to the management panel.
+Agents are represented as 3D robot avatars with customizable themes (cat, owl, ghost, axolotl, crt, robot). Drag to reposition or dock them to the management panel. Each avatar prefab contains every theme, but materials are only cloned for a theme the first time it is shown, which keeps spawning avatars cheap.
 
 ### Model and Workspace Selection
 
@@ -176,7 +174,7 @@ Choose the AI model and target workspace/repository for each agent directly from
 
 ### Permission Request Flow
 
-Sensitive file and shell operations require your explicit approval. When an agent requests a permission, the lens surfaces a prompt — tap Allow or Deny, and the decision is forwarded to the agent via the bridge's MCP permission server.
+Sensitive file and shell operations require your explicit approval. When an agent requests a permission, the lens surfaces a prompt — tap Allow or Deny, and the decision is forwarded to the agent via the bridge's MCP permission server. Each request stays bound to the agent and topic that raised it: switching agents hides the card, and it reappears when you return to that agent.
 
 ### Realtime Updates
 
@@ -237,9 +235,9 @@ Supabase Realtime keeps agent status, messages, and task progress synchronized b
 
 [ImagePreviewBar.ts](./Assets/Scripts/UI/Input/ImagePreviewBar.ts): Thumbnail strip showing captured images queued for the next message, with animated attachment and removal.
 
-[InputBarController.ts](./Assets/Scripts/UI/Input/InputBarController.ts): Orchestrates the input bar layout — text field, mic toggle, camera capture, send/stop buttons, image preview, and Bluetooth keyboard integration.
+[InputBarController.ts](./Assets/Scripts/UI/Input/InputBarController.ts): Orchestrates the input bar layout — text field, mic toggle, camera capture, send/stop buttons, and image preview.
 
-[WrappingTextInput.ts](./Assets/Scripts/UI/Input/WrappingTextInput.ts): Multi-line text input with automatic line wrapping, placeholder text, and Bluetooth keyboard support.
+[WrappingTextInput.ts](./Assets/Scripts/UI/Input/WrappingTextInput.ts): Multi-line text input with automatic line wrapping, placeholder text, and system keyboard input (on-screen or a keyboard paired to SPECS).
 
 [ChatSelectorObject.ts](./Assets/Scripts/UI/Chat/ChatSelectorObject.ts): Topic and conversation selector with collapsible sections, new-topic creation, and notification badges.
 
@@ -255,11 +253,9 @@ Supabase Realtime keeps agent status, messages, and task progress synchronized b
 
 [AuthView.ts](./Assets/Scripts/UI/Views/AuthView.ts): Authentication and pairing code entry screen with input field, submit button, and status feedback.
 
-[SettingsListView.ts](./Assets/Scripts/UI/Views/SettingsListView.ts): Main settings panel listing paired agents, smart feature toggles, and Bluetooth keyboard pairing.
+[SettingsListView.ts](./Assets/Scripts/UI/Views/SettingsListView.ts): Main settings panel listing paired agents, smart feature toggles, and data management.
 
 [SettingsSelectionView.ts](./Assets/Scripts/UI/Views/SettingsSelectionView.ts): Drill-in selection view for choosing a model, workspace, or theme from a scrollable option list.
-
-[BluetoothScanView.ts](./Assets/Scripts/UI/Views/BluetoothScanView.ts): Bluetooth device scanning and pairing view with scanning, idle, and connecting states.
 
 [AgentsLoadingView.ts](./Assets/Scripts/UI/Views/AgentsLoadingView.ts): Loading spinner shown while agents are being fetched.
 
@@ -273,25 +269,41 @@ Reusable building blocks shared across all UI components:
 
 [DirtyComponent.ts](./Assets/Scripts/UI/Shared/DirtyComponent.ts): Base class for UI components using a deferred dirty-flag update pattern with optional per-frame tracking.
 
-[UIAnimations.ts](./Assets/Scripts/UI/Shared/UIAnimations.ts): Animation utilities — scale in/out, wipe transitions, opacity snapshot and multiplier helpers.
+[UIStyle.ts](./Assets/Scripts/UI/Shared/UIStyle.ts): The single source of truth for menu typography, text color, and shared layout dimensions. See [UI Style Rules](#ui-style-rules) below.
 
-[UIBuilders.ts](./Assets/Scripts/UI/Shared/UIBuilders.ts): Factory functions for common UI primitives (buttons, tooltips, text labels, scroll bars).
+[UIAnimations.ts](./Assets/Scripts/UI/Shared/UIAnimations.ts): Animation utilities — scale in/out, wipe transitions, opacity snapshot and multiplier helpers. The opacity helpers also fade Prism-style buttons, whose shader ignores `opacityFactor`.
 
-[DialogueObject.ts](./Assets/Scripts/UI/Shared/DialogueObject.ts): Reusable confirmation/action dialogue with title, body, and button controls.
+[UIBuilders.ts](./Assets/Scripts/UI/Shared/UIBuilders.ts): Factory functions for common UI primitives (buttons, tooltips, text labels, scroll bars). `createText` requires a `TextStyle` role; `createIconButton` derives its label style from the button height.
 
-Also contains: `UIConstants.ts` (layout constants and status colors), `TextSizes.ts` (font sizes and font asset references), `RobotTypes.ts` (robot state and theme type definitions), `ImageFactory.ts` (cached material creation for image elements), `CloneControlsBuilder.ts` (close/hover controls for detached panels).
+[DialogueObject.ts](./Assets/Scripts/UI/Shared/DialogueObject.ts): Reusable confirmation dialogue with a title, message, and Cancel/Confirm buttons. Buttons are ignored once the dialogue starts closing, so a double pinch can't confirm twice.
 
-### Bluetooth
+Also contains: `UIConstants.ts` (layout constants and status colors), `TextSizes.ts` (the raw type scale and font assets — use `TextStyle` roles instead), `RobotTypes.ts` (robot state and theme type definitions), `ImageFactory.ts` (cached material creation for image elements), `CloneControlsBuilder.ts` (close/hover controls for detached panels).
 
-> **Note:** Bluetooth requires the Experimental API to be enabled in Lens Studio and Extended Permissions to be enabled on the mobile app.
->
-> **Pairing an external keyboard — use the Settings Lens on SPECS 27.** Open the **Settings Lens** on your SPECS, go to **Bluetooth**, put your keyboard in pairing mode (make sure it isn't still bonded to your laptop/phone — "forget" it there first), and select it from the list. Once paired at the system level, it types into Agent Manager automatically.
->
-> **Why there is no in-lens pairing:** the [Lens Bluetooth API](https://developers.snap.com/spectacles/about-spectacles-features/apis/bluetooth) is GATT-client only and **does not support HID (input) devices** — keyboards require system-level bonding a lens cannot perform, and a keyboard already bonded to the system stops advertising, so an in-lens scan would never see it. The in-lens scan/pair UI is therefore hidden behind the `SHOW_BLUETOOTH_SECTION` flag in `SettingsListView.ts`; the BLE scripts (`BLEKeyboardManager`, `BluetoothScanView`) are kept as a GATT example for when the platform supports it. Also note the API docs state that accessing Bluetooth GATT in a lens disables camera frame, location, and audio access unless Extended Permissions is enabled (which is why the module is only loaded on demand).
+#### UI Style Rules
 
-[BLEKeyboardManager.ts](./Assets/Scripts/Bluetooth/BLEKeyboardManager.ts): BLE GATT keyboard manager — scans for HID devices, pairs, and translates HID key reports into keyboard events with modifier support.
+New and updated UI should go through `UIStyle.ts` rather than raw sizes or ad-hoc alpha values:
 
-[HIDKeyCodes.ts](./Assets/Scripts/Bluetooth/HIDKeyCodes.ts): HID usage ID to character mapping tables including shift-modified characters.
+- **Text roles (`TextStyle`)** — pick by purpose, not size:
+
+  | Role | Size / weight | Use for |
+  |---|---|---|
+  | `PanelTitle` | XXL SemiBold | Top-level view titles, full-panel empty/error headlines |
+  | `DialogTitle` | XL SemiBold | Dialog and permission-request titles |
+  | `ItemTitle` | L SemiBold | Row, card, tile, and toggle titles |
+  | `Body` | M Regular | Messages, instructions, dialog messages, descriptions |
+  | `Label` | M Medium | Status lines, list-item names, inline empty-state headers |
+  | `Secondary` | S Regular | Short supporting text under a title or label |
+  | `Caption` | XS Light | Timestamps, footers, file paths |
+  | `Button` / `ButtonCompact` | M / S Medium | Button labels (compact at heights ≤ 2.5) |
+
+- **Text color (`TextColor`)** — `Primary` (100%), `Secondary` (75%), `Muted` (60%). Don't go below `Muted` for text people need to read; low alpha over passthrough washes out quickly on SPECS.
+- **Layout tokens (`Layout`)** — shared dimensions for standard/compact buttons, icon buttons and back buttons, rows, section headers, and gaps. Keep a local constant only for geometry unique to one view.
+
+### External Keyboards
+
+Agent Manager has no Bluetooth code of its own. Pair a keyboard in the **Settings Lens on your SPECS** (system settings > Bluetooth): put the keyboard in pairing mode — "forget" it on your laptop/phone first if it's still bonded there — and select it. Once paired at the system level, it types through the same system keyboard input (`TextInputSystem`) as the on-screen keyboard, so the input bar picks it up automatically.
+
+An earlier in-lens BLE keyboard path (`BLEKeyboardManager`, `HIDKeyCodes`, `BluetoothScanView`) was removed: the [Lens Bluetooth API](https://developers.snap.com/spectacles/about-spectacles-features/apis/bluetooth) is GATT-client only and doesn't support HID keyboards, so that path never worked on device and was already hidden behind a flag. Dropping it also means the Lens never touches Bluetooth GATT, which would otherwise disable camera, location, and audio access without Extended Permissions.
 
 ### Utils
 

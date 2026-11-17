@@ -1,4 +1,4 @@
-# Sync Kit
+# Sync Kit          
 
 <!-- tags -->
 [![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Sync Kit](https://img.shields.io/badge/Sync%20Kit-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit) [![Connected Lenses](https://img.shields.io/badge/Connected%20Lenses-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/connected-lenses/overview) [![Networking](https://img.shields.io/badge/Networking-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/connected-lenses/overview) [![Multiplayer](https://img.shields.io/badge/Multiplayer-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview)
@@ -127,9 +127,9 @@ this.syncEntity.sendEvent('transform_update', {
 
 ### Prerequisites
 
-- **Lens Studio**: v5.24+
+- **Lens Studio**: v5.25+
 
-**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://developers.specs.com) for your SPECS device and OS versions.
 
 - **SPECS OS**: v5.64+
 - **Target Platform**: Snap SPECS (required for Connected Lenses)
@@ -138,10 +138,10 @@ this.syncEntity.sendEvent('transform_update', {
 ### 1. Project Setup
 
 #### Open in Lens Studio
-1. Open project in Lens Studio v5.15.4+
+1. Open project in Lens Studio v5.25+
 2. Ensure all packages are imported:
-   - SpectaclesSyncKit
-   - SpectaclesInteractionKit
+   - SyncKit
+   - InteractionKit
 
 ### 2. Component Configuration
 
@@ -196,7 +196,7 @@ Error: Cannot sync transform - sync entity not ready
 Warning: Transform changes not propagating to other users
 ```
 **Solution**: 
-1. Verify SpectaclesSyncKit is properly imported
+1. Verify SyncKit is properly imported
 2. Check network connectivity
 3. Ensure proper user authentication
 
@@ -265,7 +265,7 @@ Assets/Project/Scripts/
 
 - **[Sync Kit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-sync-kit)**
 - **[Connected Lenses Guide](https://developers.snap.com/spectacles/spectacles-frameworks/connected-lenses)**
-- **[SpectaclesInteractionKit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit)**
+- **[InteractionKit Documentation](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit)**
 - **[Lens Studio Documentation](https://developers.snap.com/lens-studio)**
 
 ---

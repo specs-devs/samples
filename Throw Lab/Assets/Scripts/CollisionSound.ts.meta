@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 631c06d6-7809-404c-acae-65c4dd6f3294
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -43,7 +44,7 @@
     []
   DefaultScriptInputs:
     - collisionSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
-      minVelocityThreshold: !<float> 5.000000
+      minVelocityThreshold: !<float> 30.000000
       velocityToVolume: 0.050000
       enableLogging: false
       enableLoggingLifecycle: false
@@ -55,7 +56,7 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio Settings</span>"}'
     - '// @input Component.AudioComponent collisionSound {"hint":"Sound to play on collision"}'
-    - '// @input float minVelocityThreshold = 5 {"hint":"Minimum velocity magnitude to play sound (prevents tiny bumps from making noise)"}'
+    - '// @input float minVelocityThreshold = 30 {"hint":"Minimum velocity magnitude to play sound (prevents tiny bumps from making noise)"}'
     - '// @input float velocityToVolume = 0.05 {"hint":"Volume multiplier based on impact speed (0-1)"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'

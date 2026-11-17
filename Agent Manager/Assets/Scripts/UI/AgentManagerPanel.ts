@@ -3,10 +3,10 @@ import { HorizontalFrame } from "./Elements/HorizontalFrame";
 import { TabBar, TAB_BAR_WIDTH } from "./Elements/TabBar";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+} from "./Shared/MotionAnimate";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import {
   slideOut,
   slideIn,
@@ -21,8 +21,6 @@ import { SupabaseConfigMissingView } from "./Views/SupabaseConfigMissingView";
 import { AuthView, AuthSubmission } from "./Views/AuthView";
 import { SettingsListView, AgentEntry } from "./Views/SettingsListView";
 import { AgentButtonBar } from "./Agent/AgentButtonBar";
-import { BLEKeyboardManager } from "../Bluetooth/BLEKeyboardManager";
-import { BluetoothScanView } from "./Views/BluetoothScanView";
 import { CONTENT_TILT_DEG, PANEL_WIDTH, Z_CONTENT } from "./Shared/UIConstants";
 
 export type { AuthSubmission } from "./Views/AuthView";
@@ -61,8 +59,6 @@ const AGENTS: AgentEntry[] = [
 
 @component
 export class AgentManagerPanel extends BaseScriptComponent {
-  public bleKeyboardManager: BLEKeyboardManager;
-  private btScanView: BluetoothScanView;
 
   private frame: HorizontalFrame;
   private contentRoot: SceneObject;
@@ -84,6 +80,8 @@ export class AgentManagerPanel extends BaseScriptComponent {
   private dialogueObj: SceneObject;
   private pendingDisconnectProvider = "";
   private pendingDeleteAll = false;
+  // True while a confirmation is open and not yet confirmed/closed.
+  private awaitingConfirm = false;
   private animCancels = new CancelSet();
   private frameAnimCancels = new CancelSet();
   private rootFullScale = vec3.one();
@@ -140,6 +138,8 @@ export class AgentManagerPanel extends BaseScriptComponent {
     );
     this.settingsListView.onDisconnectRequested.add(({ name, provider }) => {
       this.pendingDisconnectProvider = provider;
+      this.pendingDeleteAll = false;
+      this.awaitingConfirm = true;
       this.dialogueObj.enabled = true;
       this.dialogue.showConfirmation(
         "Disconnect",
@@ -148,6 +148,8 @@ export class AgentManagerPanel extends BaseScriptComponent {
     });
     this.settingsListView.onDeleteAllDataRequested.add(() => {
       this.pendingDeleteAll = true;
+      this.pendingDisconnectProvider = "";
+      this.awaitingConfirm = true;
       this.dialogueObj.enabled = true;
       this.dialogue.showConfirmation(
         "Delete All Data",
@@ -178,15 +180,6 @@ export class AgentManagerPanel extends BaseScriptComponent {
     this.tabBarComponent = new TabBar(this.contentRoot);
     this.buildDialogue();
 
-    // Create BLEKeyboardManager as a child component
-    const bleObj = global.scene.createSceneObject("BLEKeyboardManager");
-    bleObj.setParent(root);
-    this.bleKeyboardManager = bleObj.createComponent(
-      BLEKeyboardManager.getTypeName(),
-    ) as BLEKeyboardManager;
-
-    this.btScanView = new BluetoothScanView(this.contentRoot);
-
     this.createEvent("OnStartEvent").bind(() => this.onStart());
   }
 
@@ -202,13 +195,22 @@ export class AgentManagerPanel extends BaseScriptComponent {
     ) as DialogueObject;
 
     this.dialogue.onConfirmed.add(() => {
+      // Ignore repeat confirms (e.g. double pinch while the dialogue closes).
+      if (!this.awaitingConfirm) return;
+      this.awaitingConfirm = false;
       if (this.pendingDeleteAll) {
         this.pendingDeleteAll = false;
         this.onDeleteAllDataRequested.invoke();
-      } else {
-        this.onDisconnectRequested.invoke(this.pendingDisconnectProvider);
+      } else if (this.pendingDisconnectProvider) {
+        const provider = this.pendingDisconnectProvider;
         this.pendingDisconnectProvider = "";
+        this.onDisconnectRequested.invoke(provider);
       }
+    });
+    this.dialogue.onClosed.add(() => {
+      this.awaitingConfirm = false;
+      this.pendingDeleteAll = false;
+      this.pendingDisconnectProvider = "";
     });
   }
 
@@ -249,84 +251,6 @@ export class AgentManagerPanel extends BaseScriptComponent {
     });
 
     this.settingsListView.initializeButtons();
-
-    this.btScanView.initialize();
-
-    this.settingsListView.onBluetoothScanRequested.add(() => {
-      this.btScanView.clearDevices();
-      this.btScanView.setScanning(true);
-      this.bleKeyboardManager.startScan();
-      wipeTransition(
-        this.settingsListView.sceneObject,
-        this.btScanView.sceneObject,
-        {
-          cancelSet: this.animCancels,
-          slideOffset: SLIDE_OFFSET,
-          duration: ANIM_DURATION,
-          staggerMs: STAGGER_MS,
-          direction: "forward",
-        },
-      );
-    });
-
-    this.btScanView.onBackRequested.add(() => {
-      this.bleKeyboardManager.stopScan();
-      wipeTransition(
-        this.btScanView.sceneObject,
-        this.settingsListView.sceneObject,
-        {
-          cancelSet: this.animCancels,
-          slideOffset: SLIDE_OFFSET,
-          duration: ANIM_DURATION,
-          staggerMs: STAGGER_MS,
-          direction: "back",
-        },
-      );
-    });
-
-    this.bleKeyboardManager.onDeviceFound.add((device) => {
-      this.btScanView.addDevice(device);
-    });
-
-    this.bleKeyboardManager.onScanComplete.add(() => {
-      this.btScanView.setScanning(false);
-      this.settingsListView.updateBluetoothStatus(
-        this.bleKeyboardManager.isConnected,
-        this.bleKeyboardManager.connectedDeviceName,
-      );
-    });
-
-    this.btScanView.onPairRequested.add((address: Uint8Array) => {
-      const device = this.bleKeyboardManager.getFoundDeviceByAddress(address);
-      if (device) {
-        this.btScanView.setConnecting(device.name);
-        this.bleKeyboardManager.connectToDevice(device.address, device.name);
-      }
-      // Do NOT transition here — wait for onConnectionStateChanged
-    });
-
-    this.bleKeyboardManager.onConnectionStateChanged.add(
-      ({ connected, deviceName }) => {
-        this.settingsListView.updateBluetoothStatus(connected, deviceName);
-        if (connected && this.btScanView.sceneObject.enabled) {
-          wipeTransition(
-            this.btScanView.sceneObject,
-            this.settingsListView.sceneObject,
-            {
-              cancelSet: this.animCancels,
-              slideOffset: SLIDE_OFFSET,
-              duration: ANIM_DURATION,
-              staggerMs: STAGGER_MS,
-              direction: "back",
-            },
-          );
-        }
-      },
-    );
-
-    this.settingsListView.onBluetoothUnpairRequested.add(() => {
-      this.bleKeyboardManager.unpairDevice();
-    });
 
     this.tabBarComponent.initialize();
 
@@ -390,10 +314,7 @@ export class AgentManagerPanel extends BaseScriptComponent {
     this.animCancels.cancel();
     this.authView.sceneObject.enabled = false;
 
-    const fromObj = this.btScanView.sceneObject.enabled
-      ? this.btScanView.sceneObject
-      : this.settingsListView.sceneObject;
-    this.btScanView.sceneObject.enabled = false;
+    const fromObj = this.settingsListView.sceneObject;
 
     const activeView = !this._isSupabaseConfigured
       ? this.supabaseConfigMissingView.sceneObject
@@ -456,7 +377,6 @@ export class AgentManagerPanel extends BaseScriptComponent {
 
     this.settingsListView.sceneObject.enabled = false;
     this.authView.sceneObject.enabled = false;
-    this.btScanView.sceneObject.enabled = false;
     const hasAgents = this._dockedAgentCount > 0;
     const hasInternet = this._isInternetAvailable;
     const isConfigured = this._isSupabaseConfigured;
@@ -535,10 +455,6 @@ export class AgentManagerPanel extends BaseScriptComponent {
     this.settingsListView.setProviderConnected(provider, connected);
   }
 
-  getVoiceNoteContinuesLastTopic(): boolean {
-    return this.settingsListView.getVoiceNoteContinuesLastTopic();
-  }
-
   setStatus(message: string, isError: boolean = false): void {
     this.authView.setStatus(message, isError);
   }
@@ -611,11 +527,13 @@ export class AgentManagerPanel extends BaseScriptComponent {
     this._isInternetAvailable = available;
     if (!this._isShowing) return;
 
+    // Status overlays only belong on the agents tab; never cover settings.
+    const onAgentsTab = this.tabBarComponent.getActiveTab() === "agents";
     this.noInternetView.sceneObject.enabled =
-      this._isSupabaseConfigured && !available;
+      onAgentsTab && this._isSupabaseConfigured && !available;
     this.updateFrameWidth();
 
-    if (this.tabBarComponent.getActiveTab() !== "agents") return;
+    if (!onAgentsTab) return;
     if (!this._isSupabaseConfigured) return;
 
     if (!available) {
@@ -637,10 +555,12 @@ export class AgentManagerPanel extends BaseScriptComponent {
     this._isSupabaseConfigured = configured;
     if (!this._isShowing) return;
 
-    this.supabaseConfigMissingView.sceneObject.enabled = !configured;
+    const onAgentsTab = this.tabBarComponent.getActiveTab() === "agents";
+    this.supabaseConfigMissingView.sceneObject.enabled =
+      onAgentsTab && !configured;
     this.updateFrameWidth();
 
-    if (this.tabBarComponent.getActiveTab() !== "agents") return;
+    if (!onAgentsTab) return;
 
     if (!configured) {
       this.noInternetView.sceneObject.enabled = false;

@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Internet Availability Pop Up component for the AI Music Gen Glasses lens.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate from "InteractionKit.lspkg/Utils/animate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MathUtils} from "Utilities.lspkg/Scripts/Utils/MathUtils"
 

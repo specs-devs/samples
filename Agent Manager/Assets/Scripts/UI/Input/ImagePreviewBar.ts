@@ -1,9 +1,10 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+} from "../Shared/MotionAnimate";
 import { createImage } from "../Shared/ImageFactory";
 import { ICON_Z_OFFSET } from "../Shared/UIConstants";
 import { DirtyComponent } from "../Shared/DirtyComponent";
@@ -12,7 +13,9 @@ const MAX_IMAGES = 5;
 const THUMB_SIZE = 3;
 const THUMB_SPACING = 0.5;
 const PADDING = new vec2(1, 0.5);
-const Z_CONTENT = 0.15;
+// BackPlate builds its own collider (depth 1, front face at z=+0.5); keep the
+// thumbnail buttons' front faces (Z_CONTENT + THUMB_DEPTH/2) in front of it.
+const Z_CONTENT = 0.6;
 const THUMB_DEPTH = 0.5;
 const THUMB_IMAGE_INSET = 0.9;
 const ATTACH_ANIM_DURATION = 0.4;
@@ -26,7 +29,7 @@ interface AnimationSource {
 
 interface TrackedThumbnail {
   sceneObject: SceneObject;
-  button: RectangleButton;
+  button: Button;
   image: Image;
 }
 
@@ -177,9 +180,7 @@ export class ImagePreviewBar extends DirtyComponent {
       const btnObj = global.scene.createSceneObject(`PreviewThumb_${i}`);
       btnObj.setParent(this.thumbContainer);
 
-      const btn = btnObj.createComponent(
-        RectangleButton.getTypeName(),
-      ) as RectangleButton;
+      const btn = createSystemButton(btnObj, "Ghost");
       btn.size = new vec3(THUMB_SIZE, THUMB_SIZE, THUMB_DEPTH);
       btn.initialize();
 

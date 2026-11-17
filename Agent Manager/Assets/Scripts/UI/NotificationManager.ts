@@ -1,4 +1,4 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { AgentStore } from "../State/AgentStore";
 import { SmartSummaryService } from "../Services/SmartSummaryService";
 import { AgentResponseNotification } from "./AgentResponseNotification";
@@ -136,6 +136,7 @@ export class NotificationManager {
     notif.setOverlayLayer(this.overlayLayer);
 
     notif.onTapped.add(() => {
+      if (this.activeNotification !== notif) return;
       this.activeNotification = null;
       this.store.selectAgent(entry.agentId);
       this.store.selectTopic(entry.agentId, entry.topicId);
@@ -143,13 +144,20 @@ export class NotificationManager {
         agentId: entry.agentId,
         topicId: entry.topicId,
       });
-      this.showNextNotification();
+      // Only advance if something is queued; otherwise keep the overlay
+      // camera on so the tapped notification's dismiss anim stays visible.
+      // onDismissed turns the camera off once it finishes.
+      if (this.notificationQueue.length > 0) {
+        this.showNextNotification();
+      }
     });
 
     notif.onDismissed.add(() => {
       if (this.activeNotification === notif) {
         this.activeNotification = null;
         this.showNextNotification();
+      } else if (this.activeNotification === null) {
+        this.overlayCamera.enabled = false;
       }
     });
 

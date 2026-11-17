@@ -30,6 +30,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/016d33f0-452b-4c09-ac55-9c504ca6de7b>
@@ -67,7 +68,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -91,7 +91,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -190,6 +189,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<Text/30e6dd8e-1e32-4177-92b4-949a81cd28f3>
@@ -416,7 +416,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -441,7 +440,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -635,7 +633,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -659,7 +656,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1063,7 +1059,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1087,7 +1082,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1390,7 +1384,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1414,7 +1407,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1603,9 +1595,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 32.000000, y: 32.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -1675,7 +1665,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1699,7 +1688,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1826,7 +1814,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1850,7 +1837,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1922,7 +1908,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1946,7 +1931,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -2096,7 +2080,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2120,7 +2103,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -2162,7 +2144,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2186,7 +2167,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000

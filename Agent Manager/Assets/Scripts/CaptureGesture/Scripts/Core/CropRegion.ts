@@ -1,6 +1,6 @@
 import { CameraService } from "../../../Utils/CameraService";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import Event from "InteractionKit.lspkg/Utils/Event";
 
 @component
 export class CropRegion extends BaseScriptComponent {

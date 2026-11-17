@@ -1,5 +1,5 @@
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
-import {CancelToken, setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import {CancelToken, setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {CustomLocationPlacesImageDisplay} from "./CustomLocationPlacesImageDisplay"
@@ -20,7 +20,7 @@ export class PlaceListCreator extends BaseScriptComponent {
   private itemPrefab: ObjectPrefab
   @input
   private contentRoot: SceneObject
-  // ScrollView → SpectaclesUIKit ScrollWindow (re-add the component in scene).
+  // ScrollView → UIKit ScrollWindow (re-add the component in scene).
   @input
   private scrollView: ScrollWindow
   @input

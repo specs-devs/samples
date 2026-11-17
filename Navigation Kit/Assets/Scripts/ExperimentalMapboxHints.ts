@@ -1,4 +1,4 @@
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"

@@ -1,5 +1,5 @@
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
 import {easeOutElastic, makeTween} from "./MapUtils"
 

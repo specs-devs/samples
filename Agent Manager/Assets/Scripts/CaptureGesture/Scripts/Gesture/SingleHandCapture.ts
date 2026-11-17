@@ -1,6 +1,6 @@
 import {BaseHandCapture} from "./BaseHandCapture";
 import {computeCornersFromSingleHand, computePoseFromCorners} from "../Core/GestureRectUtils";
-import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand";
+import TrackedHand from "InteractionKit.lspkg/Providers/HandInputData/TrackedHand";
 
 @component
 export class SingleHandCapture extends BaseHandCapture {

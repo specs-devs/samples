@@ -4,9 +4,9 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
-import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {InteractableManipulation} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import {InteractorEvent} from "InteractionKit.lspkg/Core/Interactor/InteractorEvent"
 
 // Interaction System https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/interactionsystem
 // Instantiate https://developers.snap.com/lens-studio/api/lens-scripting/classes/Built-In.ObjectPrefab.html#instantiateasync or https://developers.snap.com/lens-studio/lens-studio-workflow/prefabs

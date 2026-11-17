@@ -1,4 +1,4 @@
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {MapGridView} from "./MapGridView"
 import {LocationBoundScreenTransform, setScreenTransformRect01} from "./MapUtils"
 

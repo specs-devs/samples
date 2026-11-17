@@ -1,3 +1,7 @@
+/**
+ * Raw type scale and font assets. Do not use directly in UI code — pick a
+ * semantic role from `TextStyle` in ./UIStyle instead.
+ */
 export const TextSize = {
   XS: 22,
   S: 24,

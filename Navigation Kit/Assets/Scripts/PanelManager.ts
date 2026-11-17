@@ -1,12 +1,12 @@
-import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {ElementContent} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {FRAME_BUTTON_SETTINGS_BY_APPEARANCE} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/FrameButtonSettings"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {BaseButton} from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {ElementContent} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {FRAME_BUTTON_SETTINGS} from "UIKit.lspkg/Scripts/Components/Frame/FrameButtonSettings"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {InteractableManipulation} from "MapComponentModified/MapManipulation"
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
 import {makeTween} from "MapComponentModified/Scripts/MapUtils"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 import {Place} from "NavigationKit.lspkg/NavigationDataComponent/Place"
@@ -243,7 +243,7 @@ export class PanelManager extends BaseScriptComponent {
   }
 
   private get frameButtonSettings() {
-    return FRAME_BUTTON_SETTINGS_BY_APPEARANCE[this.frame.appearance] ?? FRAME_BUTTON_SETTINGS_BY_APPEARANCE["Large"]
+    return FRAME_BUTTON_SETTINGS
   }
 
   // Builds a "minimize" button directly below the frame's close button

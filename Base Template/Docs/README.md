@@ -8,7 +8,7 @@ and scripts without any boilerplate. It is for anyone starting a new Specs Lens 
 ## What it does
 - Opens to an empty world: there is no example content, no UI and no gameplay.
 - The scene contains a `Camera Object` with device tracking, a `Lighting` rig (directional and ambient light with an
-  environment map), and the `SpectaclesInteractionKit` setup with hand visuals, hand / mouse / mobile interactors and
+  environment map), and the `InteractionKit` setup with hand visuals, hand / mouse / mobile interactors and
   interactor cursors.
 - Because the Interaction Kit (SIK) is already in the scene, any SIK or UI Kit component you add (for example an
   `Interactable` or a UI Kit button) works immediately with hands in Specs and with the mouse in the Lens Studio

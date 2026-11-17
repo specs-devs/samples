@@ -1,7 +1,7 @@
 import {
   setTimeout,
   clearTimeout,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 
 const BRIDGE_LIVE_STALE_MS = 20_000;
 const BRIDGE_LIVE_OFFLINE_MS = 60_000;

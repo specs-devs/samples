@@ -3,7 +3,7 @@ import { CropRegion } from "../Core/CropRegion";
 import { DoubleHandCapture } from "../Gesture/DoubleHandCapture";
 import { SingleHandCapture } from "../Gesture/SingleHandCapture";
 import { CornerController } from "./CornerController";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 
 const BOX_MIN_SIZE = 8; // min size in cm for image capture (matches gesture classes)
 

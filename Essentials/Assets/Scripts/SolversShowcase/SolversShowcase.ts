@@ -1,4 +1,4 @@
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
 // Seconds each solver example stays on before the next one.
 const DEFAULT_INTERVAL = 8
@@ -26,7 +26,13 @@ const LABEL_RENDER_ORDER = 1000
 const HEAD_COLOR = new vec4(0.9, 0.15, 0.15, 1)
 const NOSE_COLOR = new vec4(0.45, 0.05, 0.05, 1)
 const PANEL_COLOR = new vec4(0.2, 0.45, 1, 1)
-const SPHERE_SEGMENTS = 24
+// Low-poly, flat-shaded head: few segments so the facets read as a stylised head.
+const HEAD_SEGMENTS = 8
+// Facing arrows: the head's gaze, and the front of every object a solver moves.
+const GAZE_COLOR = new vec4(1, 0.85, 0.2, 1)
+const FRONT_COLOR = new vec4(1, 0.85, 0.2, 1)
+const FRONT_ARROW_LENGTH = 0.8 // in the object's local units (its cube is 1 unit)
+const FRONT_LABEL_SCALE = 0.25
 
 type Billboard = {text: Text; offset: vec3}
 
@@ -64,6 +70,8 @@ export class SolversShowcase extends BaseScriptComponent {
   private recolored: RenderMeshVisual[] = []
   private turnListened: any[] = []
   private shrunk: SceneObject[] = []
+  private decorated: SceneObject[] = []
+  private arrow: RenderMesh | null = null
 
   onAwake(): void {
     this.createEvent("OnStartEvent").bind(() => this.start())
@@ -246,7 +254,7 @@ export class SolversShowcase extends BaseScriptComponent {
     const head = global.scene.createSceneObject("HeadPose (camera)")
     head.setParent(this.sceneObject)
     const source = this.findMeshVisual()
-    const sphere = this.sphereMesh()
+    const sphere = this.lowPolySphereMesh()
     const addSphere = (name: string, diameter: number, position: vec3, color: vec4) => {
       const ball = global.scene.createSceneObject(name)
       ball.setParent(head)
@@ -264,6 +272,18 @@ export class SolversShowcase extends BaseScriptComponent {
     addSphere("Head", HEAD_SIZE, vec3.zero(), HEAD_COLOR)
     // The camera looks down -Z, so the nose sits in front of the head on -Z.
     addSphere("Nose", HEAD_SIZE * 0.35, new vec3(0, 0, -HEAD_SIZE * 0.55), NOSE_COLOR)
+    // Glasses: a dark bar across the face, so the head reads as a person wearing Specs.
+    const glasses = global.scene.createSceneObject("Glasses")
+    glasses.setParent(head)
+    glasses.getTransform().setLocalPosition(new vec3(0, HEAD_SIZE * 0.12, -HEAD_SIZE * 0.45))
+    glasses.getTransform().setLocalScale(new vec3(HEAD_SIZE * 0.9, HEAD_SIZE * 0.18, HEAD_SIZE * 0.12))
+    if (source) {
+      const visual = glasses.createComponent("Component.RenderMeshVisual")
+      visual.mesh = this.boxMesh()
+      visual.mainMaterial = this.tinted(source.mainMaterial, new vec4(0.12, 0.12, 0.14, 1))
+    }
+    // Gaze arrow: where the head looks (the camera looks down -Z).
+    this.addArrow(head, new vec3(0, 0, -HEAD_SIZE * 0.6), quat.angleAxis(Math.PI, vec3.up()), HEAD_SIZE * 1.6, GAZE_COLOR, source)
     this.addBillboard("HeadLabel", "Head pose", LABEL_SIZE, new vec3(0, HEAD_SIZE * 0.9, 0))
     this.title = this.addBillboard("SolverTitle", "", TITLE_SIZE, new vec3(0, HEAD_SIZE * 1.5, 0))
     return head
@@ -293,10 +313,53 @@ export class SolversShowcase extends BaseScriptComponent {
 
   /** Tints the object's own mesh (not its children) with a copy of its material. */
   private paint(object: SceneObject, color: vec4): void {
+    this.decorate(object)
     const visual = object.getComponent("Component.RenderMeshVisual")
     if (visual && visual.mainMaterial && this.recolored.indexOf(visual) < 0) {
       visual.mainMaterial = this.tinted(visual.mainMaterial, color)
       this.recolored.push(visual)
+    }
+  }
+
+  /**
+   * Marks the front of an object a solver moves: an arrow out of its -Z face (the axis Look At and
+   * Billboard turn toward their target) and a "FRONT" label on that face, so the behavior reads at a
+   * glance: the front keeps turning toward the head.
+   */
+  private decorate(object: SceneObject): void {
+    if (this.decorated.indexOf(object) >= 0) {
+      return
+    }
+    this.decorated.push(object)
+    const source = object.getComponent("Component.RenderMeshVisual") as RenderMeshVisual
+    const back = quat.angleAxis(Math.PI, vec3.up())
+    this.addArrow(object, new vec3(0, 0, -0.5), back, FRONT_ARROW_LENGTH, FRONT_COLOR, source)
+    const labelObject = global.scene.createSceneObject("FrontLabel")
+    labelObject.setParent(object)
+    labelObject.getTransform().setLocalPosition(new vec3(0, 0, -0.52))
+    labelObject.getTransform().setLocalRotation(back)
+    labelObject.getTransform().setLocalScale(vec3.one().uniformScale(FRONT_LABEL_SCALE))
+    const label = labelObject.createComponent("Component.Text")
+    label.text = "FRONT"
+    label.size = 36
+    label.horizontalAlignment = HorizontalAlignment.Center
+    label.verticalAlignment = VerticalAlignment.Center
+    label.textFill.color = new vec4(1, 1, 1, 1)
+  }
+
+  /** An arrow along the parent's local +Z (after `rotation`), from `position`, `length` long. */
+  private addArrow(parent: SceneObject, position: vec3, rotation: quat, length: number, color: vec4, source: RenderMeshVisual | null): void {
+    const arrow = global.scene.createSceneObject("Arrow")
+    arrow.setParent(parent)
+    arrow.getTransform().setLocalPosition(position)
+    arrow.getTransform().setLocalRotation(rotation)
+    arrow.getTransform().setLocalScale(vec3.one().uniformScale(length))
+    const visual = arrow.createComponent("Component.RenderMeshVisual")
+    visual.mesh = this.arrowMesh()
+    if (source && source.mainMaterial) {
+      const material = this.tinted(source.mainMaterial, color)
+      material.mainPass.twoSided = true
+      visual.mainMaterial = material
     }
   }
 
@@ -307,8 +370,7 @@ export class SolversShowcase extends BaseScriptComponent {
     return copy
   }
 
-  /** Unit-radius UV sphere, built at runtime so no mesh asset needs wiring. */
-  private sphereMesh(): RenderMesh {
+  private newBuilder(): MeshBuilder {
     const builder = new MeshBuilder([
       {name: "position", components: 3},
       {name: "normal", components: 3},
@@ -316,25 +378,83 @@ export class SolversShowcase extends BaseScriptComponent {
     ])
     builder.topology = MeshTopology.Triangles
     builder.indexType = MeshIndexType.UInt16
-    const rings = SPHERE_SEGMENTS / 2
-    for (let r = 0; r <= rings; r++) {
+    return builder
+  }
+
+  /** Appends one flat-shaded triangle (its own vertices, face normal). */
+  private triangle(builder: MeshBuilder, a: vec3, b: vec3, c: vec3): void {
+    let n = b.sub(a).cross(c.sub(a))
+    n = n.length > 0 ? n.normalize() : vec3.up()
+    const base = builder.getVerticesCount()
+    for (const p of [a, b, c]) {
+      builder.appendVerticesInterleaved([p.x, p.y, p.z, n.x, n.y, n.z, 0, 0])
+    }
+    builder.appendIndices([base, base + 1, base + 2])
+  }
+
+  /** Unit-radius, flat-shaded low-poly sphere (the head), built at runtime. */
+  private lowPolySphereMesh(): RenderMesh {
+    const builder = this.newBuilder()
+    const rings = HEAD_SEGMENTS / 2
+    const point = (r: number, s: number) => {
       const theta = (r / rings) * Math.PI
-      for (let s = 0; s <= SPHERE_SEGMENTS; s++) {
-        const phi = (s / SPHERE_SEGMENTS) * Math.PI * 2
-        const x = Math.sin(theta) * Math.cos(phi)
-        const y = Math.cos(theta)
-        const z = Math.sin(theta) * Math.sin(phi)
-        builder.appendVerticesInterleaved([x, y, z, x, y, z, s / SPHERE_SEGMENTS, r / rings])
-      }
+      const phi = (s / HEAD_SEGMENTS) * Math.PI * 2
+      return new vec3(Math.sin(theta) * Math.cos(phi), Math.cos(theta), Math.sin(theta) * Math.sin(phi))
     }
-    const row = SPHERE_SEGMENTS + 1
     for (let r = 0; r < rings; r++) {
-      for (let s = 0; s < SPHERE_SEGMENTS; s++) {
-        const a = r * row + s
-        const b = a + row
-        builder.appendIndices([a, a + 1, b, b, a + 1, b + 1])
+      for (let s = 0; s < HEAD_SEGMENTS; s++) {
+        const a = point(r, s), b = point(r, s + 1), c = point(r + 1, s), d = point(r + 1, s + 1)
+        if (r > 0) this.triangle(builder, a, b, c)
+        if (r < rings - 1) this.triangle(builder, c, b, d)
       }
     }
+    builder.updateMesh()
+    return builder.getMesh()
+  }
+
+  /** Unit-length arrow along +Z (from 0 to 1): a thin shaft and a cone head. */
+  private arrowMesh(): RenderMesh {
+    if (this.arrow) {
+      return this.arrow
+    }
+    const builder = this.newBuilder()
+    const sides = 10
+    const shaftRadius = 0.03
+    const headRadius = 0.09
+    const headStart = 0.7
+    const ring = (radius: number, z: number, i: number) => {
+      const a = (i / sides) * Math.PI * 2
+      return new vec3(Math.cos(a) * radius, Math.sin(a) * radius, z)
+    }
+    for (let i = 0; i < sides; i++) {
+      const a0 = ring(shaftRadius, 0, i), a1 = ring(shaftRadius, 0, i + 1)
+      const b0 = ring(shaftRadius, headStart, i), b1 = ring(shaftRadius, headStart, i + 1)
+      this.triangle(builder, a0, b0, a1)
+      this.triangle(builder, a1, b0, b1)
+      const h0 = ring(headRadius, headStart, i), h1 = ring(headRadius, headStart, i + 1)
+      this.triangle(builder, h0, new vec3(0, 0, 1), h1)
+      this.triangle(builder, h1, new vec3(0, 0, headStart), h0)
+    }
+    builder.updateMesh()
+    this.arrow = builder.getMesh()
+    return this.arrow
+  }
+
+  /** Unit cube centered on the origin. */
+  private boxMesh(): RenderMesh {
+    const builder = this.newBuilder()
+    const h = 0.5
+    const v = (x: number, y: number, z: number) => new vec3(x * h, y * h, z * h)
+    const quad = (a: vec3, b: vec3, c: vec3, d: vec3) => {
+      this.triangle(builder, a, b, c)
+      this.triangle(builder, a, c, d)
+    }
+    quad(v(-1, -1, 1), v(1, -1, 1), v(1, 1, 1), v(-1, 1, 1))
+    quad(v(1, -1, -1), v(-1, -1, -1), v(-1, 1, -1), v(1, 1, -1))
+    quad(v(-1, -1, -1), v(-1, -1, 1), v(-1, 1, 1), v(-1, 1, -1))
+    quad(v(1, -1, 1), v(1, -1, -1), v(1, 1, -1), v(1, 1, 1))
+    quad(v(-1, 1, 1), v(1, 1, 1), v(1, 1, -1), v(-1, 1, -1))
+    quad(v(-1, -1, -1), v(1, -1, -1), v(1, -1, 1), v(-1, -1, 1))
     builder.updateMesh()
     return builder.getMesh()
   }

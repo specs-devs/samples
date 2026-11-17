@@ -2,13 +2,13 @@
  * SPECS Inc. 2027
  * Sphere Controller for the AI Playground Glasses lens experience.
  */
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {HandInputData} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandInputData"
-import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {InteractableManipulation} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {HandInputData} from "InteractionKit.lspkg/Providers/HandInputData/HandInputData"
+import {BaseButton} from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MathUtils} from "Utilities.lspkg/Scripts/Utils/MathUtils"
@@ -169,7 +169,7 @@ export class SphereController extends BaseScriptComponent {
       {
         const tr = this.orbObject.getTransform()
         const start = tr.getWorldPosition()
-        const end = this.wcfmp.getForwardPosition(100)
+        const end = this.wcfmp.getForwardPosition(110)
         animate({
           duration: 0.6,
           easing: "ease-in-out-quad",
@@ -230,7 +230,7 @@ export class SphereController extends BaseScriptComponent {
       })
     })
 
-    // PinchButton was removed from SpectaclesInteractionKit. The orb already
+    // PinchButton was removed from InteractionKit. The orb already
     // has an Interactable, whose onTriggerEnd fires on pinch-release exactly as
     // PinchButton.onButtonPinched did — so we subscribe to it directly (no
     // separate button component or scene reattach needed).
@@ -240,7 +240,7 @@ export class SphereController extends BaseScriptComponent {
       }
     })
 
-    // The close button is a SpectaclesUIKit button whose script reference can
+    // The close button is a UIKit button whose script reference can
     // come through unresolved after the package update (initialize()/onTriggerUp
     // undefined) until the component is reattached in the scene. Guard so the
     // lens does not crash; once reattached these wire up automatically.

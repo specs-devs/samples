@@ -6,8 +6,8 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
 import InteractorLineRenderer, {
   VisualStyle
-} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer"
-import {withAlpha, withoutAlpha} from "SpectaclesInteractionKit.lspkg/Utils/color"
+} from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer"
+import {withAlpha, withoutAlpha} from "InteractionKit.lspkg/Utils/color"
 
 @component
 export class Line extends BaseScriptComponent {

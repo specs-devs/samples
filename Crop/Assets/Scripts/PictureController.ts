@@ -3,7 +3,7 @@
  * Picture Controller for the Crop Glasses lens experience.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import {IK} from "InteractionKit.lspkg/IK"
 
 @component
 export class PictureController extends BaseScriptComponent {
@@ -29,8 +29,8 @@ export class PictureController extends BaseScriptComponent {
 
   private isEditor = global.deviceInfoSystem.isEditor()
 
-  private rightHand = SIK.HandInputData.getHand("right")
-  private leftHand = SIK.HandInputData.getHand("left")
+  private rightHand = IK.HandInputData.getHand("right")
+  private leftHand = IK.HandInputData.getHand("left")
 
   private leftDown = false
   private rightDown = false

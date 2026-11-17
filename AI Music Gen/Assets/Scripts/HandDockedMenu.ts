@@ -2,10 +2,10 @@
  * SPECS Inc. 2027
  * Hand Docked Menu component for the AI Music Gen Glasses lens.
  */
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {HandInputData} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandInputData"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {HandInputData} from "InteractionKit.lspkg/Providers/HandInputData/HandInputData"
+import {IK} from "InteractionKit.lspkg/IK"
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
 import {bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
@@ -36,7 +36,7 @@ export class HandDockedMenu extends BaseScriptComponent {
 
   private isShown: boolean = false
 
-  private handProvider: HandInputData = SIK.HandInputData
+  private handProvider: HandInputData = IK.HandInputData
   private menuHand = this.handProvider.getHand("left")
 
   private mCamera = WorldCameraFinderProvider.getInstance()

@@ -4,7 +4,7 @@
  */
 import {DynamicAudioOutput} from "RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component

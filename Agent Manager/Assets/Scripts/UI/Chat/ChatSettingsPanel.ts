@@ -1,7 +1,7 @@
-import animate, { CancelSet } from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import animate, { CancelSet } from "../Shared/MotionAnimate";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
 import { AgentStore } from "../../State/AgentStore";
 import {
   wipeTransition,
@@ -33,7 +33,7 @@ const PAINT_ROLLER_TEXTURE: Texture = requireAsset(
 ) as Texture;
 
 const TILE_WIDTH = 12;
-const TILE_HEIGHT = 10;
+const TILE_HEIGHT = 7;
 const TILE_GAP = 1.2;
 const TILE_ICON_SIZE = 2.5;
 const TILE_COLS = 2;
@@ -91,6 +91,7 @@ export class ChatSettingsPanel {
   private store: AgentStore;
   private selectionView: SettingsSelectionView;
   private animCancels = new CancelSet();
+  private showGeneration = 0;
   private initialized = false;
   private agentId: string | null = null;
   private modelLabel: Text | null = null;
@@ -202,8 +203,17 @@ export class ChatSettingsPanel {
 
   ensureContent(): void {
     if (this.initialized) return;
-    this.initialized = true;
-    this.initContent();
+    // ScrollWindow builds its scroll engine in onAwake, which the engine defers
+    // for objects under a disabled parent — initialize() would then throw on a
+    // null scroller. Build with the root enabled, then restore.
+    const wasEnabled = this.sceneObject.enabled;
+    this.sceneObject.enabled = true;
+    try {
+      this.initContent();
+      this.initialized = true;
+    } finally {
+      this.sceneObject.enabled = wasEnabled;
+    }
   }
 
   getContentHeight(): number {
@@ -228,8 +238,15 @@ export class ChatSettingsPanel {
     this.selectionView.setBackButtonY(y);
   }
 
+  /** Stops in-flight tile/transition animations (e.g. when leaving settings). */
+  cancelPending(): void {
+    this.showGeneration++;
+    this.animCancels.cancel();
+  }
+
   showContent(): void {
     this.animCancels.cancel();
+    const generation = ++this.showGeneration;
 
     // All tiles start from the same absolute Y — just below the bottommost tile.
     const commonStartY = this.tileEntries.reduce(
@@ -249,12 +266,12 @@ export class ChatSettingsPanel {
     this.selectionView.sceneObject.enabled = false;
     this.onSubtitleChanged.invoke(null);
     if (this.scrollWindow) {
-      this.scrollWindow.scrollPositionNormalized = new vec2(0, 1);
+      this.scrollWindow.scrollPositionNormalized = new vec2(0, 0);
     }
-    this.animateTilesIn(commonStartY);
+    this.animateTilesIn(commonStartY, generation);
   }
 
-  private animateTilesIn(commonStartY: number): void {
+  private animateTilesIn(commonStartY: number, generation: number): void {
     if (this.tileEntries.length === 0) return;
 
     const sorted = [...this.tileEntries].sort(
@@ -267,7 +284,7 @@ export class ChatSettingsPanel {
       const startLocalY = commonStartY - wrapperY;
 
       setTimeout(() => {
-        if (isNull(sceneObject)) return;
+        if (isNull(sceneObject) || generation !== this.showGeneration) return;
         animate({
           duration: TILE_ANIM_DURATION,
           easing: "ease-out-cubic",
@@ -466,7 +483,7 @@ export class ChatSettingsPanel {
     });
 
     initializeScrollWindow(this.scrollWindow);
-    this.scrollWindow.scrollPositionNormalized = new vec2(0, 1);
+    this.scrollWindow.scrollPositionNormalized = new vec2(0, 0);
 
     createVerticalScrollBar(
       this.contentObject,
@@ -519,7 +536,9 @@ export class ChatSettingsPanel {
     const col = index % TILE_COLS;
     const row = Math.floor(index / TILE_COLS);
     const x = -gridWidth / 2 + TILE_WIDTH / 2 + col * (TILE_WIDTH + TILE_GAP);
-    const y = fullHeight / 2 - TILE_HEIGHT / 2 - row * (TILE_HEIGHT + TILE_GAP);
+    // "Center" content origin is viewport-relative: content top = window top.
+    const y =
+      this.getContentHeight() / 2 - TILE_HEIGHT / 2 - row * (TILE_HEIGHT + TILE_GAP);
     return new vec3(x, y, 0);
   }
 

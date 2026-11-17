@@ -1,4 +1,4 @@
-import {BaseButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
+import {BaseButton} from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
 import {MapComponent} from "MapComponentModified/Scripts/MapComponent"
 import {GeoLocationPlace} from "NavigationKit.lspkg/NavigationDataComponent/GeoLocationPlace"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"

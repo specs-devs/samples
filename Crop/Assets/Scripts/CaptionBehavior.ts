@@ -3,7 +3,7 @@
  * Caption Behavior component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
 
 @component
 export class CaptionBehavior extends BaseScriptComponent {

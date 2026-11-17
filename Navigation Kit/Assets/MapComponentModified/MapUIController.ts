@@ -1,11 +1,11 @@
 // PinchButton/ToggleButton were removed from SIK 2.0. Pinch buttons now use the
-// Interactable's onTriggerEnd directly; the toggle uses the SpectaclesUIKit
+// Interactable's onTriggerEnd directly; the toggle uses the UIKit
 // Button in toggle mode (isOn + onValueChange). Inspector references must point
 // at the Interactable / Button components on those objects.
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {InteractorEvent} from "InteractionKit.lspkg/Core/Interactor/InteractorEvent"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {MapComponent} from "./Scripts/MapComponent"

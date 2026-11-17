@@ -8,7 +8,7 @@
 
 ## Overview
 
-This sample project shows how to connect to multiple AI APIs — Gemini Live, OpenAI Realtime, Gemini image generation, OpenAI DALL-E, and Snap3D — using the Remote Service Gateway package in Lens Studio. It demonstrates real-time audio and video streaming to large language models, text-to-image generation, and text-to-3D generation with interactive results in the SPECS environment. See more at the [Remote Service Gateway documentation](https://developers.snap.com/spectacles/about-spectacles-features/overview).
+This sample project shows how to connect to multiple AI APIs — Gemini Live, OpenAI Realtime, Gemini and OpenAI image generation and editing, and Snap3D — using the Remote Service Gateway package in Lens Studio. It demonstrates real-time audio and video streaming to large language models, text-to-image generation and editing, and text-to-3D generation with interactive results in the SPECS environment. See more at the [Remote Service Gateway documentation](https://developers.snap.com/spectacles/about-spectacles-features/overview).
 
 > **NOTE**: This project will only work for the SPECS platform. You must set the simulation mode in the Lens Studio Preview panel to `SPECS 27`. You must also provide your own Remote Service Gateway Key to use the functionality provided by this project.
 
@@ -19,18 +19,18 @@ Get started using our [Design Guidelines](https://developers.snap.com/spectacles
 
 ## Prerequisites
 
-- **Lens Studio**: v5.24+
+- **Lens Studio**: v5.25+
 
-**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://developers.specs.com) for your SPECS device and OS versions.
 
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
 
-To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 The camera feature requires you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
 
@@ -65,9 +65,9 @@ Until the Snap, OpenAI and Google tokens are set, a red-framed **Credentials nee
 
 [OpenAIAssistant.ts](./Assets/Scripts/OpenAIAssistant.ts) - Manages the OpenAI Realtime WebSocket session, handling audio streaming, text responses, and function calls with call ID tracking.
 
-[ImageGenerator.ts](./Assets/Scripts/ImageGenerator.ts) - Wraps the Gemini and OpenAI image generation APIs to return a Texture promise from a text prompt.
+[ImageGenerator.ts](./Assets/Scripts/ImageGenerator.ts) - Wraps the Gemini (`gemini-3.1-flash-image`) and OpenAI (`gpt-image-2`) image APIs: generates an image from a text prompt, and edits the last image from an instruction (OpenAI `imagesEdit` / Gemini with the image inline). Edits reuse the image bytes the API returned, so no texture is encoded on the device.
 
-[InteractableImageGenerator.ts](./Assets/Scripts/InteractableImageGenerator.ts) - Connects ASR voice queries to the ImageGenerator and displays the resulting image on screen.
+[InteractableImageGenerator.ts](./Assets/Scripts/InteractableImageGenerator.ts) - Connects ASR voice queries to the ImageGenerator and displays the result. Once an image exists, a query starting with "edit", "change", "make", "add", "remove", "turn", "put" or "give" (for example "add a hat") edits it; any other query generates a new image.
 
 [InteractableSnap3DGenerator.ts](./Assets/Scripts/InteractableSnap3DGenerator.ts) - Connects ASR voice queries to the Snap3D factory to generate 3D objects at a target scene position.
 

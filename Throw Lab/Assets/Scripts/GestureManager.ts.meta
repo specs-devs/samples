@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 1ce783cc-42e1-4b57-becb-65470cea2a28
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -33,6 +34,7 @@
     detectionRadius: false
     enableLogging: false
     enableLoggingLifecycle: false
+    grabAssistRadius: false
     leftHandTrackingAsset: false
     minPinchStrength: false
     rightHandTrackingAsset: false
@@ -48,6 +50,7 @@
     - leftHandTrackingAsset: !<reference.HandTracking3DAsset> 00000000-0000-0000-0000-000000000000
       rightHandTrackingAsset: !<reference.HandTracking3DAsset> 00000000-0000-0000-0000-000000000000
       detectionRadius: !<float> 2.000000
+      grabAssistRadius: !<float> 6.000000
       minPinchStrength: 0.300000
       debugLeftHandPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       debugRightHandPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
@@ -64,7 +67,8 @@
     - '// @input Asset.HandTracking3DAsset rightHandTrackingAsset {"hint":"Right hand tracking asset"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Detection Settings</span>"}'
-    - '// @input float detectionRadius = 1.5 {"hint":"Detection radius around finger tips (in cm)"}'
+    - '// @input float detectionRadius = 3 {"hint":"Detection radius around finger tips (in cm)"}'
+    - "// @input float grabAssistRadius = 6 {\"hint\":\"Grab assist (cm): when a pinch or fist doesn't touch an object, the nearest grabbable object whose surface is within this distance of the hand is grabbed. 0 turns it off.\"}"
     - '// @input float minPinchStrength = 0.3 {"hint":"Minimum pinch strength to maintain grab (0-1)"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug Visuals</span>"}'

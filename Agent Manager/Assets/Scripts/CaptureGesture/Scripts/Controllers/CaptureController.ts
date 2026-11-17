@@ -5,16 +5,16 @@ import { UIController } from "../UI/UIController";
 import { UIElement } from "../UI/UIElement";
 import { InteractionController } from "./InteractionController";
 
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { CaptureStateMachine } from "../UI/CaptureStateMachine";
 import { CornerController } from "./CornerController";
 import {
   Interactor,
   InteractorInputType,
-} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
-import { InteractionManager } from "SpectaclesInteractionKit.lspkg/Core/InteractionManager/InteractionManager";
+} from "InteractionKit.lspkg/Core/Interactor/Interactor";
+import { InteractionManager } from "InteractionKit.lspkg/Core/InteractionManager/InteractionManager";
 import { CropGestureFrame } from "../UI/CropGestureFrame";
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
 
 const CAPTURE_SFX: AudioTrackAsset = requireAsset(
   "../../../../Audio/capture_photo.mp3",
@@ -116,7 +116,7 @@ export class CaptureController extends BaseScriptComponent {
     const frameObj = global.scene.createSceneObject("CropGestureFrame");
     frameObj.setParent(root);
     // Frame self-initializes on its OnStartEvent (no manual initialize() in
-    // the new SpectaclesUIKit). CropGestureFrame gates its Frame access on
+    // the new UIKit). CropGestureFrame gates its Frame access on
     // frame.onInitialized, so no explicit init is needed here.
     frameObj.createComponent(Frame.getTypeName()) as Frame;
     this.cropGestureFrame = frameObj.createComponent(
@@ -263,6 +263,7 @@ export class CaptureController extends BaseScriptComponent {
           this.interactionController.reset();
         },
         onEnterGesturing: () => {
+          this.isPreviewMode = false;
           this.resetCapture();
           this.uiController.setCaptureToLiveCrop();
         },
@@ -276,6 +277,7 @@ export class CaptureController extends BaseScriptComponent {
           }
         },
         onEnterClosing: () => {
+          this.cropGestureFrame.closeFrame();
           this.uiController.closeWindow(() => {
             this.resetCapture();
             if (this.stateMachine) {
@@ -299,12 +301,17 @@ export class CaptureController extends BaseScriptComponent {
   }
 
   public closeCaptureGesture() {
+    // Fade the frame out alongside the shrink instead of letting it follow the
+    // picture down to 0.01 scale (where the Frame mesh inverts).
+    this.isPreviewMode = false;
+    this.cropGestureFrame.closeFrame();
     this.uiController.closeWindow(() => {
       this.resetCapture();
     });
   }
 
   private resetCapture() {
+    this.isPreviewMode = false;
     this.cropGestureFrame.closeFrame();
     this.uiController.reset();
     this.uiController.setCaptureToLiveCrop();

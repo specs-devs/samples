@@ -2,9 +2,9 @@
  * SPECS Inc. 2027
  * Selection Controller for the AI Music Gen Glasses lens experience.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {ASRQueryController} from "./ASRQueryController"
@@ -88,7 +88,7 @@ export class SelectionController extends BaseScriptComponent {
     this._isGenerateVisible = false
     // _generateButton is a deprecated RectangleButton; onTriggerUp may be
     // undefined at runtime. Guard so the lens does not crash. Replace with the
-    // new SpectaclesUIKit Button component in the scene to restore clicks.
+    // new UIKit Button component in the scene to restore clicks.
     ;(this._generateButton as any).onTriggerUp?.add(this._onGenerate.bind(this))
     if (this.asrController) {
       this.asrController.onQueryEvent.add((query) => {

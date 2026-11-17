@@ -14,7 +14,7 @@ export const SCROLLBAR_GAP = 1.75;
 export const ANIM_DURATION = 0.35;
 
 export const SETTINGS_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/settings.png",
+  "Icons.lspkg/Iconography/System/gear.png",
 ) as Texture;
 export const BOT_GROUP_TEXTURE: Texture = requireAsset(
   "../../../Visuals/Textures/BotGroup.png",
@@ -26,23 +26,23 @@ export const UNLINK_TEXTURE: Texture = requireAsset(
   "../../../Visuals/Textures/unlink.png",
 ) as Texture;
 export const CLOSE_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/close-icon-1.png",
+  "Icons.lspkg/Iconography/System/close.png",
 ) as Texture;
 export const ATTACH_TEXTURE: Texture = requireAsset(
   "../../../Visuals/Textures/attach.png",
 ) as Texture;
 export const TRASH_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Trash.png",
+  "Icons.lspkg/Iconography/System/trash.png",
 ) as Texture;
 export const CHEVRON_LEFT_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Chevron-left.png",
+  "Icons.lspkg/Iconography/Arrows/chevron-left.png",
 ) as Texture;
 export const SPARKLES_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Sparkles.png",
+  "Icons.lspkg/Iconography/System/sparkles.png",
 ) as Texture;
 export const MICROPHONE_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Microphone.png",
+  "Icons.lspkg/Iconography/Media/microphone-on.png",
 ) as Texture;
 export const SEND_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Send.png",
+  "Icons.lspkg/Iconography/Communication-people/send-to.png",
 ) as Texture;

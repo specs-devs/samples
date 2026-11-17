@@ -4,13 +4,13 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
-import { Switch } from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
+import { Switch } from "UIKit.lspkg/Scripts/Components/Switch/Switch"
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element"
-import { GradientParameters } from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element"
+import { GradientParameters } from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
 
 // ─── Shared: neutral knob (OFF state, used by all styles) ─────────────────────
 // A soft lavender-gray circle that reads cleanly against any dark OFF track

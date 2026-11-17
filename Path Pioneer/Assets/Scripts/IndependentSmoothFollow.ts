@@ -4,9 +4,9 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
-import {clamp, DegToRad, smoothDamp, smoothDampAngle} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
-import {validate} from "SpectaclesInteractionKit.lspkg/Utils/validate"
+import {setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {clamp, DegToRad, smoothDamp, smoothDampAngle} from "InteractionKit.lspkg/Utils/mathUtils"
+import {validate} from "InteractionKit.lspkg/Utils/validate"
 
 /**
  * SmoothFollow is a body dynamic behavior which when applied to a scene object,

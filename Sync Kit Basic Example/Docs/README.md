@@ -28,7 +28,7 @@ each Sync Kit feature working on its own, in both TypeScript and JavaScript.
 - Shows the three ways to spawn networked objects: automatic instantiation, and instantiation from TypeScript or
   JavaScript.
 - Ownership is visible and controllable through the debug panel.
-- The example scripts come from the bundled `SpectaclesSyncKit.lspkg` (its `Examples/` folder, e.g.
+- The example scripts come from the bundled `SyncKit.lspkg` (its `Examples/` folder, e.g.
   `SyncEntityExample.ts`, `InstantiatorExample.ts`, `StorageProperty/TextStoragePropertyExample.ts`); the project's
   own `Assets/Scripts` only holds the guide and carousel.
 

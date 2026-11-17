@@ -1,5 +1,5 @@
-import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
-import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
+import {LensConfig} from "InteractionKit.lspkg/Utils/LensConfig"
+import {UpdateDispatcher} from "InteractionKit.lspkg/Utils/UpdateDispatcher"
 
 /**
  * Animates a two-texture loading swirly.

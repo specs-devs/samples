@@ -1,18 +1,19 @@
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
 const FRAME_PADDING = 2
 const BUTTON_WIDTH = 20
 const BUTTON_HEIGHT = 5
 const BUTTON_GAP = 1.5
 const CONTENT_Z = 0.5
-const LABEL_Z = 0.3
+const LABEL_Z = 0.65 // button labels sit in front of the 1 cm deep button face (+0.5 cm), never inside it
 const LABEL_SIZE = 64
 const CONTENT_RENDER_ORDER = 10
-// Pulls the guide toward the viewer so it never shares a depth plane with other panels.
-const FRAME_FORWARD_OFFSET = 10
+// Pulls the authored guide frame slightly toward the viewer so it never shares a depth plane with
+// other panels (the carousel and the examples stay hidden until the guide is dismissed).
+const FRAME_FORWARD_OFFSET = 2
 // Distance (cm) in front of the head pose where the guide appears.
 const GUIDE_DISTANCE = 110
 

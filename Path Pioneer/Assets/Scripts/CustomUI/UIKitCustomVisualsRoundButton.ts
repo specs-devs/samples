@@ -4,13 +4,13 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
+import { RoundButton } from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element"
-import { GradientParameters } from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual"
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element"
+import { GradientParameters } from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle"
 
 // ─── Style: Candy ─────────────────────────────────────────────────────────────
 const CANDY_DEFAULT: GradientParameters = {

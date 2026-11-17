@@ -12,7 +12,7 @@
   Enabled: true
   ScriptAsset: !<reference> 87f39a88-1048-4f1c-ac27-9932b6953863
   ScriptInputsDefault:
-    minVelocityThreshold: true
+    minVelocityThreshold: false
     velocityToVolume: true
     enableLogging: true
     enableLoggingLifecycle: true
@@ -21,7 +21,7 @@
   ScriptInputs:
     "":
       collisionSound: !<reference.AudioComponent> 53979156-a2fb-4a49-90f9-aec1637610dd
-      minVelocityThreshold: !<float> 5.000000
+      minVelocityThreshold: !<float> 30.000000
       velocityToVolume: 0.050000
       enableLogging: false
       enableLoggingLifecycle: false
@@ -173,6 +173,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<BodyComponent/ba28ddf5-1993-4c4a-93ee-4117d1981f6a>
@@ -191,6 +192,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
   Dynamic: true
@@ -221,8 +223,8 @@
       destroyDelay: 4.500000
       scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       dartThrowForce: !<float> 800.000000
-      ballThrowForce: !<float> 20.000000
-      handVelocityMultiplier: 0.300000
+      ballThrowForce: !<float> 100.000000
+      handVelocityMultiplier: 0.600000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:

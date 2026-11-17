@@ -3,7 +3,7 @@
  * Path Maker component for the Path Pioneer Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
 import {SurfaceDetection} from "../SurfaceDetection/Scripts/SurfaceDetection"
 import {PathData} from "./BuiltPathData"
 import {LineController} from "./LineController"

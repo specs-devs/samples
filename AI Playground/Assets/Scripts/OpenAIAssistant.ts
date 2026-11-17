@@ -7,7 +7,7 @@ import {AudioProcessor} from "RemoteServiceGateway.lspkg/Helpers/AudioProcessor"
 import {DynamicAudioOutput} from "RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput"
 import {MicrophoneRecorder} from "RemoteServiceGateway.lspkg/Helpers/MicrophoneRecorder"
 import {OpenAITypes} from "RemoteServiceGateway.lspkg/HostedExternal/OpenAITypes"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {PlaygroundLogger} from "./PlaygroundLogger"
 

@@ -30,6 +30,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
   Dynamic: false
@@ -128,8 +129,8 @@
       destroyDelay: 4.500000
       scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       dartThrowForce: !<float> 800.000000
-      ballThrowForce: !<float> 20.000000
-      handVelocityMultiplier: 0.300000
+      ballThrowForce: !<float> 100.000000
+      handVelocityMultiplier: 0.600000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:

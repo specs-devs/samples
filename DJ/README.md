@@ -19,18 +19,18 @@ Get started using our [Design Guidelines](https://developers.snap.com/spectacles
 
 ## Prerequisites
 
-- **Lens Studio**: v5.24+
+- **Lens Studio**: v5.25+
 
-**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://developers.specs.com) for your SPECS device and OS versions.
 
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
 
-To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 The hand tracking features require you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
 
@@ -66,7 +66,7 @@ The project should be pre-configured to get you started without any additional s
 
 ### In Lens Studio Editor
 
-1. Open the project file `DJ.esproj` in Lens Studio 5.15.4+.
+1. Open the project file `DJ.esproj` in Lens Studio 5.25+.
 2. Open the Preview panel and select a SPECS device preview configuration.
 3. Verify that all audio tracks appear in the track selection menu on the left.
 4. Use the simulated hand-tracking controls to test vinyl rotation and deck snapping.

@@ -4,7 +4,7 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindLateUpdateEvent } from "SnapDecorators.lspkg/decorators";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 import { FloatArrayWrapper } from "./FloatArrayWrapper";
 import { SharedState } from "./SharedState";
 import { EMBEDDED_TRACKS } from "./EmbeddedTracks/EmbeddedTracks";

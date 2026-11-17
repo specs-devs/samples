@@ -1,10 +1,10 @@
-import {clamp, smoothDamp, smoothDampAngle} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
+import {clamp, smoothDamp, smoothDampAngle} from "InteractionKit.lspkg/Utils/mathUtils"
 
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
-import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
-import {validate} from "SpectaclesInteractionKit.lspkg/Utils/validate"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {LensConfig} from "InteractionKit.lspkg/Utils/LensConfig"
+import {UpdateDispatcher} from "InteractionKit.lspkg/Utils/UpdateDispatcher"
+import {validate} from "InteractionKit.lspkg/Utils/validate"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 import {delayAFrame} from "../Scripts/DelayAFrame"
@@ -40,7 +40,7 @@ export class ContainerMover extends BaseScriptComponent {
   enableLoggingLifecycle: boolean = false
 
   private logger: Logger
-  // ContainerFrame → SpectaclesUIKit Frame (re-add the Frame component in scene).
+  // ContainerFrame → UIKit Frame (re-add the Frame component in scene).
   private container: Frame
   private updateDispatcher: UpdateDispatcher = LensConfig.getInstance().updateDispatcher
 

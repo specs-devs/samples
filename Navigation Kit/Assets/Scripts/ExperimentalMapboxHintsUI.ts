@@ -1,7 +1,7 @@
-import {GridLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
-import {GridItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import {GridLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
+import {GridItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 import {ExperimentalMapboxHints, HintsUpdate, DirectionStep} from "./ExperimentalMapboxHints"
 
 const TAG = "[ExperimentalMapboxHintsUI]"

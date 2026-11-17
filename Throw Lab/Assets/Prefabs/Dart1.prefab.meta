@@ -31,6 +31,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
   Dynamic: false
@@ -175,7 +176,6 @@
   ScriptAsset: !<reference> 8161d97f-cfdc-4bca-bbbf-6bdb6b553795
   ScriptInputsDefault:
     ballThrowForce: true
-    handVelocityMultiplier: true
     enableLogging: true
     enableLoggingLifecycle: true
   ScriptTypesDefault:
@@ -186,9 +186,9 @@
       matchTransform: !<MappingBased.AssignableType_1> 4648fd7c-fc28-4bf9-b0bf-d68fdcc13568
       destroyDelay: !<float> 10.000000
       scoreBoard: !<reference.SceneObject> 52db6ea7-dac1-4a75-9d8d-f9018e1cec95
-      dartThrowForce: !<float> 170.000000
+      dartThrowForce: !<float> 240.000000
       ballThrowForce: !<float> 150.000000
-      handVelocityMultiplier: 0.300000
+      handVelocityMultiplier: 0.600000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:

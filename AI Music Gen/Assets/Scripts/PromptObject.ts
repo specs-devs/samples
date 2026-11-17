@@ -2,8 +2,8 @@
  * SPECS Inc. 2027
  * Prompt Object component for the AI Music Gen Glasses lens.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {RoundButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import {RoundButton} from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {SelectionController} from "./SelectionController"
@@ -55,7 +55,7 @@ export class PromptObject extends BaseScriptComponent {
   @bindStartEvent
   onStart(): void {
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onStart()")
-    // RoundButton/RectangleButton are deprecated in the updated SpectaclesUIKit
+    // RoundButton/RectangleButton are deprecated in the updated UIKit
     // and no longer instantiate at runtime, so initialize()/onTriggerUp may be
     // undefined. Guard so the lens does not crash; replace this with the new
     // Button component in the scene to restore interactivity.

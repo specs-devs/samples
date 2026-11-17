@@ -1,7 +1,7 @@
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+} from "../../../UI/Shared/MotionAnimate";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { CornerController } from "../Controllers/CornerController";
 import { InteractionController } from "../Controllers/InteractionController";
 import { CropRegion } from "../Core/CropRegion";

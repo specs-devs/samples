@@ -86,7 +86,14 @@ export class ToolPickerBehavior extends BaseScriptComponent {
         const spawnPos = spawnPointT.getWorldPosition()
 
         if (objPos.distance(spawnPos) > this.distanceOffset) {
-          sceneObj.setParent(null)
+          // Only detach tools that were knocked off while still sitting in the picker. A grabbed tool is
+          // already unparented by GrabbableObject; re-parenting it here, while it flies after a throw,
+          // resets its physics body and kills the throw (that was the "first throw doesn't fly" bug).
+          const parent = sceneObj.getParent()
+          const stillInPicker = !!parent && !!this.containerObj && parent.isSame(this.containerObj)
+          if (stillInPicker) {
+            sceneObj.setParent(null)
+          }
           this.spawnAndReplace(ind)
         }
       } catch (e) {

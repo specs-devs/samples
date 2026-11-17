@@ -2,11 +2,11 @@
  * SPECS Inc. 2027
  * Interactable Line Projection component for the DJ lens.
  */
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {
   InteractableManipulation,
   TransformEventArg
-} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
 

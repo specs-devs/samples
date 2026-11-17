@@ -68,13 +68,15 @@ export class InteractableImageGenerator extends BaseScriptComponent {
   }
 
   createImage(prompt: string): void {
-    PlaygroundLogger.log(`Image request sent (${this.modelProvider}): "${prompt}"`)
+    // Once an image exists, an instruction like "add a hat" or "make it night" edits it.
+    const isEdit = this.imageGenerator.hasImage() && /^\s*(edit|change|make|add|remove|turn|put|give)\b/i.test(prompt)
+    PlaygroundLogger.log(`Image ${isEdit ? "edit" : "request"} sent (${this.modelProvider}): "${prompt}"`)
     this.spinner.enabled = true
-    this.textDisplay.text = "Generating: " + prompt
-    this.imageGenerator
-      .generateImage(prompt)
+    this.textDisplay.text = (isEdit ? "Editing: " : "Generating: ") + prompt
+    const request = isEdit ? this.imageGenerator.editImage(prompt) : this.imageGenerator.generateImage(prompt)
+    request
       .then((image) => {
-        PlaygroundLogger.log("Image generated — displayed")
+        PlaygroundLogger.log(isEdit ? "Image edited — displayed" : "Image generated — displayed")
         this.logger.success("Image generated successfully: " + image)
         this.textDisplay.text = prompt
         this.image.mainMaterial.mainPass.baseTex = image

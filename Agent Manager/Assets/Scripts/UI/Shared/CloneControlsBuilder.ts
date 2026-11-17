@@ -1,5 +1,6 @@
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "./SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
 import { HorizontalFrame } from "../Elements/HorizontalFrame";
 import { createImage } from "./ImageFactory";
 import { createTooltip } from "./UIBuilders";
@@ -15,7 +16,7 @@ export interface CloneControlsCallbacks {
 
 export interface CloneControlsResult {
   closeObj: SceneObject;
-  closeBtn: RoundButton;
+  closeBtn: Button;
   closeIconImage: Image;
   closeTooltip: Tooltip;
 }
@@ -52,11 +53,9 @@ export function createCloneControls(
     );
   closeObj.getTransform().setLocalRotation(uprightRot);
 
-  const closeBtn = closeObj.createComponent(
-    RoundButton.getTypeName(),
-  ) as RoundButton;
+  const closeBtn = createSystemButton(closeObj, "Ghost");
   closeBtn.initialize();
-  closeBtn.width = buttonWidth;
+  closeBtn.size = new vec3(buttonWidth, buttonWidth, 1);
 
   closeBtn.visual.hoveredPosition = forwardInContent;
   closeBtn.visual.triggeredPosition = forwardInContent.uniformScale(0.5);
@@ -70,7 +69,10 @@ export function createCloneControls(
     size: iconSize,
   });
 
-  const closeTooltip = createTooltip(closeObj, "Close");
+  const closeTooltip = createTooltip(closeObj, "Close", {
+    placement: "above",
+    targetSize: new vec2(buttonWidth, buttonWidth),
+  });
 
   closeBtn.onTriggerUp.add(callbacks.onClose);
   closeBtn.interactable.onHoverEnter.add(callbacks.onHoverEnter);

@@ -22,13 +22,21 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 1c2df40e-a0db-498a-a02a-728d14661fc0
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     distanceObject: false
+    followOffset: false
+    followWhenFar: false
+    freeColor: false
     planeTransform: false
+    snapColorVisual: false
     snapDistance: false
+    snappedColor: false
     snappingObject: false
   ScriptTypesHidden:
     {}
@@ -43,6 +51,11 @@
       snappingObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       distanceObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       snapDistance: !<float> 1.000000
+      followWhenFar: true
+      followOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      snapColorVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      freeColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      snappedColor: !<Vec4> {x: 0.200000, y: 0.900000, z: 0.400000, w: 1.000000}
   ScriptTypes:
     -
       {}

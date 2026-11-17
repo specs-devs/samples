@@ -1,4 +1,4 @@
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
 import {MapComponent} from "./Scripts/MapComponent"
@@ -8,7 +8,7 @@ export class MapMessageController extends BaseScriptComponent {
   @ui.label('<span style="color: #60A5FA;">References</span>')
   @input
   private mapComponent: MapComponent
-  // ContainerFrame was removed from SIK 2.0; replaced by the SpectaclesUIKit
+  // ContainerFrame was removed from SIK 2.0; replaced by the UIKit
   // Frame (re-add the Frame component to this object and re-point the input).
   @input
   private container: Frame

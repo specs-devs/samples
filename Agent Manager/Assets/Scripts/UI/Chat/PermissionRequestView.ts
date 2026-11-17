@@ -1,18 +1,18 @@
-import { CancelSet } from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { Switch } from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch";
+import { CancelSet } from "../Shared/MotionAnimate";
+import Event from "InteractionKit.lspkg/Utils/Event";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { Switch } from "UIKit.lspkg/Scripts/Components/Switch/Switch";
 import { PermissionPayload } from "../../Api/Supabase/Bridge/BridgeTypes";
-import { TextSize, TextFont } from "../Shared/TextSizes";
 import { createIconButton, createText } from "../Shared/UIBuilders";
 import { scaleIn } from "../Shared/UIAnimations";
 import { CLOSE_TEXTURE, SPARKLES_TEXTURE } from "../Shared/UIConstants";
 import { PermissionExplainerService } from "../../Services/PermissionExplainerService";
 import { ChatMessage } from "../../Types";
 import { LoadingSpinner } from "../../../Visuals/LoadingSpinner/LoadingSpinner";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 
 const CHECKMARK_TEXTURE: Texture = requireAsset(
-  "../../../Visuals/Textures/Checkmark.png",
+  "Icons.lspkg/Iconography/Alerts-notifications/checkmark.png",
 ) as Texture;
 
 const PERMISSION_REQUEST_SFX: AudioTrackAsset = requireAsset(
@@ -119,8 +119,7 @@ export class PermissionRequestView {
       parent: container,
       name: "PermTool",
       text: `Permission: ${payload.tool}`,
-      size: TextSize.XL,
-      font: TextFont.SemiBold,
+      style: TextStyle.DialogTitle,
       color: new vec4(1, 1, 1, 1),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -131,8 +130,8 @@ export class PermissionRequestView {
       parent: container,
       name: "PermDesc",
       text: payload.description,
-      size: TextSize.L,
-      color: new vec4(1, 1, 1, 0.8),
+      style: TextStyle.Body,
+      color: TextColor.Secondary,
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,
       layoutRect: Rect.create(-textWidth / 2, textWidth / 2, -50, 50),
@@ -264,7 +263,6 @@ export class PermissionRequestView {
       height: BTN_HEIGHT,
       label: "Deny",
       position: new vec3(-totalBtnWidth / 2 + BTN_WIDTH / 2, cursorY, Z),
-      fontSize: TextSize.M,
       icon: CLOSE_TEXTURE,
     });
     denyBtn.button.onTriggerUp.add(() => {
@@ -279,7 +277,6 @@ export class PermissionRequestView {
       height: BTN_HEIGHT,
       label: "Allow",
       position: new vec3(totalBtnWidth / 2 - BTN_WIDTH / 2, cursorY, Z),
-      fontSize: TextSize.M,
       icon: CHECKMARK_TEXTURE,
     });
     allowBtn.button.onTriggerUp.add(() => {
@@ -313,7 +310,6 @@ export class PermissionRequestView {
         height: EXPLAIN_BTN_HEIGHT,
         label: "Explain",
         position: new vec3(0, cursorY, Z),
-        fontSize: TextSize.S,
         icon: SPARKLES_TEXTURE,
       });
 
@@ -398,6 +394,8 @@ export class PermissionRequestView {
           payload.description,
           recentMessages,
         ).then((result) => {
+          // Card may have been hidden/replaced while the request was in flight.
+          if (isNull(container) || container !== this.container) return;
           spinnerObj.enabled = false;
           descText.getSceneObject().enabled = true;
           descText.text = result;
@@ -422,8 +420,7 @@ export class PermissionRequestView {
       parent: toggleRowObj,
       name: "PermToggleLabel",
       text: "Auto-allow for session",
-      size: TextSize.M,
-      font: TextFont.Medium,
+      style: TextStyle.Label,
       color: new vec4(1, 1, 1, 1),
       position: new vec3(labelX, 0, 0),
       horizontalAlignment: HorizontalAlignment.Left,
@@ -454,8 +451,7 @@ export class PermissionRequestView {
       parent: container,
       name: "PermFooter",
       text: agentName,
-      size: TextSize.XS,
-      font: TextFont.Light,
+      style: TextStyle.Caption,
       color: AGENT_NAME_COLOR,
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Left,

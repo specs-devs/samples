@@ -7,7 +7,7 @@ import {
 } from "./Api/AgentProvider";
 import {
   setTimeout,
-} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 
 const TAG = "[InstancePolling]";
 
@@ -79,68 +79,68 @@ export class InstancePollingManager {
     }
     let hasActive = false;
 
-    for (const provider of this.providerRegistry.getAllProviders()) {
-      if (provider.providerId === "bridge") continue;
+    try {
+      for (const provider of this.providerRegistry.getAllProviders()) {
+        if (provider.providerId === "bridge") continue;
 
-      const agentId = `${provider.providerId}-agent`;
-      const topics = this.store.getTopicsForAgent(agentId);
+        const agentId = `${provider.providerId}-agent`;
+        const topics = this.store.getTopicsForAgent(agentId);
 
-      const activeTopics = topics.filter((topic) => {
-        const status = topic.metadata?.status;
-        return (
-          (status === AgentInstanceStatus.Creating ||
-            status === AgentInstanceStatus.Running) &&
-          topic.externalId
-        );
-      });
-
-      if (activeTopics.length > 0) {
-        hasActive = true;
-        const results = await Promise.all(
-          activeTopics.map(async (topic) => {
-            try {
-              return {
-                topic,
-                instance: await provider.getAgentStatus(topic.externalId!),
-              };
-            } catch (e) {
-              print(`${TAG} Poll failed for ${topic.externalId}: ${e}`);
-              return null;
-            }
-          }),
-        );
-
-        for (const result of results) {
-          if (!result) continue;
-          this.store.updateTopicMetadata(
-            result.topic.id,
-            buildInstanceMetadata(result.instance),
+        const activeTopics = topics.filter((topic) => {
+          const status = topic.metadata?.status;
+          return (
+            (status === AgentInstanceStatus.Creating ||
+              status === AgentInstanceStatus.Running) &&
+            topic.externalId
           );
-          if (isTerminalStatus(result.instance.status)) {
-            this.callbacks.fetchConversation(
-              agentId,
-              result.topic.externalId!,
-              provider.providerId,
+        });
+
+        if (activeTopics.length > 0) {
+          hasActive = true;
+          const results = await Promise.all(
+            activeTopics.map(async (topic) => {
+              try {
+                return {
+                  topic,
+                  instance: await provider.getAgentStatus(topic.externalId!),
+                };
+              } catch (e) {
+                print(`${TAG} Poll failed for ${topic.externalId}: ${e}`);
+                return null;
+              }
+            }),
+          );
+
+          for (const result of results) {
+            if (!result) continue;
+            this.store.updateTopicMetadata(
+              result.topic.id,
+              buildInstanceMetadata(result.instance),
             );
+            if (isTerminalStatus(result.instance.status)) {
+              this.callbacks.fetchConversation(
+                agentId,
+                result.topic.externalId!,
+                provider.providerId,
+              );
+            }
           }
         }
+
+        this.callbacks.updateAgentStatusFromTopics(agentId);
       }
-
-      this.callbacks.updateAgentStatusFromTopics(agentId);
-    }
-
-    if (this.isDestroyed()) {
-      this.polling = false;
-      return;
-    }
-
-    if (hasActive) {
-      setTimeout(
-        () => this.pollActiveInstances(),
-        this.POLL_ACTIVE_INTERVAL_MS,
-      );
-    } else {
-      setTimeout(() => this.pollActiveInstances(), this.POLL_IDLE_INTERVAL_MS);
+    } catch (e) {
+      // A throwing listener/callback must not stop the loop.
+      print(`${TAG} Active poll iteration failed: ${e}`);
+    } finally {
+      if (this.isDestroyed()) {
+        this.polling = false;
+      } else {
+        setTimeout(
+          () => this.pollActiveInstances(),
+          hasActive ? this.POLL_ACTIVE_INTERVAL_MS : this.POLL_IDLE_INTERVAL_MS,
+        );
+      }
     }
   }
 

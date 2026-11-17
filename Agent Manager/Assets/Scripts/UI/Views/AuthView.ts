@@ -1,18 +1,18 @@
 require("LensStudio:TextInputModule"); // eslint-disable-line @typescript-eslint/no-require-imports
 
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
-import { InteractionPlane } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractionPlane/InteractionPlane";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { TextInputField } from "SpectaclesUIKit.lspkg/Scripts/Components/TextInputField/TextInputField";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import { InteractionPlane } from "InteractionKit.lspkg/Components/Interaction/InteractionPlane/InteractionPlane";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
+import { TextInputField } from "UIKit.lspkg/Scripts/Components/TextInputField/TextInputField";
 import { createImage } from "../Shared/ImageFactory";
 import { ICON_Z_OFFSET, CHEVRON_LEFT_TEXTURE, PANEL_WIDTH, TITLE_HEIGHT, PANEL_PADDING as PADDING, Z_CONTENT } from "../Shared/UIConstants";
 import { createTooltip, createText } from "../Shared/UIBuilders";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { AuthType } from "../../Types";
+import { TextStyle, TextColor, Layout } from "../Shared/UIStyle";
 
 const INPUT_HEIGHT = 4;
 const INSTRUCTIONS_HEIGHT = 8;
@@ -20,8 +20,8 @@ const BUTTON_HEIGHT = 3;
 const BUTTON_WIDTH = 12;
 const STATUS_HEIGHT = 2.5;
 const SECTION_GAP = 1.5;
-const BACK_BTN_SIZE = 2.5;
-const BACK_BTN_MARGIN = 0.5;
+const BACK_BTN_SIZE = Layout.ICON_BUTTON_SIZE;
+const BACK_BTN_MARGIN = Layout.BACK_BUTTON_MARGIN;
 
 const API_KEY_INSTRUCTIONS =
   "Instructions:\n" +
@@ -52,10 +52,10 @@ export class AuthView {
   private instructionsObj: SceneObject;
   private inputField: TextInputField;
   private inputObj: SceneObject;
-  private submitBtn: RectangleButton;
+  private submitBtn: Button;
   private submitBtnText: Text;
   private statusText: Text;
-  private backBtn: RoundButton;
+  private backBtn: Button;
   private backTooltip: Tooltip;
   private initialized = false;
   private activeProvider = "";
@@ -93,12 +93,10 @@ export class AuthView {
     backBtnObj
       .getTransform()
       .setLocalPosition(new vec3(backBtnX, backBtnY, Z_CONTENT));
-    this.backBtn = backBtnObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
-    this.backBtn.width = BACK_BTN_SIZE;
+    this.backBtn = createSystemButton(backBtnObj, "Ghost");
+    this.backBtn.size = new vec3(BACK_BTN_SIZE, BACK_BTN_SIZE, 1);
 
-    const backIconSize = BACK_BTN_SIZE * 0.45;
+    const backIconSize = BACK_BTN_SIZE * Layout.ICON_RATIO;
     createImage(CHEVRON_LEFT_TEXTURE, {
       parent: backBtnObj,
       name: "BackIcon",
@@ -106,23 +104,30 @@ export class AuthView {
       size: backIconSize,
     });
 
-    this.backTooltip = createTooltip(backBtnObj, "Back");
+    this.backTooltip = createTooltip(backBtnObj, "Back", {
+      placement: "above",
+      targetSize: new vec2(BACK_BTN_SIZE, BACK_BTN_SIZE),
+    });
 
     let cursorY = totalHeight - PADDING.y;
+    const titleHalfWidth =
+      PANEL_WIDTH / 2 - (BACK_BTN_MARGIN + BACK_BTN_SIZE + 0.5);
 
     cursorY -= TITLE_HEIGHT / 2;
     this.titleText = createText({
       parent: this.sceneObject,
       name: "AuthTitle",
       text: "",
-      size: TextSize.XXL,
-      font: TextFont.SemiBold,
+      style: TextStyle.PanelTitle,
       color: new vec4(1, 1, 1, 1),
       position: new vec3(0, cursorY, Z_CONTENT),
+      // Long provider names ("Connect to Cursor Cloud") shrink rather than
+      // running under the back button; the rect clears it on both sides.
+      horizontalOverflow: HorizontalOverflow.Shrink,
       horizontalAlignment: HorizontalAlignment.Center,
       layoutRect: Rect.create(
-        -innerWidth / 2,
-        innerWidth / 2,
+        -titleHalfWidth,
+        titleHalfWidth,
         -TITLE_HEIGHT / 2,
         TITLE_HEIGHT / 2,
       ),
@@ -134,8 +139,8 @@ export class AuthView {
       parent: this.sceneObject,
       name: "Instructions",
       text: API_KEY_INSTRUCTIONS,
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.7),
+      style: TextStyle.Body,
+      color: TextColor.Secondary,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Left,
@@ -161,15 +166,15 @@ export class AuthView {
       TextInputField.getTypeName(),
     ) as TextInputField;
     this.inputField.size = new vec3(innerWidth, INPUT_HEIGHT, 0.5);
+    // No dictation: a spoken pairing code / API key isn't reliable or wanted.
+    this.inputField.actionSlot = "none";
     cursorY -= INPUT_HEIGHT / 2 + SECTION_GAP;
 
     const btnObj = global.scene.createSceneObject("AuthenticateBtn");
     btnObj.setParent(this.sceneObject);
     cursorY -= BUTTON_HEIGHT / 2;
     btnObj.getTransform().setLocalPosition(new vec3(0, cursorY, Z_CONTENT));
-    this.submitBtn = btnObj.createComponent(
-      RectangleButton.getTypeName(),
-    ) as RectangleButton;
+    this.submitBtn = createSystemButton(btnObj, "Primary");
     this.submitBtn.size = new vec3(BUTTON_WIDTH, BUTTON_HEIGHT, 0.5);
     cursorY -= BUTTON_HEIGHT / 2 + SECTION_GAP;
 
@@ -177,8 +182,7 @@ export class AuthView {
       parent: btnObj,
       name: "AuthBtnLabel",
       text: "Authenticate",
-      size: TextSize.S,
-      font: TextFont.SemiBold,
+      style: TextStyle.Button,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalAlignment: HorizontalAlignment.Center,
       layoutRect: Rect.create(
@@ -194,8 +198,8 @@ export class AuthView {
       parent: this.sceneObject,
       name: "AuthStatus",
       text: "",
-      size: TextSize.S,
-      color: new vec4(1, 1, 1, 0.5),
+      style: TextStyle.Secondary,
+      color: TextColor.Muted,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -227,8 +231,11 @@ export class AuthView {
     });
 
     this.submitBtn.initialize();
-
     this.submitBtn.onTriggerUp.add(() => this.handleSubmit());
+
+    // Submit is inactive until there's something to submit.
+    this.inputField.onTextChanged.add(() => this.updateSubmitState());
+    this.updateSubmitState();
   }
 
   showForProvider(
@@ -253,13 +260,22 @@ export class AuthView {
       this.inputField.text = "";
       this.inputField.placeholderText = "Enter 6-digit code";
       this.submitBtnText.text = "Pair";
+      this.updateSubmitState();
     } else {
       this.instructionsText.text = API_KEY_INSTRUCTIONS;
       this.inputObj.enabled = true;
       this.inputField.text = "";
       this.inputField.placeholderText = "Insert User API Key";
       this.submitBtnText.text = "Authenticate";
+      this.updateSubmitState();
     }
+  }
+
+  private updateSubmitState(): void {
+    const hasText = this.inputField.text.trim().length > 0;
+    this.submitBtn.inactive = !hasText;
+    const c = this.submitBtnText.textFill.color;
+    this.submitBtnText.textFill.color = new vec4(c.r, c.g, c.b, hasText ? 1 : 0.4);
   }
 
   setStatus(message: string, isError: boolean = false): void {

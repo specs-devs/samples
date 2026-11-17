@@ -39,8 +39,8 @@ pixel coordinates.
 | `Scripts/DebugVisualizer.ts` | Debug overlay of pixel-space points on the camera frame texture. |
 
 ## Extra info
-- **Requires:** bundled packages `Icons`, `SpectaclesInteractionKit`, `Motion`, `RemoteServiceGateway`, `SnapDecorators`,
-  `SpectaclesUIKit`, `Utilities`. Needs a Remote Service Gateway token on `RemoteServiceGatewayCredentials`, internet
+- **Requires:** bundled packages `Icons`, `InteractionKit`, `Motion`, `RemoteServiceGateway`, `SnapDecorators`,
+  `UIKit`, `Utilities`. Needs a Remote Service Gateway token on `RemoteServiceGatewayCredentials`, internet
   access and the Specs camera. Depth frames are only delivered on device; the Lens Studio Preview runs the
   simulated fallbacks described above.
 - **Get started:** open `Assets/Scene.scene` and start from the `SceneController` object.

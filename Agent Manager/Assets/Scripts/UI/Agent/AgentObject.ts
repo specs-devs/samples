@@ -1,14 +1,14 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { Agent, AgentStatus, ChatTopic } from "../../Types";
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
-import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
-import { TargetingMode } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import { InteractableManipulation } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { TargetingMode } from "InteractionKit.lspkg/Core/Interactor/Interactor";
 import { RobotMeshController } from "../../../Visuals/Scripts/RobotMeshController";
 import { ExplosionController } from "../../../Visuals/Scripts/ExplosionShaderController";
 import { ChatSelectorObject } from "../Chat/ChatSelectorObject";
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
-import { Tooltip } from "SpectaclesUIKit.lspkg/Scripts/Tooltip";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Tooltip } from "UIKit.lspkg/Scripts/Tooltip";
 import {
   RobotState,
   STATUS_TO_ROBOT_STATE,
@@ -16,11 +16,15 @@ import {
   toTitleCase,
 } from "../Shared/RobotTypes";
 import { HorizontalFrame } from "../Elements/HorizontalFrame";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "../Shared/MotionAnimate";
+import {
+  CancelToken,
+  clearTimeout,
+  setTimeout,
+} from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 
 import { createImage } from "../Shared/ImageFactory";
 import { SETTINGS_TEXTURE, ICON_Z_OFFSET } from "../Shared/UIConstants";
@@ -29,8 +33,8 @@ import {
   createAudioComponent,
   createText,
 } from "../Shared/UIBuilders";
-import { createCloneControls } from "../Shared/CloneControlsBuilder";
 import { DirtyComponent } from "../Shared/DirtyComponent";
+import { TextStyle } from "../Shared/UIStyle";
 
 const ROBOT_DESTROY_SFX: AudioTrackAsset = requireAsset(
   "../../../Audio/robotDestroy.wav",
@@ -76,7 +80,7 @@ export class AgentObject extends DirtyComponent {
   private _docked = true;
   private chatSelector: ChatSelectorObject;
   private settingsObj: SceneObject;
-  private settingsBtn: RoundButton;
+  private settingsBtn: Button;
   private settingsHovered = false;
   private nameText: Text;
   private nameObj: SceneObject;
@@ -93,6 +97,7 @@ export class AgentObject extends DirtyComponent {
   private introCancels = new CancelSet();
   private dockReturnCancels = new CancelSet();
   private hoverPushCancels = new CancelSet();
+  private wakeTimer: CancelToken | null = null;
   private explosionPrefab: ObjectPrefab | null = null;
   private _targetPushY = 0;
   private _currentPushY = 0;
@@ -101,7 +106,7 @@ export class AgentObject extends DirtyComponent {
   private _currentSelectedY = UNSELECTED_IDLE_PUSH_Y;
   private _isClone = false;
   private closeObj: SceneObject | null = null;
-  private closeBtn: RoundButton | null = null;
+  private closeBtn: Button | null = null;
   private closeIconImage: Image | null = null;
   private settingsTooltip: Tooltip | null = null;
   private closeTooltip: Tooltip | null = null;
@@ -223,8 +228,7 @@ export class AgentObject extends DirtyComponent {
     this.nameText = createText({
       parent: this.labelContainer,
       name: "AgentName",
-      size: TextSize.L,
-      font: TextFont.SemiBold,
+      style: TextStyle.ItemTitle,
       color: new vec4(1, 1, 1, 1),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -239,8 +243,7 @@ export class AgentObject extends DirtyComponent {
     this.errorText = createText({
       parent: this.labelContainer,
       name: "AgentError",
-      size: TextSize.S,
-      font: TextFont.Medium,
+      style: TextStyle.Secondary,
       color: new vec4(1, 0.4, 0.4, 1),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Center,
@@ -357,15 +360,13 @@ export class AgentObject extends DirtyComponent {
     this.settingsObj = global.scene.createSceneObject("SettingsButton");
     this.settingsObj.setParent(this.labelContainer);
 
-    this.settingsBtn = this.settingsObj.createComponent(
-      RoundButton.getTypeName(),
-    ) as RoundButton;
+    this.settingsBtn = createSystemButton(this.settingsObj, "Secondary");
     this.settingsBtn.setIsToggleable(true);
     this.settingsBtn.initialize();
 
     const buttonWidth = 3;
     const iconSize = buttonWidth / 2;
-    this.settingsBtn.width = buttonWidth;
+    this.settingsBtn.size = new vec3(buttonWidth, buttonWidth, 1);
 
     createImage(SETTINGS_TEXTURE, {
       parent: this.settingsObj,
@@ -375,6 +376,8 @@ export class AgentObject extends DirtyComponent {
     });
 
     this.settingsTooltip = createTooltip(this.settingsObj, "Settings", {
+      placement: "right",
+      targetSize: new vec2(buttonWidth, buttonWidth),
       hoverSource: this.settingsBtn,
     });
 
@@ -394,22 +397,12 @@ export class AgentObject extends DirtyComponent {
   }
 
   private initializeCloneButtons(): void {
-    if (!this.horizontalFrame) return;
-
-    const controls = createCloneControls(this.horizontalFrame, {
-      onClose: () => this.onCloseRequested.invoke(),
-      onHoverEnter: () => {
-        this.settingsHovered = true;
-      },
-      onHoverExit: () => {
-        this.settingsHovered = false;
-      },
+    // The X lives on the clone's title bar (ChatSelectorObject).
+    const selector = this.chatSelector;
+    selector.onCloseRequested.add(() => this.onCloseRequested.invoke());
+    selector.onCloseHoverChanged.add((hovered: boolean) => {
+      this.settingsHovered = hovered;
     });
-
-    this.closeObj = controls.closeObj;
-    this.closeBtn = controls.closeBtn;
-    this.closeIconImage = controls.closeIconImage;
-    this.closeTooltip = controls.closeTooltip;
   }
 
   private initializeInteractions(): void {
@@ -433,6 +426,7 @@ export class AgentObject extends DirtyComponent {
       this.updateDeactivatedSettingsVisibility();
       this.setTracking(true);
       const startY = this._hoverAnimY;
+      this.hoverPushCancels.cancel();
       animate({
         duration: HOVER_ANIM_DURATION,
         easing: "ease-out-cubic",
@@ -451,6 +445,7 @@ export class AgentObject extends DirtyComponent {
       this.updateDeactivatedSettingsVisibility();
       this.setTracking(true);
       const startY = this._hoverAnimY;
+      this.hoverPushCancels.cancel();
       animate({
         duration: HOVER_ANIM_DURATION,
         easing: "ease-in-cubic",
@@ -855,7 +850,9 @@ export class AgentObject extends DirtyComponent {
       }
 
       if (!this._isClone) {
-        setTimeout(() => {
+        this.wakeTimer = setTimeout(() => {
+          this.wakeTimer = null;
+          if (isNull(this.getSceneObject())) return;
           this.hasWokenUp = true;
           this.updateVisuals();
         }, WAKE_DELAY_MS);
@@ -962,6 +959,10 @@ export class AgentObject extends DirtyComponent {
   }
 
   destroy(): void {
+    if (this.wakeTimer !== null) {
+      clearTimeout(this.wakeTimer);
+      this.wakeTimer = null;
+    }
     this.introCancels.cancel();
     this.dockReturnCancels.cancel();
     this.hoverPushCancels.cancel();

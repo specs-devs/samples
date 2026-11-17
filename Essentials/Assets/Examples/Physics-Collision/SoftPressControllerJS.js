@@ -4,8 +4,8 @@
  * Defines on Awake, on Start, is Entering From Top for the Essentials lens.
  */
 // Import required modules
-const mix = require("SpectaclesInteractionKit.lspkg/Utils/animate").mix;
-const clamp = require("SpectaclesInteractionKit.lspkg/Utils/mathUtils").clamp;
+const mix = require("InteractionKit.lspkg/Utils/animate").mix;
+const clamp = require("InteractionKit.lspkg/Utils/mathUtils").clamp;
 
 //@input SceneObject colliderObject {"hint":"The collider that will detect the soft press interaction"}
 //@input SceneObject interactorObject {"hint":"The interactor object (e.g., finger tip)"}

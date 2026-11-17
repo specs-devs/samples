@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/7da7f9e0-4b20-441c-80e9-a22e31385a92>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 95ced55a-375e-4f5a-9d60-792e24d42b63
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 95ced55a-375e-4f5a-9d60-792e24d42b63
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3902c0d3-24aa-4d3e-a07d-9f5bf0a10d4a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3902c0d3-24aa-4d3e-a07d-9f5bf0a10d4a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: c76f3c1f-cfb6-4141-a2fb-ebb18e1e8456
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    runOnAwake: false
+    summaryText: false
+    timeout: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">APITested – self-test of the API and web calls of this project</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs once on awake; results in the Logger (and the optional Text). Turn off runOnAwake to keep it quiet.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool runOnAwake = true {"hint":"Run the checks when the Lens starts"}'
+    - '// @input Component.Text summaryText {"hint":"Optional Text that shows the summary"}'
+    - "// @input float timeout = 20 {\"hint\":\"Seconds before a check that hasn't answered counts as failed\"}"

@@ -8,7 +8,7 @@
 
 ## Overview
 
-This project demonstrates how to build guided tour experiences using the [SPECS Navigation Kit (SNK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started). The example is set in London but users can build their own tours by simply replacing the places of interest.
+This project demonstrates how to build guided tour experiences using the [Navigation Kit (SNK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started). The example is set in London but users can build their own tours by simply replacing the places of interest.
 A search button can be used to populate the list with places nearby to the user.
 
 > **NOTE:**
@@ -16,9 +16,9 @@ A search button can be used to populate the list with places nearby to the user.
 
 ### Other Useful Projects
 
-This project differs from the [Outdoor Navigation project](https://github.com/Snapchat/Spectacles-Sample/tree/main/Outdoor%20Navigation) in that it applies the Navigation Kit as the basis for all of its features. The Map Component used here has been heavily modified for this use case, so if the map is the primary feature you wish to use it may be worth evaluating that project for a more standalone map.
+This project differs from the [Outdoor Navigation project](https://github.com/specs-devs/samples/tree/main/Outdoor%20Navigation) in that it applies the Navigation Kit as the basis for all of its features. The Map Component used here has been heavily modified for this use case, so if the map is the primary feature you wish to use it may be worth evaluating that project for a more standalone map.
 
-The [Custom Location project](https://github.com/Snapchat/Spectacles-Sample/tree/main/Custom%20Locations) also provides examples of how to use Custom Locations within a project and provides scripts to help with that. This project shows an example of them incorporated into a guided tour, but there is functionality specific to that project too.
+The [Custom Location project](https://github.com/specs-devs/samples/tree/main/Custom%20Locations) also provides examples of how to use Custom Locations within a project and provides scripts to help with that. This project shows an example of them incorporated into a guided tour, but there is functionality specific to that project too.
 
 ## Design Guidelines
 
@@ -27,18 +27,18 @@ Get started using our [Design Guidelines](https://developers.snap.com/spectacles
 
 ## Prerequisites
 
-- **Lens Studio**: v5.24+
+- **Lens Studio**: v5.25+
 
-**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://developers.specs.com) for your SPECS device and OS versions.
 
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
 
-To update your SPECS device and mobile app, refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 ## Getting the project
 

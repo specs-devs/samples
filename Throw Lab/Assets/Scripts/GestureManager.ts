@@ -2,8 +2,8 @@
  * SPECS Inc. 2027
  * Gesture Manager handling core logic for the Throw Lab lens.
  */
-import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import TrackedHand from "InteractionKit.lspkg/Providers/HandInputData/TrackedHand"
+import {IK} from "InteractionKit.lspkg/IK"
 import {GrabbableObject} from "./GrabbableObject"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
@@ -32,7 +32,11 @@ export class GestureManager extends BaseScriptComponent {
   @ui.label('<span style="color: #60A5FA;">Detection Settings</span>')
   @input
   @hint("Detection radius around finger tips (in cm)")
-  detectionRadius: number = 1.5
+  detectionRadius: number = 3
+
+  @input
+  @hint("Grab assist (cm): when a pinch or fist doesn't touch an object, the nearest grabbable object whose surface is within this distance of the hand is grabbed. 0 turns it off.")
+  grabAssistRadius: number = 6
 
   @input
   @hint("Minimum pinch strength to maintain grab (0-1)")
@@ -252,8 +256,8 @@ export class GestureManager extends BaseScriptComponent {
 
   private setupHandTracking() {
     try {
-      this.leftHand = SIK.HandInputData.getHand("left")
-      this.rightHand = SIK.HandInputData.getHand("right")
+      this.leftHand = IK.HandInputData.getHand("left")
+      this.rightHand = IK.HandInputData.getHand("right")
       this.logger.info("Hand tracking initialized successfully")
     } catch (e) {
       this.logger.warn("Could not access hand tracking data. Make sure Hand Tracking is enabled in the scene.")
@@ -358,7 +362,8 @@ export class GestureManager extends BaseScriptComponent {
 
     collider.overlapFilter.includeStatic = true
     collider.overlapFilter.includeDynamic = true
-    collider.overlapFilter.includeIntangible = false
+    // Grabbables carry an intangible, oversized GrabZone collider (GrabbableObject): detect it.
+    collider.overlapFilter.includeIntangible = true
 
     collider.onOverlapEnter.add((e: OverlapEnterEventArgs) => {
       this.onFingerOverlapEnter(e, isLeftHand)
@@ -415,7 +420,70 @@ export class GestureManager extends BaseScriptComponent {
   /**
    * Find GrabbableObject component on a scene object
    */
+  /** Every GrabbableObject in the scene. Rescanned on each gesture: balls are spawned at runtime. */
+  private grabbables(): GrabbableObject[] {
+    const found: GrabbableObject[] = []
+    for (let i = 0; i < global.scene.getRootObjectsCount(); i++) {
+      SceneObjectUtils.forEachSceneObjectInSubHierarchy(global.scene.getRootObject(i), (o) => {
+        if (o.name === "GrabZone") return
+        const g = this.findGrabbableObjectComponent(o)
+        if (g && found.indexOf(g) < 0) found.push(g)
+      })
+    }
+    return found
+  }
+
+  /**
+   * The nearest free grabbable that wants this gesture and whose visual bounds are within
+   * grabAssistRadius of the hand: between thumb and index tips for a pinch, the index knuckle
+   * area for a fist.
+   */
+  private nearestGrabbable(hand: any, gestureType: "pinch" | "grab"): GrabbableObject | null {
+    if (this.grabAssistRadius <= 0) return null
+    const point: vec3 =
+      gestureType === "pinch"
+        ? hand.indexTip.position.add(hand.thumbTip.position).uniformScale(0.5)
+        : hand.indexKnuckle
+          ? hand.indexKnuckle.position
+          : hand.indexTip.position
+    let best: GrabbableObject | null = null
+    let bestDistance = this.grabAssistRadius
+    for (const g of this.grabbables()) {
+      const object = g.getSceneObject()
+      if (!object.isEnabledInHierarchy || g.isCurrentlyGrabbed() || g.getGestureType() !== gestureType) continue
+      const d = this.distanceToBounds(object, point)
+      if (d <= bestDistance) {
+        bestDistance = d
+        best = g
+      }
+    }
+    return best
+  }
+
+  /** Distance from a point to the object's (and its children's) visual bounds; 0 inside. */
+  private distanceToBounds(object: SceneObject, point: vec3): number {
+    let best = Number.POSITIVE_INFINITY
+    SceneObjectUtils.forEachSceneObjectInSubHierarchy(object, (o) => {
+      const visual = o.getComponent("Component.BaseMeshVisual") as BaseMeshVisual
+      if (!visual || !visual.enabled) return
+      const min = visual.worldAabbMin()
+      const max = visual.worldAabbMax()
+      const dx = Math.max(min.x - point.x, 0, point.x - max.x)
+      const dy = Math.max(min.y - point.y, 0, point.y - max.y)
+      const dz = Math.max(min.z - point.z, 0, point.z - max.z)
+      best = Math.min(best, Math.sqrt(dx * dx + dy * dy + dz * dz))
+    })
+    if (best === Number.POSITIVE_INFINITY) {
+      best = object.getTransform().getWorldPosition().distance(point)
+    }
+    return best
+  }
+
   private findGrabbableObjectComponent(sceneObject: SceneObject): GrabbableObject | null {
+    // A GrabZone child counts as its grabbable parent.
+    if (sceneObject.name === "GrabZone" && sceneObject.getParent()) {
+      return this.findGrabbableObjectComponent(sceneObject.getParent())
+    }
     const allComponents = sceneObject.getComponents("Component.ScriptComponent")
     for (let i = 0; i < allComponents.length; i++) {
       const comp = allComponents[i]
@@ -494,12 +562,21 @@ export class GestureManager extends BaseScriptComponent {
       `${gestureType} detected, checking overlaps... (${overlappingObjects.size} objects overlapping)`
     )
 
-    if (overlappingObjects.size === 0) {
-      this.logger.debug("No objects in range to grab")
-      return
+    // Touching objects first; otherwise the nearest one within grabAssistRadius of the hand, so a
+    // pinch or fist that lands just next to a ball, dart or racket still grabs it (finger-tip
+    // colliders alone need the fingers almost inside the mesh on device).
+    let candidates: GrabbableObject[] = Array.from(overlappingObjects)
+    if (candidates.length === 0) {
+      const assisted = this.nearestGrabbable(hand, gestureType)
+      if (!assisted) {
+        this.logger.debug("No objects in range to grab")
+        return
+      }
+      this.logger.debug(`Grab assist picked ${assisted.getSceneObject().name}`)
+      candidates = [assisted]
     }
 
-    for (const grabbableObject of overlappingObjects) {
+    for (const grabbableObject of candidates) {
       if (!grabbableObject.isCurrentlyGrabbed()) {
         const objectGestureType = grabbableObject.getGestureType()
 

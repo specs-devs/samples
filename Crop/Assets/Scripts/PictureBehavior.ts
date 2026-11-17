@@ -3,7 +3,7 @@
  * Picture Behavior component for the Crop Glasses lens.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import {IK} from "InteractionKit.lspkg/IK"
 import {CaptionBehavior} from "./CaptionBehavior"
 import {ChatGPT} from "./ChatGPT"
 import {CropRegion} from "./CropRegion"
@@ -73,8 +73,8 @@ export class PictureBehavior extends BaseScriptComponent {
 
   private circleTrans: Transform[]
 
-  private rightHand = SIK.HandInputData.getHand("right")
-  private leftHand = SIK.HandInputData.getHand("left")
+  private rightHand = IK.HandInputData.getHand("right")
+  private leftHand = IK.HandInputData.getHand("left")
 
   private picAnchorTrans = null
 

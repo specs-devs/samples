@@ -1,0 +1,49 @@
+- !<AssetImportMetadata/8b6dd6d8-ba3d-41af-9a59-4e3cb2c11a67>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 20e7aa5d-8cff-46b5-86e2-6b81869edb89
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 20e7aa5d-8cff-46b5-86e2-6b81869edb89
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ae055301-05db-4cec-b218-4aa9a9acdd6c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ae055301-05db-4cec-b218-4aa9a9acdd6c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 93e24200-5ab8-4dc9-a64a-9b8fb070257c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    title: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - title: Custom visuals
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">CustomVisualsGallery – six custom visuals for UI Kit buttons</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Builds its own panel at runtime. Each card replaces the button visual with a RoundedRectangleVisual style.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string title = "Custom visuals" {"hint":"Panel title"}'

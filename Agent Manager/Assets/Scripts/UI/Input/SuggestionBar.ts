@@ -1,10 +1,11 @@
-import { CapsuleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/CapsuleButton";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { createSystemButton } from "../Shared/SystemButton";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { createText } from "../Shared/UIBuilders";
 import { ICON_Z_OFFSET } from "../Shared/UIConstants";
 import { DirtyComponent } from "../Shared/DirtyComponent";
-import animate, { CancelSet } from "SpectaclesInteractionKit.lspkg/Utils/animate";
+import animate, { CancelSet } from "../Shared/MotionAnimate";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 
 const CAPSULE_HEIGHT = 2.5;
 const CAPSULE_DEPTH = 0.5;
@@ -21,7 +22,7 @@ const ANIM_START_SCALE = 0.82;
 
 interface TrackedCapsule {
   sceneObject: SceneObject;
-  button: CapsuleButton;
+  button: Button;
   textComponent: Text;
 }
 
@@ -56,9 +57,7 @@ export class SuggestionBar extends DirtyComponent {
     const btnObj = global.scene.createSceneObject(`Suggestion_${index}`);
     btnObj.setParent(this.content);
 
-    const btn = btnObj.createComponent(
-      CapsuleButton.getTypeName(),
-    ) as CapsuleButton;
+    const btn = createSystemButton(btnObj, "Secondary");
     btn.size = new vec3(MIN_CAPSULE_WIDTH, CAPSULE_HEIGHT, CAPSULE_DEPTH);
     btn.initialize();
 
@@ -66,9 +65,8 @@ export class SuggestionBar extends DirtyComponent {
       parent: btnObj,
       name: `SuggestionText_${index}`,
       text: "",
-      size: TextSize.XS,
-      font: TextFont.Medium,
-      color: new vec4(1, 1, 1, 0.9),
+      style: TextStyle.ButtonCompact,
+      color: TextColor.Primary,
       position: new vec3(0, 0, ICON_Z_OFFSET),
       horizontalOverflow: HorizontalOverflow.Truncate,
       horizontalAlignment: HorizontalAlignment.Center,

@@ -1,14 +1,14 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
 import { AgentButton } from "./AgentButton";
 import { Agent, AgentStatus } from "../../Types";
 import { THEME_KEYS } from "../Shared/UIConstants";
 import { RobotState, RobotTheme, STATUS_TO_ROBOT_STATE, toTitleCase } from "../Shared/RobotTypes";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import { setTimeout, clearTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+} from "../Shared/MotionAnimate";
+import { setTimeout, clearTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { DirtyComponent } from "../Shared/DirtyComponent";
 import { initializeScrollWindow } from "../Shared/UIBuilders";
 
@@ -40,6 +40,9 @@ export class AgentButtonBar extends DirtyComponent {
   private pendingAgents: Agent[] = [];
   private animCancels = new CancelSet();
   private themeMap: Map<string, string> = new Map();
+  // Last robot state pushed per agent (may be topic-derived, e.g. awaiting
+  // action/error) so rebuilds don't reset it from the raw agent status.
+  private robotStateMap: Map<string, RobotState> = new Map();
   private _interactionEnabled = true;
   private _isVisible = false;
   private _currentAlpha = 0;
@@ -109,6 +112,7 @@ export class AgentButtonBar extends DirtyComponent {
   }
 
   setAgentStatus(agentId: string, status: AgentStatus): void {
+    this.robotStateMap.set(agentId, STATUS_TO_ROBOT_STATE[status]);
     const tracked = this.buttonMap.get(agentId);
     if (tracked) {
       tracked.agentButton.setStatus(STATUS_TO_ROBOT_STATE[status]);
@@ -116,6 +120,7 @@ export class AgentButtonBar extends DirtyComponent {
   }
 
   setAgentRobotState(agentId: string, state: RobotState): void {
+    this.robotStateMap.set(agentId, state);
     const tracked = this.buttonMap.get(agentId);
     if (tracked) {
       tracked.agentButton.setStatus(state);
@@ -255,6 +260,12 @@ export class AgentButtonBar extends DirtyComponent {
     this.rebuildButtons();
   }
 
+  private getRobotState(agent: Agent): RobotState {
+    return (
+      this.robotStateMap.get(agent.id) ?? STATUS_TO_ROBOT_STATE[agent.status]
+    );
+  }
+
   private rebuildButtons(): void {
     this._worldPositionsDirty = true;
 
@@ -283,6 +294,7 @@ export class AgentButtonBar extends DirtyComponent {
       if (!pendingIds.has(tracked.agentId)) {
         tracked.sceneObject.destroy();
         this.buttonMap.delete(tracked.agentId);
+        this.robotStateMap.delete(tracked.agentId);
         this.trackedButtons.splice(i, 1);
       }
     }
@@ -301,7 +313,7 @@ export class AgentButtonBar extends DirtyComponent {
         existing.agentButton.setLabel(toTitleCase(agent.name));
         const themeKey = this.themeMap.get(agent.id) ?? "robot";
         existing.agentButton.setStyling(themeKey as RobotTheme);
-        existing.agentButton.setStatus(STATUS_TO_ROBOT_STATE[agent.status]);
+        existing.agentButton.setStatus(this.getRobotState(agent));
         existing.agentButton.setToggled(agent.id === this.activeAgentId);
         existing.agentButton.setInteractionEnabled(this._interactionEnabled);
         existing.sceneObject.getTransform().setLocalPosition(new vec3(x, 0, 0));
@@ -320,7 +332,7 @@ export class AgentButtonBar extends DirtyComponent {
 
         const themeKey = this.themeMap.get(agent.id) ?? "robot";
         agentButton.setStyling(themeKey as RobotTheme);
-        agentButton.setStatus(STATUS_TO_ROBOT_STATE[agent.status]);
+        agentButton.setStatus(this.getRobotState(agent));
         agentButton.setToggled(agent.id === this.activeAgentId);
         agentButton.setInteractionEnabled(this._interactionEnabled);
         btnObj.getTransform().setLocalPosition(new vec3(x, 0, 0));

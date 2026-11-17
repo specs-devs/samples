@@ -1,4 +1,4 @@
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
 import { createImage } from "../Shared/ImageFactory";
 
 const FRAME_MAX_SIDE = 20;

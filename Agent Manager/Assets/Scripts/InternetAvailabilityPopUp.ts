@@ -1,4 +1,4 @@
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate from "./UI/Shared/MotionAnimate"
 
 @component
 export class InternetAvailabilityPopUp extends BaseScriptComponent {

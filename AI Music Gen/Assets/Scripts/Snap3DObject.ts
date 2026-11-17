@@ -2,7 +2,7 @@
  * SPECS Inc. 2027
  * Snap3 DObject component for the AI Music Gen Glasses lens.
  */
-import {clearTimeout, setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {clearTimeout, setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component

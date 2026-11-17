@@ -4,8 +4,8 @@
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
-import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand";
+import { IK } from "InteractionKit.lspkg/IK";
+import TrackedHand from "InteractionKit.lspkg/Providers/HandInputData/TrackedHand";
 
 @component
 export class HandController extends BaseScriptComponent {
@@ -51,8 +51,8 @@ export class HandController extends BaseScriptComponent {
     );
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()");
 
-    this.leftHand = SIK.HandInputData.getHand("left");
-    this.rightHand = SIK.HandInputData.getHand("right");
+    this.leftHand = IK.HandInputData.getHand("left");
+    this.rightHand = IK.HandInputData.getHand("right");
     this.vinylTransform = this.vinylCenterObject.getTransform();
   }
 

@@ -1,0 +1,91 @@
+- !<AssetImportMetadata/1dfd7106-91f4-40cb-994b-59925a5f0c3a>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 0a6d39c8-c38c-400f-90f9-18b9b4190803
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 0a6d39c8-c38c-400f-90f9-18b9b4190803
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> c7fad209-7336-4b11-b700-eb4d9872ec19
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/766cdc35-47c5-4742-5c98-98d7a7b4971e>
+  PrefabRemaps:
+    []
+  Name: Map3D
+  Enabled: true
+  ScriptAsset: !<reference> e3722d94-58b3-4787-94b0-5960af131256
+  ScriptInputsDefault:
+    mapboxToken: true
+    mapStyle: true
+    latitude: true
+    longitude: true
+    placeName: true
+    loadOnStart: true
+    zoom: true
+    radiusMeters: true
+    panRangeMeters: true
+    mapSizeCm: true
+    heightScale: true
+    defaultBuildingHeight: true
+    landmarkCount: true
+    markerMaterial: true
+    edgeMaterial: true
+    flipGroundV: true
+    labelSize: true
+    statusText: true
+    enableLogging: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mapboxToken: ""
+      mapStyle: mapbox/dark-v11
+      latitude: 51.507900
+      longitude: -0.128100
+      placeName: Trafalgar Square
+      loadOnStart: true
+      zoom: !<float> 15.000000
+      radiusMeters: !<float> 300.000000
+      panRangeMeters: !<float> 300.000000
+      mapSizeCm: !<float> 40.000000
+      heightScale: 1.500000
+      defaultBuildingHeight: !<float> 10.000000
+      landmarkCount: !<float> 8.000000
+      groundMaterial: !<reference.Material> 39262017-06a1-45ee-9bb2-80f463734688
+      buildingMaterial: !<reference.Material> a11233ef-cd39-478f-bcf7-46cbb31d5268
+      pinMaterial: !<reference.Material> e985f12a-9a73-4212-842f-6f2c6c1bb422
+      markerMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      edgeMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      flipGroundV: false
+      labelSize: !<float> 36.000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/c7fad209-7336-4b11-b700-eb4d9872ec19>
+  Prototype: !<ObjectOwner/970a0614-c673-4e6a-80dd-323238fe2843>
+    PackagePath: ""
+    objects:
+      - !<own> cc6790dc-87b8-4070-7b73-b20115057774
+- !<SceneObject/cc6790dc-87b8-4070-7b73-b20115057774>
+  PrefabRemaps:
+    []
+  Name: "Map3D [BETA]"
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -25.000000, z: -70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 766cdc35-47c5-4742-5c98-98d7a7b4971e

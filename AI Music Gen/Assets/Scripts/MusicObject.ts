@@ -6,9 +6,9 @@ import {GoogleGenAI} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAI
 import {GoogleGenAITypes} from "RemoteServiceGateway.lspkg/HostedExternal/GoogleGenAITypes"
 import {Snap3D} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3D"
 import {Snap3DTypes} from "RemoteServiceGateway.lspkg/HostedSnap/Snap3DTypes"
-import {RoundButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
+import {RoundButton} from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
 import {bindStartEvent} from "SnapDecorators.lspkg/decorators"
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {MusicPlayer} from "./MusicPlayer"
 import {Snap3DObject} from "./Snap3DObject"
@@ -227,10 +227,10 @@ export class MusicObject extends BaseScriptComponent {
       this._isPlaying = false
     }
 
-    // Disable first so SIK's cursor drops its hover target, then destroy a tick
+    // Disable first so IK's cursor drops its hover target, then destroy a tick
     // later - destroying a hovered Interactable mid-update makes the cursor's
     // InteractionManager throw "Object is null" every frame. setTimeout runs on
-    // SIK's own dispatcher, so it still fires with this object disabled.
+    // IK's own dispatcher, so it still fires with this object disabled.
     try {
       this.sceneObject.enabled = false
     } catch (e) {

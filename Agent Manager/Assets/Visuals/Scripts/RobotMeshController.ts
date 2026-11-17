@@ -53,9 +53,13 @@ const antennaBallMat = requireAsset("../Materials/AntennaTop.mat") as Material;
 const overlayMat = requireAsset("../Materials/StateOverlay.mat") as Material;
 
 interface ThemeData {
+  themeKey: string;
+  sceneName: string;
   root: SceneObject;
   bodyObject: SceneObject;
   bodyRmv: RenderMeshVisual;
+  /** False until the theme is first activated; materials are cloned lazily. */
+  materialsReady: boolean;
   bodyPass: Pass | null;
   facePass: Pass | null;
   antennaBallPasses: Pass[];
@@ -181,6 +185,20 @@ export class RobotMeshController extends BaseScriptComponent {
     this.discoverThemes(rotCorrector);
     this.discoverOverlays(rotCorrector);
     this.activateTheme(this.currentTheme);
+    // Overlays are authored enabled in the prefab and are otherwise only
+    // hidden by the first onUpdate. A robot created mid-frame renders once
+    // before that, flashing every overlay — start them hidden; onUpdate
+    // re-enables whichever the current state needs.
+    const overlays = [
+      this.wifiRoot,
+      this.questionMarkRoot,
+      this.waveBarsRoot,
+      this.clickRingsRoot,
+      this.sleepZsRoot,
+    ];
+    for (const o of overlays) {
+      if (o) o.enabled = false;
+    }
 
     this.baseLocalPos = root.getTransform().getLocalPosition();
     this.baseLocalScale = root.getTransform().getLocalScale();
@@ -226,6 +244,12 @@ export class RobotMeshController extends BaseScriptComponent {
     return result;
   }
 
+  /**
+   * Finds each theme's hierarchy without touching materials. Every robot
+   * instance carries all six themes (~47 meshes) but only ever shows one, so
+   * cloning materials for all of them up front cost ~40 clones per robot at
+   * spawn. Materials are set up in ensureThemeMaterials() on first activation.
+   */
   private discoverThemes(root: SceneObject): void {
     const themeKeys = Object.keys(THEME_SCENE_NAMES);
     for (let ti = 0; ti < themeKeys.length; ti++) {
@@ -236,6 +260,8 @@ export class RobotMeshController extends BaseScriptComponent {
       if (!themeRoot) continue;
 
       themeRoot.getTransform().setLocalPosition(new vec3(0, 0, 0));
+      // Hidden until activated, so an unconfigured theme never renders.
+      themeRoot.enabled = false;
 
       const bodyObject = this.findChildByName(themeRoot, "Body_" + sceneName);
       if (!bodyObject) continue;
@@ -245,65 +271,70 @@ export class RobotMeshController extends BaseScriptComponent {
       ) as RenderMeshVisual;
       if (!bodyRmv) continue;
 
-      const bodyPass = this.assignMaterial(bodyRmv, faceMat);
-      this.initSurfacePassDefaults(bodyPass);
-
-      let facePass: Pass | null = null;
-      const faceObjName = FACE_OBJECT_NAMES[sceneName];
-      const faceObject = faceObjName
-        ? this.findDescendantByName(themeRoot, faceObjName)
-        : null;
-      if (faceObject) {
-        const faceRmv = faceObject.getComponent(
-          "RenderMeshVisual",
-        ) as RenderMeshVisual;
-        if (faceRmv) {
-          facePass = this.assignMaterial(faceRmv, faceMat);
-          this.initSurfacePassDefaults(facePass);
-        }
-      }
-
-      const antennaBallPasses: Pass[] = [];
-      const skipIds = new Set<string>();
-      if (faceObject) skipIds.add(faceObject.uniqueIdentifier);
-
-      const abNames = ANTENNA_BALL_NAMES[sceneName];
-      if (abNames) {
-        for (let ai = 0; ai < abNames.length; ai++) {
-          const abObj = this.findDescendantByName(themeRoot, abNames[ai]);
-          if (abObj) {
-            skipIds.add(abObj.uniqueIdentifier);
-            const abRmv = abObj.getComponent(
-              "RenderMeshVisual",
-            ) as RenderMeshVisual;
-            if (abRmv) {
-              antennaBallPasses.push(
-                this.assignMaterial(abRmv, antennaBallMat),
-              );
-            }
-          }
-        }
-      }
-
-      let gillsRoot: SceneObject | null = null;
-      if (themeKey === "axolotl") {
-        gillsRoot = this.findDescendantByName(themeRoot, "Gills_Axolotl");
-      }
-
-      const childPasses: Pass[] = [];
-      this.collectChildPasses(bodyObject, skipIds, childPasses, faceMat);
-
       this.themes[themeKey] = {
+        themeKey,
+        sceneName,
         root: themeRoot,
         bodyObject,
         bodyRmv,
-        bodyPass,
-        facePass,
-        antennaBallPasses,
-        childPasses,
-        gillsRoot,
+        materialsReady: false,
+        bodyPass: null,
+        facePass: null,
+        antennaBallPasses: [],
+        childPasses: [],
+        gillsRoot:
+          themeKey === "axolotl"
+            ? this.findDescendantByName(themeRoot, "Gills_Axolotl")
+            : null,
       };
     }
+  }
+
+  /** Clones and initializes a theme's materials the first time it's shown. */
+  private ensureThemeMaterials(data: ThemeData): void {
+    if (data.materialsReady) return;
+    data.materialsReady = true;
+    const { sceneName, root: themeRoot, bodyObject, bodyRmv } = data;
+
+    data.bodyPass = this.assignMaterial(bodyRmv, faceMat);
+    this.initSurfacePassDefaults(data.bodyPass);
+
+    const faceObjName = FACE_OBJECT_NAMES[sceneName];
+    const faceObject = faceObjName
+      ? this.findDescendantByName(themeRoot, faceObjName)
+      : null;
+    if (faceObject) {
+      const faceRmv = faceObject.getComponent(
+        "RenderMeshVisual",
+      ) as RenderMeshVisual;
+      if (faceRmv) {
+        data.facePass = this.assignMaterial(faceRmv, faceMat);
+        this.initSurfacePassDefaults(data.facePass);
+      }
+    }
+
+    const skipIds = new Set<string>();
+    if (faceObject) skipIds.add(faceObject.uniqueIdentifier);
+
+    const abNames = ANTENNA_BALL_NAMES[sceneName];
+    if (abNames) {
+      for (let ai = 0; ai < abNames.length; ai++) {
+        const abObj = this.findDescendantByName(themeRoot, abNames[ai]);
+        if (abObj) {
+          skipIds.add(abObj.uniqueIdentifier);
+          const abRmv = abObj.getComponent(
+            "RenderMeshVisual",
+          ) as RenderMeshVisual;
+          if (abRmv) {
+            data.antennaBallPasses.push(
+              this.assignMaterial(abRmv, antennaBallMat),
+            );
+          }
+        }
+      }
+    }
+
+    this.collectChildPasses(bodyObject, skipIds, data.childPasses, faceMat);
   }
 
   private discoverOverlays(root: SceneObject): void {
@@ -417,6 +448,8 @@ export class RobotMeshController extends BaseScriptComponent {
   }
 
   private activateTheme(theme: string): void {
+    const target = this.themes[theme];
+    if (target) this.ensureThemeMaterials(target);
     const keys = Object.keys(this.themes);
     for (let i = 0; i < keys.length; i++) {
       this.themes[keys[i]].root.enabled = keys[i] === theme;

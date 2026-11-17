@@ -1,4 +1,4 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 import { Agent, AgentStatus, Task, ChatMessage, ChatTopic, RepoEntry } from "../Types";
 export type { RepoEntry };
 
@@ -367,14 +367,45 @@ export class AgentStore {
     this.externalMessageIdsByTopic.delete(topicId);
   }
 
+  /** Monotonic message counter; pass to replaceMessagesForTopic to keep newer messages. */
+  getMessageSequence(): number {
+    return this.messageCounter;
+  }
+
+  private static messageSequenceOf(msg: ChatMessage): number {
+    const n = parseInt(msg.id.substring(4), 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  /**
+   * Replaces a topic's messages with a history snapshot. If
+   * `preserveAfterSequence` is given, messages inserted after that sequence
+   * (e.g. live messages that arrived while the snapshot was being fetched) and
+   * not present in the snapshot (by external id) are kept, appended after the
+   * snapshot in their original order.
+   */
   replaceMessagesForTopic(
     agentId: string,
     topicId: string,
     hydratedMessages: HydratedMessageInput[],
+    preserveAfterSequence?: number,
   ): void {
+    let preserved: ChatMessage[] = [];
+    if (preserveAfterSequence !== undefined) {
+      const snapshotIds = new Set<string>();
+      for (const input of hydratedMessages) {
+        if (input.externalId) snapshotIds.add(input.externalId);
+      }
+      preserved = (this.messages.get(topicId) ?? []).filter(
+        (m) =>
+          AgentStore.messageSequenceOf(m) > preserveAfterSequence &&
+          !(m.externalId && snapshotIds.has(m.externalId)),
+      );
+    }
+
     this.clearMessagesForTopic(topicId);
 
-    if (hydratedMessages.length === 0) {
+    if (hydratedMessages.length === 0 && preserved.length === 0) {
       return;
     }
 
@@ -398,6 +429,16 @@ export class AgentStore {
           externalIds = new Set<string>();
         }
         externalIds.add(input.externalId);
+      }
+    }
+
+    for (const msg of preserved) {
+      list.push(msg);
+      if (msg.externalId) {
+        if (!externalIds) {
+          externalIds = new Set<string>();
+        }
+        externalIds.add(msg.externalId);
       }
     }
 

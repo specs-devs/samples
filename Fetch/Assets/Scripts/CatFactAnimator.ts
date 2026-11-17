@@ -2,8 +2,8 @@
  * SPECS Inc. 2027
  * Cat Fact Animator component for the Fetch Glasses lens.
  */
-import animate from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import animate from "InteractionKit.lspkg/Utils/animate"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {FetchCatFacts} from "./FetchCatFacts"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 
@@ -131,7 +131,7 @@ export class CatFactAnimator extends BaseScriptComponent {
     if (this.textBubbleIsShown) return
     this.textBubbleIsShown = true
 
-    // LSTween was removed; this uses the native SpectaclesInteractionKit
+    // LSTween was removed; this uses the native InteractionKit
     // `animate` utility. Durations are in seconds (LSTween used milliseconds).
     // Wait 1.5s, then slide the bubble up and fade in the bubble + text.
     animate({

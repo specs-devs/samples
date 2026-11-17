@@ -22,13 +22,19 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: f4e74edf-622d-4b22-93cb-0affd8b1f7b5
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     endPointAttachment: false
+    hideMarkerWhenNoHit: false
+    hitsUnder: false
     rayEnd: false
     rayStart: false
+    statusText: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -41,6 +47,9 @@
     - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       endPointAttachment: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hideMarkerWhenNoHit: true
+      hitsUnder: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}

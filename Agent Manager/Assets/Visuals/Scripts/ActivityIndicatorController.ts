@@ -1,6 +1,6 @@
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+} from "InteractionKit.lspkg/Utils/animate";
 
 @component
 export class ActivityIndicatorController extends BaseScriptComponent {

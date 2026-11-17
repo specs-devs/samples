@@ -102,6 +102,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/16ac2e2a-fd26-4bfe-a2cd-f64c1c147291>
@@ -176,9 +177,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 32.000000, y: 32.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -363,7 +362,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -387,7 +385,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -444,7 +441,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -468,7 +464,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -583,7 +578,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -607,7 +601,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -668,7 +661,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -692,7 +684,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -783,7 +774,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -808,7 +798,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -868,8 +857,8 @@
       mainPanel: !<reference.SceneObject> fb8dd116-557d-4f8b-a249-0460bc1e283a
       scrollView: !<reference.SceneObject> 37ab80aa-ff09-4776-a869-e9daae1c0e51
       camera: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
-      frameInnerSizeDefault: !<Vec2> {x: 60.000000, y: 25.000000}
-      frameInnerSizeNavigation: !<Vec2> {x: 35.000000, y: 10.000000}
+      frameInnerSizeDefault: !<Vec2> {x: 64.000000, y: 29.000000}
+      frameInnerSizeNavigation: !<Vec2> {x: 38.000000, y: 13.000000}
       frameInnerSizeMinimized: !<Vec2> {x: 16.000000, y: 10.000000}
       minimizedTetherOffset: !<Vec3> {x: 30.000000, y: 40.000000, z: -110.000000}
       mapLocalPositionDefault: !<Vec3> {x: -7.907300, y: -0.327200, z: 0.000000}
@@ -938,7 +927,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -962,7 +950,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1092,7 +1079,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1116,7 +1102,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1543,7 +1528,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1567,7 +1551,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1713,7 +1696,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1737,7 +1719,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000
@@ -1760,6 +1741,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/c8a6a76c-2805-4829-8cf0-2db6bd2bc526>
@@ -2251,7 +2233,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2275,7 +2256,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _width: 2.500000

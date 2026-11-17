@@ -5,22 +5,19 @@ import { AgentWorldView } from "./Agent/AgentWorldView";
 import { AgentInputBar } from "./AgentInputBar";
 import { AgentManagerPanel } from "./AgentManagerPanel";
 import { HandDockedMenu } from "./HandDockedMenu";
-import { VoiceNoteGesture } from "./VoiceNoteGesture";
 import { CameraHint } from "./CameraHint";
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 
 export class UIManager {
   public readonly agentWorldView: AgentWorldView;
   public readonly agentInputBar: AgentInputBar;
   public readonly agentManagerPanel: AgentManagerPanel;
   public readonly handDockedMenu: HandDockedMenu;
-  public readonly voiceNoteGesture: VoiceNoteGesture;
   public readonly cameraHint: CameraHint;
   public readonly notificationManager: NotificationManager;
 
   private store: AgentStore;
   private root: SceneObject;
-  private inputBarRecording = false;
 
   constructor(
     store: AgentStore,
@@ -49,7 +46,6 @@ export class UIManager {
     ) as AgentManagerPanel;
 
     this.agentWorldView.setPanel(this.agentManagerPanel);
-    this.agentInputBar.connectBLEKeyboard(this.agentManagerPanel.bleKeyboardManager);
 
     this.agentWorldView.onOpenPanelRequested.add(() => {
       this.agentManagerPanel.show();
@@ -72,28 +68,6 @@ export class UIManager {
         this.agentManagerPanel.show();
         this.handDockedMenu.setPanelActive(true);
       }
-    });
-
-    const voiceNoteObj = global.scene.createSceneObject("VoiceNoteGesture");
-    voiceNoteObj.setParent(root);
-    this.voiceNoteGesture = voiceNoteObj.createComponent(
-      VoiceNoteGesture.getTypeName(),
-    ) as VoiceNoteGesture;
-    this.voiceNoteGesture.init(menuObj);
-    this.agentWorldView.registerButtonBar(this.voiceNoteGesture.getButtonBar());
-
-    const refreshVoiceGesture = () => {
-      this.voiceNoteGesture.setEnabled(
-        store.getAgents().length > 0 && !this.inputBarRecording,
-      );
-    };
-
-    store.onAgentsChanged.add(refreshVoiceGesture);
-    store.onAgentStatusChanged.add(refreshVoiceGesture);
-
-    this.agentInputBar.onRecordingChanged.add((recording: boolean) => {
-      this.inputBarRecording = recording;
-      refreshVoiceGesture();
     });
 
     this.agentWorldView.onSettingsViewToggled.add((active: boolean) => {
@@ -127,16 +101,6 @@ export class UIManager {
     });
 
     const mainCam = WorldCameraFinderProvider.getInstance().getComponent() as Camera;
-
-    this.agentManagerPanel.bleKeyboardManager.onKeyboardInput.add((e) => {
-      if (!e.isSpecialKey || e.key !== "Tab") return;
-      if (this.agentInputBar.isTextInputActive) return;
-      const camTransform = mainCam.getSceneObject().getTransform();
-      this.agentWorldView.activateAgentClosestToCenter(
-        camTransform.getWorldPosition(),
-        camTransform.forward,
-      );
-    });
 
     const overlayLayer = LayerSet.makeUnique();
     const overlayCamObj = global.scene.createSceneObject("OverlayCamera");

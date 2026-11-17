@@ -6,17 +6,21 @@ import {Gemini} from "RemoteServiceGateway.lspkg/HostedExternal/Gemini"
 import {GeminiTypes} from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
-const GEMINI_MODEL = "gemini-2.5-pro"
+// Flash answers in a few seconds; Pro (a slow "thinking" model) often ran past the request timeout.
+const GEMINI_MODEL = "gemini-2.5-flash"
+// Most labels returned for one frame.
+const MAX_LABELS = 10
+// Two labels whose boxes overlap more than this (intersection over union) are the same object.
+const DUPLICATE_IOU = 0.5
 
 const SYSTEM_MESSAGE =
   "You are an AI inside of augmented reality glasses. " +
-  "Return bounding boxes as a JSON array with labels, your answer should be a JSON object with 3 keys: 'message', 'data' and 'lines. The 'data' key should contain an array of objects, each with a label and coordinates of a bounding box. " +
-  "if the user asks about a specific area, where something is, or how to do a task, you can set showArrow to true and that will create a arrow visual in the scene. This should be set to true most of the time.\n" +
-  "Return bounding boxes as a JSON array with labels. Never return masks or code fencing. Limit to 25 objects.\n" +
-  "If an object is present multiple times, name them according to their unique characteristic (colors, size, position, unique characteristics, etc..). \n" +
-  "The label and arrow can be useful for tasks, if user asks how to use something, maybe use an arrow and set the label to Step #1, Step #2, etc. \n" +
-  "Dont label anything over 20 feet away from the camera. \n" +
-  "Do not label objects that you already labled! Make sure the AR content you add doesnt overlap each other, but feel free to make as many as you see fit! You are the AR and AI BOSS!\n"
+  "Answer with a JSON object with two keys: 'message' (a short answer for the user) and 'data' (an array of labelled objects, " +
+  "each with 'label', 'boundingBox' [ymin, xmin, ymax, xmax] normalized to 0-1000, and 'useArrow').\n" +
+  "Set useArrow to true when the user asks where something is or how to do a task; the label then works well as Step #1, Step #2, etc.\n" +
+  "Return one entry per physical object: never two boxes for the same object, and no overlapping boxes. " +
+  "If the same kind of object appears more than once, tell them apart in the label (color, size, position).\n" +
+  "Return at most " + MAX_LABELS + " objects. Don't label anything more than 6 meters from the camera. Never return masks or code fencing.\n"
 
 @component
 export class GeminiAPI extends BaseScriptComponent {
@@ -53,8 +57,9 @@ export class GeminiAPI extends BaseScriptComponent {
         this.logger.error("Image encoding failed!")
         print("[GeminiDebug] ERROR: texture encoding failed — no request sent, no dots")
       },
-      CompressionQuality.HighQuality,
-      EncodingType.Png
+      // A JPG is a fraction of the size of a PNG, which keeps the request well under the gateway limits.
+      CompressionQuality.IntermediateQuality,
+      EncodingType.Jpg
     )
   }
 
@@ -92,7 +97,7 @@ export class GeminiAPI extends BaseScriptComponent {
             parts: [
               {
                 inlineData: {
-                  mimeType: "image/png",
+                  mimeType: "image/jpeg",
                   data: image64
                 }
               },
@@ -111,8 +116,9 @@ export class GeminiAPI extends BaseScriptComponent {
         },
         generationConfig: {
           temperature: 0.5,
+          maxOutputTokens: 2048,
           responseMimeType: "application/json",
-          response_schema: respSchema
+          responseSchema: respSchema
         }
       }
     }
@@ -122,20 +128,36 @@ export class GeminiAPI extends BaseScriptComponent {
     Gemini.models(reqObj)
       .then((response) => {
         print("[GeminiDebug] Gemini response received, parsing…")
-        const responseObj = JSON.parse(response.candidates[0].content.parts[0].text)
+        const candidate = response && response.candidates ? response.candidates[0] : null
+        const parts = candidate && candidate.content && candidate.content.parts ? candidate.content.parts : []
+        const textPart = parts.filter((part) => part && typeof part.text === "string")[0]
+        if (!textPart) {
+          const reason = candidate ? candidate.finishReason : JSON.stringify((response as any)?.promptFeedback || {})
+          print("[GeminiDebug] ERROR: Gemini answered without text (" + reason + ")")
+          this.fail(callback, "Gemini didn't return an answer for this view. Try again or rephrase the question.")
+          return
+        }
+        let responseObj: any
+        try {
+          responseObj = JSON.parse(textPart.text)
+        } catch (error) {
+          print("[GeminiDebug] ERROR: could not parse Gemini JSON (" + (candidate ? candidate.finishReason : "?") + "): " + textPart.text.substring(0, 200))
+          this.fail(callback, "Gemini's answer was cut off. Try again with a shorter question.")
+          return
+        }
         this.onGeminiResponse(responseObj, texture, callback)
       })
       .catch((error) => {
         this.logger.error("Gemini error: " + error)
         print("[GeminiDebug] ERROR: Gemini request failed: " + error)
-        if (callback != null) {
-          callback({
-            points: [],
-            lines: [],
-            aiMessage: "Gemini request failed. Check the Remote Service Gateway token and your connection, then try again."
-          })
-        }
+        this.fail(callback, "Gemini request failed. Check the Remote Service Gateway token and your connection, then try again.")
       })
+  }
+
+  private fail(callback: (response: any) => void, message: string) {
+    if (callback != null) {
+      callback({points: [], lines: [], aiMessage: message})
+    }
   }
 
   private onGeminiResponse(responseObj: any, texture: Texture, callback: (response: any) => void) {
@@ -143,14 +165,12 @@ export class GeminiAPI extends BaseScriptComponent {
       points: [],
       aiMessage: "no response"
     }
-
-    this.logger.info("GEMINI RESPONSE: " + responseObj.message)
-    geminiResult.aiMessage = responseObj.message
     try {
-      const data = responseObj.data
+      geminiResult.aiMessage = responseObj && responseObj.message ? responseObj.message : "no response"
+      this.logger.info("GEMINI RESPONSE: " + geminiResult.aiMessage)
+      const data = this.removeDuplicates(Array.isArray(responseObj.data) ? responseObj.data : [])
       this.logger.debug("Data: " + JSON.stringify(data))
-      this.logger.info("POINT LENGTH: " + data.length)
-      print(`[GeminiDebug] parsed ${data == null ? "no" : data.length} bounding box(es) from response`)
+      print(`[GeminiDebug] parsed ${data.length} bounding box(es) from response`)
       for (let i = 0; i < data.length; i++) {
         const centerPoint = this.boundingBoxToPixels(data[i].boundingBox, texture.getWidth(), texture.getHeight())
         const lensStudioPoint = {
@@ -168,6 +188,29 @@ export class GeminiAPI extends BaseScriptComponent {
     }
   }
 
+  /**
+   * Drops entries that describe an object already in the list: same label, or a box overlapping an
+   * earlier box by more than DUPLICATE_IOU. Keeps at most MAX_LABELS entries.
+   */
+  private removeDuplicates(data: any[]): any[] {
+    const kept: any[] = []
+    for (const item of data) {
+      const box = item && item.boundingBox
+      if (!Array.isArray(box) || box.length < 4) {
+        continue
+      }
+      const label = ("" + item.label).trim().toLowerCase()
+      const duplicate = kept.some((other) => ("" + other.label).trim().toLowerCase() === label || iou(box, other.boundingBox) > DUPLICATE_IOU)
+      if (!duplicate) {
+        kept.push(item)
+      }
+      if (kept.length >= MAX_LABELS) {
+        break
+      }
+    }
+    return kept
+  }
+
   private boundingBoxToPixels(boxPoints: any, width: number, height: number): vec2 {
     const x1 = MathUtils.remap(boxPoints[1], 0, 1000, 0, width)
     const y1 = MathUtils.remap(boxPoints[0], 0, 1000, height, 0)
@@ -178,4 +221,17 @@ export class GeminiAPI extends BaseScriptComponent {
     const center = topLeft.add(bottomRight).uniformScale(0.5)
     return center
   }
+}
+
+// Intersection over union of two [ymin, xmin, ymax, xmax] boxes.
+function iou(a: number[], b: number[]): number {
+  const y1 = Math.max(a[0], b[0])
+  const x1 = Math.max(a[1], b[1])
+  const y2 = Math.min(a[2], b[2])
+  const x2 = Math.min(a[3], b[3])
+  const inter = Math.max(0, y2 - y1) * Math.max(0, x2 - x1)
+  const areaA = Math.max(0, a[2] - a[0]) * Math.max(0, a[3] - a[1])
+  const areaB = Math.max(0, b[2] - b[0]) * Math.max(0, b[3] - b[1])
+  const union = areaA + areaB - inter
+  return union > 0 ? inter / union : 0
 }

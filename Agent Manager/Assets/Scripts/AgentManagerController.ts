@@ -42,7 +42,7 @@ import {
   isAgentStatusBroadcast,
   isAgentLaunchedBroadcast,
 } from "./Api/Supabase/SupabaseTypes";
-import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
+import { setTimeout } from "InteractionKit.lspkg/Utils/FunctionTimingUtils";
 import { SnapCloudRequirements } from "./SnapCloudRequirements/SnapCloudRequirements";
 
 const EXPLOSION_PREFAB: ObjectPrefab = requireAsset(
@@ -154,8 +154,11 @@ export class AgentManagerController extends BaseScriptComponent {
   private suggestionGeneration = 0;
   private audioComponent: AudioComponent;
   private lastBridgeSfxTime = 0;
-  private lastPermissionTool: Map<string, string> = new Map();
-  private lastPermissionRequestId: Map<string, string> = new Map();
+  /** Latest pending permission request per topic id (local topic id). */
+  private pendingPermissionByTopic = new Map<
+    string,
+    { agentId: string; tool: string; requestId?: string }
+  >();
 
   private log(msg: string): void {
     if (this.debugLogs) print(msg);
@@ -170,8 +173,7 @@ export class AgentManagerController extends BaseScriptComponent {
     this.conversationHistoryLru = [];
     this.bridgeConnectionMap.clear();
     if (this.heartbeatManager) this.heartbeatManager.destroy();
-    this.lastPermissionTool.clear();
-    this.lastPermissionRequestId.clear();
+    this.pendingPermissionByTopic.clear();
   }
 
   onAwake(): void {
@@ -241,7 +243,6 @@ export class AgentManagerController extends BaseScriptComponent {
     this.wireDelete();
     this.wireClearConversations();
     this.wirePermissionResponse();
-    this.wireVoiceNoteGesture();
     this.wireSmartFeatures();
 
     this.wireDeleteAllData();
@@ -498,13 +499,29 @@ export class AgentManagerController extends BaseScriptComponent {
     this.uiManager.agentWorldView.refreshSelectedThread(agentId, topicId);
   }
 
+  /**
+   * Removes an agent from the store after dropping controller-side caches
+   * (history hydration, active conversation, pending permissions) so a later
+   * re-auth/re-pair rehydrates its conversations instead of early-returning.
+   */
+  private removeAgentLocally(agentId: string): void {
+    for (const topic of this.store.getTopicsForAgent(agentId)) {
+      if (topic.externalId) {
+        this.invalidateConversationHistory(topic.externalId, false);
+      }
+    }
+    this.activeConversationByAgent.delete(agentId);
+    this.clearPendingPermissionsForAgent(agentId);
+    this.store.removeAgent(agentId);
+  }
+
   private removeStaleConnectingAgents(): void {
     for (const provider of this.providerRegistry.getAllProviders()) {
       if (provider.providerId === "bridge") continue;
       const agentId = `${provider.providerId}-agent`;
       const agent = this.store.getAgent(agentId);
       if (agent && agent.status === AgentStatus.Connecting) {
-        this.store.removeAgent(agentId);
+        this.removeAgentLocally(agentId);
       }
     }
     for (const agent of this.store.getAgents()) {
@@ -512,7 +529,7 @@ export class AgentManagerController extends BaseScriptComponent {
         agent.provider === "bridge" &&
         agent.status === AgentStatus.Connecting
       ) {
-        this.store.removeAgent(agent.id);
+        this.removeAgentLocally(agent.id);
       }
     }
   }
@@ -642,16 +659,30 @@ export class AgentManagerController extends BaseScriptComponent {
     let instances: AgentInstance[] = [];
     let loadSucceeded = false;
 
+    // The agent may be disconnected/removed while we await the bridge; bail
+    // out so we don't recreate orphan topics (e.g. "New Chat") for it.
+    const abortIfRemoved = (): boolean => {
+      if (this.store.getAgent(agentId)) return false;
+      this.log(
+        `${TAG} loadBridgeConversations: agent ${agentId} removed mid-load, aborting`,
+      );
+      this.conversationsLoadInProgress.delete(agentId);
+      this.store.setConversationsLoading(agentId, false);
+      return true;
+    };
+
     for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
       try {
         instances = await this.bridgeProvider.listAgentInstances(
           50,
           bridgeUuid,
         );
+        if (abortIfRemoved()) return;
         this.log(`${TAG} Loaded ${instances.length} bridge conversations`);
         loadSucceeded = true;
         break;
       } catch (e) {
+        if (abortIfRemoved()) return;
         this.log(
           `${TAG} Failed to load bridge conversations (attempt ${attempt}/${MAX_ATTEMPTS}): ${e}`,
         );
@@ -664,12 +695,14 @@ export class AgentManagerController extends BaseScriptComponent {
           await new Promise<void>((resolve) =>
             setTimeout(resolve, RETRY_DELAY_MS),
           );
+          if (abortIfRemoved()) return;
         }
       }
     }
 
     if (loadSucceeded) {
       this.bridgeConversationsLoadFailed.delete(agentId);
+      this.reconcileBridgePendingDeletions(bridgeUuid, instances);
     } else {
       this.bridgeConversationsLoadFailed.add(agentId);
       this.log(
@@ -702,6 +735,35 @@ export class AgentManagerController extends BaseScriptComponent {
     this.store.setConversationsLoading(agentId, false);
   }
 
+  /**
+   * Bridge deletes are fire-and-forget broadcasts, so a tombstone is only
+   * cleared once the conversation no longer appears in the bridge's list.
+   * Conversations still listed get the delete re-sent.
+   */
+  private reconcileBridgePendingDeletions(
+    bridgeUuid: string,
+    instances: AgentInstance[],
+  ): void {
+    const listedIds = new Set(instances.map((i) => i.id));
+    for (const entry of this.store.getPendingDeletions()) {
+      if (entry.provider !== "bridge" || entry.bridgeAgentUuid !== bridgeUuid) {
+        continue;
+      }
+      if (!listedIds.has(entry.externalId)) {
+        this.store.clearDeletedExternalId(entry.externalId);
+        this.log(`${TAG} Confirmed bridge deletion of ${entry.externalId}`);
+      } else {
+        void this.bridgeProvider
+          .deleteAgent(entry.externalId, bridgeUuid)
+          .catch((e) =>
+            this.log(
+              `${TAG} Re-sending delete for ${entry.externalId} failed: ${e}`,
+            ),
+          );
+      }
+    }
+  }
+
   private startPollingBridgeStatus(agentId: string, bridgeUuid: string): void {
     this.subscribeBridgeChannelLiveness(agentId, bridgeUuid);
     this.subscribeBridgeAgentStatus(agentId, bridgeUuid);
@@ -729,6 +791,7 @@ export class AgentManagerController extends BaseScriptComponent {
         // Note: no isInitialSetupComplete guard here — conversationsLoadInProgress
         // already prevents duplicate loads, and we want to retry even mid-setup.
         if (
+          this.store.getAgent(agentId) &&
           !this.conversationsLoadInProgress.has(agentId) &&
           (this.bridgeConversationsLoadFailed.has(agentId) ||
             this.store.getTopicsForAgent(agentId).every((t) => !t.externalId))
@@ -937,12 +1000,7 @@ export class AgentManagerController extends BaseScriptComponent {
     this.heartbeatManager.removeAgent(agentId);
     this.activeConversationByAgent.delete(agentId);
     this.bridgeProvider.removePairedId(bridgeUuid);
-    for (const topic of this.store.getTopicsForAgent(agentId)) {
-      if (topic.externalId) {
-        this.invalidateConversationHistory(topic.externalId, false);
-      }
-    }
-    this.store.removeAgent(agentId);
+    this.removeAgentLocally(agentId);
     this.log(
       `${TAG} Bridge agent ${agentId} removed from UI (unpaired remotely)`,
     );
@@ -1431,6 +1489,43 @@ export class AgentManagerController extends BaseScriptComponent {
     });
   }
 
+  private recordPermissionRequest(
+    agentId: string,
+    topicId: string,
+    payload: PermissionPayload,
+  ): void {
+    this.pendingPermissionByTopic.set(topicId, {
+      agentId,
+      tool: payload.tool,
+      requestId: payload.request_id,
+    });
+  }
+
+  /**
+   * Returns and clears the pending permission request for a topic. Pass the
+   * topic id the permission card was shown for. Falls back to `tool: "tool"`
+   * with no request id when nothing is recorded (or it belongs to another agent).
+   */
+  private takePendingPermission(
+    agentId: string,
+    topicId: string,
+  ): { tool: string; requestId?: string } {
+    const entry = this.pendingPermissionByTopic.get(topicId);
+    if (!entry || entry.agentId !== agentId) return { tool: "tool" };
+    this.pendingPermissionByTopic.delete(topicId);
+    return { tool: entry.tool, requestId: entry.requestId };
+  }
+
+  private clearPendingPermissionsForAgent(agentId: string): void {
+    for (const [topicId, entry] of Array.from(
+      this.pendingPermissionByTopic.entries(),
+    )) {
+      if (entry.agentId === agentId) {
+        this.pendingPermissionByTopic.delete(topicId);
+      }
+    }
+  }
+
   private async recoverTopicPermissionState(
     agentId: string,
     conversationId: string,
@@ -1457,8 +1552,15 @@ export class AgentManagerController extends BaseScriptComponent {
         convState.activity_state === "awaiting_permission" &&
         convState.permission_payload
       ) {
+        this.recordPermissionRequest(
+          agentId,
+          topic.id,
+          convState.permission_payload,
+        );
         this.uiManager.agentWorldView.showPermissionRequest(
           convState.permission_payload,
+          agentId,
+          topic.id,
         );
       }
     } catch (e) {
@@ -1550,6 +1652,23 @@ export class AgentManagerController extends BaseScriptComponent {
     });
   }
 
+  /**
+   * Appends work to the serialized bridge message queue. Each link catches its
+   * own errors so a single failure never poisons later links.
+   */
+  private enqueueBridgeMessageWork(work: () => Promise<void>): void {
+    this.bridgeMessageQueue = this.bridgeMessageQueue
+      .then(work)
+      .catch((e) => {
+        this.log(`${TAG} Bridge message processing failed: ${e}`);
+      });
+  }
+
+  private isBridgeMessageKnown(topicId: string, messageId?: string): boolean {
+    if (!messageId) return false;
+    return this.store.getExternalMessageIds(topicId).has(messageId);
+  }
+
   private subscribeBridgeRealtime(
     conversationId: string,
     agentId: string,
@@ -1574,11 +1693,14 @@ export class AgentManagerController extends BaseScriptComponent {
       if (topic) {
         for (const msg of buffered) {
           if (msg.role !== "agent") continue;
+          // History hydration may already contain this message.
+          if (this.isBridgeMessageKnown(topic.id, msg.id)) continue;
           const cleanContent = stripMarkdown(msg.content);
           if (msg.images && msg.images.length > 0) {
             const images = msg.images;
-            this.bridgeMessageQueue = this.bridgeMessageQueue.then(async () => {
+            this.enqueueBridgeMessageWork(async () => {
               const textures = await this.decodeBridgeImages(images);
+              if (this.isBridgeMessageKnown(topic.id, msg.id)) return;
               this.store.addMessageToTopic(
                 agentId,
                 topic.id,
@@ -1621,6 +1743,8 @@ export class AgentManagerController extends BaseScriptComponent {
           if (activeTopic?.id === topic.id) {
             this.uiManager.agentWorldView.showPermissionRequest(
               bufferedState.permission_payload,
+              agentId,
+              topic.id,
             );
           }
           this.uiManager.showPermissionNotification(
@@ -1629,16 +1753,11 @@ export class AgentManagerController extends BaseScriptComponent {
             topic.title,
             bufferedState.permission_payload.tool,
           );
-          this.lastPermissionTool.set(
+          this.recordPermissionRequest(
             agentId,
-            bufferedState.permission_payload.tool,
+            topic.id,
+            bufferedState.permission_payload,
           );
-          if (bufferedState.permission_payload.request_id) {
-            this.lastPermissionRequestId.set(
-              agentId,
-              bufferedState.permission_payload.request_id,
-            );
-          }
           this.store.addMessageToTopic(
             agentId,
             topic.id,
@@ -1658,14 +1777,16 @@ export class AgentManagerController extends BaseScriptComponent {
             `[DBG AgentManager] agent message received: convId=${conversationId} msgId=${message.id} contentLen=${message.content?.length ?? 0} images=${message.images?.length ?? 0} topicFound=${!!topic}`,
           );
           if (!topic) return;
+          if (this.isBridgeMessageKnown(topic.id, message.id)) return;
 
           const cleanContent = stripMarkdown(message.content);
 
-          this.bridgeMessageQueue = this.bridgeMessageQueue.then(async () => {
+          this.enqueueBridgeMessageWork(async () => {
             let textures: Texture[] | undefined;
             if (message.images && message.images.length > 0) {
               textures = await this.decodeBridgeImages(message.images);
             }
+            if (this.isBridgeMessageKnown(topic.id, message.id)) return;
             this.store.addMessageToTopic(
               agentId,
               topic.id,
@@ -1707,6 +1828,8 @@ export class AgentManagerController extends BaseScriptComponent {
           if (activeTopic?.id === topic.id) {
             this.uiManager.agentWorldView.showPermissionRequest(
               conv.permission_payload,
+              agentId,
+              topic.id,
             );
           }
           this.uiManager.showPermissionNotification(
@@ -1715,13 +1838,11 @@ export class AgentManagerController extends BaseScriptComponent {
             topic.title,
             conv.permission_payload.tool,
           );
-          this.lastPermissionTool.set(agentId, conv.permission_payload.tool);
-          if (conv.permission_payload.request_id) {
-            this.lastPermissionRequestId.set(
-              agentId,
-              conv.permission_payload.request_id,
-            );
-          }
+          this.recordPermissionRequest(
+            agentId,
+            topic.id,
+            conv.permission_payload,
+          );
           this.store.addMessageToTopic(
             agentId,
             topic.id,
@@ -1990,6 +2111,9 @@ export class AgentManagerController extends BaseScriptComponent {
     if (!provider) return;
 
     try {
+      // Messages inserted after this point (live realtime arrivals during the
+      // fetch) are preserved when the snapshot replaces the topic.
+      const fetchStartSequence = this.store.getMessageSequence();
       let messages: AgentConversationMessage[];
       if (providerId === "bridge") {
         const bridgeUuid = this.bridgeAgentUuid(agentId);
@@ -2016,6 +2140,7 @@ export class AgentManagerController extends BaseScriptComponent {
           sender: msg.type === "user_message" ? "user" : "agent",
           content: msg.text,
         })),
+        fetchStartSequence,
       );
       this.rememberConversationHistory(externalId);
 
@@ -2061,7 +2186,7 @@ export class AgentManagerController extends BaseScriptComponent {
           .getAgents()
           .filter((a) => a.provider === provider);
         for (const agent of agents) {
-          this.store.removeAgent(agent.id);
+          this.removeAgentLocally(agent.id);
         }
         this.uiManager.notifyProviderConnected(provider, false);
       },
@@ -2080,16 +2205,14 @@ export class AgentManagerController extends BaseScriptComponent {
           try {
             await this.bridgeProvider.notifyAgentRemoved(bridgeUuid);
             await this.bridgeProvider.unpairAgent(bridgeUuid);
-            this.heartbeatManager.removeAgent(agentId);
-            this.activeConversationByAgent.delete(agentId);
-            for (const topic of this.store.getTopicsForAgent(agentId)) {
-              if (topic.externalId) {
-                this.invalidateConversationHistory(topic.externalId, false);
-              }
-            }
             this.log(`${TAG} Bridge agent ${bridgeUuid} unpaired`);
           } catch (e) {
             this.log(`${TAG} Failed to unpair bridge agent: ${e}`);
+          } finally {
+            // Local teardown must happen even if the server call failed,
+            // since the agent is removed from the store below regardless.
+            this.bridgeProvider.unsubscribeAgent(bridgeUuid);
+            this.heartbeatManager.removeAgent(agentId);
           }
         } else {
           try {
@@ -2103,7 +2226,7 @@ export class AgentManagerController extends BaseScriptComponent {
         }
       }
 
-      this.store.removeAgent(agentId);
+      this.removeAgentLocally(agentId);
     });
   }
 
@@ -2172,8 +2295,12 @@ export class AgentManagerController extends BaseScriptComponent {
               activeTopic.externalId,
               bridgeUuid,
             );
-            this.store.clearDeletedExternalId(activeTopic.externalId);
-            this.log(`${TAG} Deleted agent instance ${activeTopic.externalId}`);
+            // Keep the tombstone: the broadcast may not have reached an
+            // offline bridge. It's cleared once the conversation is absent
+            // from list results (reconcileBridgePendingDeletions).
+            this.log(
+              `${TAG} Sent delete for agent instance ${activeTopic.externalId}`,
+            );
           } catch (e) {
             this.log(
               `${TAG} Failed to delete agent instance (will retry next session): ${e}`,
@@ -2233,12 +2360,13 @@ export class AgentManagerController extends BaseScriptComponent {
             .filter((t) => t.externalId)
             .map((topic) => {
               if (agent.provider === "bridge") {
+                // Tombstone is cleared by reconcileBridgePendingDeletions once
+                // the conversation disappears from the bridge's list.
                 return this.bridgeProvider
                   .deleteAgent(topic.externalId!, bridgeUuid!)
                   .then(() => {
-                    this.store.clearDeletedExternalId(topic.externalId!);
                     this.log(
-                      `${TAG} Deleted agent instance ${topic.externalId}`,
+                      `${TAG} Sent delete for agent instance ${topic.externalId}`,
                     );
                   })
                   .catch((e) =>
@@ -2297,6 +2425,10 @@ export class AgentManagerController extends BaseScriptComponent {
             entry.externalId,
             entry.bridgeAgentUuid,
           );
+          // Bridge deletes are unconfirmed broadcasts; keep the tombstone
+          // until reconcileBridgePendingDeletions sees it gone from the list.
+          this.log(`${TAG} Retry re-sent bridge delete for ${entry.externalId}`);
+          continue;
         } else if (entry.provider === "unknown") {
           continue;
         } else {
@@ -2348,6 +2480,7 @@ export class AgentManagerController extends BaseScriptComponent {
       this.conversationLoadPromises.clear();
       this.conversationHistoryLru = [];
       this.activeConversationByAgent.clear();
+      this.pendingPermissionByTopic.clear();
       this.heartbeatManager.destroy();
 
       this.store.clearAllData();
@@ -2361,20 +2494,23 @@ export class AgentManagerController extends BaseScriptComponent {
 
   private wirePermissionResponse(): void {
     this.uiManager.agentWorldView.onPermissionDecision.add(
-      async ({ agentId, decision }) => {
+      async ({ agentId, topicId, decision }) => {
         this.log(
           `${TAG} Permission ${decision} from user for agent ${agentId}`,
         );
         const agent = this.store.getAgent(agentId);
         if (!agent) return;
 
-        const activeTopic = this.store.getActiveTopic(agentId);
+        // Route to the topic the permission card was bound to, if known.
+        const activeTopic = topicId
+          ? this.store.getTopicById(topicId)
+          : this.store.getActiveTopic(agentId);
         if (!activeTopic?.externalId) return;
 
-        const tool = this.lastPermissionTool.get(agentId) ?? "tool";
-        this.lastPermissionTool.delete(agentId);
-        const requestId = this.lastPermissionRequestId.get(agentId);
-        this.lastPermissionRequestId.delete(agentId);
+        const { tool, requestId } = this.takePendingPermission(
+          agentId,
+          activeTopic.id,
+        );
         const decisionLabel =
           decision === "allow"
             ? "allowed"
@@ -2399,21 +2535,6 @@ export class AgentManagerController extends BaseScriptComponent {
         } catch (e) {
           this.log(`${TAG} Failed to send permission response: ${e}`);
         }
-      },
-    );
-  }
-
-  private wireVoiceNoteGesture(): void {
-    this.uiManager.voiceNoteGesture.onVoiceNoteSendTo.add(
-      ({ agentId, transcript }) => {
-        //this.uiManager.showPanelIfHidden();
-        this.store.selectAgent(agentId);
-        if (
-          !this.uiManager.agentManagerPanel.getVoiceNoteContinuesLastTopic()
-        ) {
-          this.store.clearActiveTopic(agentId);
-        }
-        this.uiManager.agentInputBar.submitText(transcript);
       },
     );
   }
@@ -2569,6 +2690,9 @@ export class AgentManagerController extends BaseScriptComponent {
     this.uiManager.agentInputBar.onTaskSubmitted.add(
       async ({ agentId, prompt, images }) => {
         this.store.addMessage(agentId, "user", prompt, images);
+        // Capture the target topic before any await — the user may switch
+        // topics while images are being encoded.
+        const activeTopic = this.store.getActiveTopic(agentId);
 
         if (this.useMockData) {
           this.handleMockTask(agentId, prompt);
@@ -2599,8 +2723,6 @@ export class AgentManagerController extends BaseScriptComponent {
           }
         }
 
-        const activeTopic = this.store.getActiveTopic(agentId);
-
         if (activeTopic?.externalId) {
           await this.handleFollowup(
             provider.providerId,
@@ -2625,6 +2747,7 @@ export class AgentManagerController extends BaseScriptComponent {
             agentId,
             prompt,
             encodedImages,
+            activeTopic?.id ?? null,
           );
         }
       },
@@ -2755,9 +2878,9 @@ export class AgentManagerController extends BaseScriptComponent {
     agentId: string,
     prompt: string,
     images?: AgentImage[],
+    placeholderTopicId: string | null = this.store.getActiveTopicId(agentId),
   ): Promise<void> {
     const bridgeUuid = this.bridgeAgentUuid(agentId);
-    const placeholderTopicId = this.store.getActiveTopicId(agentId);
     const workspace = this.store.getSelectedRepo(agentId);
     const model = this.store.getSelectedModel(agentId);
 

@@ -4,16 +4,18 @@
 [![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Gesture & Hands](https://img.shields.io/badge/Gesture%20%26%20Hands-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module) [![Spatial UI](https://img.shields.io/badge/Spatial%20UI-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) [![Prefabs & Instantiation](https://img.shields.io/badge/Prefabs%20%26%20Instantiation-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/objects-and-assets/prefabs) [![Scripting](https://img.shields.io/badge/Scripting-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/scripting/scripting-overview)
 <!-- /tags -->
 
+<img src="./README-ref/sample-list-base-template-with-examples-rounded-edges.gif" alt="base-template-with-examples" width="500" />
+
 ## Overview
 
-Base Template With Examples is the [Base Template](../Base%20Template/) pre-populated with ready-made example content, so you can see SPECS interaction patterns in action and build on top of them. Alongside the [Spectacles Interaction Kit (SIK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) and Spectacles UI Kit, it bundles the Interaction Kit Examples package and helper utilities, plus the SpecsSans font family, all wired into the scene.
+Base Template With Examples is the [Base Template](../Base%20Template/) pre-populated with ready-made example content, so you can see SPECS interaction patterns in action and build on top of them. Alongside the [Interaction Kit (SIK)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview) and UI Kit, it bundles the Interaction Kit Examples package and helper utilities, plus the SpecsSans font family, all wired into the scene.
 
 > **NOTE:**
 > This project will only work for the SPECS platform.
 
 ## What's Inside
 
-- **Spectacles Interaction Kit (SIK)** and **Spectacles UI Kit** packages.
+- **Interaction Kit (SIK)** and **UI Kit** packages.
 - **Interaction Kit Examples** — ready-made interaction samples to explore and reuse.
 - **SnapDecorators** and **Utilities** helper packages.
 - **SpecsSans** font family for on-device text.
@@ -25,17 +27,17 @@ Get started using our [Design Guidelines](https://developers.snap.com/spectacles
 
 ## Prerequisites
 
-- **Lens Studio**: v5.24+
+- **Lens Studio**: v5.25+
 
-**Note:** Ensure Lens Studio is [compatible with SPECS](https://ar.snap.com/download) for your SPECS device and OS versions.
+**Note:** Ensure Lens Studio is [compatible with SPECS](https://developers.specs.com) for your SPECS device and OS versions.
 
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
-To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 ## Getting Started
 

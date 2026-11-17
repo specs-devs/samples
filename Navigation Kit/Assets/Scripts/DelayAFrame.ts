@@ -1,4 +1,4 @@
-import {setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import {setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 
 /**
  * An awaitable function the will delay for approximately a frame.

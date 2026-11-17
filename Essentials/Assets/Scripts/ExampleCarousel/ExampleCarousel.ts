@@ -1,6 +1,6 @@
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {GuideDismissPanel} from "../GuideDismissPanel/GuideDismissPanel"
 
 const FRAME_WIDTH = 30
@@ -14,7 +14,7 @@ const FRAME_HEIGHT = TITLE_HEIGHT + ROW_GAP + INFO_HEIGHT + ROW_GAP + BUTTON_HEI
 // Without Previous / Next the panel ends below the info text.
 const SINGLE_STEP_HEIGHT = TITLE_HEIGHT + ROW_GAP + INFO_HEIGHT + ROW_GAP
 const CONTENT_Z = 0.5
-const LABEL_Z = 0.3
+const LABEL_Z = 0.65 // button labels sit in front of the 1 cm deep button face (+0.5 cm), never inside it
 const TITLE_SIZE = 54
 const COUNTER_SIZE = 40
 const LABEL_SIZE = 46
@@ -23,18 +23,24 @@ const INFO_SIZE = 32
 const EXAMPLE_GUIDE_NAME = "guide_readanddisable"
 // High enough that the carousel draws on top of every example's content.
 const CONTENT_RENDER_ORDER = 100
-// Where the carousel sits relative to the head pose when it starts (cm): low, like a toolbar, with its
-// top edge well below eye level so it doesn't cover the examples and rays aimed at them pass over it.
-const CAROUSEL_DISTANCE = 90
-const CAROUSEL_DROP = 6.5
-// The examples are lifted this much above the head pose (cm), clear of the carousel below them.
-const EXAMPLES_LIFT = 33
-// Examples whose content comes closer than the carousel plus this margin are pushed back (cm).
-const EXAMPLE_CLEARANCE = 30
+// Where the carousel sits relative to the head pose when it starts (cm): in the near field (60 cm), like a
+// toolbar the user pokes or pinches directly, low enough that rays aimed at the examples pass over it.
+const CAROUSEL_DISTANCE = 60
+const CAROUSEL_DROP = 15
+// Examples follow the Specs distance guideline: their nearest content sits at 110 cm (far field). Content
+// authored between 110 and 160 cm (super far field, for immersive examples) is left where it is.
+const EXAMPLE_NEAR_DISTANCE = 110
+const EXAMPLE_FAR_DISTANCE = 160
+// Each example's visible bounds are recentred vertically this far below eye level (cm).
+const EXAMPLE_EYE_DROP = 5
 // Delay before measuring a shown example, so UIKit-built content exists (s).
 const MEASURE_DELAY = 0.3
 // While an example is measured for the first time it waits this far behind the user, out of view (cm).
 const MEASURE_HIDE_DISTANCE = 500
+// Bounds farther than this from the head when an example is measured are not real content (cm).
+const MEASURE_MAX_RANGE = 1000
+// Visuals bigger than this (cm) are runtime effects such as trails, not example content: ignored when measuring.
+const MEASURE_MAX_SIZE = 600
 
 type HeadPose = {position: vec3; forward: vec3; facing: quat}
 
@@ -107,6 +113,11 @@ export class ExampleCarousel extends BaseScriptComponent {
   @hint("Extra drop (cm) of the panel below its usual spot. Increase it when the examples show their own hints at eye level (e.g. surface placement).")
   extraPanelDrop: number = 0
 
+  @input
+  @allowUndefined
+  @hint("Example that owns the scene's log panel (a LogReadout). The panel is shown with that example and hidden with the others. Empty: the panel is left alone.")
+  logExample: SceneObject
+
   private index = 0
   private title: Text | null = null
   private info: Text | null = null
@@ -127,7 +138,7 @@ export class ExampleCarousel extends BaseScriptComponent {
   private expandedHeight = FRAME_HEIGHT
   // Each example's local position under the anchor, and the push it needs once measured.
   private anchoredPositions: vec3[] = []
-  private pushes: (number | null)[] = []
+  private offsets: (vec3 | null)[] = []
 
   onAwake(): void {
     this.createEvent("OnStartEvent").bind(() => this.build())
@@ -153,7 +164,7 @@ export class ExampleCarousel extends BaseScriptComponent {
       this.anchorToHead(head)
     } else {
       this.anchoredPositions = this.examples.map((example) => example.getTransform().getLocalPosition())
-      this.pushes = this.stepList.map(() => 0)
+      this.offsets = this.stepList.map(() => vec3.zero())
     }
     const carouselPosition = head.position
       .add(head.forward.uniformScale(CAROUSEL_DISTANCE))
@@ -313,7 +324,7 @@ export class ExampleCarousel extends BaseScriptComponent {
     const anchor = global.scene.createSceneObject("ExamplesAnchor")
     const anchorTransform = anchor.getTransform()
     anchorTransform.setWorldPosition(
-      head.position.add(head.forward.uniformScale(this.examplesPushBack)).add(vec3.up().uniformScale(EXAMPLES_LIFT))
+      head.position.add(head.forward.uniformScale(this.examplesPushBack))
     )
     anchorTransform.setWorldRotation(head.facing)
     // Read every pose before moving any example: an example nested inside another one would
@@ -330,7 +341,7 @@ export class ExampleCarousel extends BaseScriptComponent {
       transform.setLocalScale(poses[i].scale)
     })
     this.anchoredPositions = this.examples.map((example) => example.getTransform().getLocalPosition())
-    this.pushes = this.stepList.map(() => null)
+    this.offsets = this.stepList.map(() => null)
   }
 
   private show(index: number): void {
@@ -340,6 +351,8 @@ export class ExampleCarousel extends BaseScriptComponent {
     const rootIndex = this.stepRoots[this.index]
     const root = this.examples[rootIndex]
     const chain = this.chainOf(step, root)
+    // Before enabling the example, so what it prints on start lands in its own log section.
+    this.updateLog(root)
     this.stepList.forEach((other) => {
       if (other !== step && chain.indexOf(other) < 0) {
         other.enabled = false
@@ -375,6 +388,23 @@ export class ExampleCarousel extends BaseScriptComponent {
   }
 
   /**
+   * Switches a LogReadout in the scene (it registers itself, see LogReadout.onAwake) to the step now
+   * shown, so each step lists only its own output. With `logExample` set, the log panel is visible
+   * only while that example is shown. No LogReadout in the scene is fine too.
+   */
+  private updateLog(root: SceneObject): void {
+    const log = (globalThis as any).specsLogReadout
+    if (!log || typeof log.setSection !== "function") {
+      return
+    }
+    log.setSection(this.stepTitles[this.index])
+    if (this.logExample) {
+      const panel: SceneObject = log.panelRoot || log.getSceneObject()
+      panel.enabled = root === this.logExample
+    }
+  }
+
+  /**
    * Shows the example at its anchored place, pushed back so none of it is in front of the carousel.
    * The first time, the push isn't known yet: the example is enabled out of view behind the user,
    * measured once its content exists, then moved into place, so it never appears and then jumps.
@@ -385,10 +415,10 @@ export class ExampleCarousel extends BaseScriptComponent {
     const transform = example.getTransform()
     transform.setLocalPosition(this.anchoredPositions[rootIndex])
     const head = this.head
-    const knownPush = this.pushes[i]
-    if (!head || knownPush !== null) {
-      if (head && knownPush) {
-        transform.setWorldPosition(transform.getWorldPosition().add(head.forward.uniformScale(knownPush)))
+    const knownOffset = this.offsets[i]
+    if (!head || knownOffset !== null) {
+      if (head && knownOffset) {
+        transform.setWorldPosition(transform.getWorldPosition().add(knownOffset))
       }
       example.enabled = true
       return
@@ -402,17 +432,28 @@ export class ExampleCarousel extends BaseScriptComponent {
         transform.setLocalPosition(this.anchoredPositions[rootIndex])
         return
       }
-      const nearest = this.nearestDepth(example, head) + MEASURE_HIDE_DISTANCE
-      const push = Math.max(0, CAROUSEL_DISTANCE + EXAMPLE_CLEARANCE - nearest)
-      this.pushes[i] = push
-      transform.setWorldPosition(anchoredWorld.add(head.forward.uniformScale(push)))
+      const bounds = this.measure(example, head)
+      let offset = vec3.zero()
+      if (bounds) {
+        const nearest = bounds.nearest + MEASURE_HIDE_DISTANCE
+        const push =
+          nearest < EXAMPLE_NEAR_DISTANCE || nearest > EXAMPLE_FAR_DISTANCE ? EXAMPLE_NEAR_DISTANCE - nearest : 0
+        offset = head.forward.uniformScale(push).add(vec3.up().uniformScale(-EXAMPLE_EYE_DROP - bounds.centerHeight))
+      }
+      this.offsets[i] = offset
+      transform.setWorldPosition(anchoredWorld.add(offset))
     })
     delay.reset(MEASURE_DELAY)
   }
 
-  /** Smallest distance along the head's forward of any visible mesh or text under `root`. */
-  private nearestDepth(root: SceneObject, head: HeadPose): number {
+  /**
+   * Bounds of the visible meshes and text under `root`, relative to the head: the smallest distance along
+   * the head's forward, and the height of the vertical centre above eye level. Null when nothing is visible.
+   */
+  private measure(root: SceneObject, head: HeadPose): {nearest: number; centerHeight: number} | null {
     let nearest = Number.POSITIVE_INFINITY
+    let minHeight = Number.POSITIVE_INFINITY
+    let maxHeight = Number.NEGATIVE_INFINITY
     const visit = (object: SceneObject) => {
       if (!object.enabled) {
         return
@@ -423,9 +464,18 @@ export class ExampleCarousel extends BaseScriptComponent {
         }
         const min = visual.worldAabbMin()
         const max = visual.worldAabbMax()
+        // A visual whose mesh isn't built yet (e.g. a code-built UIKit ScrollBar in its first
+        // frames) reports an empty box at an arbitrary point, which would push the example
+        // kilometres away. Skip empty boxes and anything implausibly far from the head.
+        if (!this.isMeasurable(min, max, head)) {
+          return
+        }
         for (let i = 0; i < 8; i++) {
           const corner = new vec3(i & 1 ? max.x : min.x, i & 2 ? max.y : min.y, i & 4 ? max.z : min.z)
-          nearest = Math.min(nearest, corner.sub(head.position).dot(head.forward))
+          const fromHead = corner.sub(head.position)
+          nearest = Math.min(nearest, fromHead.dot(head.forward))
+          minHeight = Math.min(minHeight, fromHead.y)
+          maxHeight = Math.max(maxHeight, fromHead.y)
         }
       })
       for (let i = 0; i < object.getChildrenCount(); i++) {
@@ -433,7 +483,25 @@ export class ExampleCarousel extends BaseScriptComponent {
       }
     }
     visit(root)
-    return nearest
+    if (!Number.isFinite(nearest)) {
+      return null
+    }
+    return {nearest, centerHeight: (minHeight + maxHeight) / 2}
+  }
+
+  /** Whether a visual's world bounds are a real, finite box within reach of the head. */
+  private isMeasurable(min: vec3, max: vec3, head: HeadPose): boolean {
+    const values = [min.x, min.y, min.z, max.x, max.y, max.z]
+    if (values.some((value) => !Number.isFinite(value))) {
+      return false
+    }
+    if (max.x - min.x <= 0 && max.y - min.y <= 0 && max.z - min.z <= 0) {
+      return false
+    }
+    if (max.sub(min).length > MEASURE_MAX_SIZE) {
+      return false
+    }
+    return min.distance(head.position) <= MEASURE_MAX_RANGE && max.distance(head.position) <= MEASURE_MAX_RANGE
   }
 
   /** Hides the example's guides and instruction labels, and returns their text joined ("" if none). */

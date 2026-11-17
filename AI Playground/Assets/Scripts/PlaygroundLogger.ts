@@ -11,7 +11,7 @@
  *
  * Other scripts can also push custom lines via PlaygroundLogger.instance.log("...").
  */
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component

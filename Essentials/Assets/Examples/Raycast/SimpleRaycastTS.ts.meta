@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: fc3e10d1-d161-422e-9c17-c6dc92ef9ab5
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,8 +32,11 @@
     enableLogging: false
     enableLoggingLifecycle: false
     endPointAttachment: false
+    hideMarkerWhenNoHit: false
+    hitsUnder: false
     rayEnd: false
     rayStart: false
+    statusText: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -45,6 +49,9 @@
     - rayStart: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       rayEnd: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       endPointAttachment: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hideMarkerWhenNoHit: true
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      hitsUnder: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -56,6 +63,9 @@
     - '// @input SceneObject rayStart {"hint":"The starting point of the raycast"}'
     - '// @input SceneObject rayEnd {"hint":"The ending point of the raycast"}'
     - '// @input SceneObject endPointAttachment {"hint":"Scene object to place at the raycast hit position"}'
+    - '// @input bool hideMarkerWhenNoHit = true {"hint":"Hide endPointAttachment while the ray hits nothing"}'
+    - '// @input Component.Text statusText {"hint":"Optional Text that shows what the ray hits and how far away"}'
+    - '// @input SceneObject hitsUnder {"hint":"Optional: only colliders under this object count (UI panels and other content in front are ignored)"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging"}'

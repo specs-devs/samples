@@ -1,7 +1,7 @@
-import { BackPlate } from "SpectaclesUIKit.lspkg/Scripts/BackPlate";
-import { TextSize, TextFont } from "../Shared/TextSizes";
+import { BackPlate } from "UIKit.lspkg/Scripts/BackPlate";
 import { createText } from "../Shared/UIBuilders";
 import { PANEL_WIDTH, TITLE_HEIGHT, PANEL_PADDING as PADDING, Z_CONTENT } from "../Shared/UIConstants";
+import { TextStyle, TextColor } from "../Shared/UIStyle";
 
 export class NoInternetView {
   readonly sceneObject: SceneObject;
@@ -33,9 +33,8 @@ export class NoInternetView {
       parent: this.sceneObject,
       name: "NoInternetText",
       text: "No Internet Connection",
-      size: TextSize.XXL,
-      font: TextFont.SemiBold,
-      color: new vec4(1, 1, 1, 0.75),
+      style: TextStyle.PanelTitle,
+      color: TextColor.Secondary,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalAlignment: HorizontalAlignment.Center,
       verticalAlignment: VerticalAlignment.Center,
@@ -53,8 +52,8 @@ export class NoInternetView {
       parent: this.sceneObject,
       name: "NoInternetSubtext",
       text: "Check your internet connection to continue.",
-      size: TextSize.M,
-      color: new vec4(1, 1, 1, 0.35),
+      style: TextStyle.Body,
+      color: TextColor.Muted,
       position: new vec3(0, cursorY, Z_CONTENT),
       horizontalOverflow: HorizontalOverflow.Wrap,
       horizontalAlignment: HorizontalAlignment.Center,
